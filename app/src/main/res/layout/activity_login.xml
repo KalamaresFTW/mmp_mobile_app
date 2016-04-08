@@ -24,12 +24,14 @@
         android:layout_height="wrap_content"
         android:id="@+id/logo"
         android:layout_gravity="center_horizontal"
-        android:background="@drawable/newLogo" />
+        android:background="@drawable/logo"
+        android:layout_marginTop="@dimen/abc_dialog_padding_top_material" />
 
     <ScrollView
         android:id="@+id/login_form"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/abc_dialog_padding_top_material">
 
         <LinearLayout
             android:id="@+id/email_login_form"
