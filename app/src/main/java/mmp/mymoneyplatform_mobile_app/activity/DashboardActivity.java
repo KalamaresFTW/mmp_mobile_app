@@ -12,6 +12,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import org.w3c.dom.Text;
 
 import mmp.mymoneyplatform_mobile_app.R;
 import mmp.mymoneyplatform_mobile_app.pojo.User;
@@ -21,43 +24,49 @@ public class DashboardActivity extends AppCompatActivity
 
     private ImageView iv_menu_img;
     private TextView tv_menu_name, tv_menu_mail;
+    private Toolbar toolbar;
+    private DrawerLayout drawer;
+
+
     private User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
-        user = (User) getIntent().getSerializableExtra("user");
+        user = (User) getIntent().getSerializableExtra("user"); //Retrieve the user object from the Intent
         System.out.println(user.toString());
-        if (user == null){ //Just in case
+        if (user == null) { //Just in case
             startActivity(new Intent(this, LoginActivity.class));
         }
         initComponents();
     }
 
     public void initComponents() {
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        NavigationView navigationView = (NavigationView) drawer.findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        //Initialisation of the Navigator Menu´s components
-        View header = navigationView.getHeaderView(R.id.header_menu);
-        tv_menu_name = (TextView) header.findViewById(R.id.tv_menu_name);
-        tv_menu_mail = (TextView) header.findViewById(R.id.tv_menu_mail);
+        View navigationViewHeader = navigationView.getHeaderView(0);
+
+        iv_menu_img = (ImageView)  navigationViewHeader.findViewById(R.id.iv_menu_img);
+        tv_menu_name = (TextView) navigationViewHeader.findViewById(R.id.tv_menu_name);
+        tv_menu_mail = (TextView) navigationViewHeader.findViewById(R.id.tv_menu_mail);
 
         loadProfileData();
     }
 
     public void loadProfileData() {
-        //TODO: find out why are we getting null pointer exception when we try to access these TextViews
+        //TODO: add the profile image into the NavigationView header
+        //iv_menu_img.setImageIcon();
         tv_menu_name.setText(user.getName());
         tv_menu_mail.setText(user.getEmail());
     }
@@ -81,7 +90,7 @@ public class DashboardActivity extends AppCompatActivity
         //TODO: Create a bunch of Indents for every item on the Navigator Menu
         switch (id) {
             case R.id.nav_profile:
-
+                Toast.makeText(DashboardActivity.this, "Profile", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.nav_settings:
 

@@ -49,14 +49,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
      */
     private static final int REQUEST_READ_CONTACTS = 0;
 
-//    /**
-//     * A dummy authentication store containing known user names and passwords.
-//     * TODO: remove after connecting to a real authentication system.
-//     */
-//    private static final String[] DUMMY_CREDENTIALS = new String[]{
-//            "demo5@gmail.com:demo+123", "demo4@gmail.com:demo+1234"
-//    };
-
     private static final User[] DUMMY_DATA = new User[]{
             new User("demo5@gmail.com", "demo+123", "Demo User"),
             new User("sean@gmail.com", "password", "Sean McNulty")
@@ -331,10 +323,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 user = u; //Saves the current user
                 String[] pieces = {u.getEmail(), u.getPassword()};
                 if (pieces[0].equals(mEmail)) {
-                    System.out.println(user);
-                    System.out.println("Email input: " + mEmail);
-                    System.out.println("Password input: " + mPassword);
-                    System.out.println(mPassword.equals(pieces[1]));
                     return pieces[1].toString().equals(mPassword);
                 }
 

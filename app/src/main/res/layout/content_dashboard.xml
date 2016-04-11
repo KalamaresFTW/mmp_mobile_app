@@ -12,6 +12,4 @@
     tools:context=".activity.DashboardActivity"
     tools:showIn="@layout/app_bar_dashboard">
 
-
-
 </RelativeLayout>
