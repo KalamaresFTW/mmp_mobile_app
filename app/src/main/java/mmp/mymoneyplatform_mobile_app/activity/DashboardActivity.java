@@ -18,7 +18,7 @@ public class DashboardActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private ImageView iv_menu_img;
-    private TextView tv_menu_name, tv_menu_mail;
+    private TextView tv_menu_name, tv_menu_mail, cv_income_title;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +47,9 @@ public class DashboardActivity extends AppCompatActivity
         tv_menu_name = (TextView) findViewById(R.id.tv_menu_name);
         tv_menu_mail = (TextView) findViewById(R.id.tv_menu_mail);
 
+        //Initialisation the CardView
+        cv_income_title = (TextView) findViewById(R.id.cv_income_title);
+        cv_income_title.setText(R.string.txt_income);
     }
 
     public void loadProfileData() {
