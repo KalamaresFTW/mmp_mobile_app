@@ -9,6 +9,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -32,7 +33,6 @@ public class DashboardActivity extends AppCompatActivity
             startActivity(new Intent(this, LoginActivity.class));
         }
         initComponents();
-
     }
 
     public void initComponents() {
@@ -49,15 +49,15 @@ public class DashboardActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         //Initialisation of the Navigator Menu´s components
-        iv_menu_img = (ImageView) findViewById(R.id.iv_menu_img);
-        tv_menu_name = (TextView) findViewById(R.id.tv_menu_name);
-        tv_menu_mail = (TextView) findViewById(R.id.tv_menu_mail);
+        View header = navigationView.getHeaderView(R.id.header_menu);
+        tv_menu_name = (TextView) header.findViewById(R.id.tv_menu_name);
+        tv_menu_mail = (TextView) header.findViewById(R.id.tv_menu_mail);
 
-        //loadProfileData();
+        loadProfileData();
     }
 
     public void loadProfileData() {
-        //TODO: find out why are we getting null pointer exception when we try to acces these TextViews
+        //TODO: find out why are we getting null pointer exception when we try to access these TextViews
         tv_menu_name.setText(user.getName());
         tv_menu_mail.setText(user.getEmail());
     }
