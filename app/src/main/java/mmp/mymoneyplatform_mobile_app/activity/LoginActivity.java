@@ -1,4 +1,4 @@
-package mmp.mymoneyplatform_mobile_app;
+package mmp.mymoneyplatform_mobile_app.activity;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -32,6 +32,8 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import mmp.mymoneyplatform_mobile_app.R;
 
 import static android.Manifest.permission.READ_CONTACTS;
 
@@ -335,7 +337,10 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
             if (success) {
                 //Loads the Dashboard Activity
-                startActivity(new Intent(getApplicationContext(), DashboardActivity.class));
+                Intent i = new Intent(getApplicationContext(), DashboardActivity.class);
+                Bundle b = new Bundle();
+
+                startActivity(i);
             } else {
                 mPasswordView.setError(getString(R.string.error_incorrect_password));
                 mPasswordView.requestFocus();
