@@ -13,20 +13,26 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import mmp.mymoneyplatform_mobile_app.R;
+import mmp.mymoneyplatform_mobile_app.pojo.User;
 
 public class DashboardActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private ImageView iv_menu_img;
-    private TextView tv_menu_name, tv_menu_mail, cv_income_title;
+    private TextView tv_menu_name, tv_menu_mail;
+    private User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
-
+        user = (User) getIntent().getSerializableExtra("user");
+        System.out.println(user.toString());
+        if (user == null){ //Just in case
+            startActivity(new Intent(this, LoginActivity.class));
+        }
         initComponents();
-        //loadProfileData();
+
     }
 
     public void initComponents() {
@@ -47,14 +53,13 @@ public class DashboardActivity extends AppCompatActivity
         tv_menu_name = (TextView) findViewById(R.id.tv_menu_name);
         tv_menu_mail = (TextView) findViewById(R.id.tv_menu_mail);
 
-        //Initialisation the CardView
-        cv_income_title = (TextView) findViewById(R.id.cv_income_title);
-        cv_income_title.setText(R.string.txt_income);
+        //loadProfileData();
     }
 
     public void loadProfileData() {
-        tv_menu_name.setText("Sean McNulty");
-        tv_menu_mail.setText("SeanMcNulty@gmail.com");
+        //TODO: find out why are we getting null pointer exception when we try to acces these TextViews
+        tv_menu_name.setText(user.getName());
+        tv_menu_mail.setText(user.getEmail());
     }
 
     @Override

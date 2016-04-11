@@ -32,8 +32,10 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 import mmp.mymoneyplatform_mobile_app.R;
+import mmp.mymoneyplatform_mobile_app.pojo.User;
 
 import static android.Manifest.permission.READ_CONTACTS;
 
@@ -47,12 +49,17 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
      */
     private static final int REQUEST_READ_CONTACTS = 0;
 
-    /**
-     * A dummy authentication store containing known user names and passwords.
-     * TODO: remove after connecting to a real authentication system.
-     */
-    private static final String[] DUMMY_CREDENTIALS = new String[]{
-            "demo5@gmail.com:demo+123", "demo4@gmail.com:demo+1234"
+//    /**
+//     * A dummy authentication store containing known user names and passwords.
+//     * TODO: remove after connecting to a real authentication system.
+//     */
+//    private static final String[] DUMMY_CREDENTIALS = new String[]{
+//            "demo5@gmail.com:demo+123", "demo4@gmail.com:demo+1234"
+//    };
+
+    private static final User[] DUMMY_DATA = new User[]{
+            new User("demo5@gmail.com", "demo+123", "Demo User"),
+            new User("sean@gmail.com", "password", "Sean McNulty")
     };
 
     /**
@@ -302,6 +309,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         private final String mEmail;
         private final String mPassword;
 
+        private User user = null;
+
         UserLoginTask(String email, String password) {
             mEmail = email;
             mPassword = password;
@@ -318,16 +327,21 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 return false;
             }
 
-            for (String credential : DUMMY_CREDENTIALS) {
-                String[] pieces = credential.split(":");
+            for (User u : DUMMY_DATA) {
+                user = u; //Saves the current user
+                String[] pieces = {u.getEmail(), u.getPassword()};
                 if (pieces[0].equals(mEmail)) {
-                    // Account exists, return true if the password matches.
-                    return pieces[1].equals(mPassword);
+                    System.out.println(user);
+                    System.out.println("Email input: " + mEmail);
+                    System.out.println("Password input: " + mPassword);
+                    System.out.println(mPassword.equals(pieces[1]));
+                    return pieces[1].toString().equals(mPassword);
                 }
+
             }
 
             // TODO: register the new account here.
-            return true;
+            return false;
         }
 
         @Override
@@ -338,8 +352,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             if (success) {
                 //Loads the Dashboard Activity
                 Intent i = new Intent(getApplicationContext(), DashboardActivity.class);
-                Bundle b = new Bundle();
-
+                //TODO: send the User object to the new Activity
+                i.putExtra("user", user);
                 startActivity(i);
             } else {
                 mPasswordView.setError(getString(R.string.error_incorrect_password));
