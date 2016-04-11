@@ -33,6 +33,8 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import mmp.mymoneyplatform_mobile_app.R;
 import mmp.mymoneyplatform_mobile_app.pojo.User;
@@ -50,9 +52,14 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private static final int REQUEST_READ_CONTACTS = 0;
 
     private static final User[] DUMMY_DATA = new User[]{
-            new User("demo5@gmail.com", "demo+123", "Demo User"),
+            new User("demo@gmail.com", "demo+123", "Demo User"),
             new User("sean@gmail.com", "password", "Sean McNulty")
     };
+
+
+    public static final Pattern VALID_EMAIL_ADDRESS_REGEX =
+            Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
+
 
     /**
      * Keep track of the login task to ensure we can cancel it if requested.
@@ -194,8 +201,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     }
 
     private boolean isEmailValid(String email) {
-        //TODO: Replace this with your own logic
-        return email.contains("@");
+        Matcher matcher = VALID_EMAIL_ADDRESS_REGEX.matcher(email);
+        return matcher.find();
     }
 
     private boolean isPasswordValid(String password) {
@@ -289,7 +296,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         };
 
         int ADDRESS = 0;
-        int IS_PRIMARY = 1;
     }
 
     /**
@@ -323,7 +329,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 user = u; //Saves the current user
                 String[] pieces = {u.getEmail(), u.getPassword()};
                 if (pieces[0].equals(mEmail)) {
-                    return pieces[1].toString().equals(mPassword);
+                    return pieces[1].equals(mPassword);
                 }
 
             }
