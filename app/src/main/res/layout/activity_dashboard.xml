@@ -47,7 +47,11 @@
                 android:paddingRight="@dimen/activity_horizontal_margin">
 
                 <!--We need to include one CardView for every -->
-
+                <include
+                    android:id="@+id/cv_income"
+                    layout="@layout/cardview_dashboard"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
 
             </LinearLayout>
 
