@@ -27,15 +27,13 @@ public class DashboardActivity extends AppCompatActivity
     private Toolbar toolbar;
     private DrawerLayout drawer;
 
-
-    private User user;
+    private User user; //By default this is null until the onCreate callback
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
         user = (User) getIntent().getSerializableExtra("user"); //Retrieve the user object from the Intent
-        System.out.println(user.toString());
         if (user == null) { //Just in case
             startActivity(new Intent(this, LoginActivity.class));
         }
@@ -43,9 +41,10 @@ public class DashboardActivity extends AppCompatActivity
     }
 
     public void initComponents() {
+        //Ge get a reference to the toolbar of this Activity
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+        //Reference to the drawer
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -93,12 +92,13 @@ public class DashboardActivity extends AppCompatActivity
                 Toast.makeText(DashboardActivity.this, "Profile", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.nav_settings:
-
+                Toast.makeText(DashboardActivity.this, "Settings", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.nav_help:
-
+                Toast.makeText(DashboardActivity.this, "Help", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.nav_logout:
+                //In this case we start a new Login Activity
                 startActivity(new Intent(getApplicationContext(), LoginActivity.class));
                 break;
             default:

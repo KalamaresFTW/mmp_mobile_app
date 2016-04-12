@@ -148,6 +148,13 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     }
 
 
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        if (!hasFocus){
+            finish();
+        }
+    }
+
     /**
      * Attempts to sign in or register the account specified by the login form.
      * If there are form errors (invalid email, missing fields, etc.), the
@@ -209,6 +216,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         return password.length() > 4;
     }
 
+    //region notRelevantStuff
     /**
      * Shows the progress UI and hides the login form.
      */
@@ -298,6 +306,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         int ADDRESS = 0;
     }
 
+
+    //endregion
     /**
      * Represents an asynchronous login/registration task used to authenticate
      * the user.
@@ -314,6 +324,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             mPassword = password;
         }
 
+
+
         @Override
         protected Boolean doInBackground(Void... params) {
             // TODO: attempt authentication against a network service.
@@ -325,13 +337,13 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 return false;
             }
 
+            //Checks if the input credentials are correct
             for (User u : DUMMY_DATA) {
                 user = u; //Saves the current user
                 String[] pieces = {u.getEmail(), u.getPassword()};
                 if (pieces[0].equals(mEmail)) {
                     return pieces[1].equals(mPassword);
                 }
-
             }
 
             // TODO: register the new account here.
@@ -346,8 +358,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             if (success) {
                 //Loads the Dashboard Activity
                 Intent i = new Intent(getApplicationContext(), DashboardActivity.class);
-                //TODO: send the User object to the new Activity
-                i.putExtra("user", user);
+                i.putExtra("user", user); //Sends the user's Object to the new Activity
                 startActivity(i);
             } else {
                 mPasswordView.setError(getString(R.string.error_incorrect_password));
