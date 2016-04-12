@@ -7,6 +7,7 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,38 +15,50 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.w3c.dom.Text;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 import mmp.mymoneyplatform_mobile_app.R;
+import mmp.mymoneyplatform_mobile_app.pojo.CardViewData;
+import mmp.mymoneyplatform_mobile_app.pojo.HealthPanelData;
 import mmp.mymoneyplatform_mobile_app.pojo.User;
 
 public class DashboardActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    private static final int NUMBER_OF_CARDS = 6; //TODO: Update this to 7 when we add the last element
+
     private ImageView iv_menu_img;
     private TextView tv_menu_name, tv_menu_mail;
-    private Toolbar toolbar;
-    private DrawerLayout drawer;
+
+    //Dummy data to fill the cards with data and colors
+    private ArrayList<CardViewData> CARDS_DUMMYDATA = new ArrayList<>(NUMBER_OF_CARDS);
+
+    private CardView[] cardList; //We will hold a reference for every CardView in the list
 
     private User user; //By default this is null until the onCreate callback
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //Set the layout of this Activity
         setContentView(R.layout.activity_dashboard);
-        user = (User) getIntent().getSerializableExtra("user"); //Retrieve the user object from the Intent
+
+        //Retrieve the user object from the Intent
+        user = (User) getIntent().getSerializableExtra("user");
         if (user == null) { //Just in case
             startActivity(new Intent(this, LoginActivity.class));
         }
+
         initComponents();
     }
 
     public void initComponents() {
         //Ge get a reference to the toolbar of this Activity
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         //Reference to the drawer
-        drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
@@ -56,11 +69,66 @@ public class DashboardActivity extends AppCompatActivity
 
         View navigationViewHeader = navigationView.getHeaderView(0);
 
-        iv_menu_img = (ImageView)  navigationViewHeader.findViewById(R.id.iv_menu_img);
+        iv_menu_img = (ImageView) navigationViewHeader.findViewById(R.id.iv_menu_img);
         tv_menu_name = (TextView) navigationViewHeader.findViewById(R.id.tv_menu_name);
         tv_menu_mail = (TextView) navigationViewHeader.findViewById(R.id.tv_menu_mail);
 
         loadProfileData();
+        //loadCardsData();
+    }
+
+
+    //TODO: End this stuff
+    private void loadCardsData() {
+        CARDS_DUMMYDATA.add(
+                new CardViewData(
+                        getString(R.string.cv_title_income),
+                        getString(R.string.cv_subtitle_income),
+                        getResources().getColor(R.color.colorTitleIncome),
+                        getResources().getColor(R.color.colorBackgroundIncome),
+                        34650.00,
+                        new HealthPanelData(this, getString(R.string.cv_hp_title_income), 10)));
+        CARDS_DUMMYDATA.add(
+                new CardViewData(
+                        getString(R.string.cv_title_pension),
+                        getString(R.string.cv_subtitle_pension),
+                        getResources().getColor(R.color.colorTitlePension),
+                        getResources().getColor(R.color.colorBackgroundPension),
+                        7133.00,
+                        new HealthPanelData(this, getString(R.string.cv_hp_title_pension), 25)));
+        CARDS_DUMMYDATA.add(
+                new CardViewData(
+                        getString(R.string.cv_title_goals),
+                        getString(R.string.cv_subtitle_goals),
+                        getResources().getColor(R.color.colorTitleGoals),
+                        getResources().getColor(R.color.colorBackgroundGoals),
+                        22633.00,
+                        new HealthPanelData(this, getString(R.string.cv_hp_title_goals), 35)));
+        CARDS_DUMMYDATA.add(
+                new CardViewData(
+                        getString(R.string.cv_title_assets_debts),
+                        getString(R.string.cv_subtitle_assets_debts),
+                        getResources().getColor(R.color.colorTitleAssetsDebts),
+                        getResources().getColor(R.color.colorBackgroundAssetsDebts),
+                        69050.00,
+                        new HealthPanelData(this, getString(R.string.cv_hp_title_assets_debts), 50)));
+        CARDS_DUMMYDATA.add(
+                new CardViewData(
+                        getString(R.string.cv_title_life),
+                        getString(R.string.cv_subtitle_life),
+                        getResources().getColor(R.color.colorTitleLife),
+                        getResources().getColor(R.color.colorBackgroundLife),
+                        1294090.00,
+                        new HealthPanelData(this, getString(R.string.cv_hp_title_life), 65))
+        );
+        CARDS_DUMMYDATA.add(
+                new CardViewData(
+                        getString(R.string.cv_title_spending),
+                        getString(R.string.cv_subtitle_spending),
+                        getResources().getColor(R.color.colorTitleSpending),
+                        getResources().getColor(R.color.colorBackgroundSpending),
+                        4281.00,
+                        new HealthPanelData(this, getString(R.string.cv_hp_title_spending), 80)));
     }
 
     public void loadProfileData() {
