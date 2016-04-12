@@ -16,8 +16,7 @@
         android:id="@+id/logo"
         android:layout_gravity="center_horizontal"
         android:background="@drawable/img_logo_full"
-        android:layout_marginTop="@dimen/abc_dialog_padding_top_material"
-        android:contentDescription="@string/logo" />
+        android:layout_marginTop="@dimen/abc_dialog_padding_top_material"/>
 
     <!-- Login progress -->
     <ProgressBar

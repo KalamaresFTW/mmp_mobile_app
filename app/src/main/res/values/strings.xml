@@ -27,13 +27,28 @@
     <string name="nav_logout">Log Out</string>
     <string name="nav_help">Help</string>
 
-    <!-- CardView List Strings -->
-    <string name="txt_income">Income</string>
-    <string name="txt_pension">Pension</string>
-    <string name="txt_goals">Goals</string>
-    <string name="txt_assets_debts">Assets/Debts</string>
-    <string name="txt_life">Life</string>
-    <string name="txt_spending">Spending</string>
-    <string name="txt_action_plan">Action Plan</string>
-    <string name="logo">logo</string>
+    <!-- CardView Title Strings -->
+    <string name="cv_title_income">Income</string>
+    <string name="cv_title_pension">Pension</string>
+    <string name="cv_title_goals">Goals</string>
+    <string name="cv_title_assets_debts">Assets/Debts</string>
+    <string name="cv_title_life">Life</string>
+    <string name="cv_title_spending">Spending</string>
+    <string name="cv_title_action_plan">Action Plan</string>
+
+    <!-- CardView Subtitle Strings -->
+    <string name="cv_subtitle_income">Income Cover</string>
+    <string name="cv_subtitle_pension">Pension in retirement</string>
+    <string name="cv_subtitle_goals">Total savings required</string>
+    <string name="cv_subtitle_assets_debts">Asset-Debt</string>
+    <string name="cv_subtitle_life">Life cover shortfall</string>
+    <string name="cv_subtitle_spending">Disposable income</string>
+
+    <!-- CardView HealthPanel Title Strings -->
+    <string name="cv_hp_title_income">Income Health</string>
+    <string name="cv_hp_title_pension">Pension Health</string>
+    <string name="cv_hp_title_goals">Goal Health</string>
+    <string name="cv_hp_title_assets_debts">Assets/Debts Health</string>
+    <string name="cv_hp_title_life">Life Cover Health</string>
+    <string name="cv_hp_title_spending">Goal Health</string>
 </resources>
