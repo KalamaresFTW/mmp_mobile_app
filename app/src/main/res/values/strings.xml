@@ -27,7 +27,7 @@
     <string name="nav_logout">Log Out</string>
     <string name="nav_help">Help</string>
 
-    <!-- CardList View Strings -->
+    <!-- CardView List Strings -->
     <string name="txt_income">Income</string>
     <string name="txt_pension">Pension</string>
     <string name="txt_goals">Goals</string>

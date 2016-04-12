@@ -4,4 +4,25 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="colorBlue">#1C7FF2</color>
+
+    <color name="colorBlack">#000000</color>
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorOrangeMMP">#e16d25</color>
+
+    <!-- Dashboard colors -->
+    <color name="colorBackgroundIncome">#006766</color>
+    <color name="colorBackgroundPension">#3d6487</color>
+    <color name="colorBackgroundGoals">#92dce0</color>
+    <color name="colorBackgroundAssetsDebts">#d79c8c</color>
+    <color name="colorBackgroundLife">#f8e1b4</color>
+    <color name="colorBackgroundSpending">#e09e64</color>
+    <color name="colorBackgroundActionPlan">#91c5a9</color>
+    <color name="colorTitleIncome">#679696</color>
+    <color name="colorTitlePension">#afbcc9</color>
+    <color name="colorTitleGoals">#5b8c8e</color>
+    <color name="colorTitleAssetsDebts">#886257</color>
+    <color name="colorTitleLife">#f8e1b4</color>
+    <color name="colorTitleSpending">#8e633d</color>
+    <color name="colorTitleActionPlan">#5a7c6a</color>
+    <color name=""></color>
 </resources>
