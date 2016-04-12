@@ -35,4 +35,5 @@
     <string name="txt_life">Life</string>
     <string name="txt_spending">Spending</string>
     <string name="txt_action_plan">Action Plan</string>
+    <string name="logo">logo</string>
 </resources>
