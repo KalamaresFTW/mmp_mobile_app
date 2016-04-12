@@ -51,4 +51,10 @@
     <string name="cv_hp_title_assets_debts">Assets/Debts Health</string>
     <string name="cv_hp_title_life">Life Cover Health</string>
     <string name="cv_hp_title_spending">Goal Health</string>
+
+    <!-- CardView HeathPanel State Strings -->
+    <string name="cv_hp_state_poor">Poor</string>
+    <string name="cv_hp_state_medium">Medium</string>
+    <string name="cv_hp_state_good">Good</string>
+    <string name="cv_hp_state_excellent">Excellent</string>
 </resources>
