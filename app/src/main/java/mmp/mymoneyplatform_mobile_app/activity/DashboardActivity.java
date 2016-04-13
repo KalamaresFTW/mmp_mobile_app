@@ -1,5 +1,6 @@
 package mmp.mymoneyplatform_mobile_app.activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -9,9 +10,11 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -78,12 +81,12 @@ public class DashboardActivity extends AppCompatActivity
         tv_menu_name = (TextView) navigationViewHeader.findViewById(R.id.tv_menu_name);
         tv_menu_mail = (TextView) navigationViewHeader.findViewById(R.id.tv_menu_mail);
 
+
+
         loadProfileData();
         //loadCardsData();
     }
 
-
-    //TODO: End this stuff
     private void loadCardsData() {
         CARDS_DUMMYDATA.add(
                 new CardViewData(
