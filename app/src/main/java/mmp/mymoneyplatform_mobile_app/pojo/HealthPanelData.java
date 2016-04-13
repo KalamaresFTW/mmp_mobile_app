@@ -17,14 +17,14 @@ public class HealthPanelData {
 
     private Context c;
     private String title, status;
-    double healthProgress;
-    private int statusColor;
+    private int healthProgress, statusColor, backgroundColor;
 
-    public HealthPanelData(Context c, String title, float healthProgress) {
+    public HealthPanelData(Context c, String title, int healthProgress, int backgroundColor) {
         this.c = c;
         this.title = title;
         this.healthProgress = healthProgress;
         assignStatus(this.healthProgress);
+        this.backgroundColor = backgroundColor;
     }
 
     private void assignStatus(double healthProgress) {
@@ -38,7 +38,7 @@ public class HealthPanelData {
         } else if (healthProgress > 50 && healthProgress <= 75) { //more than 50% and less or equal to 75%
             status = c.getString(R.string.cv_hp_state_good);
             statusColor = c.getResources().getColor(R.color.colorStateGood);
-        } else if (healthProgress> 75 && healthProgress <= 100) { //more than 75% and less or equal to 100%
+        } else if (healthProgress > 75 && healthProgress <= 100) { //more than 75% and less or equal to 100%
             status = c.getString(R.string.cv_hp_state_excellent);
             statusColor = c.getResources().getColor(R.color.colorStateExcelent);
         } else {
@@ -52,21 +52,26 @@ public class HealthPanelData {
         return status;
     }
 
-    public double getHealthProgress() {
+    public int getHealthProgress() {
         return healthProgress;
     }
 
-    public void setHealthProgress(double healthProgress) {
-        this.healthProgress = healthProgress;
-        assignStatus(this.healthProgress); //We need to update the status of the
+    public int getStatusColor() {
+        return statusColor;
+    }
+
+    public int getBackgroundColor(){return backgroundColor;}
+
+    public void setHealthProgress(int healthProgress) {
+        if (healthProgress<0 || healthProgress>100){
+
+            this.healthProgress = healthProgress;
+            assignStatus(this.healthProgress); //Update the status to match the new progress value
+        }
     }
 
     public String getTitle() {
         return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
     }
 
     //endregion

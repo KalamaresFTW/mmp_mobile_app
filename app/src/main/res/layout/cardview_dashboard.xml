@@ -11,8 +11,7 @@
         android:id="@+id/card_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        card_view:cardBackgroundColor="@color/colorBackgroundCardViewIncome"
-        card_view:cardCornerRadius="4dp">
+        card_view:cardBackgroundColor="@color/colorBackgroundCardViewIncome">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -67,6 +66,7 @@
 
             <!-- Health Panel -->
             <RelativeLayout
+                android:id="@+id/health_panel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/cv_tv_money"
@@ -117,7 +117,7 @@
                         style="?android:attr/progressBarStyleHorizontal"
                         android:layout_width="wrap_content"
                         android:layout_height="7dp"
-                        android:layout_marginTop="9dp"
+                        android:layout_marginTop="13dp"
                         android:layout_alignParentTop="true"
                         android:layout_toRightOf="@+id/cv_hp_tv_progresstitle"
                         android:max="100"

@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!--Activity theme Colors-->
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="colorBlue">#1C7FF2</color>
 
+    <!--MMP Corporative Colors-->
     <color name="colorBlack">#000000</color>
     <color name="colorWhite">#FFFFFF</color>
-    <color name="colorOrangeMMP">#e16d25</color>
+    <color name="colorOrange">#e16d25</color>
 
     <!-- Dashboard Colors -->
     <!-- CardView Background Colors -->
@@ -28,13 +30,13 @@
     <color name="colorTitleSpending">#8e633d</color>
     <color name="colorTitleActionPlan">#5a7c6a</color>
 
-    <!-- CardView HealthPanel colors -->
+    <!-- CardView HealthPanel background colors -->
     <color name="colorBackgroundHealthPanelIncome">#003333</color>
     <color name="colorBackgroundHealthPanelPension">#1e3243</color>
     <color name="colorBackgroundHealthPanelGoals">#496e70</color>
-    <color name="colorBackgroundHealthPanelAssetsDebts">#d79c8c</color>
-    <color name="colorBackgroundHealthPanelLife">#f8e1b4</color>
-    <color name="colorBackgroundHealthPanelSpending">#e09e64</color>
+    <color name="colorBackgroundHealthPanelAssetsDebts">#6b4e46</color>
+    <color name="colorBackgroundHealthPanelLife">#7c705a</color>
+    <color name="colorBackgroundHealthPanelSpending">#704f32</color>
 
     <!-- State Colors on the Progress Bar -->
     <color name="colorStatePoor">#de4b3c</color>

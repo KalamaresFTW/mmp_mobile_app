@@ -57,4 +57,7 @@
     <string name="cv_hp_state_medium">Medium</string>
     <string name="cv_hp_state_good">Good</string>
     <string name="cv_hp_state_excellent">Excellent</string>
+
+    <!-- Currency values -->
+    <string name="euro">€</string>
 </resources>
