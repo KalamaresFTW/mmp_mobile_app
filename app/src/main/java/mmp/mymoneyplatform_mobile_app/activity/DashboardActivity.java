@@ -85,7 +85,7 @@ public class DashboardActivity extends AppCompatActivity
                         getString(R.string.cv_title_income),
                         getString(R.string.cv_subtitle_income),
                         getResources().getColor(R.color.colorTitleIncome),
-                        getResources().getColor(R.color.colorBackgroundIncome),
+                        getResources().getColor(R.color.colorBackgroundCardViewIncome),
                         34650.00,
                         new HealthPanelData(this, getString(R.string.cv_hp_title_income), 10)));
         CARDS_DUMMYDATA.add(
@@ -93,7 +93,7 @@ public class DashboardActivity extends AppCompatActivity
                         getString(R.string.cv_title_pension),
                         getString(R.string.cv_subtitle_pension),
                         getResources().getColor(R.color.colorTitlePension),
-                        getResources().getColor(R.color.colorBackgroundPension),
+                        getResources().getColor(R.color.colorBackgroundCardViewPension),
                         7133.00,
                         new HealthPanelData(this, getString(R.string.cv_hp_title_pension), 25)));
         CARDS_DUMMYDATA.add(
@@ -101,7 +101,7 @@ public class DashboardActivity extends AppCompatActivity
                         getString(R.string.cv_title_goals),
                         getString(R.string.cv_subtitle_goals),
                         getResources().getColor(R.color.colorTitleGoals),
-                        getResources().getColor(R.color.colorBackgroundGoals),
+                        getResources().getColor(R.color.colorBackgroundCardViewGoals),
                         22633.00,
                         new HealthPanelData(this, getString(R.string.cv_hp_title_goals), 35)));
         CARDS_DUMMYDATA.add(
@@ -109,7 +109,7 @@ public class DashboardActivity extends AppCompatActivity
                         getString(R.string.cv_title_assets_debts),
                         getString(R.string.cv_subtitle_assets_debts),
                         getResources().getColor(R.color.colorTitleAssetsDebts),
-                        getResources().getColor(R.color.colorBackgroundAssetsDebts),
+                        getResources().getColor(R.color.colorBackgroundCardViewAssetsDebts),
                         69050.00,
                         new HealthPanelData(this, getString(R.string.cv_hp_title_assets_debts), 50)));
         CARDS_DUMMYDATA.add(
@@ -117,7 +117,7 @@ public class DashboardActivity extends AppCompatActivity
                         getString(R.string.cv_title_life),
                         getString(R.string.cv_subtitle_life),
                         getResources().getColor(R.color.colorTitleLife),
-                        getResources().getColor(R.color.colorBackgroundLife),
+                        getResources().getColor(R.color.colorBackgroundCardViewLife),
                         1294090.00,
                         new HealthPanelData(this, getString(R.string.cv_hp_title_life), 65))
         );
@@ -126,7 +126,7 @@ public class DashboardActivity extends AppCompatActivity
                         getString(R.string.cv_title_spending),
                         getString(R.string.cv_subtitle_spending),
                         getResources().getColor(R.color.colorTitleSpending),
-                        getResources().getColor(R.color.colorBackgroundSpending),
+                        getResources().getColor(R.color.colorBackgroundCardViewSpending),
                         4281.00,
                         new HealthPanelData(this, getString(R.string.cv_hp_title_spending), 80)));
     }
