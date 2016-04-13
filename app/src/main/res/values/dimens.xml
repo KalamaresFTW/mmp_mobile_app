@@ -7,6 +7,6 @@
     <dimen name="nav_header_vertical_spacing">16dp</dimen>
     <dimen name="nav_header_height">160dp</dimen>
     <!-- Dashboard Font Sizes -->
-    <dimen name="cv_text_size">20dp</dimen>
-    <dimen name="cv_money_size">33dp</dimen>
+    <dimen name="cv_text_size">20sp</dimen>
+    <dimen name="cv_money_size">33sp</dimen>
 </resources>

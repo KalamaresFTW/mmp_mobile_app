@@ -26,21 +26,26 @@ import mmp.mymoneyplatform_mobile_app.pojo.User;
 public class DashboardActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    private static final int NUMBER_OF_CARDS = 6; //TODO: Update this to 7 when we add the last element
+    //TODO: Update this to 7 when we add the last element
+    private static final int NUMBER_OF_CARDS = 6;
 
+    //This ia reference to the header items on the drawe
     private ImageView iv_menu_img;
     private TextView tv_menu_name, tv_menu_mail;
 
-    //Dummy data to fill the cards with data and colors
+    //Dummy data(not that dummy actually) to fill the cards with data and colors
     private ArrayList<CardViewData> CARDS_DUMMYDATA = new ArrayList<>(NUMBER_OF_CARDS);
 
-    private CardView[] cardList; //We will hold a reference for every CardView in the list
+    //We will hold a reference for every CardView in the list
+    private ArrayList<CardView> cardList = new ArrayList<>(NUMBER_OF_CARDS);
 
-    private User user; //By default this is null until the onCreate callback
+    //By default this is null until the onCreate callback
+    private User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         //Set the layout of this Activity
         setContentView(R.layout.activity_dashboard);
 

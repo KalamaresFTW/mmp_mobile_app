@@ -22,7 +22,7 @@ public class HealthPanelData {
 
     public HealthPanelData(Context c, String title, float healthProgress) {
         this.c = c;
-        this.title = title ;
+        this.title = title;
         this.healthProgress = healthProgress;
         assignStatus(this.healthProgress);
     }
