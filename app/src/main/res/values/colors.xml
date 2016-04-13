@@ -30,6 +30,11 @@
 
     <!-- CardView HealthPanel colors -->
     <color name="colorBackgroundHealthPanelIncome">#003333</color>
+    <color name="colorBackgroundHealthPanelPension">#1e3243</color>
+    <color name="colorBackgroundHealthPanelGoals">#496e70</color>
+    <color name="colorBackgroundHealthPanelAssetsDebts">#d79c8c</color>
+    <color name="colorBackgroundHealthPanelLife">#f8e1b4</color>
+    <color name="colorBackgroundHealthPanelSpending">#e09e64</color>
 
     <!-- State Colors on the Progress Bar -->
     <color name="colorStatePoor">#de4b3c</color>

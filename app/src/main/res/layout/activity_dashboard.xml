@@ -47,26 +47,31 @@
                     layout="@layout/cardview_dashboard"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" />
+
                 <include
                     android:id="@+id/cv_pension"
                     layout="@layout/cardview_dashboard"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" />
+
                 <include
                     android:id="@+id/cv_goals"
                     layout="@layout/cardview_dashboard"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" />
+
                 <include
                     android:id="@+id/cv_assetsdebts"
                     layout="@layout/cardview_dashboard"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" />
+
                 <include
                     android:id="@+id/cv_life"
                     layout="@layout/cardview_dashboard"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" />
+
                 <include
                     android:id="@+id/cv_spending"
                     layout="@layout/cardview_dashboard"
@@ -77,8 +82,6 @@
 
         </ScrollView>
 
-
     </LinearLayout>
-
 
 </android.support.v4.widget.DrawerLayout>
