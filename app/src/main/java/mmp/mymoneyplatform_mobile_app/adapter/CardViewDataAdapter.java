@@ -1,6 +1,10 @@
 package mmp.mymoneyplatform_mobile_app.adapter;
 
+import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.support.v7.widget.CardView;
+import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
@@ -92,6 +96,7 @@ public class CardViewDataAdapter {
             hpProgressBar = (ProgressBar) cardView.findViewById(R.id.cv_hp_progressbar);
             //Set the progress of the bar
             hpProgressBar.setProgress(cvd.getHealthPanel().getHealthProgress());
+            
         }
     }
 

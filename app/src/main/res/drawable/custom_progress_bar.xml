@@ -2,7 +2,7 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
 
     <!-- Define the background properties like color etc -->
-    <item android:id="@android:id/background">
+    <item android:id="@+id/progressBarBackground">
         <shape>
             <gradient
                 android:angle="270"
@@ -14,7 +14,7 @@
     </item>
 
     <!-- Define the progress properties like start color, end color etc -->
-    <item android:id="@android:id/progress">
+    <item android:id="@+id/progressBarProgress">
         <clip>
             <shape>
                 <gradient
