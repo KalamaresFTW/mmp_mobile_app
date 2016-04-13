@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="10dp"
     android:orientation="vertical">
@@ -15,9 +15,9 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginBottom="13dp"
             android:layout_marginLeft="17dp"
             android:layout_marginRight="17dp"
+            android:layout_marginBottom="17dp"
             android:layout_marginTop="13dp">
 
             <TextView
@@ -63,12 +63,14 @@
                 android:textColor="@color/colorWhite"
                 android:textSize="@dimen/cv_money_size" />
 
+            <!-- Health Panel -->
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/cv_tv_money"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="11dp"
+                android:layout_marginBottom="11dp"
                 android:background="@color/colorBackgroundHealthPanelIncome">
 
                 <TextView
@@ -82,6 +84,7 @@
                     android:textColor="@color/colorWhite"
                     android:textSize="@dimen/cv_text_size" />
 
+                <!-- Progress panel -->
                 <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -100,6 +103,7 @@
                         android:layout_alignParentStart="true"
                         android:layout_alignParentTop="true"
                         android:layout_marginRight="10dp"
+                        android:layout_marginBottom="11dp"
                         android:text="Good"
                         android:textColor="@color/colorStateGood"
                         android:textSize="@dimen/cv_text_size"
@@ -110,6 +114,7 @@
                         style="?android:attr/progressBarStyleHorizontal"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="11dp"
                         android:layout_alignBottom="@+id/cv_hp_tv_progresstitle"
                         android:layout_alignParentTop="true"
                         android:layout_toEndOf="@+id/cv_hp_tv_progresstitle"
