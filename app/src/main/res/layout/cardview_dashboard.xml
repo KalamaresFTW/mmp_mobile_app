@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingTop="10dp"
+    android:paddingTop="7dp"
     android:paddingLeft="10dp"
     android:paddingRight="10dp"
     android:orientation="vertical">
@@ -18,14 +18,14 @@
             android:layout_height="match_parent"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
-            android:layout_marginBottom="15dp"
-            android:layout_marginTop="15dp">
+            android:layout_marginBottom="13dp"
+            android:layout_marginTop="13dp">
 
             <TextView
                 android:id="@+id/cv_tv_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="11dp"
+                android:layout_marginBottom="9dp"
                 android:text="@string/cv_title_income"
                 android:textColor="@color/colorTitleIncome"
                 android:textSize="@dimen/cv_text_size"
@@ -46,7 +46,7 @@
                 android:layout_below="@+id/cv_tv_title"
                 android:layout_centerHorizontal="true"
                 android:layout_marginBottom="0dp"
-                android:layout_marginTop="11dp"
+                android:layout_marginTop="9dp"
                 android:text="@string/cv_subtitle_income"
                 android:textColor="@color/colorWhite"
                 android:textSize="@dimen/cv_text_size"
@@ -59,7 +59,7 @@
                 android:layout_below="@+id/cv_tv_subtitle"
                 android:layout_centerHorizontal="true"
                 android:layout_marginBottom="0dp"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="2dp"
                 android:text="€34.650,00"
                 android:textColor="@color/colorWhite"
                 android:textSize="@dimen/cv_money_size" />
@@ -94,7 +94,7 @@
                     android:layout_centerHorizontal="true"
                     android:layout_marginLeft="13dp"
                     android:layout_marginRight="13dp"
-                    android:layout_marginTop="9dp">
+                    android:layout_marginTop="5dp">
 
                     <TextView
                         android:id="@+id/cv_hp_tv_progresstitle"
