@@ -51,4 +51,8 @@
     <color name="colorBacktroundProgresBarAssetsDebts">#6b4e46</color>
     <color name="colorBacktroundProgresBarLife">#3e382d</color>
     <color name="colorBacktroundProgresBarSpending">#382719</color>
+
+    <!-- Registration colors -->
+    <color name="colorFontRegistration">#877d75</color>
+    <color name="colorBackgroundInputRegistration">#d7d3d1</color>
 </resources>
