@@ -16,16 +16,16 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginLeft="17dp"
-            android:layout_marginRight="17dp"
-            android:layout_marginBottom="17dp"
-            android:layout_marginTop="13dp">
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginBottom="15dp"
+            android:layout_marginTop="15dp">
 
             <TextView
                 android:id="@+id/cv_tv_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="13dp"
+                android:layout_marginBottom="11dp"
                 android:text="@string/cv_title_income"
                 android:textColor="@color/colorTitleIncome"
                 android:textSize="@dimen/cv_text_size"
@@ -46,7 +46,7 @@
                 android:layout_below="@+id/cv_tv_title"
                 android:layout_centerHorizontal="true"
                 android:layout_marginBottom="0dp"
-                android:layout_marginTop="13dp"
+                android:layout_marginTop="11dp"
                 android:text="@string/cv_subtitle_income"
                 android:textColor="@color/colorWhite"
                 android:textSize="@dimen/cv_text_size"
@@ -59,7 +59,7 @@
                 android:layout_below="@+id/cv_tv_subtitle"
                 android:layout_centerHorizontal="true"
                 android:layout_marginBottom="0dp"
-                android:layout_marginTop="6dp"
+                android:layout_marginTop="4dp"
                 android:text="€34.650,00"
                 android:textColor="@color/colorWhite"
                 android:textSize="@dimen/cv_money_size" />
@@ -71,8 +71,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/cv_tv_money"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="11dp"
-                android:layout_marginBottom="11dp"
+                android:layout_marginTop="7dp"
                 android:paddingBottom="11dp"
                 android:background="@color/colorBackgroundHealthPanelIncome">
 
@@ -82,7 +81,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="17dp"
                     android:layout_marginRight="17dp"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="9dp"
                     android:text="@string/cv_hp_title_income"
                     android:textColor="@color/colorWhite"
                     android:textSize="@dimen/cv_text_size" />
@@ -93,10 +92,9 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/cv_hp_tv_title"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginBottom="11dp"
-                    android:layout_marginLeft="17dp"
-                    android:layout_marginRight="17dp"
-                    android:layout_marginTop="11dp">
+                    android:layout_marginLeft="13dp"
+                    android:layout_marginRight="13dp"
+                    android:layout_marginTop="9dp">
 
                     <TextView
                         android:id="@+id/cv_hp_tv_progresstitle"
@@ -106,7 +104,7 @@
                         android:layout_alignParentStart="true"
                         android:layout_alignParentTop="true"
                         android:layout_marginRight="10dp"
-                        android:layout_marginBottom="11dp"
+                        android:layout_marginBottom="7dp"
                         android:text="Good"
                         android:textColor="@color/colorStateGood"
                         android:textSize="@dimen/cv_text_size"
