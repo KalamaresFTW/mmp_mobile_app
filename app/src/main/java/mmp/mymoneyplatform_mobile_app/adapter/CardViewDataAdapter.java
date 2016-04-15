@@ -7,8 +7,10 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Currency;
 import java.util.Locale;
 
 import mmp.mymoneyplatform_mobile_app.R;
@@ -44,8 +46,10 @@ public class CardViewDataAdapter {
         TextView cvTitle, cvSubtitle, cvMoney, cvHpTitle, cvHpState;
         ProgressBar hpProgressBar;
         int statusColor;
-        //Utility that we use to format the money value into ###,###,###.00
-        DecimalFormat df = (DecimalFormat) NumberFormat.getNumberInstance(Locale.ENGLISH);
+        //Class that we use to format the money value into ###,###,###.00
+        Locale locale = new Locale("en","UK");
+        DecimalFormat df = (DecimalFormat)
+                NumberFormat.getNumberInstance(locale);
         df.setMaximumFractionDigits(2);
 
         for (int i = 0; i < DashboardActivity.NUMBER_OF_CARDS; i++) {

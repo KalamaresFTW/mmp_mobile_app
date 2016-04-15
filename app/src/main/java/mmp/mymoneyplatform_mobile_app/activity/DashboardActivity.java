@@ -111,7 +111,7 @@ public class DashboardActivity extends AppCompatActivity
                         getString(R.string.cv_subtitle_income),
                         getResources().getColor(R.color.colorTitleIncome),
                         getResources().getColor(R.color.colorBackgroundCardViewIncome),
-                        34650.00,
+                        34650.55,
                         new CardViewData.HealthPanelData(
                                 this,
                                 getString(R.string.cv_hp_title_income),
