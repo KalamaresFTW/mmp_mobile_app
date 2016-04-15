@@ -9,6 +9,7 @@
     <color name="colorBlack">#000000</color>
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorOrange">#e16d25</color>
+    <color name="colorDarkOrange">#d0611d</color>
 
     <!-- Dashboard Colors -->
     <!-- CardView Background Colors -->

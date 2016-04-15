@@ -117,13 +117,35 @@
         </android.support.design.widget.TextInputLayout>
 
         <!-- Date of Birth input -->
-        <EditText
-            android:id="@+id/reg_dateofbirth"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:onClick="setDate" />
+            android:layout_height="wrap_content">
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/lay_dateofbirth"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/colorFontRegistration">
+
+                <AutoCompleteTextView
+                    android:id="@+id/reg_dateofbirth"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:hint="@string/reg_dateofbirth"
+                    android:inputType="date"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:editable="false"
+                    android:textStyle="bold" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            //TODO: create the button who calls the "setDate" method
+        </RelativeLayout>
     </LinearLayout>
 
 </RelativeLayout>
