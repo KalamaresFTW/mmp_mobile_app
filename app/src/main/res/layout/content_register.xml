@@ -68,7 +68,7 @@
             android:id="@+id/reg_tv_pass_length"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
+            android:layout_gravity="center_horizontal"
             android:paddingTop="20dp"
             android:text="@string/reg_password_hint" />
 
@@ -117,7 +117,11 @@
         </android.support.design.widget.TextInputLayout>
 
         <!-- Date of Birth input -->
-
+        <EditText
+            android:id="@+id/reg_dateofbirth"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="setDate"/>
     </LinearLayout>
 
 </RelativeLayout>
