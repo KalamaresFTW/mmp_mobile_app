@@ -11,12 +11,12 @@
     tools:context=".activity.LoginActivity">
 
     <ImageView
+        android:id="@+id/logo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/logo"
         android:layout_gravity="center_horizontal"
-        android:background="@drawable/img_logo_full"
-        android:layout_marginTop="@dimen/abc_dialog_padding_top_material"/>
+        android:layout_marginTop="@dimen/abc_dialog_padding_top_material"
+        android:background="@drawable/img_logo_full" />
 
     <!-- Login progress -->
     <ProgressBar
@@ -39,6 +39,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <!-- Email Input -->
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -54,6 +55,7 @@
 
             </android.support.design.widget.TextInputLayout>
 
+            <!-- Password Input -->
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -72,26 +74,43 @@
 
             </android.support.design.widget.TextInputLayout>
 
-            <Button
-                android:id="@+id/email_log_in_button"
-                style="?android:textAppearanceSmall"
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="@string/action_log_in"
-                android:textStyle="bold" />
+                android:layout_gravity="center"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginTop="35dp">
 
-            <Button
-                android:id="@+id/sign_in_button"
-                style="?android:textAppearanceSmall"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="25dp"
-                android:text="@string/action_sign_in_short"
-                android:textStyle="bold" />
+                <Button
+                    android:id="@+id/email_log_in_button"
+                    style="?android:textAppearanceSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorOrange"
+                    android:paddingLeft="30dp"
+                    android:paddingRight="30dp"
+                    android:text="@string/action_log_in"
+                    android:textColor="@color/colorWhite"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/sign_in_button"
+                    style="?android:textAppearanceSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:background="@color/colorOrange"
+                    android:paddingLeft="30dp"
+                    android:paddingRight="30dp"
+                    android:text="@string/action_sign_in_short"
+                    android:textColor="@color/colorWhite"
+                    android:textStyle="bold" />
+
+            </RelativeLayout>
 
         </LinearLayout>
-    </ScrollView>
 
+    </ScrollView>
 
 </LinearLayout>

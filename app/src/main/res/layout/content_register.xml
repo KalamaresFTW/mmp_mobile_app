@@ -45,7 +45,6 @@
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:textColorHint="@color/colorFontRegistration">
 
             <AutoCompleteTextView
@@ -70,14 +69,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:paddingTop="10dp"
+            android:paddingTop="20dp"
             android:text="@string/reg_password_hint" />
 
         <!-- Password Input -->
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:textColorHint="@color/colorFontRegistration">
 
             <AutoCompleteTextView
@@ -96,11 +94,10 @@
 
         </android.support.design.widget.TextInputLayout>
 
-        <!-- Password Input -->
+        <!-- Confirm Password Input -->
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:textColorHint="@color/colorFontRegistration">
 
             <AutoCompleteTextView
