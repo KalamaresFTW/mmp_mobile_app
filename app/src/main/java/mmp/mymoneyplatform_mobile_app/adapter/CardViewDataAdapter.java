@@ -1,10 +1,6 @@
 package mmp.mymoneyplatform_mobile_app.adapter;
 
-import android.graphics.Color;
-import android.graphics.PorterDuff;
-import android.graphics.drawable.Drawable;
 import android.support.v7.widget.CardView;
-import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
@@ -40,7 +36,7 @@ public class CardViewDataAdapter {
     }
 
     public void loadData(ArrayList<CardViewData> cardData, ArrayList<LinearLayout> cardList) {
-        //Bunch of variables we declare here to improve performance
+        //Bunch of variables we declare here instead at inside the loop to improve performance
         CardViewData cvd;
         LinearLayout ll;
         RelativeLayout healthPanel;
@@ -54,8 +50,9 @@ public class CardViewDataAdapter {
 
         for (int i = 0; i < DashboardActivity.NUMBER_OF_CARDS; i++) {
             //Get the item we need to modify
-            cvd = cardData.get(i);
             ll = cardList.get(i);
+            //Get the data of the item we're going to modify
+            cvd = cardData.get(i);
             //Get the CardView object
             cardView = (CardView) ll.findViewById(R.id.card_view);
             //Set the card background color

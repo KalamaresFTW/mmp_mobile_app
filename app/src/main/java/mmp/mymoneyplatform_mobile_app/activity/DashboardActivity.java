@@ -20,7 +20,6 @@ import java.util.ArrayList;
 import mmp.mymoneyplatform_mobile_app.R;
 import mmp.mymoneyplatform_mobile_app.adapter.CardViewDataAdapter;
 import mmp.mymoneyplatform_mobile_app.pojo.CardViewData;
-import mmp.mymoneyplatform_mobile_app.pojo.HealthPanelData;
 import mmp.mymoneyplatform_mobile_app.pojo.User;
 
 public class DashboardActivity extends AppCompatActivity
@@ -108,7 +107,7 @@ public class DashboardActivity extends AppCompatActivity
                         getResources().getColor(R.color.colorTitleIncome),
                         getResources().getColor(R.color.colorBackgroundCardViewIncome),
                         34650.00,
-                        new HealthPanelData(
+                        new CardViewData.HealthPanelData(
                                 this,
                                 getString(R.string.cv_hp_title_income),
                                 10,
@@ -123,7 +122,7 @@ public class DashboardActivity extends AppCompatActivity
                         getResources().getColor(R.color.colorTitlePension),
                         getResources().getColor(R.color.colorBackgroundCardViewPension),
                         7133.00,
-                        new HealthPanelData(
+                        new CardViewData.HealthPanelData(
                                 this,
                                 getString(R.string.cv_hp_title_pension),
                                 25,
@@ -138,7 +137,7 @@ public class DashboardActivity extends AppCompatActivity
                         getResources().getColor(R.color.colorTitleGoals),
                         getResources().getColor(R.color.colorBackgroundCardViewGoals),
                         22633.00,
-                        new HealthPanelData(
+                        new CardViewData.HealthPanelData(
                                 this,
                                 getString(R.string.cv_hp_title_goals),
                                 35,
@@ -153,7 +152,7 @@ public class DashboardActivity extends AppCompatActivity
                         getResources().getColor(R.color.colorTitleAssetsDebts),
                         getResources().getColor(R.color.colorBackgroundCardViewAssetsDebts),
                         69050.00,
-                        new HealthPanelData(
+                        new CardViewData.HealthPanelData(
                                 this,
                                 getString(R.string.cv_hp_title_assets_debts),
                                 50,
@@ -168,7 +167,7 @@ public class DashboardActivity extends AppCompatActivity
                         getResources().getColor(R.color.colorTitleLife),
                         getResources().getColor(R.color.colorBackgroundCardViewLife),
                         1294090.00,
-                        new HealthPanelData(
+                        new CardViewData.HealthPanelData(
                                 this,
                                 getString(R.string.cv_hp_title_life),
                                 65,
@@ -183,7 +182,7 @@ public class DashboardActivity extends AppCompatActivity
                         getResources().getColor(R.color.colorTitleSpending),
                         getResources().getColor(R.color.colorBackgroundCardViewSpending),
                         4281.00,
-                        new HealthPanelData(
+                        new CardViewData.HealthPanelData(
                                 this,
                                 getString(R.string.cv_hp_title_spending),
                                 80,

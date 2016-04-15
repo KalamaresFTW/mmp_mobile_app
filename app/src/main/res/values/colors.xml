@@ -45,7 +45,7 @@
     <color name="colorStateExcelent">#2dc66d</color>
 
     <!-- Background Colors on the ProgressBar -->
-    <color name="colorBacktroundProgresBarIncome">#001919</color>
+    <color name="colorBackgroundProgresBarIncome">#001919</color>
     <color name="colorBacktroundProgresBarPension">#0f1921</color>
     <color name="colorBacktroundProgresBarGoals">#243738</color>
     <color name="colorBacktroundProgresBarAssetsDebts">#6b4e46</color>
