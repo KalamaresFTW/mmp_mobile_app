@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.AutoCompleteTextView;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -15,11 +17,13 @@ import java.util.Calendar;
 import mmp.mymoneyplatform_mobile_app.R;
 import mmp.mymoneyplatform_mobile_app.util.FontsOverride;
 
-public class RegisterActivity extends AppCompatActivity{
+public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
 
     private DatePicker datePicker;
     private Calendar calendar;
-    private EditText dateOfBirth;
+    private EditText mBirthDate, mNameView, mPasswordView, mPasswordConfirmView;
+    private AutoCompleteTextView mEmailView;
+    private Button mRegisterButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,8 +38,33 @@ public class RegisterActivity extends AppCompatActivity{
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        dateOfBirth = (EditText) findViewById(R.id.reg_dateofbirth);
+        initComponents();
+    }
+
+    private void initComponents() {
+        mNameView = (EditText) findViewById(R.id.reg_name);
+        mEmailView = (AutoCompleteTextView) findViewById(R.id.reg_email);
+        mPasswordView = (EditText) findViewById(R.id.reg_password);
+        mPasswordConfirmView = (EditText) findViewById(R.id.reg_password_confirm);
+        mRegisterButton = (Button) findViewById(R.id.register_button);
+        mRegisterButton.setOnClickListener(this);
+        mBirthDate = (EditText) findViewById(R.id.reg_dateofbirth);
         calendar = Calendar.getInstance();
+    }
+
+    @Override
+    public void onClick(View v) {
+        String name = mNameView.getText().toString();
+        String email = mEmailView.getText().toString();
+        String password = mPasswordView.getText().toString();
+        String passwordConfirm = mPasswordConfirmView.getText().toString();
+        String birthDate = mBirthDate.getText().toString();
+
+        System.out.println("Name: " + name +
+                " - Email: " + email +
+                " - Password: " + password +
+                " - Password Confirm: " + passwordConfirm +
+                " - Birth date: " + birthDate);
     }
 
     @SuppressWarnings("deprecation")
@@ -61,12 +90,14 @@ public class RegisterActivity extends AppCompatActivity{
             // arg1 = year
             // arg2 = month
             // arg3 = day
-            showDate(arg1, arg2+1, arg3);
+            showDate(arg1, arg2 + 1, arg3);
         }
     };
 
     private void showDate(int year, int month, int day) {
-        dateOfBirth.setText(new StringBuilder().append(day).append("/")
+        mBirthDate.setText(new StringBuilder().append(day).append("/")
                 .append(month).append("/").append(year));
     }
+
+
 }
