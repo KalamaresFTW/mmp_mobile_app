@@ -7,7 +7,7 @@
     android:paddingRight="10dp"
     android:orientation="vertical">
 
-    <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    <android.support.v7.widget.CardView
         android:id="@+id/card_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -59,7 +59,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginBottom="0dp"
                 android:layout_marginTop="2dp"
-                android:text="€34.650,00"
+                android:text=""
                 android:textColor="@color/colorWhite"
                 android:textSize="@dimen/cv_money_size" />
 
@@ -104,7 +104,7 @@
                         android:layout_alignParentTop="true"
                         android:layout_marginRight="10dp"
                         android:layout_marginBottom="7dp"
-                        android:text="Good"
+                        android:text=""
                         android:textColor="@color/colorStateGood"
                         android:textSize="@dimen/cv_text_size"
                         android:textStyle="bold" />
@@ -114,7 +114,7 @@
                         style="?android:attr/progressBarStyleHorizontal"
                         android:layout_width="wrap_content"
                         android:layout_height="7dp"
-                        android:layout_marginTop="13dp"
+                        android:layout_marginTop="10dp"
                         android:layout_alignParentTop="true"
                         android:layout_toRightOf="@+id/cv_hp_tv_progresstitle"
                         android:max="100"

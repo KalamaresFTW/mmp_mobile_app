@@ -1,6 +1,7 @@
 package mmp.mymoneyplatform_mobile_app.activity;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -21,6 +22,7 @@ import mmp.mymoneyplatform_mobile_app.R;
 import mmp.mymoneyplatform_mobile_app.adapter.CardViewDataAdapter;
 import mmp.mymoneyplatform_mobile_app.pojo.CardViewData;
 import mmp.mymoneyplatform_mobile_app.pojo.User;
+import mmp.mymoneyplatform_mobile_app.util.FontsOverride;
 
 public class DashboardActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -44,6 +46,9 @@ public class DashboardActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //Set the new font
+        FontsOverride.setDefaultFont(this, "MONOSPACE", "fonts/Raleway-Regular.ttf");
 
         //Set the layout of this Activity
         setContentView(R.layout.activity_dashboard);
@@ -207,7 +212,6 @@ public class DashboardActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-
         //TODO: Create a bunch of Indents for every item on the Navigator Menu
         switch (id) {
             case R.id.nav_profile:
@@ -221,6 +225,7 @@ public class DashboardActivity extends AppCompatActivity
                 break;
             case R.id.nav_logout:
                 //In this case we start a new Login Activity
+                finish();
                 startActivity(new Intent(getApplicationContext(), LoginActivity.class));
                 break;
             default:

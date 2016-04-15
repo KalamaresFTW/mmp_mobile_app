@@ -37,6 +37,7 @@ import java.util.regex.Pattern;
 
 import mmp.mymoneyplatform_mobile_app.R;
 import mmp.mymoneyplatform_mobile_app.pojo.User;
+import mmp.mymoneyplatform_mobile_app.util.FontsOverride;
 
 import static android.Manifest.permission.READ_CONTACTS;
 
@@ -74,7 +75,13 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //Set the new font
+        FontsOverride.setDefaultFont(this, "MONOSPACE", "fonts/Raleway-Regular.ttf");
+
+        //Set the layout
         setContentView(R.layout.activity_login);
+
         // Set up the login form.
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
         populateAutoComplete();
