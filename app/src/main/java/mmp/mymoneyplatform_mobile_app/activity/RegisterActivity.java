@@ -45,7 +45,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         mNameView = (EditText) findViewById(R.id.reg_name);
         mEmailView = (AutoCompleteTextView) findViewById(R.id.reg_email);
         mPasswordView = (EditText) findViewById(R.id.reg_password);
-        mPasswordConfirmView = (EditText) findViewById(R.id.reg_password_confirm);
+        mPasswordConfirmView = (EditText) findViewById(R.id.reg_confirm_password);
         mRegisterButton = (Button) findViewById(R.id.register_button);
         mRegisterButton.setOnClickListener(this);
         mBirthDate = (EditText) findViewById(R.id.reg_dateofbirth);
