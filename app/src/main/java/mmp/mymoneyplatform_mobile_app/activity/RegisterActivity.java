@@ -2,6 +2,7 @@ package mmp.mymoneyplatform_mobile_app.activity;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -107,5 +108,9 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                 .append(month).append("/").append(year));
     }
 
-
+    @Override
+    public void onBackPressed() {
+        Intent i = new Intent(getApplicationContext(), LoginActivity.class);
+        startActivity(i);
+    }
 }
