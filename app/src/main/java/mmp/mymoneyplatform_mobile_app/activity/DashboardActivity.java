@@ -25,12 +25,13 @@ import mmp.mymoneyplatform_mobile_app.pojo.User;
 import mmp.mymoneyplatform_mobile_app.util.FontsOverride;
 
 public class DashboardActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener{
+
 
     //TODO: Update this to 7 when we add the last element
     public static final int NUMBER_OF_CARDS = 6;
 
-    //This ia reference to the header items on the drawe
+    //This ia reference to the header items on the drawer
     private ImageView iv_menu_img;
     private TextView tv_menu_name, tv_menu_mail;
 
@@ -62,8 +63,6 @@ public class DashboardActivity extends AppCompatActivity
         initComponents();
     }
 
-
-
     public void initComponents() {
         //Ge get a reference to the toolbar of this Activity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -93,8 +92,6 @@ public class DashboardActivity extends AppCompatActivity
 
         loadProfileData();
         loadCardsData();
-
-        CardViewDataAdapter.getInstance().loadData(cardData, cardList);
     }
 
     public void loadProfileData() {
@@ -195,6 +192,8 @@ public class DashboardActivity extends AppCompatActivity
                         )
                 )
         );
+
+        CardViewDataAdapter.getInstance().loadData(cardData, cardList);
     }
 
     @Override
@@ -211,6 +210,7 @@ public class DashboardActivity extends AppCompatActivity
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
+        System.out.println("this aint working niga ");
         int id = item.getItemId();
         //TODO: Create a bunch of Indents for every item on the Navigator Menu
         switch (id) {
