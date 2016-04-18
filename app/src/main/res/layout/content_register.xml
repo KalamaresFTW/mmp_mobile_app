@@ -78,7 +78,7 @@
             android:layout_height="wrap_content"
             android:textColorHint="@color/colorFontRegistration">
 
-            <AutoCompleteTextView
+            <EditText
                 android:id="@+id/reg_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -100,7 +100,7 @@
             android:layout_height="wrap_content"
             android:textColorHint="@color/colorFontRegistration">
 
-            <AutoCompleteTextView
+            <EditText
                 android:id="@+id/reg_confirm_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -126,9 +126,11 @@
                 android:id="@+id/lay_dateofbirth"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginRight="80dp"
+                android:layout_alignParentLeft="true"
                 android:textColorHint="@color/colorFontRegistration">
 
-                <AutoCompleteTextView
+                <EditText
                     android:id="@+id/reg_dateofbirth"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -140,17 +142,27 @@
                     android:inputType="date"
                     android:maxLines="1"
                     android:singleLine="true"
-                    android:editable="false"
+                    android:editable="true"
                     android:textStyle="bold" />
 
             </android.support.design.widget.TextInputLayout>
 
-            //TODO: create the button who calls the "setDate" method
+            <Button
+                android:id="@+id/btn_calendar"
+                android:layout_width="70dp"
+                android:layout_height="50dp"
+                android:layout_alignParentRight="true"
+                android:onClick="setDate"
+                android:background="@drawable/ic_btn_calendar" />
+
         </RelativeLayout>
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@color/colorWhite"
             android:text="Sign In"
             android:background="@drawable/btn_background_drawable"/>
     </LinearLayout>
