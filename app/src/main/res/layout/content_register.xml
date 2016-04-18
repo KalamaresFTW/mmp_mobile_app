@@ -12,116 +12,115 @@
     tools:context="mmp.mymoneyplatform_mobile_app.activity.RegisterActivity"
     tools:showIn="@layout/activity_register">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
-        <!-- Name Input -->
-        <android.support.design.widget.TextInputLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColorHint="@color/colorFontRegistration">
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:orientation="vertical">
 
-            <AutoCompleteTextView
-                android:id="@+id/reg_name"
+            <!-- Name Input -->
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginBottom="5dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:hint="@string/reg_name"
-                android:inputType="textPersonName"
-                android:maxLines="1"
-                android:singleLine="true"
-                android:textStyle="bold" />
+                android:textColorHint="@color/colorFontRegistration">
 
-        </android.support.design.widget.TextInputLayout>
+                <AutoCompleteTextView
+                    android:id="@+id/reg_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:hint="@string/reg_name"
+                    android:inputType="textPersonName"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:textStyle="bold" />
 
-        <!-- Email Input -->
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColorHint="@color/colorFontRegistration">
+            </android.support.design.widget.TextInputLayout>
 
-            <AutoCompleteTextView
-                android:id="@+id/reg_email"
+            <!-- Email Input -->
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginBottom="5dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:hint="@string/reg_email"
-                android:inputType="textEmailAddress"
-                android:maxLines="1"
-                android:singleLine="true"
-                android:textStyle="bold" />
+                android:textColorHint="@color/colorFontRegistration">
 
-        </android.support.design.widget.TextInputLayout>
+                <AutoCompleteTextView
+                    android:id="@+id/reg_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:hint="@string/reg_email"
+                    android:inputType="textEmailAddress"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:textStyle="bold" />
 
-        <!-- Password Hint -->
-        <TextView
-            android:id="@+id/reg_tv_pass_length"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:paddingTop="20dp"
-            android:text="@string/reg_password_hint" />
+            </android.support.design.widget.TextInputLayout>
 
-        <!-- Password Input -->
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColorHint="@color/colorFontRegistration">
+            <!-- Password Hint -->
+            <TextView
+                android:id="@+id/reg_tv_pass_length"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:paddingTop="20dp"
+                android:text="@string/reg_password_hint" />
 
-            <EditText
-                android:id="@+id/reg_password"
+            <!-- Password Input -->
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginBottom="5dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:hint="@string/reg_password"
-                android:inputType="textPassword"
-                android:maxLines="1"
-                android:singleLine="true"
-                android:textStyle="bold" />
+                android:textColorHint="@color/colorFontRegistration">
 
-        </android.support.design.widget.TextInputLayout>
+                <EditText
+                    android:id="@+id/reg_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:hint="@string/reg_password"
+                    android:inputType="textPassword"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:textStyle="bold" />
 
-        <!-- Confirm Password Input -->
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColorHint="@color/colorFontRegistration">
+            </android.support.design.widget.TextInputLayout>
 
-            <EditText
-                android:id="@+id/reg_confirm_password"
+            <!-- Confirm Password Input -->
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginBottom="5dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:hint="@string/reg_confirm_password"
-                android:inputType="textPassword"
-                android:maxLines="1"
-                android:singleLine="true"
-                android:textStyle="bold" />
+                android:textColorHint="@color/colorFontRegistration">
 
-        </android.support.design.widget.TextInputLayout>
+                <EditText
+                    android:id="@+id/reg_confirm_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:hint="@string/reg_confirm_password"
+                    android:inputType="textPassword"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:textStyle="bold" />
 
-        <!-- Date of Birth input -->
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            </android.support.design.widget.TextInputLayout>
 
+            <!-- Date of Birth input -->
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/lay_dateofbirth"
                 android:layout_width="match_parent"
@@ -148,17 +147,18 @@
             </android.support.design.widget.TextInputLayout>
 
 
-        </RelativeLayout>
 
-        <Button
-            android:id="@+id/register_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/btn_background_drawable"
-            android:text="Sign In"
-            android:textColor="@color/colorWhite" />
-    </LinearLayout>
+            <Button
+                android:id="@+id/register_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/btn_background_drawable"
+                android:text="Sign In"
+                android:textColor="@color/colorWhite" />
+        </LinearLayout>
+
+    </ScrollView>
 
 </RelativeLayout>
