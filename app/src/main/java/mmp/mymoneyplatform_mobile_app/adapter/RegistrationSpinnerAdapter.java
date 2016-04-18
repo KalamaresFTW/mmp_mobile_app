@@ -35,6 +35,7 @@ public class RegistrationSpinnerAdapter {
 
     private void loadPaymentFrecuencyData(Spinner mPaymentFrecuencySpinner) {
         //We have to fill the spinner with the data recived from de database by the API
+        //Dummy Frecuencies
         ArrayList<SpinnerData> paymentFrecuencyList = new ArrayList<>();
         paymentFrecuencyList.add(new SpinnerData("Weekly", "1"));
         paymentFrecuencyList.add(new SpinnerData("Fortnightly", "2"));
@@ -44,12 +45,12 @@ public class RegistrationSpinnerAdapter {
 
         ArrayAdapter<SpinnerData> adapter = new ArrayAdapter<>(c, android.R.layout.simple_list_item_1, paymentFrecuencyList);
         mPaymentFrecuencySpinner.setAdapter(adapter);
-        mPaymentFrecuencySpinner.setPrompt("Title");
     }
 
 
     private void loadLegionData(Spinner mRegionSpinner) {
         //We have to fill the spinner with the data recived from de database by the API
+        //Dummy Regions
         ArrayList<SpinnerData> paymentRegionList = new ArrayList<>();
         paymentRegionList.add(new SpinnerData("Irland", "1"));
         paymentRegionList.add(new SpinnerData("USA", "2"));
