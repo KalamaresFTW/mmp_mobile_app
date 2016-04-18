@@ -44,6 +44,7 @@ public class RegistrationSpinnerAdapter {
 
         ArrayAdapter<SpinnerData> adapter = new ArrayAdapter<>(c, android.R.layout.simple_list_item_1, paymentFrecuencyList);
         mPaymentFrecuencySpinner.setAdapter(adapter);
+        mPaymentFrecuencySpinner.setPrompt("Title");
     }
 
 
