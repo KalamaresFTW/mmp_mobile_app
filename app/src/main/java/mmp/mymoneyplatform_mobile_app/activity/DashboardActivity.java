@@ -22,6 +22,7 @@ import mmp.mymoneyplatform_mobile_app.R;
 import mmp.mymoneyplatform_mobile_app.adapter.CardViewDataAdapter;
 import mmp.mymoneyplatform_mobile_app.pojo.CardViewData;
 import mmp.mymoneyplatform_mobile_app.pojo.User;
+import mmp.mymoneyplatform_mobile_app.pojo.UserData;
 import mmp.mymoneyplatform_mobile_app.util.FontsOverride;
 
 public class DashboardActivity extends AppCompatActivity
@@ -41,7 +42,7 @@ public class DashboardActivity extends AppCompatActivity
     private ArrayList<LinearLayout> cardList = new ArrayList<>(NUMBER_OF_CARDS);
 
     //By default this is null until the onCreate callback
-    private User user;
+    private UserData user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +55,7 @@ public class DashboardActivity extends AppCompatActivity
         setContentView(R.layout.activity_dashboard);
 
         //Retrieve the user object from the Intent
-        user = (User) getIntent().getSerializableExtra("user");
+        user = (UserData) getIntent().getSerializableExtra("user");
         if (user == null) { //Just in case
             startActivity(new Intent(this, LoginActivity.class));
         }

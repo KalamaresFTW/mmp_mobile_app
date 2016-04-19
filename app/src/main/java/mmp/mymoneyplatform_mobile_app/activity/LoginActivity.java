@@ -5,7 +5,6 @@ import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.drawable.Icon;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -21,6 +20,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -29,20 +29,26 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.io.BufferedInputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import mmp.mymoneyplatform_mobile_app.R;
-import mmp.mymoneyplatform_mobile_app.net.RetrieveUserTask;
+import mmp.mymoneyplatform_mobile_app.net.ServiceURL;
 import mmp.mymoneyplatform_mobile_app.pojo.User;
+import mmp.mymoneyplatform_mobile_app.pojo.UserData;
 import mmp.mymoneyplatform_mobile_app.util.FontsOverride;
 
 import static android.Manifest.permission.READ_CONTACTS;
@@ -57,21 +63,14 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
      */
     private static final int REQUEST_READ_CONTACTS = 0;
 
-    private static final User[] DUMMY_DATA = new User[]{
-            new User("demo@gmail.com", "demo+123", "Demo User"),
-            new User("sean@gmail.com", "password", "Sean McNulty"),
-            new User("demo2@gmail.com", "demo+123", "Demo Picture")
-    };
-
-
     public static final Pattern VALID_EMAIL_ADDRESS_REGEX =
             Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
-
 
     /**
      * Keep track of the login task to ensure we can cancel it if requested.
      */
-    private UserLoginTask mAuthTask = null;
+    //private UserLoginTask mAuthTask = null;
+    private RetrieveUserTask mRetrieveUserData;
 
     // UI references.
     private AutoCompleteTextView mEmailView;
@@ -170,7 +169,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
-        if (!hasFocus){
+        if (!hasFocus) {
             finish();
         }
     }
@@ -181,7 +180,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
      * errors are presented and no actual login attempt is made.
      */
     private void attemptLogin() {
-        if (mAuthTask != null) {
+        if (mRetrieveUserData != null) {
             return;
         }
 
@@ -222,14 +221,16 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
             showProgress(true);
-            mAuthTask = new UserLoginTask(email, password);
-            mAuthTask.execute((Void) null);
-            RetrieveUserTask mRetrieveUserData = new RetrieveUserTask(email, password);
+
+            //mAuthTask = new UserLoginTask(email, password);
+            //mAuthTask.execute((Void) null);
+
+            mRetrieveUserData = new RetrieveUserTask(email, password);
             mRetrieveUserData.execute((Void) null);
         }
     }
 
-    public void attemptSignIn(){
+    public void attemptSignIn() {
         Intent i = new Intent(getApplicationContext(), RegisterActivity.class);
         startActivity(i);
     }
@@ -244,6 +245,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     }
 
     //region notRelevantStuff
+
     /**
      * Shows the progress UI and hides the login form.
      */
@@ -332,58 +334,106 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
         int ADDRESS = 0;
     }
-
-
     //endregion
+
     /**
      * Represents an asynchronous login/registration task used to authenticate
      * the user.
      */
-    public class UserLoginTask extends AsyncTask<Void, Void, Boolean> {
+    public class RetrieveUserTask extends AsyncTask<Void, Void, Boolean> {
 
-        private final String mEmail;
-        private final String mPassword;
+        private String mEmail;
+        private String mPassword;
 
-        private User user = null;
+        private UserData data = null;
 
-        UserLoginTask(String email, String password) {
-            mEmail = email;
-            mPassword = password;
+        //Tags to retrieve the information from the JSON object
+        private static final String SUBSCRIPTIONID_TAG = "userSubscriptionID";
+        private static final String REGION_TAG = "region";
+        private static final String PROFILEIMAGE_TAG = "profileImage";
+        private static final String COUNTRY_TAG = "country";
+        private static final String NEWUSER_TAG = "newUser";
+        private static final String NAME_TAG = "Name";
+
+        public RetrieveUserTask(String email, String password) {
+            this.mEmail = email;
+            this.mPassword = password;
         }
 
-        @Override
-        protected Boolean doInBackground(Void... params) {
-            // TODO: attempt authentication against a network service.
+        protected void onPreExecute() {
+            //Do some stuff before retrieving the data
+        }
 
+        protected Boolean doInBackground(Void... urls) {
             try {
-                // Simulate network access.
-                Thread.sleep(2000);
-            } catch (InterruptedException e) {
+                URL url = null;
+                String params = "email=" + URLEncoder.encode(mEmail, "UTF-8");
+                params += "&password=" + URLEncoder.encode(mPassword, "UTF-8");
+                try {
+                    url = new URL(ServiceURL.ACCOUNT + "?" + params);
+                } catch (MalformedURLException ex) {
+                    System.err.println("Error:" + ex.getMessage());
+                }
+                System.out.println(url);
+                HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+                try {
+                    BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
+                    StringBuilder stringBuilder = new StringBuilder();
+                    String line;
+                    while ((line = bufferedReader.readLine()) != null) {
+                        stringBuilder.append(line);
+                    }
+                    bufferedReader.close();
+                    //This is where we are going to store the return values from the JSON response
+                    String userSubscriptionID = null,
+                            region = null,
+                            profileImage = null,
+                            country = null,
+                            newUser = null,
+                            name = null,
+                            email = null;
+                    try {
+                        JSONObject user = new JSONObject(stringBuilder.toString());
+                        userSubscriptionID = (String) user.get(SUBSCRIPTIONID_TAG);
+                        region = (String) user.get(REGION_TAG);
+                        profileImage = (String) user.get(PROFILEIMAGE_TAG);
+                        country = (String) user.get(COUNTRY_TAG);
+                        newUser = (String) user.get(NEWUSER_TAG);
+                        name = (String) user.get(NAME_TAG);
+                        email = mEmail;
+                    } catch (JSONException ex) {
+                        System.err.println(ex.getMessage());
+                    }
+                    //This represents all the data contained in the JSON object from the sever.
+                    data = new UserData(
+                            userSubscriptionID,
+                            region,
+                            profileImage,
+                            country,
+                            newUser,
+                            name,
+                            email);
+                    System.out.println(data);
+                    return data.exists();
+                } finally {
+                    urlConnection.disconnect();
+                }
+            } catch (Exception e) {
+                System.err.println("ERROR: " + e.getMessage());
                 return false;
             }
-
-            //Checks if the input credentials are correct
-            for (User u : DUMMY_DATA) {
-                user = u; //Saves the current user
-                String[] pieces = {u.getEmail(), u.getPassword()};
-                if (pieces[0].equals(mEmail)) {
-                    return pieces[1].equals(mPassword);
-                }
-            }
-
-            // TODO: register the new account here.
-            return false;
         }
 
         @Override
         protected void onPostExecute(final Boolean success) {
-            mAuthTask = null;
+            mRetrieveUserData = null;
             showProgress(false);
-
+            System.out.println("Success: " + success);
             if (success) {
                 //Loads the Dashboard Activity
                 Intent i = new Intent(getApplicationContext(), DashboardActivity.class);
-                i.putExtra("user", user); //Sends the user's Object to the new Activity
+                //TODO: save the UserData object on SharedPrefs
+                i.putExtra("user", data); //Sends the user's Object to the new Activity
                 startActivity(i);
             } else {
                 mPasswordView.setError(getString(R.string.error_incorrect_password));
@@ -393,7 +443,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
         @Override
         protected void onCancelled() {
-            mAuthTask = null;
+            mRetrieveUserData = null;
             showProgress(false);
         }
     }
