@@ -1,20 +1,23 @@
 package mmp.mymoneyplatform_mobile_app.pojo;
 
+import java.io.Serializable;
+
 /**
  * Created by K on 18/04/2016.
  */
-public class UserData {
+public class UserData implements Serializable{
 
-    private String userSubscriptionID, region, profileImage, country, newUser, name;
+    private String userSubscriptionID, region, profileImage, country, newUser, name, email;
 
     public UserData(String userSubscriptionID, String region, String profileImage, String country,
-                    String newUser, String name) {
+                    String newUser, String name, String email) {
         this.userSubscriptionID = userSubscriptionID;
         this.region = region;
         this.profileImage = profileImage;
         this.country = country;
         this.newUser = newUser;
         this.name = name;
+        this.email = email;
     }
 
     public String getCountry() {
@@ -65,6 +68,22 @@ public class UserData {
         this.userSubscriptionID = userSubscriptionID;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    /**
+     * @return true if all the fields (except email, which is always provided) are not null
+     */
+    public boolean exists(){
+        return (userSubscriptionID != null) && (region != null) && (profileImage != null)
+                && (country != null) && (newUser != null) && (name != null);
+    }
+
     @Override
     public String toString() {
         return "UserData{" +
@@ -74,6 +93,7 @@ public class UserData {
                 ", profileImage='" + profileImage + '\'' +
                 ", newUser='" + newUser + '\'' +
                 ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
                 '}';
     }
 }
