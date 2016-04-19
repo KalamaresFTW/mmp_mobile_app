@@ -1,8 +1,8 @@
 package mmp.mymoneyplatform_mobile_app.activity;
 
+import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.annotation.TargetApi;
-
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -29,6 +29,8 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.google.gson.Gson;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -64,13 +66,15 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
      */
     private static final int REQUEST_READ_CONTACTS = 0;
 
+    /**
+     * Regular expression to validate user email input
+     */
     public static final Pattern VALID_EMAIL_ADDRESS_REGEX =
             Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
 
     /**
      * Keep track of the login task to ensure we can cancel it if requested.
      */
-    //private UserLoginTask mAuthTask = null;
     private RetrieveUserTask mRetrieveUserData;
 
     // UI references.
@@ -434,8 +438,13 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             if (success) {
                 //Loads the Dashboard Activity
                 Intent i = new Intent(getApplicationContext(), DashboardActivity.class);
-                //TODO: save the UserData object on SharedPrefs
-                i.putExtra("user", data); //Sends the user's Object to the new Activity
+                //Store the UserData instance into the SharedPreferences
+                SharedPreferences mPrefs = getSharedPreferences("prefs", MODE_PRIVATE);
+                SharedPreferences.Editor prefsEditor = mPrefs.edit();
+                Gson gson = new Gson();
+                String json = gson.toJson(data);
+                prefsEditor.putString("user", json);
+                prefsEditor.commit();
                 startActivity(i);
             } else {
                 mPasswordView.setError(getString(R.string.error_incorrect_password));

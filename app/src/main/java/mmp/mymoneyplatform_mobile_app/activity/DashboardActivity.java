@@ -1,7 +1,7 @@
 package mmp.mymoneyplatform_mobile_app.activity;
 
 import android.content.Intent;
-import android.graphics.Typeface;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -16,17 +16,18 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+
 import java.util.ArrayList;
 
 import mmp.mymoneyplatform_mobile_app.R;
 import mmp.mymoneyplatform_mobile_app.adapter.CardViewDataAdapter;
 import mmp.mymoneyplatform_mobile_app.pojo.CardViewData;
-import mmp.mymoneyplatform_mobile_app.pojo.User;
 import mmp.mymoneyplatform_mobile_app.pojo.UserData;
 import mmp.mymoneyplatform_mobile_app.util.FontsOverride;
 
 public class DashboardActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener{
+        implements NavigationView.OnNavigationItemSelectedListener {
 
     //TODO: Update this to 7 when we add the last element
     public static final int NUMBER_OF_CARDS = 6;
@@ -54,12 +55,13 @@ public class DashboardActivity extends AppCompatActivity
         //Set the layout of this Activity
         setContentView(R.layout.activity_dashboard);
 
-        //Retrieve the user object from the Intent
-        user = (UserData) getIntent().getSerializableExtra("user");
-        if (user == null) { //Just in case
-            startActivity(new Intent(this, LoginActivity.class));
-        }
+        //Retrieve the user data from the SharedPrefs
+        SharedPreferences mPrefs = getSharedPreferences("prefs", MODE_PRIVATE);
+        Gson gson = new Gson();
+        String json = mPrefs.getString("user", "");
+        user = gson.fromJson(json, UserData.class);
 
+        //Retrieve the user object from the Intent
         initComponents();
     }
 
@@ -209,13 +211,10 @@ public class DashboardActivity extends AppCompatActivity
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
-        System.out.println("this aint working niga ");
-        int id = item.getItemId();
         //TODO: Create a bunch of Indents for every item on the Navigator Menu
-        switch (id) {
+        switch (item.getItemId()) {
             case R.id.nav_profile:
-                Toast.makeText(DashboardActivity.this, "Profile", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
                 break;
             case R.id.nav_settings:
                 Toast.makeText(DashboardActivity.this, "Settings", Toast.LENGTH_SHORT).show();
@@ -231,7 +230,7 @@ public class DashboardActivity extends AppCompatActivity
             default:
                 return false;
         }
-
+        //Close the drawer
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
