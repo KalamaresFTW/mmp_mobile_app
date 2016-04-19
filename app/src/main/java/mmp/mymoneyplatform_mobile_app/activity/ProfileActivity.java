@@ -19,6 +19,8 @@ import mmp.mymoneyplatform_mobile_app.util.FontsOverride;
 
 public class ProfileActivity extends AppCompatActivity {
 
+    //References to the components of the layout
+    //Pablo gilipollas como vuelvas a aceptar el tuyo le digo a la argentina que la llamaste puta
     private Button mModifySaveButton;
     private EditText mNameView, mBirthdayView;
     private Spinner mRegionSpinner, mPaymentSpinner;
