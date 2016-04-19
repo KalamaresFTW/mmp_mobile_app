@@ -9,6 +9,7 @@
     tools:context=".activity.ProfileActivity"
     tools:showIn="@layout/activity_profile">
 
+    <!-- Pingas -->
     <ScrollView
         android:id="@+id/scroll_profile"
         android:layout_width="match_parent"
