@@ -5,25 +5,24 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import mmp.mymoneyplatform_mobile_app.pojo.SpinnerData;
 
 /**
  * Created by Nacho on 18/04/2016.
  */
-public class RegistrationSpinnerAdapter {
+public class SpinnerAdapter {
 
     private static Context c;
-    private static RegistrationSpinnerAdapter instance = null;
+    private static SpinnerAdapter instance = null;
 
-    RegistrationSpinnerAdapter(Context c) {
+    SpinnerAdapter(Context c) {
         this.c = c;
     }
 
-    public static RegistrationSpinnerAdapter getInstance(Context c) {
+    public static SpinnerAdapter getInstance(Context c) {
         if (instance == null) {
-            instance = new RegistrationSpinnerAdapter(c);
+            instance = new SpinnerAdapter(c);
         }
         return instance;
     }

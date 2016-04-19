@@ -16,7 +16,7 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical">
 
             <!-- Header Layout -->
@@ -67,6 +67,7 @@
                     android:paddingTop="@dimen/nav_header_vertical_spacing"
                     android:focusable="false"
                     android:background="@null"
+                    android:singleLine="true"
                     android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                     android:textSize="@dimen/profile_text_size" />
 
@@ -108,7 +109,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:paddingTop="@dimen/nav_header_vertical_spacing"
-                    android:text="Nacho Sines"
+                    android:singleLine="true"
                     android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                     android:textSize="@dimen/profile_text_size" />
 
@@ -149,8 +150,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
+                    android:singleLine="true"
                     android:paddingTop="@dimen/nav_header_vertical_spacing"
-                    android:text="26/04/1996"
                     android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                     android:textSize="@dimen/profile_text_size" />
 
@@ -186,15 +187,15 @@
                     android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                     android:textSize="@dimen/profile_text_size" />
 
-                <EditText
-                    android:id="@+id/et_profile_region_entry"
+                <Spinner
+                    android:id="@+id/sp_profile_region_entry"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:paddingTop="@dimen/nav_header_vertical_spacing"
-                    android:text="Ireland"
                     android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                    android:textSize="@dimen/profile_text_size" />
+                    android:textSize="@dimen/profile_text_size"
+                    android:layout_below="@+id/tv_profile_region" />
 
             </RelativeLayout>
 
@@ -228,32 +229,34 @@
                     android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                     android:textSize="@dimen/profile_text_size" />
 
-                <EditText
-                    android:id="@+id/et_profile_payment_entry"
+                <Spinner
+                    android:id="@+id/sp_profile_payment_entry"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:paddingTop="@dimen/nav_header_vertical_spacing"
-                    android:text="Weekly"
                     android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                     android:textSize="@dimen/profile_text_size" />
 
             </RelativeLayout>
 
+            <!-- Modify Button -->
+            <Button
+                android:id="@+id/btn_profile_modify_save"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/lay_profile_payment"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/profile_vertical_spacing"
+                android:background="@drawable/btn_background_drawable"
+                android:text="@string/profile_button_modify"
+                android:textColor="@color/colorWhite" />
+
+
         </RelativeLayout>
 
     </ScrollView>
 
-    <!-- Modify Button -->
-    <Button
-        android:id="@+id/btn_profile_modify_save"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/scroll_profile"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/profile_vertical_spacing"
-        android:background="@drawable/btn_background_drawable"
-        android:text="@string/profile_button_modify"
-        android:textColor="@color/colorWhite" />
+
 
 </RelativeLayout>

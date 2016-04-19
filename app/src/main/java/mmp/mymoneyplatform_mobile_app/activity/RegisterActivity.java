@@ -17,7 +17,7 @@ import android.widget.Toast;
 import java.util.Calendar;
 
 import mmp.mymoneyplatform_mobile_app.R;
-import mmp.mymoneyplatform_mobile_app.adapter.RegistrationSpinnerAdapter;
+import mmp.mymoneyplatform_mobile_app.adapter.SpinnerAdapter;
 import mmp.mymoneyplatform_mobile_app.util.FontsOverride;
 
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
@@ -59,7 +59,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         mPaymentFrecuencySpinner = (Spinner) findViewById(R.id.sp_payment_frecuency);
         mRegionSpinner = (Spinner) findViewById(R.id.sp_region);
         //Load the dummy data for the spinners. In the future this data will be send by the database
-        RegistrationSpinnerAdapter.getInstance(this).loadData(mPaymentFrecuencySpinner, mRegionSpinner);
+        SpinnerAdapter.getInstance(this).loadData(mPaymentFrecuencySpinner, mRegionSpinner);
     }
 
     @Override
