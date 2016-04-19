@@ -9,244 +9,250 @@
     tools:context=".activity.ProfileActivity"
     tools:showIn="@layout/activity_profile">
 
-    <!-- Header Layout -->
-    <LinearLayout
-        android:id="@+id/lay_profile_header"
+    <ScrollView
+        android:id="@+id/scroll_profile"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/nav_header_height"
-        android:background="@drawable/side_nav_bar"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:paddingBottom="@dimen/activity_vertical_margin"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin"
-        android:paddingTop="@dimen/activity_vertical_margin"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark">
+        android:layout_height="wrap_content">
 
-        <ImageView
-            android:id="@+id/iv_profile_img"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:src="@android:drawable/sym_def_app_icon" />
-
-    </LinearLayout>
-
-    <!-- Email Layout -->
-    <RelativeLayout
-        android:id="@+id/lay_profile_email"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/profile_horizontal_spacing"
-        android:layout_marginRight="@dimen/profile_horizontal_spacing"
-        android:layout_below="@+id/lay_profile_header">
-
-        <TextView
-            android:id="@+id/tv_profile_email"
-            android:layout_width="wrap_content"
+        <RelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="@dimen/nav_header_vertical_spacing"
-            android:text="@string/profile_email"
-            android:textSize="@dimen/profile_text_size"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/tv_profile_email_entry"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:paddingTop="@dimen/nav_header_vertical_spacing"
-            android:text="Email@email.com"
-            android:textSize="@dimen/profile_text_size"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+            <!-- Header Layout -->
+            <LinearLayout
+                android:id="@+id/lay_profile_header"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/nav_header_height"
+                android:background="@drawable/side_nav_bar"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingBottom="@dimen/activity_vertical_margin"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:paddingTop="@dimen/activity_vertical_margin"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
-    </RelativeLayout>
+                <ImageView
+                    android:id="@+id/iv_profile_img"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@android:drawable/sym_def_app_icon" />
 
-    <!-- Under Email Separator -->
-    <View
-        android:id="@+id/cv_separator_under_email"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="@dimen/profile_vertical_spacing"
-        android:layout_marginLeft="@dimen/profile_horizontal_separator_spacing"
-        android:layout_marginRight="@dimen/profile_horizontal_separator_spacing"
-        android:layout_below="@+id/lay_profile_email"
-        android:background="@color/colorFontRegistration" />
+            </LinearLayout>
 
-    <!-- Name Layout -->
-    <RelativeLayout
-        android:id="@+id/lay_profile_name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/profile_vertical_spacing"
-        android:layout_marginLeft="@dimen/profile_horizontal_spacing"
-        android:layout_marginRight="@dimen/profile_horizontal_spacing"
-        android:layout_below="@+id/lay_profile_email">
+            <!-- Email Layout -->
+            <RelativeLayout
+                android:id="@+id/lay_profile_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/lay_profile_header"
+                android:layout_marginLeft="@dimen/profile_horizontal_spacing"
+                android:layout_marginRight="@dimen/profile_horizontal_spacing">
 
-        <TextView
-            android:id="@+id/tv_profile_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingTop="@dimen/nav_header_vertical_spacing"
-            android:text="@string/profile_name"
-            android:textSize="@dimen/profile_text_size"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+                <TextView
+                    android:id="@+id/tv_profile_email"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="@dimen/nav_header_vertical_spacing"
+                    android:text="@string/profile_email"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textSize="@dimen/profile_text_size" />
 
-        <EditText
-            android:id="@+id/tv_profile_name_entry"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:paddingTop="@dimen/nav_header_vertical_spacing"
-            android:text="Nacho Sines"
-            android:textSize="@dimen/profile_text_size"
-            android:focusable="false"
-            android:background="@null"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+                <EditText
+                    android:id="@+id/et_profile_email_entry"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:paddingTop="@dimen/nav_header_vertical_spacing"
+                    android:text="Email@email.com"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textSize="@dimen/profile_text_size" />
 
-    </RelativeLayout>
+            </RelativeLayout>
 
-    <!-- Under Name Separator -->
-    <View
-        android:id="@+id/cv_separator_under_name"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="@dimen/profile_vertical_spacing"
-        android:layout_marginLeft="@dimen/profile_horizontal_separator_spacing"
-        android:layout_marginRight="@dimen/profile_horizontal_separator_spacing"
-        android:layout_below="@+id/lay_profile_name"
-        android:background="@color/colorFontRegistration" />
+            <!-- Under Email Separator -->
+            <View
+                android:id="@+id/cv_separator_under_email"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@+id/lay_profile_email"
+                android:layout_marginLeft="@dimen/profile_horizontal_separator_spacing"
+                android:layout_marginRight="@dimen/profile_horizontal_separator_spacing"
+                android:layout_marginTop="@dimen/profile_vertical_spacing"
+                android:background="@color/colorFontRegistration" />
 
-    <!-- Birthday Layout -->
-    <RelativeLayout
-        android:id="@+id/lay_profile_birthday"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/profile_vertical_spacing"
-        android:layout_marginLeft="@dimen/profile_horizontal_spacing"
-        android:layout_marginRight="@dimen/profile_horizontal_spacing"
-        android:layout_below="@+id/lay_profile_name">
+            <!-- Name Layout -->
+            <RelativeLayout
+                android:id="@+id/lay_profile_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/lay_profile_email"
+                android:layout_marginLeft="@dimen/profile_horizontal_spacing"
+                android:layout_marginRight="@dimen/profile_horizontal_spacing"
+                android:layout_marginTop="@dimen/profile_vertical_spacing">
 
-        <TextView
-            android:id="@+id/tv_profile_birthday"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingTop="@dimen/nav_header_vertical_spacing"
-            android:text="@string/profile_dateofbirth"
-            android:textSize="@dimen/profile_text_size"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+                <TextView
+                    android:id="@+id/tv_profile_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="@dimen/nav_header_vertical_spacing"
+                    android:text="@string/profile_name"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textSize="@dimen/profile_text_size" />
 
-        <EditText
-            android:id="@+id/tv_profile_birthday_entry"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:paddingTop="@dimen/nav_header_vertical_spacing"
-            android:text="26/04/1996"
-            android:textSize="@dimen/profile_text_size"
-            android:focusable="false"
-            android:background="@null"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+                <EditText
+                    android:id="@+id/et_profile_name_entry"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:paddingTop="@dimen/nav_header_vertical_spacing"
+                    android:text="Nacho Sines"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textSize="@dimen/profile_text_size" />
 
-    </RelativeLayout>
+            </RelativeLayout>
 
-    <!-- Under Birthday Separator -->
-    <View
-        android:id="@+id/cv_separator_under_birthday"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="@dimen/profile_vertical_spacing"
-        android:layout_marginLeft="@dimen/profile_horizontal_separator_spacing"
-        android:layout_marginRight="@dimen/profile_horizontal_separator_spacing"
-        android:layout_below="@+id/lay_profile_birthday"
-        android:background="@color/colorFontRegistration" />
+            <!-- Under Name Separator -->
+            <View
+                android:id="@+id/cv_separator_under_name"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@+id/lay_profile_name"
+                android:layout_marginLeft="@dimen/profile_horizontal_separator_spacing"
+                android:layout_marginRight="@dimen/profile_horizontal_separator_spacing"
+                android:layout_marginTop="@dimen/profile_vertical_spacing"
+                android:background="@color/colorFontRegistration" />
 
-    <!-- Region Layout -->
-    <RelativeLayout
-        android:id="@+id/lay_profile_region"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/profile_vertical_spacing"
-        android:layout_marginLeft="@dimen/profile_horizontal_spacing"
-        android:layout_marginRight="@dimen/profile_horizontal_spacing"
-        android:layout_below="@+id/lay_profile_birthday">
+            <!-- Birthday Layout -->
+            <RelativeLayout
+                android:id="@+id/lay_profile_birthday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/lay_profile_name"
+                android:layout_marginLeft="@dimen/profile_horizontal_spacing"
+                android:layout_marginRight="@dimen/profile_horizontal_spacing"
+                android:layout_marginTop="@dimen/profile_vertical_spacing">
 
-        <TextView
-            android:id="@+id/tv_profile_region"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingTop="@dimen/nav_header_vertical_spacing"
-            android:text="@string/profile_region"
-            android:textSize="@dimen/profile_text_size"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+                <TextView
+                    android:id="@+id/tv_profile_birthday"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="@dimen/nav_header_vertical_spacing"
+                    android:text="@string/profile_dateofbirth"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textSize="@dimen/profile_text_size" />
 
-        <TextView
-            android:id="@+id/tv_profile_region_entry"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:paddingTop="@dimen/nav_header_vertical_spacing"
-            android:text="Ireland"
-            android:textSize="@dimen/profile_text_size"
-            android:focusable="false"
-            android:background="@null"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+                <EditText
+                    android:id="@+id/et_profile_birthday_entry"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:paddingTop="@dimen/nav_header_vertical_spacing"
+                    android:text="26/04/1996"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textSize="@dimen/profile_text_size" />
 
-    </RelativeLayout>
+            </RelativeLayout>
 
-    <!-- Under Region Separator -->
-    <View
-        android:id="@+id/cv_separatorunder__region"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="@dimen/profile_vertical_spacing"
-        android:layout_marginLeft="@dimen/profile_horizontal_separator_spacing"
-        android:layout_marginRight="@dimen/profile_horizontal_separator_spacing"
-        android:layout_below="@+id/lay_profile_region"
-        android:background="@color/colorFontRegistration" />
+            <!-- Under Birthday Separator -->
+            <View
+                android:id="@+id/cv_separator_under_birthday"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@+id/lay_profile_birthday"
+                android:layout_marginLeft="@dimen/profile_horizontal_separator_spacing"
+                android:layout_marginRight="@dimen/profile_horizontal_separator_spacing"
+                android:layout_marginTop="@dimen/profile_vertical_spacing"
+                android:background="@color/colorFontRegistration" />
 
-    <!-- Payment Frecuency Layout -->
-    <RelativeLayout
-        android:id="@+id/lay_profile_payment"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/profile_vertical_spacing"
-        android:layout_marginLeft="@dimen/profile_horizontal_spacing"
-        android:layout_marginRight="@dimen/profile_horizontal_spacing"
-        android:layout_below="@+id/lay_profile_region">
+            <!-- Region Layout -->
+            <RelativeLayout
+                android:id="@+id/lay_profile_region"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/lay_profile_birthday"
+                android:layout_marginLeft="@dimen/profile_horizontal_spacing"
+                android:layout_marginRight="@dimen/profile_horizontal_spacing"
+                android:layout_marginTop="@dimen/profile_vertical_spacing">
 
-        <TextView
-            android:id="@+id/tv_profile_payment"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingTop="@dimen/nav_header_vertical_spacing"
-            android:text="@string/profile_paymentFrecuency"
-            android:textSize="@dimen/profile_text_size"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+                <TextView
+                    android:id="@+id/tv_profile_region"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="@dimen/nav_header_vertical_spacing"
+                    android:text="@string/profile_region"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textSize="@dimen/profile_text_size" />
 
-        <TextView
-            android:id="@+id/tv_profile_payment_entry"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:paddingTop="@dimen/nav_header_vertical_spacing"
-            android:text="Weekly"
-            android:textSize="@dimen/profile_text_size"
-            android:focusable="false"
-            android:background="@null"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+                <EditText
+                    android:id="@+id/et_profile_region_entry"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:paddingTop="@dimen/nav_header_vertical_spacing"
+                    android:text="Ireland"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textSize="@dimen/profile_text_size" />
 
-    </RelativeLayout>
+            </RelativeLayout>
+
+            <!-- Under Region Separator -->
+            <View
+                android:id="@+id/cv_separatorunder__region"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@+id/lay_profile_region"
+                android:layout_marginLeft="@dimen/profile_horizontal_separator_spacing"
+                android:layout_marginRight="@dimen/profile_horizontal_separator_spacing"
+                android:layout_marginTop="@dimen/profile_vertical_spacing"
+                android:background="@color/colorFontRegistration" />
+
+            <!-- Payment Frecuency Layout -->
+            <RelativeLayout
+                android:id="@+id/lay_profile_payment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/lay_profile_region"
+                android:layout_marginLeft="@dimen/profile_horizontal_spacing"
+                android:layout_marginRight="@dimen/profile_horizontal_spacing"
+                android:layout_marginTop="@dimen/profile_vertical_spacing">
+
+                <TextView
+                    android:id="@+id/tv_profile_payment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="@dimen/nav_header_vertical_spacing"
+                    android:text="@string/profile_paymentFrecuency"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textSize="@dimen/profile_text_size" />
+
+                <EditText
+                    android:id="@+id/et_profile_payment_entry"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:paddingTop="@dimen/nav_header_vertical_spacing"
+                    android:text="Weekly"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textSize="@dimen/profile_text_size" />
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+    </ScrollView>
 
     <!-- Modify Button -->
     <Button
         android:id="@+id/btn_profile_modify_save"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="80dp"
-        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/scroll_profile"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/profile_vertical_spacing"
+        android:background="@drawable/btn_background_drawable"
         android:text="@string/profile_button_modify"
-        android:textColor="@color/colorWhite"
-        android:background="@drawable/btn_background_drawable"/>
+        android:textColor="@color/colorWhite" />
 
 </RelativeLayout>

@@ -1,5 +1,6 @@
 package mmp.mymoneyplatform_mobile_app.activity;
 
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -7,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 import mmp.mymoneyplatform_mobile_app.R;
 import mmp.mymoneyplatform_mobile_app.util.FontsOverride;
@@ -14,6 +16,8 @@ import mmp.mymoneyplatform_mobile_app.util.FontsOverride;
 public class ProfileActivity extends AppCompatActivity {
 
     private Button mModifySaveButton;
+    private EditText mNameView, mBirthdayView;
+    private Drawable oldBackground;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +33,7 @@ public class ProfileActivity extends AppCompatActivity {
         initComponents();
     }
 
-    public void initComponents(){
+    public void initComponents() {
         mModifySaveButton = (Button) findViewById(R.id.btn_profile_modify_save);
         mModifySaveButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -37,11 +41,28 @@ public class ProfileActivity extends AppCompatActivity {
                 onModifySaveButtoClicked();
             }
         });
+        mNameView = (EditText) findViewById(R.id.et_profile_name_entry);
+        oldBackground = mNameView.getBackground();
+        disableEdition();
     }
 
-    public void onModifySaveButtoClicked(){}
+    public void onModifySaveButtoClicked() {
+        if (mModifySaveButton.getText().equals(getString(R.string.profile_button_modify))) {
+            mModifySaveButton.setText(getString(R.string.profile_button_save));
+            enableEdition();
+        } else {
+            mModifySaveButton.setText(getString(R.string.profile_button_modify));
+            disableEdition();
+        }
+    }
 
-    public void enableEdition(){}
+    public void enableEdition() {
+        mNameView.setFocusable(true);
+        mNameView.setBackground(oldBackground);
+    }
 
-    public void disableEdition(){}
+    public void disableEdition() {
+        mNameView.setFocusable(false);
+        mNameView.setBackground(null);
+    }
 }
