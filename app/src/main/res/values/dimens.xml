@@ -11,6 +11,7 @@
     <dimen name="cv_money_size">33sp</dimen>
     <!-- Profile Sizes -->
     <dimen name="profile_text_size">18sp</dimen>
-    <dimen name="profile_horizontal_size">10dp</dimen>
-    <dimen name="profile_vertical_size">10dp</dimen>
+    <dimen name="profile_horizontal_spacing">15dp</dimen>
+    <dimen name="profile_horizontal_separator_spacing">7dp</dimen>
+    <dimen name="profile_vertical_spacing">15dp</dimen>
 </resources>
