@@ -1,26 +1,25 @@
 package mmp.mymoneyplatform_mobile_app.activity;
 
+import android.support.annotation.NonNull;
+import android.annotation.TargetApi;
+
+
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
-import android.annotation.TargetApi;
-import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.support.annotation.NonNull;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
 import android.app.LoaderManager.LoaderCallbacks;
-
 import android.content.CursorLoader;
+import android.content.Intent;
 import android.content.Loader;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.AsyncTask;
-
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
+import android.support.design.widget.Snackbar;
+import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -35,7 +34,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -46,8 +47,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import mmp.mymoneyplatform_mobile_app.R;
+import mmp.mymoneyplatform_mobile_app.net.ServiceTags;
 import mmp.mymoneyplatform_mobile_app.net.ServiceURL;
-import mmp.mymoneyplatform_mobile_app.pojo.User;
 import mmp.mymoneyplatform_mobile_app.pojo.UserData;
 import mmp.mymoneyplatform_mobile_app.util.FontsOverride;
 
@@ -104,20 +105,24 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         });
 
         Button mEmailLogInButton = (Button) findViewById(R.id.email_log_in_button);
-        mEmailLogInButton.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                attemptLogin();
-            }
-        });
+        if (mEmailLogInButton != null) {
+            mEmailLogInButton.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    attemptLogin();
+                }
+            });
+        }
 
         Button btnSign = (Button) findViewById(R.id.sign_in_button);
-        btnSign.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                attemptSignIn();
-            }
-        });
+        if (btnSign != null) {
+            btnSign.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    attemptSignIn();
+                }
+            });
+        }
 
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
@@ -312,8 +317,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     }
 
     @Override
-    public void onLoaderReset(Loader<Cursor> cursorLoader) {
-
+    public void onLoaderReset(Loader<Cursor> loader) {
     }
 
     private void addEmailsToAutoComplete(List<String> emailAddressCollection) {
@@ -345,15 +349,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         private String mEmail;
         private String mPassword;
 
-        private UserData data = null;
-
-        //Tags to retrieve the information from the JSON object
-        private static final String SUBSCRIPTIONID_TAG = "userSubscriptionID";
-        private static final String REGION_TAG = "region";
-        private static final String PROFILEIMAGE_TAG = "profileImage";
-        private static final String COUNTRY_TAG = "country";
-        private static final String NEWUSER_TAG = "newUser";
-        private static final String NAME_TAG = "Name";
+        private UserData data;
 
         public RetrieveUserTask(String email, String password) {
             this.mEmail = email;
@@ -375,51 +371,57 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                     System.err.println("Error:" + ex.getMessage());
                 }
                 System.out.println(url);
-                HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+
+                HttpURLConnection urlConnection;
+                if (url != null) {
+                    urlConnection = (HttpURLConnection) url.openConnection();
+                } else {
+                    return false;
+                }
                 try {
                     BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
-                    StringBuilder stringBuilder = new StringBuilder();
-                    String line;
-                    while ((line = bufferedReader.readLine()) != null) {
-                        stringBuilder.append(line);
+                    StringBuilder response = new StringBuilder();
+                    String partialResponse;
+                    while ((partialResponse = bufferedReader.readLine()) != null) {
+                        response.append(partialResponse);
                     }
                     bufferedReader.close();
-                    //This is where we are going to store the return values from the JSON response
-                    String userSubscriptionID = null,
-                            region = null,
-                            profileImage = null,
-                            country = null,
-                            newUser = null,
-                            name = null,
-                            email = null;
+                    JSONObject JSONResponse = null;
                     try {
-                        JSONObject user = new JSONObject(stringBuilder.toString());
-                        userSubscriptionID = (String) user.get(SUBSCRIPTIONID_TAG);
-                        region = (String) user.get(REGION_TAG);
-                        profileImage = (String) user.get(PROFILEIMAGE_TAG);
-                        country = (String) user.get(COUNTRY_TAG);
-                        newUser = (String) user.get(NEWUSER_TAG);
-                        name = (String) user.get(NAME_TAG);
-                        email = mEmail;
+                        JSONResponse = new JSONObject(response.toString());
                     } catch (JSONException ex) {
                         System.err.println(ex.getMessage());
                     }
                     //This represents all the data contained in the JSON object from the sever.
-                    data = new UserData(
-                            userSubscriptionID,
-                            region,
-                            profileImage,
-                            country,
-                            newUser,
-                            name,
-                            email);
-                    System.out.println(data);
-                    return data.exists();
+                    try {
+                        if (JSONResponse != null) {
+                            data = new UserData(
+                                    (String) JSONResponse.get(ServiceTags.SUBSCRIPTIONID_TAG),
+                                    (String) JSONResponse.get(ServiceTags.REGION_TAG),
+                                    (String) JSONResponse.get(ServiceTags.PROFILEIMAGE_TAG),
+                                    (String) JSONResponse.get(ServiceTags.COUNTRY_TAG),
+                                    (String) JSONResponse.get(ServiceTags.NEWUSER_TAG),
+                                    (String) JSONResponse.get(ServiceTags.NAME_TAG),
+                                    mEmail);
+                        } else {
+                            return false;
+                        }
+                    } catch (JSONException ex) {
+                        System.err.println("Error: " + ex.getMessage());
+                    }
+                    //UserData not being null means the mail/password combination is correct
+                    return !data.isNull();
+                } catch (IOException ex) {
+                    System.err.println("Error: " + ex.getMessage());
+                    return false;
                 } finally {
                     urlConnection.disconnect();
                 }
-            } catch (Exception e) {
-                System.err.println("ERROR: " + e.getMessage());
+            } catch (UnsupportedEncodingException ex) {
+                System.err.println("Error: " + ex.getMessage());
+                return false;
+            } catch (IOException ex) {
+                System.err.println("Error: " + ex.getMessage());
                 return false;
             }
         }

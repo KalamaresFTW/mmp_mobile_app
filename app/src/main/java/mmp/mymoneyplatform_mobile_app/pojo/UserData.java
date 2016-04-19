@@ -79,9 +79,9 @@ public class UserData implements Serializable{
     /**
      * @return true if all the fields (except email, which is always provided) are not null
      */
-    public boolean exists(){
-        return (userSubscriptionID != null) && (region != null) && (profileImage != null)
-                && (country != null) && (newUser != null) && (name != null);
+    public boolean isNull(){
+        return (userSubscriptionID == null) && (region == null) && (profileImage == null)
+                && (country == null) && (newUser == null) && (name == null);
     }
 
     @Override
