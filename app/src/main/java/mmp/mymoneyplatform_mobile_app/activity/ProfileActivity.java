@@ -7,9 +7,12 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+
+import java.util.ArrayList;
 
 import mmp.mymoneyplatform_mobile_app.R;
 import mmp.mymoneyplatform_mobile_app.util.FontsOverride;
@@ -18,10 +21,10 @@ public class ProfileActivity extends AppCompatActivity {
 
     //References to the components of the layout
     private Button mModifySaveButton;
-    private EditText mNameView, mBirthdayView;
+    private EditText mEmailView, mNameView, mBirthdayView;
     private Spinner mRegionSpinner, mPaymentSpinner;
     //Saving the default background Drawable
-    private Drawable oldBackground;
+    private Drawable oldBackgroundView, oldBackgroundSpinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,13 +37,7 @@ public class ProfileActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        loadProfileData();
-
         initComponents();
-    }
-
-    private void loadProfileData() {
-
     }
 
     public void initComponents() {
@@ -51,14 +48,30 @@ public class ProfileActivity extends AppCompatActivity {
                 onModifySaveButtonClicked();
             }
         });
+        mEmailView = (EditText) findViewById(R.id.tv_profile_email_entry);
         mNameView = (EditText) findViewById(R.id.et_profile_name_entry);
-        oldBackground = mNameView.getBackground();
         mBirthdayView = (EditText) findViewById(R.id.et_profile_birthday_entry);
         mRegionSpinner = (Spinner) findViewById(R.id.sp_profile_region_entry);
         mPaymentSpinner = (Spinner) findViewById(R.id.sp_profile_payment_entry);
 
+        oldBackgroundSpinner = mRegionSpinner.getBackground();
+        oldBackgroundView = mNameView.getBackground();
         loadProfileData();
         disableEdition();
+    }
+
+    private void loadProfileData() {
+        ArrayList<String> regions = new ArrayList<>();
+        regions.add(0, "Ireland");
+        regions.add(1, "United Kingdom");
+        mRegionSpinner.setAdapter(new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_list_item_1, regions));
+        mRegionSpinner.setSelection(0);
+
+        ArrayList<String> frecuencies = new ArrayList<>();
+        frecuencies.add(0, "Weekly");
+        frecuencies.add(1, "Monthly");
+        mPaymentSpinner.setAdapter(new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_list_item_1, frecuencies));
+        mPaymentSpinner.setSelection(0);
     }
 
     public void onModifySaveButtonClicked() {
@@ -73,16 +86,20 @@ public class ProfileActivity extends AppCompatActivity {
 
     public void enableEdition() {
         mNameView.setFocusableInTouchMode(true);
-        mNameView.setBackground(oldBackground);
+        mNameView.setBackground(oldBackgroundView);
+        mBirthdayView.setFocusableInTouchMode(true);
+        mBirthdayView.setBackground(oldBackgroundView);
         mRegionSpinner.setFocusableInTouchMode(true);
-        mRegionSpinner.setBackground(oldBackground);
+        mRegionSpinner.setBackground(oldBackgroundSpinner);
         mPaymentSpinner.setFocusableInTouchMode(true);
-        mPaymentSpinner.setBackground(oldBackground);
+        mPaymentSpinner.setBackground(oldBackgroundSpinner);
     }
 
     public void disableEdition() {
         mNameView.setFocusableInTouchMode(false);
         mNameView.setBackground(null);
+        mBirthdayView.setFocusableInTouchMode(false);
+        mBirthdayView.setBackground(null);
         mRegionSpinner.setFocusableInTouchMode(false);
         mRegionSpinner.setBackground(null);
         mPaymentSpinner.setFocusableInTouchMode(false);

@@ -9,7 +9,6 @@
     tools:context=".activity.ProfileActivity"
     tools:showIn="@layout/activity_profile">
 
-    <!-- Pingas -->
     <ScrollView
         android:id="@+id/scroll_profile"
         android:layout_width="match_parent"
@@ -61,13 +60,13 @@
                     android:textSize="@dimen/profile_text_size" />
 
                 <TextView
-                    android:id="@+id/et_profile_email_entry"
+                    android:id="@+id/tv_profile_email_entry"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
-                    android:paddingTop="@dimen/nav_header_vertical_spacing"
-                    android:focusable="false"
                     android:background="@null"
+                    android:focusable="false"
+                    android:paddingTop="@dimen/nav_header_vertical_spacing"
                     android:singleLine="true"
                     android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                     android:textSize="@dimen/profile_text_size" />
@@ -151,8 +150,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
-                    android:singleLine="true"
                     android:paddingTop="@dimen/nav_header_vertical_spacing"
+                    android:singleLine="true"
                     android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                     android:textSize="@dimen/profile_text_size" />
 
@@ -193,10 +192,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
+                    android:layout_below="@+id/tv_profile_region"
                     android:paddingTop="@dimen/nav_header_vertical_spacing"
                     android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                    android:textSize="@dimen/profile_text_size"
-                    android:layout_below="@+id/tv_profile_region" />
+                    android:textSize="@dimen/profile_text_size" />
 
             </RelativeLayout>
 
@@ -235,6 +234,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
+                    android:layout_below="@id/tv_profile_payment"
                     android:paddingTop="@dimen/nav_header_vertical_spacing"
                     android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                     android:textSize="@dimen/profile_text_size" />
@@ -257,7 +257,6 @@
         </RelativeLayout>
 
     </ScrollView>
-
 
 
 </RelativeLayout>
