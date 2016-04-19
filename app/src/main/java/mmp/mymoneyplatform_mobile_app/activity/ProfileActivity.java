@@ -11,6 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -21,7 +22,8 @@ public class ProfileActivity extends AppCompatActivity {
 
     //References to the components of the layout
     private Button mModifySaveButton;
-    private EditText mEmailView, mNameView, mBirthdayView;
+    private TextView mEmailView;
+    private EditText mNameView, mBirthdayView;
     private Spinner mRegionSpinner, mPaymentSpinner;
     //Saving the default background Drawable
     private Drawable oldBackgroundView, oldBackgroundSpinner;
@@ -48,7 +50,7 @@ public class ProfileActivity extends AppCompatActivity {
                 onModifySaveButtonClicked();
             }
         });
-        mEmailView = (EditText) findViewById(R.id.tv_profile_email_entry);
+        mEmailView = (TextView) findViewById(R.id.tv_profile_email_entry);
         mNameView = (EditText) findViewById(R.id.et_profile_name_entry);
         mBirthdayView = (EditText) findViewById(R.id.et_profile_birthday_entry);
         mRegionSpinner = (Spinner) findViewById(R.id.sp_profile_region_entry);
@@ -100,9 +102,5 @@ public class ProfileActivity extends AppCompatActivity {
         mNameView.setBackground(null);
         mBirthdayView.setFocusableInTouchMode(false);
         mBirthdayView.setBackground(null);
-        mRegionSpinner.setFocusableInTouchMode(false);
-        mRegionSpinner.setBackground(null);
-        mPaymentSpinner.setFocusableInTouchMode(false);
-        mPaymentSpinner.setBackground(null);
     }
 }
