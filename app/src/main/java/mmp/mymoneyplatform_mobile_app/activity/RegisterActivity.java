@@ -39,6 +39,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         //Set the layout
         setContentView(R.layout.activity_register);
 
+        //Set the toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
