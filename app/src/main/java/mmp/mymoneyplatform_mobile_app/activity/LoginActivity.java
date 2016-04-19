@@ -5,6 +5,7 @@ import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.drawable.Icon;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -28,14 +29,19 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.io.BufferedInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import mmp.mymoneyplatform_mobile_app.R;
+import mmp.mymoneyplatform_mobile_app.net.RetrieveUserTask;
 import mmp.mymoneyplatform_mobile_app.pojo.User;
 import mmp.mymoneyplatform_mobile_app.util.FontsOverride;
 
@@ -53,7 +59,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
     private static final User[] DUMMY_DATA = new User[]{
             new User("demo@gmail.com", "demo+123", "Demo User"),
-            new User("sean@gmail.com", "password", "Sean McNulty")
+            new User("sean@gmail.com", "password", "Sean McNulty"),
+            new User("demo2@gmail.com", "demo+123", "Demo Picture")
     };
 
 
@@ -75,7 +82,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         //Set the new font
         FontsOverride.setDefaultFont(this, "MONOSPACE", "fonts/Raleway-Regular.ttf");
 
@@ -218,6 +224,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             showProgress(true);
             mAuthTask = new UserLoginTask(email, password);
             mAuthTask.execute((Void) null);
+            RetrieveUserTask mRetrieveUserData = new RetrieveUserTask(email, password);
+            mRetrieveUserData.execute((Void) null);
         }
     }
 
@@ -342,8 +350,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             mEmail = email;
             mPassword = password;
         }
-
-
 
         @Override
         protected Boolean doInBackground(Void... params) {

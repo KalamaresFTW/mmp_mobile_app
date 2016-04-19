@@ -27,7 +27,6 @@ import mmp.mymoneyplatform_mobile_app.util.FontsOverride;
 public class DashboardActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener{
 
-
     //TODO: Update this to 7 when we add the last element
     public static final int NUMBER_OF_CARDS = 6;
 
@@ -35,7 +34,7 @@ public class DashboardActivity extends AppCompatActivity
     private ImageView iv_menu_img;
     private TextView tv_menu_name, tv_menu_mail;
 
-    //Dummy data(not that dummy actually) to fill the cards with data and colors
+    //Sample data to fill the cards with data and colors
     private ArrayList<CardViewData> cardData = new ArrayList<>(NUMBER_OF_CARDS);
 
     //We will hold a reference for every CardView in the list
@@ -96,7 +95,7 @@ public class DashboardActivity extends AppCompatActivity
 
     public void loadProfileData() {
         //TODO: add the profile image into the NavigationView header
-        //iv_menu_img.setImageIcon();
+        //iv_menu_img.setImageIcon(user.getProfilePicture());
         tv_menu_name.setText(user.getName());
         tv_menu_mail.setText(user.getEmail());
     }

@@ -1,5 +1,8 @@
 package mmp.mymoneyplatform_mobile_app.pojo;
 
+import android.graphics.drawable.Icon;
+import android.widget.ImageView;
+
 import java.io.Serializable;
 import java.util.Arrays;
 
@@ -8,10 +11,8 @@ import java.util.Arrays;
  */
 public class User implements Serializable {
 
-    protected String name;
-    protected String email;
-    protected String password;
-
+    protected String name, email, password;
+    protected ImageView profilePicture;
 
     public User(String email, String password, String name) {
         this.email = email;
@@ -50,5 +51,13 @@ public class User implements Serializable {
                 ", name='" + name + '\'' +
                 ", password='" + password + '\'' +
                 '}';
+    }
+
+    public void setProfilePicture(ImageView profilePicture) {
+        this.profilePicture = profilePicture;
+    }
+
+    public ImageView getProfilePicture() {
+        return profilePicture;
     }
 }

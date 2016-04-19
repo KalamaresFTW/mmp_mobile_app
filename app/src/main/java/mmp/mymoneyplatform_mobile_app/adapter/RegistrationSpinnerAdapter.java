@@ -44,9 +44,8 @@ public class RegistrationSpinnerAdapter {
 
         ArrayAdapter<SpinnerData> adapter = new ArrayAdapter<>(c, android.R.layout.simple_list_item_1, paymentFrecuencyList);
         mPaymentFrecuencySpinner.setAdapter(adapter);
-        mPaymentFrecuencySpinner.setPrompt("Title");
+        mPaymentFrecuencySpinner.setPrompt("@string/reg_title_paymentFrecuency_dpinner");
     }
-
 
     private void loadLegionData(Spinner mRegionSpinner) {
         //We have to fill the spinner with the data recived from de database by the API
