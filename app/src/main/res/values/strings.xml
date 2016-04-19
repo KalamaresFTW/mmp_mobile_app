@@ -71,4 +71,10 @@
     <string name="reg_confirm_password">Confirm Password</string>
     <string name="reg_dateofbirth">Date of birth</string>
     <string name="reg_title_paymentFrecuency_spinner">Payment Frecuency</string>
+    <string name="title_activity_profile">Profile</string>
+
+   <!-- Profile Activity Strings -->
+    <string name="profile_name">Name</string>
+    <string name="profile_email">Email</string>
+    <string name="profile_dateofbirth">Date of Birth</string>
 </resources>

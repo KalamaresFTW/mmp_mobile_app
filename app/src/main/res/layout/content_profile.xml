@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="mmp.mymoneyplatform_mobile_app.ProfileActivity"
+    tools:showIn="@layout/activity_profile">
+
+    <!-- Header Layout -->
+    <LinearLayout
+        android:id="@+id/lay_profile_header"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/nav_header_height"
+        android:background="@drawable/side_nav_bar"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark">
+
+        <ImageView
+            android:id="@+id/iv_profile_img"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@android:drawable/sym_def_app_icon" />
+
+    </LinearLayout>
+
+    <!-- Name Layout -->
+    <LinearLayout
+        android:id="@+id/lay_profile_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/profile_vertical_size"
+        android:layout_marginLeft="@dimen/profile_horizontal_size"
+        android:layout_marginRight="@dimen/profile_horizontal_size"
+        android:layout_below="@+id/lay_profile_header">
+
+        <TextView
+            android:id="@+id/tv_profile_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/nav_header_vertical_spacing"
+            android:text="Name"
+            android:textSize="@dimen/profile_text_size"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+        //TODO: hacer que esta puta mierda se alinee a la derecha
+        <TextView
+            android:id="@+id/tv_profile_name_entry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/nav_header_vertical_spacing"
+            android:text="Nacho Sines"
+            android:textSize="@dimen/profile_text_size"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+    </LinearLayout>
+
+    <!-- Email Layout -->
+    <LinearLayout
+        android:id="@+id/lay_profile_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/profile_vertical_size"
+        android:layout_marginLeft="@dimen/profile_horizontal_size"
+        android:layout_marginRight="@dimen/profile_horizontal_size"
+        android:layout_below="@+id/lay_profile_name">
+
+        <TextView
+            android:id="@+id/tv_profile_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/nav_header_vertical_spacing"
+            android:text="Email"
+            android:textSize="@dimen/profile_text_size"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+    </LinearLayout>
+
+</RelativeLayout>
