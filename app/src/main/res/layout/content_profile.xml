@@ -59,13 +59,14 @@
                     android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                     android:textSize="@dimen/profile_text_size" />
 
-                <EditText
+                <TextView
                     android:id="@+id/et_profile_email_entry"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:paddingTop="@dimen/nav_header_vertical_spacing"
-                    android:text="Email@email.com"
+                    android:focusable="false"
+                    android:background="@null"
                     android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                     android:textSize="@dimen/profile_text_size" />
 

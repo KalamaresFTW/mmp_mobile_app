@@ -16,7 +16,8 @@ import mmp.mymoneyplatform_mobile_app.util.FontsOverride;
 public class ProfileActivity extends AppCompatActivity {
 
     private Button mModifySaveButton;
-    private EditText mNameView, mBirthdayView;
+    private EditText mNameView, mBirthdayView, mRegionSpinner, mPaymentSpinner;
+    //Saving the default background Drawable
     private Drawable oldBackground;
 
     @Override
@@ -43,8 +44,15 @@ public class ProfileActivity extends AppCompatActivity {
         });
         mNameView = (EditText) findViewById(R.id.et_profile_name_entry);
         oldBackground = mNameView.getBackground();
+        mBirthdayView = (EditText) findViewById(R.id.et_profile_birthday_entry);
+        mRegionSpinner = (EditText) findViewById(R.id.et_profile_region_entry);
+        mPaymentSpinner = (EditText) findViewById(R.id.et_profile_payment_entry);
+
+        loadProfileData();
         disableEdition();
     }
+
+    public void loadProfileData(){}
 
     public void onModifySaveButtoClicked() {
         if (mModifySaveButton.getText().equals(getString(R.string.profile_button_modify))) {
@@ -57,12 +65,20 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
     public void enableEdition() {
-        mNameView.setFocusable(true);
+        mNameView.setFocusableInTouchMode(true);
         mNameView.setBackground(oldBackground);
+        mRegionSpinner.setFocusableInTouchMode(true);
+        mRegionSpinner.setBackground(oldBackground);
+        mPaymentSpinner.setFocusableInTouchMode(true);
+        mPaymentSpinner.setBackground(oldBackground);
     }
 
     public void disableEdition() {
-        mNameView.setFocusable(false);
+        mNameView.setFocusableInTouchMode(false);
         mNameView.setBackground(null);
+        mRegionSpinner.setFocusableInTouchMode(false);
+        mRegionSpinner.setBackground(null);
+        mPaymentSpinner.setFocusableInTouchMode(false);
+        mPaymentSpinner.setBackground(null);
     }
 }
