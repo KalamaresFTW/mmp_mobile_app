@@ -81,8 +81,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     @SuppressWarnings("deprecation")
     public void setDate(View view) {
         showDialog(999);
-        Toast.makeText(getApplicationContext(), "Calendar", Toast.LENGTH_SHORT)
-                .show();
     }
 
     @Override
