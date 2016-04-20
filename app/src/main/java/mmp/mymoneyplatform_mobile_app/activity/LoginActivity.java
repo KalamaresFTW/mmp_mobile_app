@@ -374,7 +374,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 } catch (MalformedURLException ex) {
                     System.err.println("Error:" + ex.getMessage());
                 }
-                System.out.println(url);
 
                 HttpURLConnection urlConnection;
                 if (url != null) {
