@@ -63,17 +63,7 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
     private void loadProfileData() {
-        ArrayList<String> regions = new ArrayList<>();
-        regions.add(0, "Ireland");
-        regions.add(1, "United Kingdom");
-        mRegionSpinner.setAdapter(new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_list_item_1, regions));
-        mRegionSpinner.setSelection(0);
 
-        ArrayList<String> frecuencies = new ArrayList<>();
-        frecuencies.add(0, "Weekly");
-        frecuencies.add(1, "Monthly");
-        mPaymentSpinner.setAdapter(new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_list_item_1, frecuencies));
-        mPaymentSpinner.setSelection(0);
     }
 
     public void onModifySaveButtonClicked() {
