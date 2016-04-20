@@ -91,10 +91,6 @@ public class ProfileActivity extends AppCompatActivity {
         mNameView.setBackground(oldBackgroundView);
         mBirthdayView.setFocusableInTouchMode(true);
         mBirthdayView.setBackground(oldBackgroundView);
-        mRegionSpinner.setFocusableInTouchMode(true);
-        mRegionSpinner.setBackground(oldBackgroundSpinner);
-        mPaymentSpinner.setFocusableInTouchMode(true);
-        mPaymentSpinner.setBackground(oldBackgroundSpinner);
     }
 
     public void disableEdition() {
