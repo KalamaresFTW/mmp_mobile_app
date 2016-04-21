@@ -194,10 +194,11 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         @Override
         protected void onPostExecute(Void aVoid) {
             ArrayAdapter<FrecuencyData> adapter = new ArrayAdapter<>(getApplicationContext(),
-                    android.R.layout.simple_list_item_1, frecuencyData);
+                    R.layout.my_item_spinner, frecuencyData);
             mPaymentFrecuencySpinner.setAdapter(adapter);
         }
     }
+
     class RegionDataLoader extends AsyncTask<Void, Void, Void> {
 
         private ArrayList<RegionData> countryList = new ArrayList<>();
@@ -256,7 +257,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         @Override
         protected void onPostExecute(Void aVoid) {
             ArrayAdapter<RegionData> adapter = new ArrayAdapter<>(getApplicationContext(),
-                    android.R.layout.simple_list_item_1, countryList);
+                    R.layout.my_item_spinner, countryList);
             mRegionSpinner.setAdapter(adapter);
         }
     }

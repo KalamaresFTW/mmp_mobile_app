@@ -91,13 +91,6 @@ public class ProfileActivity extends AppCompatActivity {
         mEmailView.setText(user.getEmail());            //Setting the email data on the email editText
         mNameView.setText(user.getName());              //Setting the name data on the name editText
         mBirthdayView.setText("26/04/1996");            //Setting the birthday data on the birthday editText
-
-        ArrayList<RegionData> regionArray = new ArrayList<>();
-        regionArray.add(new RegionData(1, "Ireland"));
-        regionArray.add(new RegionData(2, "United Kingdom"));
-        ArrayAdapter<RegionData> adapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_list_item_1, regionArray);
-        mRegionSpinner.setAdapter(adapter);
-        mRegionSpinner.setSelection(0);
     }
 
     public void onModifySaveButtonClicked() {
