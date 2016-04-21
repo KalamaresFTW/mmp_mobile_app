@@ -251,7 +251,6 @@
                 android:text="@string/profile_button_modify"
                 android:textColor="@color/colorWhite" />
 
-
         </RelativeLayout>
 
     </ScrollView>

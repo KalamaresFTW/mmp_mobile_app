@@ -28,8 +28,10 @@ public class SpinnerAdapter {
     }
 
     public void loadData(Spinner mPaymentFrecuencySpinner, Spinner mRegionSpinner) {
+
         loadPaymentFrecuencyData(mPaymentFrecuencySpinner);
         loadLegionData(mRegionSpinner);
+
     }
 
     private void loadPaymentFrecuencyData(Spinner mPaymentFrecuencySpinner) {

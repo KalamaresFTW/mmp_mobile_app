@@ -3,6 +3,7 @@ package mmp.mymoneyplatform_mobile_app.activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -14,24 +15,49 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLEncoder;
+import java.util.ArrayList;
 import java.util.Calendar;
 
 import mmp.mymoneyplatform_mobile_app.R;
 import mmp.mymoneyplatform_mobile_app.adapter.SpinnerAdapter;
+import mmp.mymoneyplatform_mobile_app.net.HTTPTasks;
+import mmp.mymoneyplatform_mobile_app.net.ServiceTags;
+import mmp.mymoneyplatform_mobile_app.net.ServiceURL;
+import mmp.mymoneyplatform_mobile_app.pojo.RegionData;
+import mmp.mymoneyplatform_mobile_app.pojo.UserData;
 import mmp.mymoneyplatform_mobile_app.util.FontsOverride;
 
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private DatePicker datePicker;
     private Calendar calendar;
     private EditText mBirthDate, mNameView, mPasswordView, mPasswordConfirmView;
     private AutoCompleteTextView mEmailView;
     private Button mRegisterButton;
     private Spinner mPaymentFrecuencySpinner, mRegionSpinner;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        HTTPTasks tasks = new HTTPTasks();
+        ArrayList<RegionData> regions;
+        regions = tasks.loadRegionData();
+
+        for (int i = 0; i < regions.size(); i++) {
+            System.out.println(regions.get(i));
+        }
 
         //Set the new font
         FontsOverride.setDefaultFont(this, "MONOSPACE", "fonts/Raleway-Regular.ttf");
@@ -85,7 +111,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
     @Override
     protected Dialog onCreateDialog(int id) {
-        // TODO Auto-generated method stub
         if (id == 999) {
             return new DatePickerDialog(this, myDateListener, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
         }
@@ -95,10 +120,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     private DatePickerDialog.OnDateSetListener myDateListener = new DatePickerDialog.OnDateSetListener() {
         @Override
         public void onDateSet(DatePicker arg0, int arg1, int arg2, int arg3) {
-            // TODO Auto-generated method stub
-            // arg1 = year
-            // arg2 = month
-            // arg3 = day
             showDate(arg1, arg2 + 1, arg3);
         }
     };
