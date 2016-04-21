@@ -4,7 +4,6 @@ import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -19,30 +18,13 @@ import android.widget.Spinner;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Type;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Calendar;
 
 import mmp.mymoneyplatform_mobile_app.R;
-import mmp.mymoneyplatform_mobile_app.adapter.SpinnerAdapter;
-import mmp.mymoneyplatform_mobile_app.net.ServiceTags;
-import mmp.mymoneyplatform_mobile_app.net.ServiceURL;
 import mmp.mymoneyplatform_mobile_app.pojo.FrecuencyData;
 import mmp.mymoneyplatform_mobile_app.pojo.RegionData;
-import mmp.mymoneyplatform_mobile_app.pojo.UserData;
 import mmp.mymoneyplatform_mobile_app.util.FontsOverride;
 
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
@@ -66,14 +48,11 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         Type regionDataType = new TypeToken<ArrayList<RegionData>>() {
         }.getType();
         regionList = gson.fromJson(jsonCountryList, regionDataType);
-        for (RegionData region : regionList) System.out.println(region);
 
         String jsonPaymentFrequencyList = mPrefs.getString("frequencyList", "");
         Type frequencyDataType = new TypeToken<ArrayList<FrecuencyData>>() {
         }.getType();
         paymentFrequencyList = gson.fromJson(jsonPaymentFrequencyList, frequencyDataType);
-        for (FrecuencyData frecuency : paymentFrequencyList) System.out.println(frecuency);
-
 
         //Set the new font
         FontsOverride.setDefaultFont(this, "MONOSPACE", "fonts/Raleway-Regular.ttf");
@@ -103,10 +82,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
         mPaymentFrecuencySpinner = (Spinner) findViewById(R.id.sp_payment_frecuency);
         mPaymentFrecuencySpinner.setAdapter(new ArrayAdapter<>(this, R.layout.my_item_spinner, paymentFrequencyList));
-
-
-        //Load the dummy data for the spinners. In the future this data will be send by the database
-        //SpinnerAdapter.getInstance(this).loadData(mPaymentFrecuencySpinner, mRegionSpinner);
     }
 
     @Override

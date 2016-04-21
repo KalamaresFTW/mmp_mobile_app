@@ -21,6 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -31,6 +32,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
+import java.lang.reflect.Type;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -52,7 +54,7 @@ public class ProfileActivity extends AppCompatActivity {
     private Button mModifySaveButton;
     private TextView mEmailView;
     private EditText mNameView, mBirthdayView;
-    private Spinner mRegionSpinner, mPaymentSpinner;
+    private Spinner mRegionSpinner, mPaymentFrecuencySpinner;
     //Saving the default background Drawable
     private Drawable oldBackgroundView, oldBackgroundSpinner;
     //User data
@@ -62,9 +64,24 @@ public class ProfileActivity extends AppCompatActivity {
     //State Switcher (Modify mode or block mode)
     private boolean isModifying = false;
 
+    private ArrayList<RegionData> regionList;
+    private ArrayList<FrecuencyData> paymentFrequencyList;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        SharedPreferences mPrefs = getSharedPreferences("prefs", MODE_PRIVATE);
+        Gson gson = new Gson();
+        String jsonCountryList = mPrefs.getString("countryList", "");
+        Type regionDataType = new TypeToken<ArrayList<RegionData>>() {
+        }.getType();
+        regionList = gson.fromJson(jsonCountryList, regionDataType);
+
+        String jsonPaymentFrequencyList = mPrefs.getString("frequencyList", "");
+        Type frequencyDataType = new TypeToken<ArrayList<FrecuencyData>>() {
+        }.getType();
+        paymentFrequencyList = gson.fromJson(jsonPaymentFrequencyList, frequencyDataType);
 
         //Set the new font
         FontsOverride.setDefaultFont(this, "MONOSPACE", "fonts/Raleway-Regular.ttf");
@@ -88,8 +105,12 @@ public class ProfileActivity extends AppCompatActivity {
         mEmailView = (TextView) findViewById(R.id.tv_profile_email_entry);
         mNameView = (EditText) findViewById(R.id.et_profile_name_entry);
         mBirthdayView = (EditText) findViewById(R.id.et_profile_birthday_entry);
+
         mRegionSpinner = (Spinner) findViewById(R.id.sp_profile_region_entry);
-        mPaymentSpinner = (Spinner) findViewById(R.id.sp_profile_payment_entry);
+        mRegionSpinner.setAdapter(new ArrayAdapter<>(this, R.layout.my_item_spinner,regionList));
+
+        mPaymentFrecuencySpinner = (Spinner) findViewById(R.id.sp_profile_payment_entry);
+        mPaymentFrecuencySpinner.setAdapter(new ArrayAdapter<>(this, R.layout.my_item_spinner, paymentFrequencyList));
 
         calendar = Calendar.getInstance();
 
