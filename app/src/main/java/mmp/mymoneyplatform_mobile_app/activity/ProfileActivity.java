@@ -103,6 +103,12 @@ public class ProfileActivity extends AppCompatActivity {
         mNameView.setBackground(oldBackgroundView);
         mBirthdayView.setFocusableInTouchMode(true);
         mBirthdayView.setBackground(oldBackgroundView);
+        mBirthdayView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setDate(v);
+            }
+        });
     }
 
     public void disableEdition() {
@@ -110,6 +116,7 @@ public class ProfileActivity extends AppCompatActivity {
         mNameView.setBackground(null);
         mBirthdayView.setFocusableInTouchMode(false);
         mBirthdayView.setBackground(null);
+        mBirthdayView.setOnClickListener(null);
     }
 
     @SuppressWarnings("deprecation")
