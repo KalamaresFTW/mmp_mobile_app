@@ -3,6 +3,7 @@ package mmp.mymoneyplatform_mobile_app.activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.SharedPreferences;
+import android.graphics.Region;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -94,7 +95,8 @@ public class ProfileActivity extends AppCompatActivity {
         ArrayList<RegionData> regionArray = new ArrayList<>();
         regionArray.add(new RegionData(1, "Ireland"));
         regionArray.add(new RegionData(2, "United Kingdom"));
-        mRegionSpinner.setAdapter(new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_list_item_1, regionArray));
+        ArrayAdapter<RegionData> adapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_list_item_1, regionArray);
+        mRegionSpinner.setAdapter(adapter);
         mRegionSpinner.setSelection(0);
     }
 
