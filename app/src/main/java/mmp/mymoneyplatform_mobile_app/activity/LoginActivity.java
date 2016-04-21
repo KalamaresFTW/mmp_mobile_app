@@ -32,11 +32,13 @@ import android.widget.TextView;
 
 import com.google.gson.Gson;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
@@ -51,6 +53,8 @@ import java.util.regex.Pattern;
 import mmp.mymoneyplatform_mobile_app.R;
 import mmp.mymoneyplatform_mobile_app.net.ServiceTags;
 import mmp.mymoneyplatform_mobile_app.net.ServiceURL;
+import mmp.mymoneyplatform_mobile_app.pojo.FrecuencyData;
+import mmp.mymoneyplatform_mobile_app.pojo.RegionData;
 import mmp.mymoneyplatform_mobile_app.pojo.UserData;
 import mmp.mymoneyplatform_mobile_app.util.FontsOverride;
 
@@ -77,6 +81,11 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
      */
     private RetrieveUserTask mRetrieveUserData;
 
+
+    private PaidFrequencyLoader mPaidFrequencyLoaderTask;
+    private RegionDataLoader mRegionDataLoaderTask;
+
+
     // UI references.
     private AutoCompleteTextView mEmailView;
     private EditText mPasswordView;
@@ -88,6 +97,12 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         super.onCreate(savedInstanceState);
         //Set the new font
         FontsOverride.setDefaultFont(this, "MONOSPACE", "fonts/Raleway-Regular.ttf");
+
+        mPaidFrequencyLoaderTask = new PaidFrequencyLoader();
+        mPaidFrequencyLoaderTask.execute((Void) null);
+
+        mRegionDataLoaderTask = new RegionDataLoader();
+        mRegionDataLoaderTask.execute((Void) null);
 
         //Set the layout
         setContentView(R.layout.activity_login);
@@ -454,6 +469,140 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         protected void onCancelled() {
             mRetrieveUserData = null;
             showProgress(false);
+        }
+    }
+
+    class PaidFrequencyLoader extends AsyncTask<Void, Void, Void> {
+
+        private ArrayList<FrecuencyData> frecuencyData = new ArrayList<>();
+
+        @Override
+        protected Void doInBackground(Void... params) {
+            String param;
+            URL url = null;
+            try {
+                param = "entityName=" + URLEncoder.encode(ServiceURL.URL_PARAM_PAYPERIOD, "UTF-8");
+                url = new URL(ServiceURL.DEFAULT + "?" + param);
+            } catch (MalformedURLException | UnsupportedEncodingException ex) {
+                ex.printStackTrace();
+            }
+            System.out.println(url);
+
+            HttpURLConnection urlConnection = null;
+            try {
+                urlConnection = (HttpURLConnection) url.openConnection();
+            } catch (IOException ex) {
+                System.err.println("Error: " + ex.getMessage());
+            }
+            try {
+                InputStream inputStream = urlConnection.getInputStream();
+                InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
+                BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+                StringBuilder response = new StringBuilder();
+                String partialResponse;
+                while ((partialResponse = bufferedReader.readLine()) != null) {
+                    String cleanString = partialResponse.replaceAll("(\\\\r\\\\n|\\\\n|\\\\)", "");
+                    response.append(cleanString);
+                }
+                bufferedReader.close();
+                String json = response.toString();
+                JSONObject JSONResponse;
+                JSONArray JSONArray;
+                try {
+                    JSONArray = new JSONArray(json.substring(json.indexOf("["), json.lastIndexOf("]") + 1));
+                    for (int i = 0; i < JSONArray.length(); i++) {
+                        JSONResponse = JSONArray.getJSONObject(i);
+                        frecuencyData.add(new FrecuencyData(
+                                JSONResponse.getInt(ServiceTags.PAYPERIODID_TAG),
+                                JSONResponse.getString(ServiceTags.PAYPERIOD_TAG)
+                        ));
+                    }
+                } catch (JSONException e) {
+                    System.err.println("Error: " + e.getMessage());
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            } finally {
+                return null;
+            }
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            SharedPreferences sharedPreferences = getSharedPreferences("prefs", MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            Gson gson = new Gson();
+            String json = gson.toJson(frecuencyData);
+            System.out.println(json);
+            editor.putString("frequencyList", json);
+            editor.commit();
+        }
+    }
+
+    class RegionDataLoader extends AsyncTask<Void, Void, Void> {
+
+        private ArrayList<RegionData> countryList = new ArrayList<>();
+
+        @Override
+        protected Void doInBackground(Void... params) {
+            String param;
+            URL url = null;
+            try {
+                param = "entityName=" + URLEncoder.encode(ServiceURL.URL_PARAM_COUNTRY, "UTF-8");
+                url = new URL(ServiceURL.DEFAULT + "?" + param);
+            } catch (MalformedURLException | UnsupportedEncodingException ex) {
+                ex.printStackTrace();
+            }
+            System.out.println(url);
+
+            HttpURLConnection urlConnection = null;
+            try {
+                urlConnection = (HttpURLConnection) url.openConnection();
+            } catch (IOException ex) {
+                System.err.println("Error: " + ex.getMessage());
+            }
+            try {
+                InputStream inputStream = urlConnection.getInputStream();
+                InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
+                BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+                StringBuilder response = new StringBuilder();
+                String partialResponse;
+                while ((partialResponse = bufferedReader.readLine()) != null) {
+                    String cleanString = partialResponse.replaceAll("(\\\\r\\\\n|\\\\n|\\\\)", "");
+                    response.append(cleanString);
+                }
+                bufferedReader.close();
+                String json = response.toString();
+                JSONObject JSONResponse;
+                JSONArray JSONArray;
+                try {
+                    JSONArray = new JSONArray(json.substring(json.indexOf("["), json.lastIndexOf("]") + 1));
+                    for (int i = 0; i < JSONArray.length(); i++) {
+                        JSONResponse = JSONArray.getJSONObject(i);
+                        countryList.add(new RegionData(
+                                JSONResponse.getInt(ServiceTags.JURISDICTIONID_TAG),
+                                JSONResponse.getString(ServiceTags.JURISDICTION_TAG)
+                        ));
+                    }
+                } catch (JSONException e) {
+                    System.err.println("Error: " + e.getMessage());
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            } finally {
+                return null;
+            }
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            SharedPreferences sharedPreferences = getSharedPreferences("prefs", MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            Gson gson = new Gson();
+            String json = gson.toJson(countryList);
+            System.out.println(json);
+            editor.putString("countryList", json);
+            editor.commit();
         }
     }
 }

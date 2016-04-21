@@ -3,6 +3,7 @@ package mmp.mymoneyplatform_mobile_app.activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -15,6 +16,9 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -24,6 +28,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
+import java.lang.reflect.Type;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -37,6 +42,7 @@ import mmp.mymoneyplatform_mobile_app.net.ServiceTags;
 import mmp.mymoneyplatform_mobile_app.net.ServiceURL;
 import mmp.mymoneyplatform_mobile_app.pojo.FrecuencyData;
 import mmp.mymoneyplatform_mobile_app.pojo.RegionData;
+import mmp.mymoneyplatform_mobile_app.pojo.UserData;
 import mmp.mymoneyplatform_mobile_app.util.FontsOverride;
 
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
@@ -47,18 +53,27 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     private Button mRegisterButton;
     private Spinner mPaymentFrecuencySpinner, mRegionSpinner;
 
-    private PaidFrequencyLoader mPaidFrequencyLoaderTask;
-    private RegionDataLoader mRegionDataLoaderTask;
+    private ArrayList<RegionData> regionList;
+    private ArrayList<FrecuencyData> paymentFrequencyList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        mPaidFrequencyLoaderTask = new PaidFrequencyLoader();
-        mPaidFrequencyLoaderTask.execute((Void) null);
+        SharedPreferences mPrefs = getSharedPreferences("prefs", MODE_PRIVATE);
+        Gson gson = new Gson();
+        String jsonCountryList = mPrefs.getString("countryList", "");
+        Type regionDataType = new TypeToken<ArrayList<RegionData>>() {
+        }.getType();
+        regionList = gson.fromJson(jsonCountryList, regionDataType);
+        for (RegionData region : regionList) System.out.println(region);
 
-        mRegionDataLoaderTask = new RegionDataLoader();
-        mRegionDataLoaderTask.execute((Void) null);
+        String jsonPaymentFrequencyList = mPrefs.getString("frequencyList", "");
+        Type frequencyDataType = new TypeToken<ArrayList<FrecuencyData>>() {
+        }.getType();
+        paymentFrequencyList = gson.fromJson(jsonPaymentFrequencyList, frequencyDataType);
+        for (FrecuencyData frecuency : paymentFrequencyList) System.out.println(frecuency);
+
 
         //Set the new font
         FontsOverride.setDefaultFont(this, "MONOSPACE", "fonts/Raleway-Regular.ttf");
@@ -83,10 +98,15 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         mBirthDate = (EditText) findViewById(R.id.reg_dateofbirth);
         calendar = Calendar.getInstance();
 
-        mPaymentFrecuencySpinner = (Spinner) findViewById(R.id.sp_payment_frecuency);
         mRegionSpinner = (Spinner) findViewById(R.id.sp_region);
+        mRegionSpinner.setAdapter(new ArrayAdapter<>(this, R.layout.my_item_spinner,regionList));
+
+        mPaymentFrecuencySpinner = (Spinner) findViewById(R.id.sp_payment_frecuency);
+        mPaymentFrecuencySpinner.setAdapter(new ArrayAdapter<>(this, R.layout.my_item_spinner, paymentFrequencyList));
+
+
         //Load the dummy data for the spinners. In the future this data will be send by the database
-        SpinnerAdapter.getInstance(this).loadData(mPaymentFrecuencySpinner, mRegionSpinner);
+        //SpinnerAdapter.getInstance(this).loadData(mPaymentFrecuencySpinner, mRegionSpinner);
     }
 
     @Override
@@ -134,131 +154,5 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     public void onBackPressed() {
         Intent i = new Intent(getApplicationContext(), LoginActivity.class);
         startActivity(i);
-    }
-
-    class PaidFrequencyLoader extends AsyncTask<Void, Void, Void> {
-
-        private ArrayList<FrecuencyData> frecuencyData = new ArrayList<>();
-
-        @Override
-        protected Void doInBackground(Void... params) {
-            String param;
-            URL url = null;
-            try {
-                param = "entityName=" + URLEncoder.encode(ServiceURL.URL_PARAM_PAYPERIOD, "UTF-8");
-                url = new URL(ServiceURL.DEFAULT + "?" + param);
-            } catch (MalformedURLException | UnsupportedEncodingException ex) {
-                ex.printStackTrace();
-            }
-            System.out.println(url);
-
-            HttpURLConnection urlConnection = null;
-            try {
-                urlConnection = (HttpURLConnection) url.openConnection();
-            } catch (IOException ex) {
-                System.err.println("Error: " + ex.getMessage());
-            }
-            try {
-                InputStream inputStream = urlConnection.getInputStream();
-                InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
-                BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
-                StringBuilder response = new StringBuilder();
-                String partialResponse;
-                while ((partialResponse = bufferedReader.readLine()) != null) {
-                    String cleanString = partialResponse.replaceAll("(\\\\r\\\\n|\\\\n|\\\\)", "");
-                    response.append(cleanString);
-                }
-                bufferedReader.close();
-                String json = response.toString();
-                JSONObject JSONResponse;
-                JSONArray JSONArray;
-                try {
-                    JSONArray = new JSONArray(json.substring(json.indexOf("["), json.lastIndexOf("]") + 1));
-                    for (int i = 0; i < JSONArray.length(); i++) {
-                        JSONResponse = JSONArray.getJSONObject(i);
-                        frecuencyData.add(new FrecuencyData(
-                                JSONResponse.getInt(ServiceTags.PAYPERIODID_TAG),
-                                JSONResponse.getString(ServiceTags.PAYPERIOD_TAG)
-                        ));
-                    }
-                } catch (JSONException e) {
-                    System.err.println("Error: " + e.getMessage());
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            } finally {
-                return null;
-            }
-        }
-
-        @Override
-        protected void onPostExecute(Void aVoid) {
-            ArrayAdapter<FrecuencyData> adapter = new ArrayAdapter<>(getApplicationContext(),
-                    R.layout.my_item_spinner, frecuencyData);
-            mPaymentFrecuencySpinner.setAdapter(adapter);
-        }
-    }
-
-    class RegionDataLoader extends AsyncTask<Void, Void, Void> {
-
-        private ArrayList<RegionData> countryList = new ArrayList<>();
-
-        @Override
-        protected Void doInBackground(Void... params) {
-            String param;
-            URL url = null;
-            try {
-                param = "entityName=" + URLEncoder.encode(ServiceURL.URL_PARAM_COUNTRY, "UTF-8");
-                url = new URL(ServiceURL.DEFAULT + "?" + param);
-            } catch (MalformedURLException | UnsupportedEncodingException ex) {
-                ex.printStackTrace();
-            }
-            System.out.println(url);
-
-            HttpURLConnection urlConnection = null;
-            try {
-                urlConnection = (HttpURLConnection) url.openConnection();
-            } catch (IOException ex) {
-                System.err.println("Error: " + ex.getMessage());
-            }
-            try {
-                InputStream inputStream = urlConnection.getInputStream();
-                InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
-                BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
-                StringBuilder response = new StringBuilder();
-                String partialResponse;
-                while ((partialResponse = bufferedReader.readLine()) != null) {
-                    String cleanString = partialResponse.replaceAll("(\\\\r\\\\n|\\\\n|\\\\)", "");
-                    response.append(cleanString);
-                }
-                bufferedReader.close();
-                String json = response.toString();
-                JSONObject JSONResponse;
-                JSONArray JSONArray;
-                try {
-                    JSONArray = new JSONArray(json.substring(json.indexOf("["), json.lastIndexOf("]") + 1));
-                    for (int i = 0; i < JSONArray.length(); i++) {
-                        JSONResponse = JSONArray.getJSONObject(i);
-                        countryList.add(new RegionData(
-                                JSONResponse.getInt(ServiceTags.JURISDICTIONID_TAG),
-                                JSONResponse.getString(ServiceTags.JURISDICTION_TAG)
-                        ));
-                    }
-                } catch (JSONException e) {
-                    System.err.println("Error: " + e.getMessage());
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            } finally {
-                return null;
-            }
-        }
-
-        @Override
-        protected void onPostExecute(Void aVoid) {
-            ArrayAdapter<RegionData> adapter = new ArrayAdapter<>(getApplicationContext(),
-                    R.layout.my_item_spinner, countryList);
-            mRegionSpinner.setAdapter(adapter);
-        }
     }
 }
