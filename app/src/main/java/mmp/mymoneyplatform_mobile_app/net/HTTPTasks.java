@@ -2,6 +2,8 @@ package mmp.mymoneyplatform_mobile_app.net;
 
 import android.os.AsyncTask;
 
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
@@ -56,12 +58,27 @@ public class HTTPTasks {
                     String cleanString = partialResponse.replaceAll("(\\\\r\\\\n|\\\\n|\\\\)", "");
                     response.append(cleanString);
                 }
+
                 bufferedReader.close();
 
-                System.out.println(response.toString());
+                System.out.println("Response: " + response.toString());
 
-                JSONObject json = new JSONObject(response.toString());
+                String json = response.toString();
 
+                JSONObject JSONResponse;
+                JSONArray JSONArray;
+                try {
+                    JSONArray = new JSONArray(json.substring(json.indexOf("["), json.lastIndexOf("]") + 1));
+                    for (int i = 0; i < JSONArray.length(); i++) {
+                        JSONResponse = JSONArray.getJSONObject(i);
+                        countryList.add(new RegionData(
+                                JSONResponse.getInt(ServiceTags.JURISDICTIONID_TAG),
+                                JSONResponse.getString(ServiceTags.JURISDICTION_TAG)
+                        ));
+                    }
+                } catch (JSONException e) {
+                    System.err.println("Error: " + e.getMessage());
+                }
             } catch (IOException e) {
                 e.printStackTrace();
             } finally {
