@@ -58,13 +58,8 @@ public class HTTPTasks {
                     String cleanString = partialResponse.replaceAll("(\\\\r\\\\n|\\\\n|\\\\)", "");
                     response.append(cleanString);
                 }
-
                 bufferedReader.close();
-
-                System.out.println("Response: " + response.toString());
-
                 String json = response.toString();
-
                 JSONObject JSONResponse;
                 JSONArray JSONArray;
                 try {
@@ -99,9 +94,70 @@ public class HTTPTasks {
     }
 
     class PaidFrequencyLoader extends AsyncTask<Void, Void, Void> {
+
         @Override
         protected Void doInBackground(Void... params) {
-            return null;
+            String param;
+            URL url = null;
+            try {
+                param = "entityName=" + URLEncoder.encode(ServiceURL.URL_PARAM_PAYPERIOD, "UTF-8");
+                url = new URL(ServiceURL.DEFAULT + "?" + param);
+            } catch (MalformedURLException | UnsupportedEncodingException ex) {
+                ex.printStackTrace();
+            }
+            System.out.println(url);
+
+            HttpURLConnection urlConnection = null;
+            try {
+                urlConnection = (HttpURLConnection) url.openConnection();
+            } catch (IOException ex) {
+                System.err.println("Error: " + ex.getMessage());
+            }
+            try {
+                InputStream inputStream = urlConnection.getInputStream();
+                InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
+                BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+                StringBuilder response = new StringBuilder();
+                String partialResponse;
+                while ((partialResponse = bufferedReader.readLine()) != null) {
+                    String cleanString = partialResponse.replaceAll("(\\\\r\\\\n|\\\\n|\\\\)", "");
+                    response.append(cleanString);
+                }
+                bufferedReader.close();
+                String json = response.toString();
+                JSONObject JSONResponse;
+                JSONArray JSONArray;
+                try {
+                    JSONArray = new JSONArray(json.substring(json.indexOf("["), json.lastIndexOf("]") + 1));
+                    for (int i = 0; i < JSONArray.length(); i++) {
+                        JSONResponse = JSONArray.getJSONObject(i);
+                        frecuencyData.add(new FrecuencyData(
+                                JSONResponse.getInt(ServiceTags.PAYPERIODID_TAG),
+                                JSONResponse.getString(ServiceTags.PAYPERIOD_TAG)
+                        ));
+                    }
+                } catch (JSONException e) {
+                    System.err.println("Error: " + e.getMessage());
+                }
+                for (FrecuencyData frequency : frecuencyData) {
+                    System.out.println(frequency);
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            } finally {
+                return null;
+            }
         }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+
+        }
+    }
+
+    public ArrayList<FrecuencyData> loadPayFrequencyData() {
+        PaidFrequencyLoader mPaidFrequencyLoader = new PaidFrequencyLoader();
+        mPaidFrequencyLoader.execute((Void) null);
+        return frecuencyData;
     }
 }

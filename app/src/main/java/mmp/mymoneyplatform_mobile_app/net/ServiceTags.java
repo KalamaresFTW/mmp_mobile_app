@@ -15,9 +15,13 @@ public class ServiceTags {
     public static final String NAME_TAG = "Name";
 
     //Country tags
-    public static final String URL_PARAM_COUNTRY = "country";
     public static final String JURISDICTIONID_TAG = "JurisdictionID";
     public static final String JURISDICTION_TAG = "Jurisdiction";
+
+    //PayPeriod tags
+    public static final String PAYPERIODID_TAG = "PayPeriodID";
+    public static final String PAYPERIOD_TAG = "PayPeriod";
+
 
 
 }

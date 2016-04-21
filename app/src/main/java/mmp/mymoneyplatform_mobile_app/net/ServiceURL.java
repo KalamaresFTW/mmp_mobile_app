@@ -8,5 +8,6 @@ public class ServiceURL {
     public static final String ACCOUNT = REST_SERVICE_URL + "/Account";
     public static final String DEFAULT = REST_SERVICE_URL + "/Default";
     public static final String URL_PARAM_COUNTRY = "country";
+    public static final String URL_PARAM_PAYPERIOD = "payperiod";
 
 }
