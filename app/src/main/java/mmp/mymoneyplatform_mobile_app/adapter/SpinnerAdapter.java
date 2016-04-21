@@ -36,14 +36,14 @@ public class SpinnerAdapter {
 
     private void loadPaymentFrecuencyData(Spinner mPaymentFrecuencySpinner) {
         //We have to fill the spinner with the data recived from de database by the API
-        ArrayList<FrecuencyData> frecuencies = null;
+        ArrayList<FrecuencyData> frecuencies = new ArrayList<>();
         ArrayAdapter<FrecuencyData> frecuencyAdapter = new ArrayAdapter<FrecuencyData>(c, android.R.layout.simple_list_item_1, frecuencies);
         mPaymentFrecuencySpinner.setAdapter(frecuencyAdapter);
     }
 
     private void loadLegionData(Spinner mRegionSpinner) {
         //We have to fill the spinner with the data recived from de database by the API
-        ArrayList<FrecuencyData> regions = null;
+        ArrayList<FrecuencyData> regions = new ArrayList<>();
         ArrayAdapter<FrecuencyData> regionAdapter = new ArrayAdapter<FrecuencyData>(c, android.R.layout.simple_list_item_1, regions);
         mRegionSpinner.setAdapter(regionAdapter);
     }

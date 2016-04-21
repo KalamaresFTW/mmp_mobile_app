@@ -1,16 +1,12 @@
 package mmp.mymoneyplatform_mobile_app.net;
 
 import android.os.AsyncTask;
-import android.util.Log;
 
-import com.google.gson.Gson;
-
-import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
@@ -51,36 +47,24 @@ public class HTTPTasks {
                 System.err.println("Error: " + ex.getMessage());
             }
             try {
-                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
+                InputStream inputStream = urlConnection.getInputStream();
+                InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
+                BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
                 StringBuilder response = new StringBuilder();
                 String partialResponse;
                 while ((partialResponse = bufferedReader.readLine()) != null) {
-
-                    response.append(partialResponse);
+                    String cleanString = partialResponse.replaceAll("(\\\\r\\\\n|\\\\n|\\\\)", "");
+                    response.append(cleanString);
                 }
                 bufferedReader.close();
-                String string = new String(response);
-                System.out.println(string);
-                //TODO: make this shit work
-//                JSONObject JSONResponse;
-//                JSONArray regionArray;
-//                try {
-//                    JSONResponse = new JSONObject(response.toString());
-//                    regionArray = JSONResponse.getJSONArray(ServiceTags.JURISDICTION_TABLE);
-//                    for (int i = 0; i < regionArray.length(); i++) {
-//                        JSONObject regionObject = (JSONObject) regionArray.get(i);
-//                        RegionData country = new RegionData(
-//                                regionObject.getInt(ServiceTags.JURISDICTIONID_TAG),
-//                                regionObject.getString(ServiceTags.JURISDICTION_TAG));
-//                        countryList.add(country);
-//                    }
-//                } catch (JSONException ex) {
-//                    ex.printStackTrace();
-//                }
-                return null;
-                //This represents all the data contained in the JSON object from the sever.
+
+                System.out.println(response.toString());
+
+                JSONObject json = new JSONObject(response.toString());
+
             } catch (IOException e) {
                 e.printStackTrace();
+            } finally {
                 return null;
             }
         }

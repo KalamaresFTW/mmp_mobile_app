@@ -69,6 +69,8 @@ public class ProfileActivity extends AppCompatActivity {
         mRegionSpinner = (Spinner) findViewById(R.id.sp_profile_region_entry);
         mPaymentSpinner = (Spinner) findViewById(R.id.sp_profile_payment_entry);
 
+        calendar = Calendar.getInstance();
+
         oldBackgroundSpinner = mRegionSpinner.getBackground();
         oldBackgroundView = mNameView.getBackground();
 
@@ -109,6 +111,9 @@ public class ProfileActivity extends AppCompatActivity {
                 setDate(v);
             }
         });
+        mBirthdayView.setClickable(true);
+        mBirthdayView.setActivated(true);
+        mBirthdayView.setFocusable(true);
     }
 
     public void disableEdition() {
@@ -117,6 +122,9 @@ public class ProfileActivity extends AppCompatActivity {
         mBirthdayView.setFocusableInTouchMode(false);
         mBirthdayView.setBackground(null);
         mBirthdayView.setOnClickListener(null);
+        mBirthdayView.setClickable(false);
+        mBirthdayView.setActivated(false);
+        mBirthdayView.setFocusable(false);
     }
 
     @SuppressWarnings("deprecation")
@@ -149,7 +157,7 @@ public class ProfileActivity extends AppCompatActivity {
                 .append(month).append("/").append(year));
     }
 
-    public void sendDataToTheApiLel(){
+    public void sendDataToTheApiLel() {
         Toast.makeText(getApplicationContext(), "Lol as sido altamente trolliado xDDDDDDDD", Toast.LENGTH_LONG).show();
     }
 }
