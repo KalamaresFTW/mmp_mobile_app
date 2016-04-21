@@ -139,7 +139,7 @@ public class ProfileActivity extends AppCompatActivity {
         } else {
             isModifying = false;
             disableEdition();
-            sendDataToTheApiLel();
+            sendDataToTheApi();
         }
     }
 
@@ -157,7 +157,6 @@ public class ProfileActivity extends AppCompatActivity {
                 setDate(v);
             }
         });
-        //mBirthdayView.setClickable(true);
         mBirthdayView.setFocusable(true);
 
         mRegionSpinner.setFocusableInTouchMode(true);
@@ -173,7 +172,6 @@ public class ProfileActivity extends AppCompatActivity {
         mBirthdayView.setFocusableInTouchMode(false);
         mBirthdayView.setBackground(null);
         mBirthdayView.setOnClickListener(null);
-        //mBirthdayView.setClickable(false);
         mBirthdayView.setFocusable(false);
 
         mRegionSpinner.setFocusableInTouchMode(false);
@@ -211,8 +209,8 @@ public class ProfileActivity extends AppCompatActivity {
                 .append(month).append("/").append(year));
     }
 
-    public void sendDataToTheApiLel() {
-        Toast.makeText(getApplicationContext(), "Lol as sido altamente trolliado xDDDDDDDD", Toast.LENGTH_LONG).show();
+    public void sendDataToTheApi() {
+        Toast.makeText(getApplicationContext(), "Sending data to the API", Toast.LENGTH_LONG).show();
     }
 
 }
