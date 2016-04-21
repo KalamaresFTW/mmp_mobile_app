@@ -24,6 +24,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 import mmp.mymoneyplatform_mobile_app.R;
+import mmp.mymoneyplatform_mobile_app.pojo.RegionData;
 import mmp.mymoneyplatform_mobile_app.pojo.UserData;
 import mmp.mymoneyplatform_mobile_app.util.FontsOverride;
 
@@ -38,8 +39,10 @@ public class ProfileActivity extends AppCompatActivity {
     private Drawable oldBackgroundView, oldBackgroundSpinner;
     //User data
     private UserData user;
-    ///Calendar reference
+    //Calendar reference
     private Calendar calendar;
+    //State Switcher (Modify mode or block mode)
+    private boolean isModifying = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,27 +85,36 @@ public class ProfileActivity extends AppCompatActivity {
         SharedPreferences mPrefs = getSharedPreferences("prefs", MODE_PRIVATE);
         Gson gson = new Gson();
         String json = mPrefs.getString("user", "");
-        user = gson.fromJson(json, UserData.class);
+        user = gson.fromJson(json, UserData.class);     //Load the data on an userData object
 
-        mEmailView.setText(user.getEmail());
-        mNameView.setText(user.getName());
-        mBirthdayView.setText("26/04/1996");
+        mEmailView.setText(user.getEmail());            //Setting the email data on the email editText
+        mNameView.setText(user.getName());              //Setting the name data on the name editText
+        mBirthdayView.setText("26/04/1996");            //Setting the birthday data on the birthday editText
+
+        ArrayList<RegionData> regionArray = new ArrayList<>();
+        regionArray.add(new RegionData(1, "Ireland"));
+        regionArray.add(new RegionData(2, "United Kingdom"));
+        mRegionSpinner.setAdapter(new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_list_item_1, regionArray));
+        mRegionSpinner.setSelection(0);
     }
 
     public void onModifySaveButtonClicked() {
-        if (mModifySaveButton.getText().equals(getString(R.string.profile_button_modify))) {
-            mModifySaveButton.setText(getString(R.string.profile_button_save));
+        if (!isModifying) {
+            isModifying = true;
             enableEdition();
         } else {
-            mModifySaveButton.setText(getString(R.string.profile_button_modify));
+            isModifying = false;
             disableEdition();
             sendDataToTheApiLel();
         }
     }
 
     public void enableEdition() {
+        mModifySaveButton.setText(getString(R.string.profile_button_save));
+
         mNameView.setFocusableInTouchMode(true);
         mNameView.setBackground(oldBackgroundView);
+
         mBirthdayView.setFocusableInTouchMode(true);
         mBirthdayView.setBackground(oldBackgroundView);
         mBirthdayView.setOnClickListener(new View.OnClickListener() {
@@ -111,22 +123,30 @@ public class ProfileActivity extends AppCompatActivity {
                 setDate(v);
             }
         });
-        mBirthdayView.setClickable(true);
-        mBirthdayView.setActivated(true);
+        //mBirthdayView.setClickable(true);
         mBirthdayView.setFocusable(true);
+
+        mRegionSpinner.setFocusableInTouchMode(true);
+        mRegionSpinner.setFocusable(true);
     }
 
     public void disableEdition() {
+        mModifySaveButton.setText(getString(R.string.profile_button_modify));
+
         mNameView.setFocusableInTouchMode(false);
         mNameView.setBackground(null);
+
         mBirthdayView.setFocusableInTouchMode(false);
         mBirthdayView.setBackground(null);
         mBirthdayView.setOnClickListener(null);
-        mBirthdayView.setClickable(false);
-        mBirthdayView.setActivated(false);
+        //mBirthdayView.setClickable(false);
         mBirthdayView.setFocusable(false);
+
+        mRegionSpinner.setFocusableInTouchMode(false);
+        mRegionSpinner.setFocusable(false);
     }
 
+    //region CalendarRegion
     @SuppressWarnings("deprecation")
     public void setDate(View view) {
         showDialog(999);
@@ -160,4 +180,5 @@ public class ProfileActivity extends AppCompatActivity {
     public void sendDataToTheApiLel() {
         Toast.makeText(getApplicationContext(), "Lol as sido altamente trolliado xDDDDDDDD", Toast.LENGTH_LONG).show();
     }
+    //endregion
 }
