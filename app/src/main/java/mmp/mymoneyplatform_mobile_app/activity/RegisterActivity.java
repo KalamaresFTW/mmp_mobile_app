@@ -124,10 +124,4 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         mBirthDate.setText(new StringBuilder().append(day).append("/")
                 .append(month).append("/").append(year));
     }
-
-    @Override
-    public void onBackPressed() {
-        Intent i = new Intent(getApplicationContext(), LoginActivity.class);
-        startActivity(i);
-    }
 }

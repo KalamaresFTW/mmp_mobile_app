@@ -2,6 +2,7 @@ package mmp.mymoneyplatform_mobile_app.activity;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -193,5 +194,4 @@ public class ProfileActivity extends AppCompatActivity {
     public void sendDataToTheApi() {
         Toast.makeText(getApplicationContext(), "Sending data to the API", Toast.LENGTH_LONG).show();
     }
-
 }
