@@ -2,13 +2,10 @@ package mmp.mymoneyplatform_mobile_app.activity;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Region;
 import android.graphics.drawable.Drawable;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -23,26 +20,11 @@ import android.widget.Toast;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Type;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Calendar;
 
 import mmp.mymoneyplatform_mobile_app.R;
-import mmp.mymoneyplatform_mobile_app.net.ServiceTags;
-import mmp.mymoneyplatform_mobile_app.net.ServiceURL;
 import mmp.mymoneyplatform_mobile_app.pojo.FrecuencyData;
 import mmp.mymoneyplatform_mobile_app.pojo.RegionData;
 import mmp.mymoneyplatform_mobile_app.pojo.UserData;
@@ -107,10 +89,10 @@ public class ProfileActivity extends AppCompatActivity {
         mBirthdayView = (EditText) findViewById(R.id.et_profile_birthday_entry);
 
         mRegionSpinner = (Spinner) findViewById(R.id.sp_profile_region_entry);
-        mRegionSpinner.setAdapter(new ArrayAdapter<>(this, R.layout.my_item_spinner,regionList));
+        mRegionSpinner.setAdapter(new ArrayAdapter<>(this, R.layout.my_item_spinner_profile,regionList));
 
         mPaymentFrecuencySpinner = (Spinner) findViewById(R.id.sp_profile_payment_entry);
-        mPaymentFrecuencySpinner.setAdapter(new ArrayAdapter<>(this, R.layout.my_item_spinner, paymentFrequencyList));
+        mPaymentFrecuencySpinner.setAdapter(new ArrayAdapter<>(this, R.layout.my_item_spinner_profile, paymentFrequencyList));
 
         calendar = Calendar.getInstance();
 
@@ -212,5 +194,4 @@ public class ProfileActivity extends AppCompatActivity {
     public void sendDataToTheApi() {
         Toast.makeText(getApplicationContext(), "Sending data to the API", Toast.LENGTH_LONG).show();
     }
-
 }

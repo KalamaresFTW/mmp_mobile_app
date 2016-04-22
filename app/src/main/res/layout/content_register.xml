@@ -160,24 +160,25 @@
                     android:id="@+id/tv_register_payment"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingTop="@dimen/nav_header_vertical_spacing"
                     android:text="@string/reg_paymentFrecuency"
                     android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                    android:textSize="@dimen/profile_text_size" />
+                    android:textColor="@color/colorFontRegistration"
+                    android:textSize="@dimen/profile_text_size"
+                    android:textStyle="bold" />
 
                 <Spinner
                     android:id="@+id/sp_payment_frecuency"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
+                    android:layout_below="@+id/tv_register_payment"
                     android:layout_marginBottom="5dp"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginLeft="25dp"
                     android:layout_marginRight="10dp"
-                    android:layout_marginTop="20dp" />
+                    android:layout_marginTop="10dp" />
 
             </RelativeLayout>
 
-            <!-- TODO: make the parent layout for the region spinner, like the payment frecuency spinner -->
+            <!-- Region Spinner -->
             <RelativeLayout
                 android:id="@+id/lay_register_region"
                 android:layout_width="match_parent"
@@ -191,19 +192,21 @@
                     android:id="@+id/tv_register_region"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingTop="@dimen/nav_header_vertical_spacing"
-                    android:text="@string/reg_paymentFrecuency"
+                    android:text="@string/reg_region"
                     android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                    android:textSize="@dimen/profile_text_size" />
+                    android:textColor="@color/colorFontRegistration"
+                    android:textSize="@dimen/profile_text_size"
+                    android:textStyle="bold" />
 
                 <Spinner
                     android:id="@+id/sp_region"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_register_region"
                     android:layout_marginBottom="5dp"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginLeft="25dp"
                     android:layout_marginRight="10dp"
-                    android:layout_marginTop="20dp" />
+                    android:layout_marginTop="10dp" />
             </RelativeLayout>
 
             <Button

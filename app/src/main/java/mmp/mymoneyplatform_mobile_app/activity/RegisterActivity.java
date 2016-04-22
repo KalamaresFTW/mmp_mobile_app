@@ -78,10 +78,10 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         calendar = Calendar.getInstance();
 
         mRegionSpinner = (Spinner) findViewById(R.id.sp_region);
-        mRegionSpinner.setAdapter(new ArrayAdapter<>(this, R.layout.my_item_spinner,regionList));
+        mRegionSpinner.setAdapter(new ArrayAdapter<>(this, R.layout.my_item_spinner_registration,regionList));
 
         mPaymentFrecuencySpinner = (Spinner) findViewById(R.id.sp_payment_frecuency);
-        mPaymentFrecuencySpinner.setAdapter(new ArrayAdapter<>(this, R.layout.my_item_spinner, paymentFrequencyList));
+        mPaymentFrecuencySpinner.setAdapter(new ArrayAdapter<>(this, R.layout.my_item_spinner_registration, paymentFrequencyList));
     }
 
     @Override
@@ -123,11 +123,5 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     private void showDate(int year, int month, int day) {
         mBirthDate.setText(new StringBuilder().append(day).append("/")
                 .append(month).append("/").append(year));
-    }
-
-    @Override
-    public void onBackPressed() {
-        Intent i = new Intent(getApplicationContext(), LoginActivity.class);
-        startActivity(i);
     }
 }

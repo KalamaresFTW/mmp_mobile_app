@@ -70,10 +70,11 @@
     <string name="reg_password">Password</string>
     <string name="reg_confirm_password">Confirm Password</string>
     <string name="reg_dateofbirth">Date of birth</string>
-    <string name="reg_title_paymentFrecuency_spinner">Payment Frecuency</string>
-    <string name="title_activity_profile">Profile</string>
+    <string name="reg_paymentFrecuency">Payment Frecuency</string>
+    <string name="reg_region">Region</string>
 
    <!-- Profile Activity Strings -->
+    <string name="title_activity_profile">Profile</string>
     <string name="profile_name">Name</string>
     <string name="profile_email">Email</string>
     <string name="profile_dateofbirth">Date of Birth</string>
@@ -81,5 +82,4 @@
     <string name="profile_paymentFrecuency">Payment Frecuency</string>
     <string name="profile_button_modify">Modify</string>
     <string name="profile_button_save">Save</string>
-    <string name="reg_paymentFrecuency">Payment Frecuency</string>
 </resources>
