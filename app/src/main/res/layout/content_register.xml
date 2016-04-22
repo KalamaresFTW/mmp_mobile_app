@@ -122,7 +122,7 @@
 
             <!-- Date of Birth input -->
             <android.support.design.widget.TextInputLayout
-                android:id="@+id/lay_dateofbirth"
+                android:id="@+id/lay_register_dateofbirth"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
@@ -148,20 +148,20 @@
 
             <!-- Payment Frecuency Spinner -->
             <RelativeLayout
-                android:id="@+id/lay_register_payment"
+                android:id="@+id/lay_frecuency_payment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/lay_dateofbirth"
+                android:layout_below="@+id/lay_register_dateofbirth"
                 android:layout_marginLeft="@dimen/profile_horizontal_spacing"
                 android:layout_marginRight="@dimen/profile_horizontal_spacing"
                 android:layout_marginTop="@dimen/profile_vertical_spacing">
 
                 <TextView
-                    android:id="@+id/tv_profile_payment"
+                    android:id="@+id/tv_register_payment"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingTop="@dimen/nav_header_vertical_spacing"
-                    android:text="@string/profile_paymentFrecuency"
+                    android:text="@string/reg_paymentFrecuency"
                     android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                     android:textSize="@dimen/profile_text_size" />
 
@@ -178,14 +178,33 @@
             </RelativeLayout>
 
             <!-- TODO: make the parent layout for the region spinner, like the payment frecuency spinner -->
-            <Spinner
-                android:id="@+id/sp_region"
-                android:layout_width="wrap_content"
+            <RelativeLayout
+                android:id="@+id/lay_register_region"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="20dp" />
+                android:layout_below="@+id/lay_frecuency_payment"
+                android:layout_marginLeft="@dimen/profile_horizontal_spacing"
+                android:layout_marginRight="@dimen/profile_horizontal_spacing"
+                android:layout_marginTop="@dimen/profile_vertical_spacing">
+
+                <TextView
+                    android:id="@+id/tv_register_region"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="@dimen/nav_header_vertical_spacing"
+                    android:text="@string/reg_paymentFrecuency"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textSize="@dimen/profile_text_size" />
+
+                <Spinner
+                    android:id="@+id/sp_region"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="20dp" />
+            </RelativeLayout>
 
             <Button
                 android:id="@+id/register_button"
