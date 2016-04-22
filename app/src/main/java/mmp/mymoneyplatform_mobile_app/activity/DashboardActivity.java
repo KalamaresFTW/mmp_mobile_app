@@ -17,12 +17,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 
 import mmp.mymoneyplatform_mobile_app.R;
 import mmp.mymoneyplatform_mobile_app.adapter.CardViewDataAdapter;
 import mmp.mymoneyplatform_mobile_app.pojo.CardViewData;
+import mmp.mymoneyplatform_mobile_app.pojo.RegionData;
 import mmp.mymoneyplatform_mobile_app.pojo.UserData;
 import mmp.mymoneyplatform_mobile_app.util.FontsOverride;
 
@@ -45,6 +48,10 @@ public class DashboardActivity extends AppCompatActivity
     //By default this is null until the onCreate callback
     private UserData user;
 
+    //This is we are going to retrieve the user data for the dashboard
+    private ArrayList<String> moneyData = new ArrayList<>(DashboardActivity.NUMBER_OF_CARDS);
+    private ArrayList<Double> percentageData = new ArrayList<>(DashboardActivity.NUMBER_OF_CARDS);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,9 +62,19 @@ public class DashboardActivity extends AppCompatActivity
         //Set the layout of this Activity
         setContentView(R.layout.activity_dashboard);
 
-        //Retrieve the user data from the SharedPrefs
         SharedPreferences mPrefs = getSharedPreferences("prefs", MODE_PRIVATE);
         Gson gson = new Gson();
+        String moneyDataJSON = mPrefs.getString("moneyData", "");
+        Type moneyDataType = new TypeToken<ArrayList<String>>() {
+        }.getType();
+        moneyData = gson.fromJson(moneyDataJSON, moneyDataType);
+
+        String percentageDataJSON = mPrefs.getString("percentageData", "");
+        Type percentageDataType = new TypeToken<ArrayList<Double>>() {
+        }.getType();
+        percentageData = gson.fromJson(percentageDataJSON, percentageDataType);
+
+        //Retrieve the user data from the SharedPrefs
         String json = mPrefs.getString("user", "");
         user = gson.fromJson(json, UserData.class);
 
@@ -110,11 +127,11 @@ public class DashboardActivity extends AppCompatActivity
                         getString(R.string.cv_subtitle_income),
                         getResources().getColor(R.color.colorTitleIncome),
                         getResources().getColor(R.color.colorBackgroundCardViewIncome),
-                        34650.55,
+                        0,
                         new CardViewData.HealthPanelData(
                                 this,
                                 getString(R.string.cv_hp_title_income),
-                                10,
+                                0,
                                 getResources().getColor(R.color.colorBackgroundHealthPanelIncome)
                         )
                 )
@@ -125,11 +142,11 @@ public class DashboardActivity extends AppCompatActivity
                         getString(R.string.cv_subtitle_pension),
                         getResources().getColor(R.color.colorTitlePension),
                         getResources().getColor(R.color.colorBackgroundCardViewPension),
-                        7133.00,
+                        0,
                         new CardViewData.HealthPanelData(
                                 this,
                                 getString(R.string.cv_hp_title_pension),
-                                25,
+                                0,
                                 getResources().getColor(R.color.colorBackgroundHealthPanelPension)
                         )
                 )
@@ -140,11 +157,11 @@ public class DashboardActivity extends AppCompatActivity
                         getString(R.string.cv_subtitle_goals),
                         getResources().getColor(R.color.colorTitleGoals),
                         getResources().getColor(R.color.colorBackgroundCardViewGoals),
-                        22633.00,
+                        0,
                         new CardViewData.HealthPanelData(
                                 this,
                                 getString(R.string.cv_hp_title_goals),
-                                35,
+                                0,
                                 getResources().getColor(R.color.colorBackgroundHealthPanelGoals)
                         )
                 )
@@ -155,11 +172,11 @@ public class DashboardActivity extends AppCompatActivity
                         getString(R.string.cv_subtitle_assets_debts),
                         getResources().getColor(R.color.colorTitleAssetsDebts),
                         getResources().getColor(R.color.colorBackgroundCardViewAssetsDebts),
-                        69050.00,
+                        0,
                         new CardViewData.HealthPanelData(
                                 this,
                                 getString(R.string.cv_hp_title_assets_debts),
-                                50,
+                                0,
                                 getResources().getColor(R.color.colorBackgroundHealthPanelAssetsDebts)
                         )
                 )
@@ -170,11 +187,11 @@ public class DashboardActivity extends AppCompatActivity
                         getString(R.string.cv_subtitle_life),
                         getResources().getColor(R.color.colorTitleLife),
                         getResources().getColor(R.color.colorBackgroundCardViewLife),
-                        1294090.00,
+                        0,
                         new CardViewData.HealthPanelData(
                                 this,
                                 getString(R.string.cv_hp_title_life),
-                                65,
+                                0,
                                 getResources().getColor(R.color.colorBackgroundHealthPanelLife)
                         )
                 )
@@ -185,15 +202,22 @@ public class DashboardActivity extends AppCompatActivity
                         getString(R.string.cv_subtitle_spending),
                         getResources().getColor(R.color.colorTitleSpending),
                         getResources().getColor(R.color.colorBackgroundCardViewSpending),
-                        4281.00,
+                        0,
                         new CardViewData.HealthPanelData(
                                 this,
                                 getString(R.string.cv_hp_title_spending),
-                                80,
+                                0,
                                 getResources().getColor(R.color.colorBackgroundHealthPanelSpending)
                         )
                 )
         );
+
+
+        for (int i = 0; i < DashboardActivity.NUMBER_OF_CARDS; i++) {
+            cardData.get(i).setMoney(Float.parseFloat(moneyData.get(i)));
+            cardData.get(i).getHealthPanel().setHealthProgress((int) Math.abs(percentageData.get(i)));
+            //TODO: FIX THIS
+        }
 
         CardViewDataAdapter.getInstance().loadData(cardData, cardList);
     }
@@ -235,4 +259,6 @@ public class DashboardActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+
 }
