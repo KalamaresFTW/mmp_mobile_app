@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!--Activity theme Colors-->
+    <!-- Activity theme Colors -->
     <color name="colorPrimary">#e16d25</color>
     <color name="colorPrimaryDark">#d0611d</color>
     <color name="colorAccent">#b30000</color>
 
-    <!--MMP Colors-->
+    <!-- MMP Colors -->
     <color name="colorBlack">#000000</color>
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorOrange">#e16d25</color>
@@ -52,8 +52,8 @@
     <color name="colorBacktroundProgresBarLife">#3e382d</color>
     <color name="colorBacktroundProgresBarSpending">#382719</color>
 
-    <!-- Registration colors -->
-    <!-- Unused -->
+    <!-- Profile colors -->
     <color name="colorFontRegistration">#877d75</color>
+    <color name="colorSeparator">#d7d3d1</color>
     <color name="colorBackgroundInputRegistration">#d7d3d1</color>
 </resources>
