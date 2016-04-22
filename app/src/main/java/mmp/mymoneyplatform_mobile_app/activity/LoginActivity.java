@@ -1,6 +1,7 @@
 package mmp.mymoneyplatform_mobile_app.activity;
 
 import android.content.SharedPreferences;
+import android.media.MediaPlayer;
 import android.support.annotation.NonNull;
 import android.annotation.TargetApi;
 
@@ -21,6 +22,8 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.KeyEvent;
+import android.view.MotionEvent;
+import android.view.SoundEffectConstants;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.inputmethod.EditorInfo;
@@ -81,10 +84,14 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
      */
     private RetrieveUserTask mRetrieveUserData;
 
-
     private PaidFrequencyLoader mPaidFrequencyLoaderTask;
     private RegionDataLoader mRegionDataLoaderTask;
 
+    //Button sound
+    private MediaPlayer buttonSound;
+
+    //Settings preferences
+    private SharedPreferences setPref;
 
     // UI references.
     private AutoCompleteTextView mEmailView;
@@ -107,6 +114,13 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         //Set the layout
         setContentView(R.layout.activity_login);
 
+        initComponents();
+    }
+
+    public void initComponents() {
+        //Settings Preferences
+        setPref = getSharedPreferences("prefs", MODE_PRIVATE);
+
         // Set up the login form.
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
         populateAutoComplete();
@@ -123,11 +137,20 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             }
         });
 
+        buttonSound = MediaPlayer.create(getApplicationContext(), R.raw.sound_button_click);
+
         Button mEmailLogInButton = (Button) findViewById(R.id.email_log_in_button);
         if (mEmailLogInButton != null) {
             mEmailLogInButton.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    //Check if the user turn off the sound on the app settings
+                    if (setPref.getBoolean("app_sound", true)) {
+                        if (buttonSound.isPlaying()) {
+                            buttonSound.stop();
+                        }
+                        buttonSound.start();
+                    }
                     attemptLogin();
                 }
             });
@@ -137,7 +160,14 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         if (btnSign != null) {
             btnSign.setOnClickListener(new OnClickListener() {
                 @Override
-                public void onClick(View v) {
+                public void onClick(View view) {
+                    //Check if the user turn off the sound on the app settings
+                    if (setPref.getBoolean("app_sound", true)) {
+                        if (buttonSound.isPlaying()) {
+                            buttonSound.stop();
+                        }
+                        buttonSound.start();
+                    }
                     attemptSignIn();
                 }
             });
@@ -151,7 +181,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         if (!mayRequestContacts()) {
             return;
         }
-
         getLoaderManager().initLoader(0, null, this);
     }
 
