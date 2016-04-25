@@ -215,7 +215,7 @@ public class DashboardActivity extends AppCompatActivity
 
         for (int i = 0; i < DashboardActivity.NUMBER_OF_CARDS; i++) {
             cardData.get(i).setMoney(Float.parseFloat(moneyData.get(i)));
-            cardData.get(i).getHealthPanel().setHealthProgress((int) Math.abs(percentageData.get(i)));
+            //cardData.get(i).getHealthPanel().setHealthProgress((int) Math.abs(percentageData.get(i)));
             //TODO: FIX THIS
         }
 
