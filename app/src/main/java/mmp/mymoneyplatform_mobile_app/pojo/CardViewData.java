@@ -117,6 +117,7 @@ public class CardViewData {
          * doesn't change thought)
          * Throws an IllegalArgumentException if the value of @healthProgress isn't between 0 and
          * 100.
+         *
          * @param healthProgress
          */
         private void assignStatus(double healthProgress) {
@@ -183,10 +184,11 @@ public class CardViewData {
          * Sets a new value for the progress bar and then reassigns the colors.
          * Throws an IllegalArgumentException if the value of @healthProgress isn't between 0 and
          * 100.
+         *
          * @param healthProgress
          */
         public void setHealthProgress(int healthProgress) {
-            if (healthProgress<0 || healthProgress>100){
+            if (healthProgress >= 0 || healthProgress <= 100) {
                 this.healthProgress = healthProgress;
                 //Update the status to match the new progress value
                 assignStatus(this.healthProgress);

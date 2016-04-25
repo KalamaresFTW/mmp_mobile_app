@@ -212,13 +212,14 @@ public class DashboardActivity extends AppCompatActivity
                 )
         );
 
-
+        //This is where we load the actual data (Money title and the progress bar))
         for (int i = 0; i < DashboardActivity.NUMBER_OF_CARDS; i++) {
             cardData.get(i).setMoney(Float.parseFloat(moneyData.get(i)));
-            //cardData.get(i).getHealthPanel().setHealthProgress((int) Math.abs(percentageData.get(i)));
+            cardData.get(i).getHealthPanel().setHealthProgress((int) Math.abs(percentageData.get(i)));
+            System.out.println((int) Math.abs(percentageData.get(i)));
             //TODO: FIX THIS
         }
-
+        //Finally we set all the properties of the card (mostly aesthetic properties)
         CardViewDataAdapter.getInstance().loadData(cardData, cardList);
     }
 
