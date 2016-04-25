@@ -3,7 +3,6 @@ package mmp.mymoneyplatform_mobile_app.activity;
 import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.annotation.TargetApi;
-
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.app.LoaderManager.LoaderCallbacks;
@@ -29,13 +28,10 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-
 import com.google.gson.Gson;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -45,12 +41,10 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
-import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
 import mmp.mymoneyplatform_mobile_app.R;
 import mmp.mymoneyplatform_mobile_app.net.ServiceTags;
 import mmp.mymoneyplatform_mobile_app.net.ServiceURL;
@@ -58,7 +52,6 @@ import mmp.mymoneyplatform_mobile_app.pojo.FrecuencyData;
 import mmp.mymoneyplatform_mobile_app.pojo.RegionData;
 import mmp.mymoneyplatform_mobile_app.pojo.UserData;
 import mmp.mymoneyplatform_mobile_app.util.FontsOverride;
-
 import static android.Manifest.permission.READ_CONTACTS;
 
 /**

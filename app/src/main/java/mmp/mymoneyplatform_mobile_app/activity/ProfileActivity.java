@@ -2,12 +2,12 @@ package mmp.mymoneyplatform_mobile_app.activity;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -89,7 +89,7 @@ public class ProfileActivity extends AppCompatActivity {
         mBirthdayView = (EditText) findViewById(R.id.et_profile_birthday_entry);
 
         mRegionSpinner = (Spinner) findViewById(R.id.sp_profile_region_entry);
-        mRegionSpinner.setAdapter(new ArrayAdapter<>(this, R.layout.my_item_spinner_profile,regionList));
+        mRegionSpinner.setAdapter(new ArrayAdapter<>(this, R.layout.my_item_spinner_profile, regionList));
 
         mPaymentFrecuencySpinner = (Spinner) findViewById(R.id.sp_profile_payment_entry);
         mPaymentFrecuencySpinner.setAdapter(new ArrayAdapter<>(this, R.layout.my_item_spinner_profile, paymentFrequencyList));
@@ -109,7 +109,7 @@ public class ProfileActivity extends AppCompatActivity {
         String json = mPrefs.getString("user", "");
         user = gson.fromJson(json, UserData.class);     //Load the data on an userData object
 
-        mEmailView.setText(user.getEmail());            //Setting the email data on the email editText
+        mEmailView.setText(user.getEmail());            //Setting the email data on the email TextView
         mNameView.setText(user.getName());              //Setting the name data on the name editText
         mBirthdayView.setText("26/04/1996");            //Setting the birthday data on the birthday editText
     }
@@ -141,8 +141,19 @@ public class ProfileActivity extends AppCompatActivity {
         });
         mBirthdayView.setFocusable(true);
 
-        mRegionSpinner.setFocusableInTouchMode(true);
-        mRegionSpinner.setFocusable(true);
+        mRegionSpinner.setClickable(true);
+        mRegionSpinner.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                return false;
+            }
+        });
+        mPaymentFrecuencySpinner.setClickable(true);
+        mPaymentFrecuencySpinner.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {return false;
+            }
+        });
     }
 
     public void disableEdition() {
@@ -156,8 +167,20 @@ public class ProfileActivity extends AppCompatActivity {
         mBirthdayView.setOnClickListener(null);
         mBirthdayView.setFocusable(false);
 
-        mRegionSpinner.setFocusableInTouchMode(false);
-        mRegionSpinner.setFocusable(false);
+        mRegionSpinner.setClickable(false);
+        mRegionSpinner.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                return true;
+            }
+        });
+        mPaymentFrecuencySpinner.setClickable(false);
+        mPaymentFrecuencySpinner.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                return true;
+            }
+        });
     }
 
     //region CalendarRegion
@@ -190,6 +213,7 @@ public class ProfileActivity extends AppCompatActivity {
         mBirthdayView.setText(new StringBuilder().append(day).append("/")
                 .append(month).append("/").append(year));
     }
+    //endregion
 
     public void sendDataToTheApi() {
         Toast.makeText(getApplicationContext(), "Sending data to the API", Toast.LENGTH_LONG).show();
