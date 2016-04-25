@@ -28,10 +28,13 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
 import com.google.gson.Gson;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -45,6 +48,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
 import mmp.mymoneyplatform_mobile_app.R;
 import mmp.mymoneyplatform_mobile_app.net.ServiceTags;
 import mmp.mymoneyplatform_mobile_app.net.ServiceURL;
@@ -52,6 +56,7 @@ import mmp.mymoneyplatform_mobile_app.pojo.FrecuencyData;
 import mmp.mymoneyplatform_mobile_app.pojo.RegionData;
 import mmp.mymoneyplatform_mobile_app.pojo.UserData;
 import mmp.mymoneyplatform_mobile_app.util.FontsOverride;
+
 import static android.Manifest.permission.READ_CONTACTS;
 
 /**
@@ -494,7 +499,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                     response.append(cleanString);
                 }
                 bufferedReader.close();
-                System.out.println(response);
                 String json = response.toString();
                 try {
                     JSONObject jsonResponse = new JSONObject(json.substring(json.indexOf("{"), json.lastIndexOf("}") + 1));
@@ -571,7 +575,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             String param;
             URL url = null;
             try {
-                param = "entityName=" + URLEncoder.encode(ServiceURL.URL_PARAM_PAYPERIOD, "UTF-8");
+                param = ServiceURL.URL_PARAM_ENTITYNAME + "=" +
+                        URLEncoder.encode(ServiceURL.URL_VAL_PAYPERIOD, "UTF-8");
                 url = new URL(ServiceURL.DEFAULT + "?" + param);
             } catch (MalformedURLException | UnsupportedEncodingException ex) {
                 ex.printStackTrace();
@@ -598,7 +603,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 JSONObject JSONResponse;
                 JSONArray JSONArray;
                 try {
-                    JSONArray = new JSONArray(json.substring(json.indexOf("["), json.lastIndexOf("]") + 1));
+                    JSONArray = new JSONArray(json.substring(json.indexOf("["),
+                            json.lastIndexOf("]") + 1));
                     for (int i = 0; i < JSONArray.length(); i++) {
                         JSONResponse = JSONArray.getJSONObject(i);
                         frecuencyData.add(new FrecuencyData(
@@ -622,7 +628,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             SharedPreferences.Editor editor = sharedPreferences.edit();
             Gson gson = new Gson();
             String json = gson.toJson(frecuencyData);
-            System.out.println(json);
             editor.putString("frequencyList", json);
             editor.commit();
         }
@@ -637,7 +642,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             String param;
             URL url = null;
             try {
-                param = "entityName=" + URLEncoder.encode(ServiceURL.URL_PARAM_COUNTRY, "UTF-8");
+                param = ServiceURL.URL_PARAM_ENTITYNAME + "=" +
+                        URLEncoder.encode(ServiceURL.URL_VAL_COUNTRY, "UTF-8");
                 url = new URL(ServiceURL.DEFAULT + "?" + param);
             } catch (MalformedURLException | UnsupportedEncodingException ex) {
                 ex.printStackTrace();
@@ -664,7 +670,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 JSONObject JSONResponse;
                 JSONArray JSONArray;
                 try {
-                    JSONArray = new JSONArray(json.substring(json.indexOf("["), json.lastIndexOf("]") + 1));
+                    JSONArray = new JSONArray(json.substring(json.indexOf("["),
+                            json.lastIndexOf("]") + 1));
                     for (int i = 0; i < JSONArray.length(); i++) {
                         JSONResponse = JSONArray.getJSONObject(i);
                         countryList.add(new RegionData(
@@ -688,7 +695,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             SharedPreferences.Editor editor = sharedPreferences.edit();
             Gson gson = new Gson();
             String json = gson.toJson(countryList);
-            System.out.println(json);
             editor.putString("countryList", json);
             editor.commit();
         }

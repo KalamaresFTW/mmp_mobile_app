@@ -11,8 +11,12 @@ public class ServiceURL {
     public static final String DEFAULT = REST_SERVICE_URL + "/Default";
     public static final String DASHBOARD = REST_SERVICE_URL + "/Dashboard";
     //Params of the API
-    public static final String URL_PARAM_COUNTRY = "country";
-    public static final String URL_PARAM_PAYPERIOD = "payperiod";
+    public static final String URL_PARAM_ENTITYNAME = "entityName";
+
     public static final String URL_PARAM_USERSUBSCRIPTIONID = "userSubscriptionID";
+    //Values of the API
+    public static final String URL_VAL_COUNTRY = "country";
+    public static final String URL_VAL_PAYPERIOD = "payperiod";
+
 
 }
