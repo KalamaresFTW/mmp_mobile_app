@@ -375,13 +375,12 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 URL url = null;
                 String params = "email=" + URLEncoder.encode(mEmail, "UTF-8");
                 params += "&password=" + URLEncoder.encode(mPassword, "UTF-8");
-
                 try {
                     url = new URL(ServiceURL.ACCOUNT + "?" + params);
                 } catch (MalformedURLException ex) {
                     System.err.println("Error:" + ex.getMessage());
                 }
-                System.out.println(url.toString());
+                System.out.println(url);
                 HttpURLConnection urlConnection;
                 if (url != null) {
                     urlConnection = (HttpURLConnection) url.openConnection();
@@ -485,7 +484,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 ex.printStackTrace();
             }
             System.out.println(url);
-
             HttpURLConnection urlConnection = null;
             try {
                 urlConnection = (HttpURLConnection) url.openConnection();
@@ -552,6 +550,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             }
         }
 
+        @NonNull
         private Double getPercentage(String strValue, boolean isAssetDebt) {
             return (isAssetDebt ? (((Double.parseDouble(strValue)) * 100) / 12) : (((Double.parseDouble(strValue)) * 100) / 6));
         }
@@ -585,7 +584,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 ex.printStackTrace();
             }
             System.out.println(url);
-
             HttpURLConnection urlConnection = null;
             try {
                 urlConnection = (HttpURLConnection) url.openConnection();
@@ -652,7 +650,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 ex.printStackTrace();
             }
             System.out.println(url);
-
             HttpURLConnection urlConnection = null;
             try {
                 urlConnection = (HttpURLConnection) url.openConnection();
