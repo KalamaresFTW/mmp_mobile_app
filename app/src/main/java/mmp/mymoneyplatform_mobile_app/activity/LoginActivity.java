@@ -45,6 +45,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -77,14 +78,12 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
 
     /**
-     * Keep track of the login task to ensure we can cancel it if requested.
+     * References of the tasks we are using on the login.
      */
-    private RetrieveUserTask mRetrieveUserData;
-
-
-    private PaidFrequencyLoader mPaidFrequencyLoaderTask;
-    private RegionDataLoader mRegionDataLoaderTask;
-
+    private RetrieveUserTask mRetrieveUserData;             //Gets the user data via API
+    private RetrieveDashboardData mDashboardDataLoaderTask; //Gets the user dashboard's data via API
+    private PaidFrequencyLoader mPaidFrequencyLoaderTask;   //Gets the payment frequencies via API
+    private RegionDataLoader mRegionDataLoaderTask;         //Gets the country list via API
 
     // UI references.
     private AutoCompleteTextView mEmailView;
@@ -103,6 +102,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
         mRegionDataLoaderTask = new RegionDataLoader();
         mRegionDataLoaderTask.execute((Void) null);
+
 
         //Set the layout
         setContentView(R.layout.activity_login);
@@ -190,7 +190,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         }
     }
 
-
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
         if (!hasFocus) {
@@ -245,10 +244,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
             showProgress(true);
-
-            //mAuthTask = new UserLoginTask(email, password);
-            //mAuthTask.execute((Void) null);
-
             mRetrieveUserData = new RetrieveUserTask(email, password);
             mRetrieveUserData.execute((Void) null);
         }
@@ -368,15 +363,11 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         private String mEmail;
         private String mPassword;
 
-        private UserData data;
+        private UserData userData;
 
         public RetrieveUserTask(String email, String password) {
             this.mEmail = email;
             this.mPassword = password;
-        }
-
-        protected void onPreExecute() {
-            //Do some stuff before retrieving the data
         }
 
         protected Boolean doInBackground(Void... urls) {
@@ -384,12 +375,13 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 URL url = null;
                 String params = "email=" + URLEncoder.encode(mEmail, "UTF-8");
                 params += "&password=" + URLEncoder.encode(mPassword, "UTF-8");
+
                 try {
                     url = new URL(ServiceURL.ACCOUNT + "?" + params);
                 } catch (MalformedURLException ex) {
                     System.err.println("Error:" + ex.getMessage());
                 }
-                System.out.println(url);
+                System.out.println(url.toString());
                 HttpURLConnection urlConnection;
                 if (url != null) {
                     urlConnection = (HttpURLConnection) url.openConnection();
@@ -413,7 +405,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                     //This represents all the data contained in the JSON object from the sever.
                     try {
                         if (JSONResponse != null) {
-                            data = new UserData(
+                            userData = new UserData(
                                     (String) JSONResponse.get(ServiceTags.SUBSCRIPTIONID_TAG),
                                     (String) JSONResponse.get(ServiceTags.REGION_TAG),
                                     (String) JSONResponse.get(ServiceTags.PROFILEIMAGE_TAG),
@@ -428,7 +420,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                         System.err.println("Error: " + ex.getMessage());
                     }
                     //UserData not being null means the mail/password combination is correct
-                    return !data.isNull();
+                    return !userData.isNull();
                 } catch (IOException ex) {
                     System.err.println("Error: " + ex.getMessage());
                     return false;
@@ -448,18 +440,18 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         protected void onPostExecute(final Boolean success) {
             mRetrieveUserData = null;
             showProgress(false);
-            System.out.println("Success: " + success);
             if (success) {
-                //Loads the Dashboard Activity
-                Intent i = new Intent(getApplicationContext(), DashboardActivity.class);
+                //Execute a task to get all the Dashboard data for that user
+                mDashboardDataLoaderTask = new RetrieveDashboardData(userData.getUserSubscriptionID());
+                mDashboardDataLoaderTask.execute((Void) null);
                 //Store the UserData instance into the SharedPreferences
                 SharedPreferences mPrefs = getSharedPreferences("prefs", MODE_PRIVATE);
                 SharedPreferences.Editor prefsEditor = mPrefs.edit();
                 Gson gson = new Gson();
-                String json = gson.toJson(data);
+                String json = gson.toJson(userData);
                 prefsEditor.putString("user", json);
                 prefsEditor.commit();
-                startActivity(i);
+//                startActivity(new Intent(getApplicationContext(), DashboardActivity.class));
             } else {
                 mPasswordView.setError(getString(R.string.error_incorrect_password));
                 mPasswordView.requestFocus();
@@ -473,7 +465,114 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         }
     }
 
-    class PaidFrequencyLoader extends AsyncTask<Void, Void, Void> {
+    public class RetrieveDashboardData extends AsyncTask<Void, Void, Void> {
+
+        private String userSubscriptionID;
+        private ArrayList<String> moneyData = new ArrayList<>(DashboardActivity.NUMBER_OF_CARDS);
+        private ArrayList<Double> percentageData = new ArrayList<>(DashboardActivity.NUMBER_OF_CARDS);
+
+        public RetrieveDashboardData(String userSubscriptionID) {
+            this.userSubscriptionID = userSubscriptionID;
+        }
+
+        @Override
+        protected Void doInBackground(Void... params) {
+            String param;
+            URL url = null;
+            try {
+                param = ServiceURL.URL_PARAM_USERSUBSCRIPTIONID + "=" + URLEncoder.encode(userSubscriptionID, "UTF-8");
+                url = new URL(ServiceURL.DASHBOARD + "?" + param);
+            } catch (MalformedURLException | UnsupportedEncodingException ex) {
+                ex.printStackTrace();
+            }
+            System.out.println(url);
+
+            HttpURLConnection urlConnection = null;
+            try {
+                urlConnection = (HttpURLConnection) url.openConnection();
+            } catch (IOException ex) {
+                System.err.println("Error: " + ex.getMessage());
+            }
+            try {
+                InputStream inputStream = urlConnection.getInputStream();
+                InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
+                BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+                StringBuilder response = new StringBuilder();
+                String partialResponse;
+                while ((partialResponse = bufferedReader.readLine()) != null) {
+                    String cleanString = partialResponse.replaceAll("(\\\\r\\\\n|\\\\n|\\\\)", "");
+                    response.append(cleanString);
+                }
+                bufferedReader.close();
+                System.out.println(response);
+                String json = response.toString();
+                try {
+                    JSONObject jsonResponse = new JSONObject(json.substring(json.indexOf("{"), json.lastIndexOf("}") + 1));
+                    JSONObject salaryInfo = jsonResponse.getJSONObject(ServiceTags.SALARYINFO_TAG);
+                    String incomeCover = salaryInfo.getString(ServiceTags.INCOMECOVER_TAG);
+                    JSONObject pensionInfo = jsonResponse.getJSONObject(ServiceTags.PENSIONINFO_TAG);
+                    String pensionAtRetirement = pensionInfo.getString(ServiceTags.PENSIONATRETIREMENT_TAG);
+                    JSONObject savingsInfo = jsonResponse.getJSONObject(ServiceTags.SAVINGSINFO_TAG);
+                    String totalSavingRequired = savingsInfo.getString(ServiceTags.TOTALSAVINGREQUIRED_TAG);
+                    String totalSavingBalance = savingsInfo.getString(ServiceTags.TOTALSAVINGBALANCE_TAG);
+                    JSONObject assetDebtInfo = jsonResponse.getJSONObject(ServiceTags.ASSETDEBTINFO_TAG);
+                    String totalAsset = assetDebtInfo.getString(ServiceTags.TOTALASSET_TAG);
+                    String totalDebt = assetDebtInfo.getString(ServiceTags.TOTALDEBT_TAG);
+                    String assetDebtDiff = assetDebtInfo.getString(ServiceTags.ASSETDEBTDIFF_TAG);
+                    JSONObject lifeCoverInfo = jsonResponse.getJSONObject(ServiceTags.LIFECOVERINFO_TAG);
+                    String lifeCoverNeeded = lifeCoverInfo.getString(ServiceTags.LIFECOVERNEEDED_TAG);
+                    JSONObject outgoingsInfo = jsonResponse.getJSONObject(ServiceTags.OUTGOINGSINFO_TAG);
+                    String disposableIncome = outgoingsInfo.getString(ServiceTags.DISPOSABLEINCOME_TAG);
+                    String healthScore = jsonResponse.getString(ServiceTags.HEALTHSCORE_TAG);
+                    String salaryProtectionScore = jsonResponse.getString(ServiceTags.SALARYPROTECTIONSCORE_TAG);
+                    String pensionScore = jsonResponse.getString(ServiceTags.PENSIONSCORE_TAG);
+                    String savings1Score = jsonResponse.getString(ServiceTags.SAVINGS1SCORE_TAG);
+                    String savings2Score = jsonResponse.getString(ServiceTags.SAVINGS2SCORE_TAG);
+                    String assetDebtScore = jsonResponse.getString(ServiceTags.ASSETSDEBTSCORE_TAG);
+                    String lifeAssuranceScore = jsonResponse.getString(ServiceTags.LIFEASSURANCESCORE_TAG);
+                    String outgoingsScore = jsonResponse.getString(ServiceTags.OUTGOINGSSCORE_TAG);
+                    moneyData.add(incomeCover);
+                    moneyData.add(pensionAtRetirement);
+                    moneyData.add(totalSavingRequired);
+                    moneyData.add(assetDebtDiff);
+                    moneyData.add(lifeCoverNeeded);
+                    moneyData.add(disposableIncome);
+                    percentageData.add(getPercentage(healthScore, false));
+                    percentageData.add(getPercentage(salaryProtectionScore, false));
+                    percentageData.add(getPercentage(pensionScore, false));
+                    percentageData.add(getPercentage(assetDebtScore, true));
+                    percentageData.add(getPercentage(lifeAssuranceScore, false));
+                    percentageData.add(getPercentage(outgoingsScore, false));
+                } catch (JSONException ex) {
+                    ex.printStackTrace();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            } finally {
+                return null;
+            }
+
+        }
+
+        private Double getPercentage(String strValue, boolean isAssetDebt) {
+            return (isAssetDebt ? (((Double.parseDouble(strValue)) * 100) / 12) : (((Double.parseDouble(strValue)) * 100) / 6));
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            SharedPreferences sharedPreferences = getSharedPreferences("prefs", MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            Gson gson = new Gson();
+            String moneyDataJSON = gson.toJson(moneyData);
+            String percentageDataJSON = gson.toJson(percentageData);
+            editor.putString("moneyData", moneyDataJSON);
+            editor.putString("percentageData", percentageDataJSON);
+            editor.commit();
+            startActivity(new Intent(getApplicationContext(), DashboardActivity.class));
+        }
+    }
+
+    public class PaidFrequencyLoader extends AsyncTask<Void, Void, Void> {
 
         private ArrayList<FrecuencyData> frecuencyData = new ArrayList<>();
 
@@ -540,7 +639,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         }
     }
 
-    class RegionDataLoader extends AsyncTask<Void, Void, Void> {
+    public class RegionDataLoader extends AsyncTask<Void, Void, Void> {
 
         private ArrayList<RegionData> countryList = new ArrayList<>();
 
@@ -606,5 +705,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             editor.commit();
         }
     }
+
+
 }
 
