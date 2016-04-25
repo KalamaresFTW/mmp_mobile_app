@@ -55,30 +55,32 @@ public class DashboardActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         //Set the new font
         FontsOverride.setDefaultFont(this, "MONOSPACE", "fonts/Raleway-Regular.ttf");
-
         //Set the layout of this Activity
         setContentView(R.layout.activity_dashboard);
-
+        //Retrieve Shared preferences of the app
         SharedPreferences mPrefs = getSharedPreferences("prefs", MODE_PRIVATE);
+        //Gson object used to deserialize JSON strings into Java Objects
         Gson gson = new Gson();
+        //JSON String that contains the ammount of money displayed in each card
         String moneyDataJSON = mPrefs.getString("moneyData", "");
+        //Type of ArrayList<String>
         Type moneyDataType = new TypeToken<ArrayList<String>>() {
         }.getType();
+        //Parse the JSON String into an actual ArrayList of Strings
         moneyData = gson.fromJson(moneyDataJSON, moneyDataType);
-
+        //JSON String that contains the Double data for the progressbar percentage
         String percentageDataJSON = mPrefs.getString("percentageData", "");
+        //Type of ArrayList<Double>
         Type percentageDataType = new TypeToken<ArrayList<Double>>() {
         }.getType();
+        //Parse the JSON String into an ArrayList<Double> object
         percentageData = gson.fromJson(percentageDataJSON, percentageDataType);
-
         //Retrieve the user data from the SharedPrefs
         String json = mPrefs.getString("user", "");
+        //Retrieve the user Data
         user = gson.fromJson(json, UserData.class);
-
-        //Retrieve the user object from the Intent
         initComponents();
     }
 
@@ -92,23 +94,18 @@ public class DashboardActivity extends AppCompatActivity
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
-
         NavigationView navigationView = (NavigationView) drawer.findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
         View navigationViewHeader = navigationView.getHeaderView(0);
-
         iv_menu_img = (ImageView) navigationViewHeader.findViewById(R.id.iv_menu_img);
         tv_menu_name = (TextView) navigationViewHeader.findViewById(R.id.tv_menu_name);
         tv_menu_mail = (TextView) navigationViewHeader.findViewById(R.id.tv_menu_mail);
-
         cardList.add((LinearLayout) findViewById(R.id.cv_income));
         cardList.add((LinearLayout) findViewById(R.id.cv_pension));
         cardList.add((LinearLayout) findViewById(R.id.cv_goals));
         cardList.add((LinearLayout) findViewById(R.id.cv_assetsdebts));
         cardList.add((LinearLayout) findViewById(R.id.cv_life));
         cardList.add((LinearLayout) findViewById(R.id.cv_spending));
-
         loadProfileData();
         loadCardsData();
     }
@@ -216,10 +213,8 @@ public class DashboardActivity extends AppCompatActivity
         for (int i = 0; i < DashboardActivity.NUMBER_OF_CARDS; i++) {
             cardData.get(i).setMoney(Float.parseFloat(moneyData.get(i)));
             cardData.get(i).getHealthPanel().setHealthProgress((int) Math.abs(percentageData.get(i)));
-            System.out.println((int) Math.abs(percentageData.get(i)));
-            //TODO: FIX THIS
         }
-        //Finally we set all the properties of the card (mostly aesthetic properties)
+        //Finally we set all the properties of the card (mostly a e s t h e t i c properties)
         CardViewDataAdapter.getInstance().loadData(cardData, cardList);
     }
 
@@ -260,6 +255,4 @@ public class DashboardActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-
-
 }

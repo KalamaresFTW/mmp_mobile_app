@@ -444,14 +444,13 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 //Execute a task to get all the Dashboard data for that user
                 mDashboardDataLoaderTask = new RetrieveDashboardData(userData.getUserSubscriptionID());
                 mDashboardDataLoaderTask.execute((Void) null);
-                //Store the UserData instance into the SharedPreferences
+                //Store the UserData instance into the SharedPreferences as a JSON String
                 SharedPreferences mPrefs = getSharedPreferences("prefs", MODE_PRIVATE);
                 SharedPreferences.Editor prefsEditor = mPrefs.edit();
                 Gson gson = new Gson();
                 String json = gson.toJson(userData);
                 prefsEditor.putString("user", json);
                 prefsEditor.commit();
-//                startActivity(new Intent(getApplicationContext(), DashboardActivity.class));
             } else {
                 mPasswordView.setError(getString(R.string.error_incorrect_password));
                 mPasswordView.requestFocus();
@@ -551,7 +550,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             } finally {
                 return null;
             }
-
         }
 
         private Double getPercentage(String strValue, boolean isAssetDebt) {
