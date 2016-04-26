@@ -393,6 +393,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                     while ((partialResponse = bufferedReader.readLine()) != null) {
                         response.append(partialResponse);
                     }
+                    System.out.println(response);
                     bufferedReader.close();
                     JSONObject JSONResponse = null;
                     try {
@@ -499,6 +500,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                     String cleanString = partialResponse.replaceAll("(\\\\r\\\\n|\\\\n|\\\\)", "");
                     response.append(cleanString);
                 }
+                System.out.println(response);
                 bufferedReader.close();
                 String json = response.toString();
                 try {
@@ -532,9 +534,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                     moneyData.add(assetDebtDiff);
                     moneyData.add(lifeCoverNeeded);
                     moneyData.add(disposableIncome);
-                    percentageData.add(getPercentage(healthScore, false));
                     percentageData.add(getPercentage(salaryProtectionScore, false));
                     percentageData.add(getPercentage(pensionScore, false));
+                    percentageData.add(getPercentage(savings1Score, false));
                     percentageData.add(getPercentage(assetDebtScore, true));
                     percentageData.add(getPercentage(lifeAssuranceScore, false));
                     percentageData.add(getPercentage(outgoingsScore, false));

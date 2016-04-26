@@ -1,6 +1,7 @@
 package mmp.mymoneyplatform_mobile_app.pojo;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 
 import mmp.mymoneyplatform_mobile_app.R;
 

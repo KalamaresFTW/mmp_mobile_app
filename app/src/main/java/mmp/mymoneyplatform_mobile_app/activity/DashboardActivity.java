@@ -2,6 +2,9 @@ package mmp.mymoneyplatform_mobile_app.activity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -16,16 +19,21 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.appindexing.AppIndex;
+import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.lang.reflect.Type;
+import java.net.URL;
 import java.util.ArrayList;
 
 import mmp.mymoneyplatform_mobile_app.R;
 import mmp.mymoneyplatform_mobile_app.adapter.CardViewDataAdapter;
+import mmp.mymoneyplatform_mobile_app.net.ServiceURL;
 import mmp.mymoneyplatform_mobile_app.pojo.CardViewData;
-import mmp.mymoneyplatform_mobile_app.pojo.RegionData;
 import mmp.mymoneyplatform_mobile_app.pojo.UserData;
 import mmp.mymoneyplatform_mobile_app.util.FontsOverride;
 
@@ -51,6 +59,11 @@ public class DashboardActivity extends AppCompatActivity
     //This is we are going to retrieve the user data for the dashboard
     private ArrayList<String> moneyData = new ArrayList<>(DashboardActivity.NUMBER_OF_CARDS);
     private ArrayList<Double> percentageData = new ArrayList<>(DashboardActivity.NUMBER_OF_CARDS);
+    /**
+     * ATTENTION: This was auto-generated to implement the App Indexing API.
+     * See https://g.co/AppIndexing/AndroidStudio for more information.
+     */
+    private GoogleApiClient client;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,6 +95,9 @@ public class DashboardActivity extends AppCompatActivity
         //Retrieve the user Data
         user = gson.fromJson(json, UserData.class);
         initComponents();
+        // ATTENTION: This was auto-generated to implement the App Indexing API.
+        // See https://g.co/AppIndexing/AndroidStudio for more information.
+        client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
     }
 
     public void initComponents() {
@@ -111,11 +127,38 @@ public class DashboardActivity extends AppCompatActivity
     }
 
     public void loadProfileData() {
-        //TODO: add the profile image into the NavigationView header
-        //iv_menu_img.setImageIcon(user.getProfilePicture());
+            //TODO: Find a way to load the user's profile image
+        new AsyncTask<Void, Void, Void>() {
+            private Bitmap bitmap;
+
+            @Override
+            protected Void doInBackground(Void... params) {
+                String url = ServiceURL.REVIEW_SERVICE_URL + user.getProfileImage().substring(5);
+                System.out.println(url);
+                try {
+                    bitmap = BitmapFactory.decodeStream((InputStream) new URL(url).getContent());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } finally {
+                    return null;
+                }
+            }
+
+            @Override
+            protected void onPostExecute(Void aVoid) {
+                iv_menu_img.setImageBitmap(bitmap);
+//                iv_menu_img.setMaxWidth(10);
+//                iv_menu_img.setMaxHeight(10);
+                iv_menu_img.setScaleX(0.5f);
+                iv_menu_img.setScaleY(0.5f);
+            }
+        }.execute();
+
+
         tv_menu_name.setText(user.getName());
         tv_menu_mail.setText(user.getEmail());
     }
+
 
     private void loadCardsData() {
         cardData.add(
