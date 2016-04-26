@@ -109,9 +109,21 @@ public class ProfileActivity extends AppCompatActivity {
         String json = mPrefs.getString("user", "");
         user = gson.fromJson(json, UserData.class);     //Load the data on an userData object
 
+        //TODO: add date of birth and payment frecuency
+
         mEmailView.setText(user.getEmail());            //Setting the email data on the email TextView
         mNameView.setText(user.getName());              //Setting the name data on the name editText
         mBirthdayView.setText("26/04/1996");            //Setting the birthday data on the birthday editText
+        for (int i = 0; i < regionList.size(); i++){
+            if(regionList.get(i).getRegion().equals(user.getCountry())){
+                mRegionSpinner.setSelection(i);
+            }
+        }
+        /**for (int i = 0; i < regionList.size(); i++){
+            if(regionList.get(i).getRegion().equals(user.getCountry())){
+                mRegionSpinner.setSelection(i);
+            }
+        }**/
     }
 
     public void onModifySaveButtonClicked() {

@@ -1,23 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingTop="7dp"
+    android:orientation="vertical"
     android:paddingLeft="10dp"
     android:paddingRight="10dp"
-    android:orientation="vertical">
+    android:paddingTop="7dp">
 
     <android.support.v7.widget.CardView
         android:id="@+id/card_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="0dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginBottom="13dp"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
-            android:layout_marginBottom="13dp"
             android:layout_marginTop="13dp">
 
             <TextView
@@ -71,8 +73,8 @@
                 android:layout_below="@+id/cv_tv_money"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="7dp"
-                android:paddingBottom="11dp"
-                android:background="@color/colorBackgroundHealthPanelIncome">
+                android:background="@color/colorBackgroundHealthPanelIncome"
+                android:paddingBottom="11dp">
 
                 <TextView
                     android:id="@+id/cv_hp_tv_title"
@@ -102,8 +104,8 @@
                         android:layout_alignParentLeft="true"
                         android:layout_alignParentStart="true"
                         android:layout_alignParentTop="true"
-                        android:layout_marginRight="10dp"
                         android:layout_marginBottom="7dp"
+                        android:layout_marginRight="10dp"
                         android:text=""
                         android:textColor="@color/colorStateGood"
                         android:textSize="@dimen/cv_text_size"
@@ -114,8 +116,8 @@
                         style="?android:attr/progressBarStyleHorizontal"
                         android:layout_width="wrap_content"
                         android:layout_height="7dp"
-                        android:layout_marginTop="10dp"
                         android:layout_alignParentTop="true"
+                        android:layout_marginTop="10dp"
                         android:layout_toRightOf="@+id/cv_hp_tv_progresstitle"
                         android:max="100"
                         android:minHeight="50dp"

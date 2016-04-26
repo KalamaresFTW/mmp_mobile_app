@@ -7,6 +7,8 @@ import java.io.Serializable;
  */
 public class UserData implements Serializable{
 
+    //TODO: add paymentFrecuency and date of birth
+
     private String userSubscriptionID, region, profileImage, country, newUser, name, email;
 
     public UserData(String userSubscriptionID, String region, String profileImage, String country,
