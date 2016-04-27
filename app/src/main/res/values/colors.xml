@@ -46,11 +46,11 @@
 
     <!-- Background Colors on the ProgressBar -->
     <color name="colorBackgroundProgresBarIncome">#001919</color>
-    <color name="colorBacktroundProgresBarPension">#0f1921</color>
-    <color name="colorBacktroundProgresBarGoals">#243738</color>
-    <color name="colorBacktroundProgresBarAssetsDebts">#6b4e46</color>
-    <color name="colorBacktroundProgresBarLife">#3e382d</color>
-    <color name="colorBacktroundProgresBarSpending">#382719</color>
+    <color name="colorBackgroundProgresBarPension">#0f1921</color>
+    <color name="colorBackgroundProgresBarGoals">#243738</color>
+    <color name="colorBackgroundProgresBarAssetsDebts">#6b4e46</color>
+    <color name="colorBackgroundProgresBarLife">#3e382d</color>
+    <color name="colorBackgroundProgresBarSpending">#382719</color>
 
     <!-- Profile colors -->
     <color name="colorFontRegistration">#877d75</color>
