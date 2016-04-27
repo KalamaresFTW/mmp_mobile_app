@@ -165,6 +165,7 @@ public class DashboardActivity extends AppCompatActivity
                         new CardViewData.HealthPanelData(
                                 this,
                                 getString(R.string.cv_hp_title_income),
+                                getResources().getDrawable(R.drawable.progress_bar_income),
                                 0,
                                 getResources().getColor(R.color.colorBackgroundHealthPanelIncome)
                         )
@@ -180,6 +181,7 @@ public class DashboardActivity extends AppCompatActivity
                         new CardViewData.HealthPanelData(
                                 this,
                                 getString(R.string.cv_hp_title_pension),
+                                getResources().getDrawable(R.drawable.progress_bar_pension),
                                 0,
                                 getResources().getColor(R.color.colorBackgroundHealthPanelPension)
                         )
@@ -195,6 +197,7 @@ public class DashboardActivity extends AppCompatActivity
                         new CardViewData.HealthPanelData(
                                 this,
                                 getString(R.string.cv_hp_title_goals),
+                                getResources().getDrawable(R.drawable.progress_bar_goals),
                                 0,
                                 getResources().getColor(R.color.colorBackgroundHealthPanelGoals)
                         )
@@ -210,6 +213,7 @@ public class DashboardActivity extends AppCompatActivity
                         new CardViewData.HealthPanelData(
                                 this,
                                 getString(R.string.cv_hp_title_assets_debts),
+                                getResources().getDrawable(R.drawable.progres_bar_asetsdebts),
                                 0,
                                 getResources().getColor(R.color.colorBackgroundHealthPanelAssetsDebts)
                         )
@@ -225,6 +229,7 @@ public class DashboardActivity extends AppCompatActivity
                         new CardViewData.HealthPanelData(
                                 this,
                                 getString(R.string.cv_hp_title_life),
+                                getResources().getDrawable(R.drawable.progres_bar_life),
                                 0,
                                 getResources().getColor(R.color.colorBackgroundHealthPanelLife)
                         )
@@ -240,6 +245,7 @@ public class DashboardActivity extends AppCompatActivity
                         new CardViewData.HealthPanelData(
                                 this,
                                 getString(R.string.cv_hp_title_spending),
+                                getResources().getDrawable(R.drawable.progres_bar_spendings),
                                 0,
                                 getResources().getColor(R.color.colorBackgroundHealthPanelSpending)
                         )

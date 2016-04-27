@@ -48,9 +48,10 @@ public class CardViewDataAdapter {
         RelativeLayout healthPanel;
         CardView cardView;
         TextView cvTitle, cvSubtitle, cvMoney, cvHpTitle, cvHpState;
+        Drawable progressBar;
         ProgressBar hpProgressBar;
         int statusColor;
-        //Class that we use to format the money value into ###,###,###.00
+        //Class that we use to format the money value into ###,###.00
         Locale locale = new Locale("en","UK");
         DecimalFormat df = (DecimalFormat)
                 NumberFormat.getNumberInstance(locale);
@@ -99,6 +100,9 @@ public class CardViewDataAdapter {
             cvHpState.setTextColor(statusColor);
             //Get the progress bar on the health panel
             hpProgressBar = (ProgressBar) cardView.findViewById(R.id.cv_hp_progressbar);
+            //We get the progress bar for each card
+            progressBar = cvd.getHealthPanel().getProgressBar();
+            hpProgressBar.setProgressDrawable(progressBar);
             //Set the progress of the bar
             hpProgressBar.setProgress(cvd.getHealthPanel().getHealthProgress());
         }

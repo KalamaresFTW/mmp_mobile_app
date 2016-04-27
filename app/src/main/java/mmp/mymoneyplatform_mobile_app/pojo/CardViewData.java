@@ -21,6 +21,7 @@ public class CardViewData {
     private double money;
     private HealthPanelData healthPanel;
 
+
     public CardViewData(String title, String subtitle, int titleColor, int backgroundColor,
                         double money, HealthPanelData healthPanel) {
         this.title = title;
@@ -102,11 +103,13 @@ public class CardViewData {
          */
         private Context c;
         private String title, status;
+        private Drawable progressBar;
         private int healthProgress, statusColor, backgroundColor;
 
-        public HealthPanelData(Context c, String title, int healthProgress, int backgroundColor) {
+        public HealthPanelData(Context c, String title, Drawable progressBar, int healthProgress, int backgroundColor) {
             this.c = c;
             this.title = title;
+            this.progressBar = progressBar;
             this.healthProgress = healthProgress;
             assignStatus(this.healthProgress);
             this.backgroundColor = backgroundColor;
@@ -146,11 +149,17 @@ public class CardViewData {
 
         //region Getters and Setters
 
+
+
         /**
          * @return the String value of the title ("Poor", "Medium", etc...)
          */
         public String getTitle() {
             return title;
+        }
+
+        public Drawable getProgressBar() {
+            return progressBar;
         }
 
         /**

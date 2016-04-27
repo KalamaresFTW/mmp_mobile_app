@@ -83,7 +83,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private PaidFrequencyLoader mPaidFrequencyLoaderTask;   //Gets the payment frequencies via API
     private RegionDataLoader mRegionDataLoaderTask;         //Gets the country list via API
 
-    // UI references.
+    /**
+     * UI Widget references
+     */
     private AutoCompleteTextView mEmailView;
     private EditText mPasswordView;
     private View mProgressView;
@@ -186,13 +188,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             if (grantResults.length == 1 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 populateAutoComplete();
             }
-        }
-    }
-
-    @Override
-    public void onWindowFocusChanged(boolean hasFocus) {
-        if (!hasFocus) {
-            finish();
         }
     }
 
@@ -565,6 +560,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             editor.putString("moneyData", moneyDataJSON);
             editor.putString("percentageData", percentageDataJSON);
             editor.commit();
+            finish(); //This kills the Login Activity, so the user cant get back here again
             startActivity(new Intent(getApplicationContext(), DashboardActivity.class));
         }
     }
