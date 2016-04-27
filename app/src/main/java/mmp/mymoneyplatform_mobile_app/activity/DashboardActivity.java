@@ -59,11 +59,7 @@ public class DashboardActivity extends AppCompatActivity
     //This is we are going to retrieve the user data for the dashboard
     private ArrayList<String> moneyData = new ArrayList<>(DashboardActivity.NUMBER_OF_CARDS);
     private ArrayList<Double> percentageData = new ArrayList<>(DashboardActivity.NUMBER_OF_CARDS);
-    /**
-     * ATTENTION: This was auto-generated to implement the App Indexing API.
-     * See https://g.co/AppIndexing/AndroidStudio for more information.
-     */
-    private GoogleApiClient client;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,9 +91,6 @@ public class DashboardActivity extends AppCompatActivity
         //Retrieve the user Data
         user = gson.fromJson(json, UserData.class);
         initComponents();
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
     }
 
     public void initComponents() {

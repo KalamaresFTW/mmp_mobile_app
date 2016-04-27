@@ -83,7 +83,6 @@ public class CardViewData {
                 '}';
     }
 
-
     /**
      * Created by K on 12/04/2016.
      * This class holds all the properties related to a HealthPanel that is always contained in a
@@ -91,7 +90,8 @@ public class CardViewData {
      * instances.
      * We also provide a reference to the Context of the activity holding this object, so we can
      * access the resources in our XML tables (such as strings.xml and colors.xml)
-     * Makes sense that this class is inside of CardVie
+     * Makes sense that this class is inside of CardViewData.java and static to it since a CardView
+     * always has a HealthPanel inside of it
      */
 
     public static class HealthPanelData {
@@ -189,14 +189,10 @@ public class CardViewData {
          * @param healthProgress
          */
         public void setHealthProgress(int healthProgress) {
-            if (healthProgress >= 0 || healthProgress <= 100) {
-                this.healthProgress = healthProgress;
-                //Update the status to match the new progress value
-                assignStatus(this.healthProgress);
-            } else {
-                throw new IllegalArgumentException("The value of the healthProgress must be " +
-                        "between 0 and 100");
-            }
+            this.healthProgress = healthProgress;
+            //Update the status to match the new progress value
+            assignStatus(this.healthProgress);
+
         }
 
         //endregion
