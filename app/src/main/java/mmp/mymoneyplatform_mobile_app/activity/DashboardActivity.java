@@ -118,6 +118,7 @@ public class DashboardActivity extends AppCompatActivity
         loadProfileData();
         loadCardsData();
     }
+    /**/
 
     public void loadProfileData() {
             //TODO: Find a way to load the user's profile image
