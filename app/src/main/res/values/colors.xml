@@ -39,6 +39,7 @@
     <color name="colorBackgroundHealthPanelSpending">#704f32</color>
 
     <!-- State Colors on the Progress Bar -->
+    <!-- Unused at this moment -->
     <color name="colorStatePoor">#de4b3c</color>
     <color name="colorStateMedium">#f1c40f</color>
     <color name="colorStateGood">#3498db</color>

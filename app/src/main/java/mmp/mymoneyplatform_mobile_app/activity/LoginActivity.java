@@ -146,6 +146,15 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
+
+        /*Loading the user´s email to put it on the Email EditText*/
+        SharedPreferences mPrefs = getSharedPreferences("prefs", MODE_PRIVATE);
+        Gson gson = new Gson();
+        String json = mPrefs.getString("user", "");
+        if (!json.equalsIgnoreCase("")) {
+            UserData user = gson.fromJson(json, UserData.class);
+            mEmailView.setText(user.getEmail());
+        }
     }
 
     private void populateAutoComplete() {
