@@ -151,7 +151,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         SharedPreferences mPrefs = getSharedPreferences("prefs", MODE_PRIVATE);
         Gson gson = new Gson();
         String json = mPrefs.getString("user", "");
-        if (!json.equalsIgnoreCase("")) {
+        if (!json.isEmpty()) {
             UserData user = gson.fromJson(json, UserData.class);
             mEmailView.setText(user.getEmail());
         }

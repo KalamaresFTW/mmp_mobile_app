@@ -119,7 +119,7 @@ public class DashboardActivity extends AppCompatActivity
     /**/
 
     public void loadProfileData() {
-            //TODO: Find a way to load the user's profile image
+        //TODO: Find a way to load the user's profile image
         new AsyncTask<Void, Void, Void>() {
             private Bitmap bitmap;
 

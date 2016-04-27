@@ -63,7 +63,8 @@
                 android:layout_marginTop="2dp"
                 android:text=""
                 android:textColor="@color/colorWhite"
-                android:textSize="@dimen/cv_money_size" />
+                android:textSize="@dimen/cv_money_size"
+                android:textStyle="bold"/>
 
             <!-- Health Panel -->
             <RelativeLayout
