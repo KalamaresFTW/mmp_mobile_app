@@ -19,8 +19,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.appindexing.AppIndex;
-import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -213,7 +211,7 @@ public class DashboardActivity extends AppCompatActivity
                         new CardViewData.HealthPanelData(
                                 this,
                                 getString(R.string.cv_hp_title_assets_debts),
-                                getResources().getDrawable(R.drawable.progres_bar_asetsdebts),
+                                getResources().getDrawable(R.drawable.progress_bar_assetsdebts),
                                 0,
                                 getResources().getColor(R.color.colorBackgroundHealthPanelAssetsDebts)
                         )
@@ -229,7 +227,7 @@ public class DashboardActivity extends AppCompatActivity
                         new CardViewData.HealthPanelData(
                                 this,
                                 getString(R.string.cv_hp_title_life),
-                                getResources().getDrawable(R.drawable.progres_bar_life),
+                                getResources().getDrawable(R.drawable.progress_bar_life),
                                 0,
                                 getResources().getColor(R.color.colorBackgroundHealthPanelLife)
                         )
@@ -245,7 +243,7 @@ public class DashboardActivity extends AppCompatActivity
                         new CardViewData.HealthPanelData(
                                 this,
                                 getString(R.string.cv_hp_title_spending),
-                                getResources().getDrawable(R.drawable.progres_bar_spendings),
+                                getResources().getDrawable(R.drawable.progress_bar_spendings),
                                 0,
                                 getResources().getColor(R.color.colorBackgroundHealthPanelSpending)
                         )
