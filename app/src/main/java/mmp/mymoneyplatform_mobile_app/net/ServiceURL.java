@@ -13,11 +13,17 @@ public class ServiceURL {
     public static final String DASHBOARD = REST_SERVICE_URL + "/Dashboard";
     //Params of the API
     public static final String URL_PARAM_ENTITYNAME = "entityName";
-
     public static final String URL_PARAM_USERSUBSCRIPTIONID = "userSubscriptionID";
-    //Values of the API
-    public static final String URL_VAL_COUNTRY = "country";
-    public static final String URL_VAL_PAYPERIOD = "payperiod";
+    public static final String URL_PARAM_EMAIL = "email";
+    public static final String URL_PARAM_PASSWORD = "password";
+    public static final String URL_PARAM_CONFIRMPASSWORD = "confirmPassword";
+    public static final String URL_PARAM_USERNAME = "name";
+    public static final String URL_PARAM_DAYOFBIRTH = "dateOfBirth";
+    public static final String URL_PARAM_COUNTRY = "country";
+    public static final String URL_PARAM_PAYPERIOD = "payperiod";
+
+
+//    URL: {testdomain}/api/Account?email={email}&password={password}&confirmPassword={confirmPassword}&name={UserName}&payperiod={payperiod}&country={Country}&dateOfBirth={dateofBirth}
 
 
 }

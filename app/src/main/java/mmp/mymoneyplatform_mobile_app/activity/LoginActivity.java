@@ -584,7 +584,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             URL url = null;
             try {
                 param = ServiceURL.URL_PARAM_ENTITYNAME + "=" +
-                        URLEncoder.encode(ServiceURL.URL_VAL_PAYPERIOD, "UTF-8");
+                        URLEncoder.encode(ServiceURL.URL_PARAM_PAYPERIOD, "UTF-8");
                 url = new URL(ServiceURL.DEFAULT + "?" + param);
             } catch (MalformedURLException | UnsupportedEncodingException ex) {
                 ex.printStackTrace();
@@ -651,7 +651,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             URL url = null;
             try {
                 param = ServiceURL.URL_PARAM_ENTITYNAME + "=" +
-                        URLEncoder.encode(ServiceURL.URL_VAL_COUNTRY, "UTF-8");
+                        URLEncoder.encode(ServiceURL.URL_PARAM_COUNTRY, "UTF-8");
                 url = new URL(ServiceURL.DEFAULT + "?" + param);
             } catch (MalformedURLException | UnsupportedEncodingException ex) {
                 ex.printStackTrace();

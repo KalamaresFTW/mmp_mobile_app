@@ -4,6 +4,7 @@ import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -18,11 +19,21 @@ import android.widget.Spinner;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Type;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Calendar;
 
 import mmp.mymoneyplatform_mobile_app.R;
+import mmp.mymoneyplatform_mobile_app.net.ServiceURL;
 import mmp.mymoneyplatform_mobile_app.pojo.FrecuencyData;
 import mmp.mymoneyplatform_mobile_app.pojo.RegionData;
 import mmp.mymoneyplatform_mobile_app.util.FontsOverride;
@@ -78,7 +89,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         calendar = Calendar.getInstance();
 
         mRegionSpinner = (Spinner) findViewById(R.id.sp_region);
-        mRegionSpinner.setAdapter(new ArrayAdapter<>(this, R.layout.my_item_spinner_registration,regionList));
+        mRegionSpinner.setAdapter(new ArrayAdapter<>(this, R.layout.my_item_spinner_registration, regionList));
 
         mPaymentFrecuencySpinner = (Spinner) findViewById(R.id.sp_payment_frecuency);
         mPaymentFrecuencySpinner.setAdapter(new ArrayAdapter<>(this, R.layout.my_item_spinner_registration, paymentFrequencyList));
@@ -86,7 +97,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
     @Override
     public void onClick(View v) {
-        //TODO: Send the data to the server via API and wait for the response
         String name = mNameView.getText().toString();
         String email = mEmailView.getText().toString();
         String password = mPasswordView.getText().toString();
@@ -97,7 +107,77 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                 " - Email: " + email +
                 " - Password: " + password +
                 " - Password Confirm: " + passwordConfirm +
-                " - Birth date: " + birthDate);
+                " - Birth date: " + birthDate +
+                " - Selected region: " + mRegionSpinner.getSelectedItem() +
+                " -  ID: " + ((RegionData) mRegionSpinner.getSelectedItem()).getRegionID() +
+                " - Selected payperiod: " + mPaymentFrecuencySpinner.getSelectedItem() +
+                " -  ID: " + ((FrecuencyData) mPaymentFrecuencySpinner.getSelectedItem()).getFrecuencyID()
+        );
+
+        new AsyncTask<Void, Void, Void>() {
+
+            //TODO: Avoid the doom
+            private String email, password, passwordConfirm, name, birthDate;
+            private int payperiodID, countryID;
+
+            @Override
+            protected void onPreExecute() {
+                email = mEmailView.getText().toString();
+                password = mPasswordView.getText().toString();
+                passwordConfirm = mPasswordConfirmView.getText().toString();
+                name = mNameView.getText().toString();
+                payperiodID = ((FrecuencyData) mPaymentFrecuencySpinner.getSelectedItem()).getFrecuencyID();
+                countryID = ((RegionData) mRegionSpinner.getSelectedItem()).getRegionID();
+                birthDate = mBirthDate.getText().toString();
+            }
+
+            @Override
+            protected Void doInBackground(Void... params) {
+                String param;
+                URL url = null;
+                try {
+                    param = ServiceURL.URL_PARAM_EMAIL + "=" + URLEncoder.encode(email, "UTF-8");
+                    param += "&" + ServiceURL.URL_PARAM_PASSWORD + "=" + URLEncoder.encode(password, "UTF-8");
+                    param += "&" + ServiceURL.URL_PARAM_CONFIRMPASSWORD + "=" + URLEncoder.encode(passwordConfirm, "UTF-8");
+                    param += "&" + ServiceURL.URL_PARAM_USERNAME + "=" + URLEncoder.encode(name, "UTF-8");
+                    param += "&" + ServiceURL.URL_PARAM_PAYPERIOD + "=" + payperiodID;
+                    param += "&" + ServiceURL.URL_PARAM_COUNTRY + "=" + countryID;
+                    param += "&" + ServiceURL.URL_PARAM_DAYOFBIRTH + "=" + URLEncoder.encode(birthDate, "UTF-8");
+                    url = new URL(ServiceURL.ACCOUNT + "?" + param);
+                } catch (MalformedURLException | UnsupportedEncodingException ex) {
+                    ex.printStackTrace();
+                }
+                System.out.println(url);
+//                HttpURLConnection urlConnection = null;
+//                try {
+//                    urlConnection = (HttpURLConnection) url.openConnection();
+//                } catch (IOException ex) {
+//                    System.err.println("Error: " + ex.getMessage());
+//                }
+//                try {
+//                    InputStream inputStream = urlConnection.getInputStream();
+//                    InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
+//                    BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+//                    StringBuilder response = new StringBuilder();
+//                    String partialResponse;
+//                    while ((partialResponse = bufferedReader.readLine()) != null) {
+//                        String cleanString = partialResponse.replaceAll("(\\\\r\\\\n|\\\\n|\\\\)", "");
+//                        response.append(cleanString);
+//                    }
+//                    System.out.println(response);
+//                    bufferedReader.close();
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                } finally {
+//                    return null;
+//                }
+                return null;
+            }
+
+            @Override
+            protected void onPostExecute(Void aVoid) {
+            }
+        }.execute();
     }
 
     @SuppressWarnings("deprecation")
