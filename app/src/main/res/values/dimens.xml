@@ -11,6 +11,7 @@
     <dimen name="cv_text_size">15sp</dimen>
     <dimen name="cv_money_size">25sp</dimen>
     <dimen name="cv_text_status_size">12sp</dimen>
+
     <!-- Profile Sizes -->
     <dimen name="profile_text_size">18sp</dimen>
     <dimen name="profile_horizontal_spacing">15dp</dimen>
