@@ -12,67 +12,75 @@
         android:id="@+id/card_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:cardBackgroundColor="@color/colorBackgroundCardViewIncome"
         app:cardCornerRadius="0dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="13dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            android:layout_marginTop="13dp">
-
-            <TextView
-                android:id="@+id/cv_tv_title"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <!-- Parent Panel -->
+            <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="9dp"
-                android:text="@string/cv_title_income"
-                android:textColor="@color/colorTitleIncome"
-                android:textSize="@dimen/cv_text_size"
-                android:textStyle="bold" />
-
-            <!-- Ñapa separator -->
-            <View
-                android:id="@+id/cv_separator"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_below="@+id/cv_tv_title"
-                android:background="@color/colorBlack" />
-
-            <TextView
-                android:id="@+id/cv_tv_subtitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/cv_tv_title"
-                android:layout_centerHorizontal="true"
-                android:layout_marginBottom="0dp"
+                android:layout_marginLeft="13dp"
                 android:layout_marginTop="9dp"
-                android:text="@string/cv_subtitle_income"
-                android:textColor="@color/colorWhite"
-                android:textSize="@dimen/cv_text_size"
-                android:textStyle="bold" />
+                android:layout_toLeftOf="@+id/health_panel"
+                android:layout_toStartOf="@+id/health_panel">
 
-            <TextView
-                android:id="@+id/cv_tv_money"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/cv_tv_subtitle"
-                android:layout_centerHorizontal="true"
-                android:layout_marginBottom="0dp"
-                android:layout_marginTop="2dp"
-                android:text=""
-                android:textColor="@color/colorWhite"
-                android:textSize="@dimen/cv_money_size" />
+                <TextView
+                    android:id="@+id/cv_tv_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="9dp"
+                    android:text="@string/cv_title_income"
+                    android:textColor="@color/colorTitleIncome"
+                    android:textSize="@dimen/cv_title_size"
+                    android:textStyle="bold" />
 
+                <!-- Ñapa separator -->
+                <View
+                    android:id="@+id/cv_separator"
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:layout_below="@+id/cv_tv_title"
+                    android:layout_marginRight="15dp"
+                    android:background="@color/colorBlack" />
+
+                <TextView
+                    android:id="@+id/cv_tv_subtitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_below="@+id/cv_tv_title"
+                    android:layout_marginBottom="0dp"
+                    android:layout_marginTop="9dp"
+                    android:text="@string/cv_subtitle_income"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="@dimen/cv_text_size" />
+
+                <TextView
+                    android:id="@+id/cv_tv_money"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_below="@+id/cv_tv_subtitle"
+                    android:layout_marginBottom="0dp"
+                    android:layout_marginTop="2dp"
+                    android:text="€23.456"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="@dimen/cv_money_size" />
+
+
+            </RelativeLayout>
             <!-- Health Panel -->
             <RelativeLayout
                 android:id="@+id/health_panel"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/cv_tv_money"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="7dp"
+                android:layout_width="110dp"
+                android:layout_height="110dp"
+                android:layout_alignParentRight="true"
                 android:background="@color/colorBackgroundHealthPanelIncome"
                 android:paddingBottom="11dp">
 
@@ -80,10 +88,10 @@
                     android:id="@+id/cv_hp_tv_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="17dp"
-                    android:layout_marginRight="17dp"
-                    android:layout_marginTop="9dp"
                     android:text="@string/cv_hp_title_income"
+                    android:layout_marginTop="13dp"
+                    android:layout_marginBottom="13dp"
+                    android:gravity="center_horizontal"
                     android:textColor="@color/colorWhite"
                     android:textSize="@dimen/cv_text_size" />
 
@@ -91,11 +99,8 @@
                 <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/cv_hp_tv_title"
                     android:layout_alignParentRight="true"
-                    android:layout_marginLeft="13dp"
-                    android:layout_marginRight="13dp"
-                    android:layout_marginTop="5dp">
+                    android:layout_below="@+id/cv_hp_tv_title">
 
                     <TextView
                         android:id="@+id/cv_hp_tv_progresstitle"
@@ -104,32 +109,32 @@
                         android:layout_alignParentLeft="true"
                         android:layout_alignParentStart="true"
                         android:layout_alignParentTop="true"
-                        android:layout_marginBottom="7dp"
-                        android:layout_marginRight="15dp"
-                        android:text=""
+                        android:layout_marginLeft="9dp"
+                        android:layout_marginBottom="9dp"
+                        android:text="Good"
                         android:textColor="@color/colorStateGood"
-                        android:textSize="@dimen/cv_text_size"
+                        android:textSize="@dimen/cv_text_status_size"
                         android:textStyle="bold" />
 
                     <ProgressBar
                         android:id="@+id/cv_hp_progressbar"
                         style="?android:attr/progressBarStyleHorizontal"
                         android:layout_width="wrap_content"
-                        android:layout_height="7dp"
-                        android:layout_alignParentTop="true"
-                        android:layout_marginTop="10dp"
-                        android:layout_toRightOf="@+id/cv_hp_tv_progresstitle"
+                        android:layout_height="9dp"
+                        android:layout_marginLeft="9dp"
+                        android:layout_marginRight="9dp"
+                        android:layout_below="@id/cv_hp_tv_progresstitle"
                         android:max="100"
+                        android:maxWidth="200dp"
                         android:minHeight="50dp"
                         android:minWidth="200dp"
-                        android:maxWidth="200dp"
                         android:progressDrawable="@drawable/progress_bar_income" />
 
                 </RelativeLayout>
 
             </RelativeLayout>
-
         </RelativeLayout>
+
 
     </android.support.v7.widget.CardView>
 
