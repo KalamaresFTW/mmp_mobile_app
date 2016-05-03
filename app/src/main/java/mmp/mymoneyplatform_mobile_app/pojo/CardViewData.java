@@ -201,7 +201,6 @@ public class CardViewData {
             this.healthProgress = healthProgress;
             //Update the status to match the new progress value
             assignStatus(this.healthProgress);
-
         }
 
         //endregion

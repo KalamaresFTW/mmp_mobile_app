@@ -116,7 +116,10 @@ public class DashboardActivity extends AppCompatActivity
         loadProfileData();
         loadCardsData();
     }
-    /**/
+
+    public void onCardViewClicked(View v){
+        startActivity(new Intent(this, PensionActivity.class));
+    }
 
     public void loadProfileData() {
         //TODO: Find a way to load the user's profile image
