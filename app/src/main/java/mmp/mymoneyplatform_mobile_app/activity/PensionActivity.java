@@ -1,18 +1,26 @@
 package mmp.mymoneyplatform_mobile_app.activity;
 
 import android.os.Bundle;
+import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.Toast;
+
 import java.util.ArrayList;
 import java.util.List;
 import mmp.mymoneyplatform_mobile_app.R;
 
-public class PensionActivity extends AppCompatActivity {
+public class PensionActivity extends AppCompatActivity
+        implements NavigationView.OnNavigationItemSelectedListener {
 
     private Toolbar toolbar;
     private TabLayout tabLayout;
@@ -24,6 +32,15 @@ public class PensionActivity extends AppCompatActivity {
         setContentView(R.layout.activity_pension);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        //Reference to the drawer
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_module_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+        NavigationView navigationView = (NavigationView) drawer.findViewById(R.id.nav_view_module);
+        navigationView.setNavigationItemSelectedListener(this);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -40,6 +57,12 @@ public class PensionActivity extends AppCompatActivity {
         adapter.addFragment(new TwoFragment(), "TWO");
         adapter.addFragment(new ThreeFragment(), "THREE");
         viewPager.setAdapter(adapter);
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(MenuItem item) {
+        Toast.makeText(this, "El drawer funciona", Toast.LENGTH_SHORT).show();
+        return true;
     }
 
     class ViewPagerAdapter extends FragmentPagerAdapter {
@@ -70,5 +93,7 @@ public class PensionActivity extends AppCompatActivity {
             return mFragmentTitleList.get(position);
         }
     }
+
+
 
 }

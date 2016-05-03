@@ -84,6 +84,13 @@
     <string name="profile_button_save">Save</string>
     <string name="title_activity_pension">Pension</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- Navigation Module Drawer Strings -->
+    <string name="nav_module_title">MODULES</string>
+    <string name="nav_income">Income</string>
+    <string name="nav_pension">Pension</string>
+    <string name="nav_assetsdebts">Assets/Debts</string>
+    <string name="nav_goals">Goals</string>
+    <string name="nav_life">Life</string>
+    <string name="nav_spending">Spendigs</string>
+
 </resources>
