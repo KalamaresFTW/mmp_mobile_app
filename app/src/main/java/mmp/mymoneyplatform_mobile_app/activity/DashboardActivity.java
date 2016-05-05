@@ -19,16 +19,13 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Type;
 import java.net.URL;
 import java.util.ArrayList;
-
 import mmp.mymoneyplatform_mobile_app.R;
 import mmp.mymoneyplatform_mobile_app.adapter.CardViewDataAdapter;
 import mmp.mymoneyplatform_mobile_app.net.ServiceURL;
@@ -179,7 +176,6 @@ public class DashboardActivity extends AppCompatActivity
         tv_menu_mail.setText(user.getEmail());
     }
 
-
     private void loadCardsData() {
         cardData.add(
                 new CardViewData(
@@ -307,11 +303,31 @@ public class DashboardActivity extends AppCompatActivity
             case R.id.nav_profile:
                 startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
                 break;
+            case R.id.nav_dashboard:
+                Toast.makeText(this, "Dashboard", Toast.LENGTH_SHORT).show();
+            case R.id.nav_income:
+                Toast.makeText(this, "Income", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.nav_pension:
+                startActivity(new Intent(getApplicationContext(), PensionActivity.class));
+                break;
+            case R.id.nav_assetsdebts:
+                Toast.makeText(this, "Assets/Debts", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.nav_goals:
+                Toast.makeText(this, "Goals", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.nav_life:
+                Toast.makeText(this, "Life", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.nav_spendings:
+                Toast.makeText(this, "Spendings", Toast.LENGTH_SHORT).show();
+                break;
             case R.id.nav_settings:
-                Toast.makeText(DashboardActivity.this, "Settings", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Settings", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.nav_help:
-                Toast.makeText(DashboardActivity.this, "Help", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Help", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.nav_logout:
                 //In this case we start a new Login Activity

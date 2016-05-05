@@ -71,6 +71,8 @@ public class PensionActivity extends AppCompatActivity
             case R.id.nav_profile:
                 startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
                 break;
+            case R.id.nav_dashboard:
+                Toast.makeText(this, "Dashboard", Toast.LENGTH_SHORT).show();
             case R.id.nav_income:
                 Toast.makeText(PensionActivity.this, "Income", Toast.LENGTH_SHORT).show();
                 break;
