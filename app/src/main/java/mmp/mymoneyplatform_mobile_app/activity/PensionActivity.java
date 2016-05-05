@@ -18,6 +18,9 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
+import mmp.mymoneyplatform_mobile_app.Fragments.Pension.OneFragment;
+import mmp.mymoneyplatform_mobile_app.Fragments.Pension.ThreeFragment;
+import mmp.mymoneyplatform_mobile_app.Fragments.Pension.TwoFragment;
 import mmp.mymoneyplatform_mobile_app.R;
 
 public class PensionActivity extends AppCompatActivity
@@ -70,7 +73,7 @@ public class PensionActivity extends AppCompatActivity
                 Toast.makeText(PensionActivity.this, "Income", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.nav_pension:
-                Toast.makeText(PensionActivity.this, "Pension", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Pension", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.nav_assetsdebts:
                 Toast.makeText(PensionActivity.this, "Assets/Debts", Toast.LENGTH_SHORT).show();
