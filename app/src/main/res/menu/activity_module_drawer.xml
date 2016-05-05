@@ -1,30 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <group android:checkableBehavior="single">
+    <group
+        android:id="@+id/profile"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_profile"
+            android:icon="@drawable/ic_menu_profile"
+            android:title="@string/nav_profile" />
+    </group>
+    <group
+        android:id="@+id/modules"
+        android:checkableBehavior="single">
         <item
             android:id="@+id/nav_income"
-            android:icon="@drawable/ic_menu_profile"
+            android:icon="@drawable/ic_menu_income"
             android:title="@string/nav_income" />
         <item
             android:id="@+id/nav_pension"
-            android:icon="@drawable/ic_menu_settings"
+            android:icon="@drawable/ic_menu_pension"
             android:title="@string/nav_pension" />
         <item
             android:id="@+id/nav_assetsdebts"
-            android:icon="@drawable/ic_menu_help"
+            android:icon="@drawable/ic_menu_assetsdebts"
             android:title="@string/nav_assetsdebts" />
         <item
             android:id="@+id/nav_goals"
-            android:icon="@drawable/ic_exit_to_app_black_24dp"
+            android:icon="@drawable/ic_menu_goals"
             android:title="@string/nav_goals" />
         <item
             android:id="@+id/nav_life"
-            android:icon="@drawable/ic_menu_profile"
+            android:icon="@drawable/ic_menu_life"
             android:title="@string/nav_life" />
         <item
             android:id="@+id/nav_spendings"
-            android:icon="@drawable/ic_menu_profile"
+            android:icon="@drawable/ic_menu_spendings"
             android:title="@string/nav_spending" />
+    </group>
+    <group
+        android:id="@+id/options"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_settings"
+            android:icon="@drawable/ic_menu_settings"
+            android:title="@string/nav_settings" />
+        <item
+            android:id="@+id/nav_help"
+            android:icon="@drawable/ic_menu_help"
+            android:title="@string/nav_help" />
+        <item
+            android:id="@+id/nav_logout"
+            android:icon="@drawable/ic_exit_to_app_black_24dp"
+            android:title="@string/nav_logout" />
     </group>
 </menu>

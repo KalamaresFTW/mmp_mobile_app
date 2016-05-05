@@ -1,22 +1,23 @@
 package mmp.mymoneyplatform_mobile_app.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Toast;
-
 import java.util.ArrayList;
 import java.util.List;
+
 import mmp.mymoneyplatform_mobile_app.R;
 
 public class PensionActivity extends AppCompatActivity
@@ -61,7 +62,45 @@ public class PensionActivity extends AppCompatActivity
 
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        Toast.makeText(this, "El drawer funciona", Toast.LENGTH_SHORT).show();
+        switch (item.getItemId()) {
+            case R.id.nav_profile:
+                startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
+                break;
+            case R.id.nav_income:
+                Toast.makeText(PensionActivity.this, "Income", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.nav_pension:
+                Toast.makeText(PensionActivity.this, "Pension", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.nav_assetsdebts:
+                Toast.makeText(PensionActivity.this, "Assets/Debts", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.nav_goals:
+                Toast.makeText(PensionActivity.this, "Goals", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.nav_life:
+                Toast.makeText(PensionActivity.this, "Life", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.nav_spendings:
+                Toast.makeText(PensionActivity.this, "Spendings", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.nav_settings:
+                Toast.makeText(PensionActivity.this, "Settings", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.nav_help:
+                Toast.makeText(PensionActivity.this, "Help", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.nav_logout:
+                //In this case we start a new Login Activity
+                finish();
+                startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+                break;
+            default:
+                return false;
+        }
+        //Close the drawer
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
         return true;
     }
 
@@ -93,7 +132,4 @@ public class PensionActivity extends AppCompatActivity
             return mFragmentTitleList.get(position);
         }
     }
-
-
-
 }

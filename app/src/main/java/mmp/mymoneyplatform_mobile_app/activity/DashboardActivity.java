@@ -118,7 +118,26 @@ public class DashboardActivity extends AppCompatActivity
     }
 
     public void onCardViewClicked(View v){
-        startActivity(new Intent(this, PensionActivity.class));
+        switch (v.getId()) {
+            case R.id.cv_income:
+                Toast.makeText(this, "Start Income Screen", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.cv_pension:
+                startActivity(new Intent(this, PensionActivity.class));
+                break;
+            case R.id.cv_goals:
+                Toast.makeText(this, "Start Goals Screen", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.cv_assetsdebts:
+                Toast.makeText(this, "Start Assets/Debts Screen", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.cv_life:
+                Toast.makeText(this, "Start Life Screen", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.cv_spending:
+                Toast.makeText(this, "Start Spending Screen", Toast.LENGTH_SHORT).show();
+                break;
+        }
     }
 
     public void loadProfileData() {
