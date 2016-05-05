@@ -1,4 +1,4 @@
-package mmp.mymoneyplatform_mobile_app.fragments.pension;
+package mmp.mymoneyplatform_mobile_app.fragment.income;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -8,8 +8,9 @@ import android.view.ViewGroup;
 
 import mmp.mymoneyplatform_mobile_app.R;
 
-public class TwoFragment extends Fragment {
-    public TwoFragment() {
+
+public class InputsFragment extends Fragment {
+    public InputsFragment() {
         // Required empty public constructor
     }
 
@@ -22,6 +23,6 @@ public class TwoFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_two, container, false);
+        return inflater.inflate(R.layout.fragment_inputs, container, false);
     }
 }

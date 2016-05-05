@@ -19,10 +19,9 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
-import mmp.mymoneyplatform_mobile_app.fragments.pension.OneFragment;
-import mmp.mymoneyplatform_mobile_app.fragments.pension.ThreeFragment;
-import mmp.mymoneyplatform_mobile_app.fragments.pension.TwoFragment;
 import mmp.mymoneyplatform_mobile_app.R;
+
+import mmp.mymoneyplatform_mobile_app.fragment.pension.*;
 
 public class PensionActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -66,6 +65,8 @@ public class PensionActivity extends AppCompatActivity
 
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
+        MenuItem selection = item;
+        System.out.println(selection.getTitle());
         switch (item.getItemId()) {
             case R.id.nav_profile:
                 startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
