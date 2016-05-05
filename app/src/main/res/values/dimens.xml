@@ -15,7 +15,8 @@
     <dimen name="cv_text_status_size">12sp</dimen>
 
     <!-- Dashboard Sizes -->
-    <dimen name="dash_bottom_margin">65dp</dimen>
+    <dimen name="dash_bottom_margin">75dp</dimen>
+    <dimen name="cv_horizontal_margin">10dp</dimen>
 
     <!-- Profile Sizes -->
     <dimen name="profile_text_size">18sp</dimen>

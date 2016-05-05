@@ -115,7 +115,6 @@ public class DashboardActivity extends AppCompatActivity
         cardList.add((LinearLayout) findViewById(R.id.cv_spending));
         loadProfileData();
         loadCardsData();
-        //pene
     }
 
     public void onCardViewClicked(View v){

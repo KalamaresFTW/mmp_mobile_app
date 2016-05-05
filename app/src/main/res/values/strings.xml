@@ -92,5 +92,7 @@
     <string name="nav_goals">Goals</string>
     <string name="nav_life">Life</string>
     <string name="nav_spending">Spendigs</string>
+    <string name="txt_action_plan">Action Plan</string>
+    <string name="txt_action_plan_score">Your financial health score is</string>
 
 </resources>

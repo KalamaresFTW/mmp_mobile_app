@@ -12,7 +12,6 @@
     <color name="colorDarkOrange">#b9571a</color>
 
     <!-- Dashboard Colors -->
-    <color name="colorTitleActionPlanTitle">#437c5d</color>
     <!-- CardView Background Colors -->
     <color name="colorBackgroundCardViewIncome">#006766</color>
     <color name="colorBackgroundCardViewPension">#3d6487</color>
@@ -20,7 +19,6 @@
     <color name="colorBackgroundCardViewAssetsDebts">#d79c8c</color>
     <color name="colorBackgroundCardViewLife">#f8e1b4</color>
     <color name="colorBackgroundCardViewSpending">#e09e64</color>
-    <color name="colorBackgroundCardViewActionPlan">#91c5a9</color>
 
     <!-- CardView Title Colors -->
     <color name="colorTitleIncome">#679696</color>
@@ -29,7 +27,7 @@
     <color name="colorTitleAssetsDebts">#886257</color>
     <color name="colorTitleLife">#b4a183</color>
     <color name="colorTitleSpending">#8e633d</color>
-    <color name="colorTitleActionPlan">#5a7c6a</color>
+    <color name="colorTitleActionPlan">#437c5d</color>
 
     <!-- CardView HealthPanel background colors -->
     <color name="colorBackgroundHealthPanelIncome">#003333</color>
