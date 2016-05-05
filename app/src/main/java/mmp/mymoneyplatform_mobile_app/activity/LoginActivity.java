@@ -545,6 +545,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                     percentageData.add(getPercentage(assetDebtScore, true));
                     percentageData.add(getPercentage(lifeAssuranceScore, false));
                     percentageData.add(getPercentage(outgoingsScore, false));
+                    percentageData.add(Double.parseDouble(healthScore) * 100); //The last one is for the general health percentage
                 } catch (JSONException ex) {
                     ex.printStackTrace();
                 }

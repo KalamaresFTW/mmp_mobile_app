@@ -16,6 +16,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -38,7 +39,6 @@ import mmp.mymoneyplatform_mobile_app.util.FontsOverride;
 public class DashboardActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    //TODO: Update this to 7 when we add the last element
     public static final int NUMBER_OF_CARDS = 6;
 
     //This ia reference to the header items on the drawer
@@ -58,6 +58,9 @@ public class DashboardActivity extends AppCompatActivity
     private ArrayList<String> moneyData = new ArrayList<>(DashboardActivity.NUMBER_OF_CARDS);
     private ArrayList<Double> percentageData = new ArrayList<>(DashboardActivity.NUMBER_OF_CARDS);
 
+    //Reference to the UI action plan section
+    private TextView tv_action_plan_score;
+    private ProgressBar progress_bar_action_plan;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -104,9 +107,13 @@ public class DashboardActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) drawer.findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         View navigationViewHeader = navigationView.getHeaderView(0);
+        //This are the drawer items
         iv_menu_img = (ImageView) navigationViewHeader.findViewById(R.id.iv_menu_img);
         tv_menu_name = (TextView) navigationViewHeader.findViewById(R.id.tv_menu_name);
         tv_menu_mail = (TextView) navigationViewHeader.findViewById(R.id.tv_menu_mail);
+        //This are for the general health bar
+        tv_action_plan_score = (TextView) findViewById(R.id.tv_action_plan_score);
+        progress_bar_action_plan = (ProgressBar) findViewById(R.id.progress_bar_action_plan);
         cardList.add((LinearLayout) findViewById(R.id.cv_income));
         cardList.add((LinearLayout) findViewById(R.id.cv_pension));
         cardList.add((LinearLayout) findViewById(R.id.cv_goals));
@@ -117,7 +124,7 @@ public class DashboardActivity extends AppCompatActivity
         loadCardsData();
     }
 
-    public void onCardViewClicked(View v){
+    public void onCardViewClicked(View v) {
         switch (v.getId()) {
             case R.id.cv_income:
                 Toast.makeText(this, "Start Income Screen", Toast.LENGTH_SHORT).show();
@@ -167,7 +174,6 @@ public class DashboardActivity extends AppCompatActivity
                 iv_menu_img.setScaleY(0.5f);
             }
         }.execute();
-
 
         tv_menu_name.setText(user.getName());
         tv_menu_mail.setText(user.getEmail());
@@ -277,6 +283,8 @@ public class DashboardActivity extends AppCompatActivity
             cardData.get(i).setMoney(Float.parseFloat(moneyData.get(i)));
             cardData.get(i).getHealthPanel().setHealthProgress((int) Math.abs(percentageData.get(i)));
         }
+        progress_bar_action_plan.setProgress(percentageData.get(6).intValue());
+        tv_action_plan_score.setText(percentageData.get(6).intValue() + "%");
         //Finally we set all the properties of the card (mostly a e s t h e t i c properties)
         CardViewDataAdapter.getInstance().loadData(cardData, cardList);
     }
