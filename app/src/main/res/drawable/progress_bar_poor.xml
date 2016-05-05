@@ -19,10 +19,10 @@
             <shape>
                 <gradient
                     android:angle="270"
-                    android:centerColor="@color/colorBackgroundCardViewPension"
+                    android:centerColor="@color/colorStatePoor"
                     android:centerY="1.0"
-                    android:endColor="@color/colorBackgroundCardViewPension"
-                    android:startColor="@color/colorBackgroundCardViewPension" />
+                    android:endColor="@color/colorStatePoor"
+                    android:startColor="@color/colorStatePoor" />
             </shape>
         </clip>
     </item>

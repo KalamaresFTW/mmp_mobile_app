@@ -1,4 +1,4 @@
-package mmp.mymoneyplatform_mobile_app.Fragments.Pension;
+package mmp.mymoneyplatform_mobile_app.fragments.pension;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;

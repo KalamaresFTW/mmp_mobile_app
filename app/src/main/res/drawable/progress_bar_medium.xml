@@ -6,10 +6,10 @@
         <shape>
             <gradient
                 android:angle="270"
-                android:centerColor="@color/colorBackgroundProgressBarLife"
+                android:centerColor="@color/colorBackgroundProgressBarPension"
                 android:centerY="1.0"
-                android:endColor="@color/colorBackgroundProgressBarLife"
-                android:startColor="@color/colorBackgroundProgressBarLife" />
+                android:endColor="@color/colorBackgroundProgressBarPension"
+                android:startColor="@color/colorBackgroundProgressBarPension" />
         </shape>
     </item>
 
@@ -19,10 +19,10 @@
             <shape>
                 <gradient
                     android:angle="270"
-                    android:centerColor="@color/colorBackgroundCardViewLife"
+                    android:centerColor="@color/colorStateMedium"
                     android:centerY="1.0"
-                    android:endColor="@color/colorBackgroundCardViewLife"
-                    android:startColor="@color/colorBackgroundCardViewLife" />
+                    android:endColor="@color/colorStateMedium"
+                    android:startColor="@color/colorStateMedium" />
             </shape>
         </clip>
     </item>

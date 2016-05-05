@@ -130,7 +130,7 @@
                         android:maxWidth="200dp"
                         android:minHeight="50dp"
                         android:minWidth="200dp"
-                        android:progressDrawable="@drawable/progress_bar_income" />
+                        android:progressDrawable="@drawable/progress_bar_good" />
 
                 </RelativeLayout>
 

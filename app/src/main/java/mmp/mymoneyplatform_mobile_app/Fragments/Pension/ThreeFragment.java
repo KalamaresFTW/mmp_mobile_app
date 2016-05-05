@@ -1,7 +1,5 @@
-package mmp.mymoneyplatform_mobile_app.Fragments.Pension;
+package mmp.mymoneyplatform_mobile_app.fragments.pension;
 
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;

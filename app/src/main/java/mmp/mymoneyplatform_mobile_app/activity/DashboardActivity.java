@@ -185,7 +185,7 @@ public class DashboardActivity extends AppCompatActivity
                         new CardViewData.HealthPanelData(
                                 this,
                                 getString(R.string.cv_hp_title_income),
-                                getResources().getDrawable(R.drawable.progress_bar_income),
+                                getResources().getDrawable(R.drawable.progress_bar_good),
                                 0,
                                 getResources().getColor(R.color.colorBackgroundHealthPanelIncome)
                         )
@@ -201,7 +201,7 @@ public class DashboardActivity extends AppCompatActivity
                         new CardViewData.HealthPanelData(
                                 this,
                                 getString(R.string.cv_hp_title_pension),
-                                getResources().getDrawable(R.drawable.progress_bar_pension),
+                                getResources().getDrawable(R.drawable.progress_bar_poor),
                                 0,
                                 getResources().getColor(R.color.colorBackgroundHealthPanelPension)
                         )
@@ -217,7 +217,7 @@ public class DashboardActivity extends AppCompatActivity
                         new CardViewData.HealthPanelData(
                                 this,
                                 getString(R.string.cv_hp_title_goals),
-                                getResources().getDrawable(R.drawable.progress_bar_goals),
+                                getResources().getDrawable(R.drawable.progress_bar_excelent),
                                 0,
                                 getResources().getColor(R.color.colorBackgroundHealthPanelGoals)
                         )
@@ -249,7 +249,7 @@ public class DashboardActivity extends AppCompatActivity
                         new CardViewData.HealthPanelData(
                                 this,
                                 getString(R.string.cv_hp_title_life),
-                                getResources().getDrawable(R.drawable.progress_bar_life),
+                                getResources().getDrawable(R.drawable.progress_bar_medium),
                                 0,
                                 getResources().getColor(R.color.colorBackgroundHealthPanelLife)
                         )
