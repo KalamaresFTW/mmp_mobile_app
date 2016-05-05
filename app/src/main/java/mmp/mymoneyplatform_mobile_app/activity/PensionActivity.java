@@ -18,9 +18,9 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
-import mmp.mymoneyplatform_mobile_app.Fragments.Pension.OneFragment;
-import mmp.mymoneyplatform_mobile_app.Fragments.Pension.ThreeFragment;
-import mmp.mymoneyplatform_mobile_app.Fragments.Pension.TwoFragment;
+import mmp.mymoneyplatform_mobile_app.fragment.pension.pension.OneFragment;
+import mmp.mymoneyplatform_mobile_app.fragment.pension.pension.ThreeFragment;
+import mmp.mymoneyplatform_mobile_app.fragment.pension.pension.TwoFragment;
 import mmp.mymoneyplatform_mobile_app.R;
 
 public class PensionActivity extends AppCompatActivity

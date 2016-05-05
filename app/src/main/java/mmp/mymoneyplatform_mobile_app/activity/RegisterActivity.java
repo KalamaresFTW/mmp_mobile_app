@@ -2,7 +2,6 @@ package mmp.mymoneyplatform_mobile_app.activity;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -19,13 +18,8 @@ import android.widget.Spinner;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Type;
-import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
@@ -44,7 +38,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     private EditText mBirthDate, mNameView, mPasswordView, mPasswordConfirmView;
     private AutoCompleteTextView mEmailView;
     private Button mRegisterButton;
-    private Spinner mPaymentFrecuencySpinner, mRegionSpinner;
+    private Spinner mPaymentFrequencySpinner, mRegionSpinner;
 
     private ArrayList<RegionData> regionList;
     private ArrayList<FrecuencyData> paymentFrequencyList;
@@ -91,8 +85,8 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         mRegionSpinner = (Spinner) findViewById(R.id.sp_region);
         mRegionSpinner.setAdapter(new ArrayAdapter<>(this, R.layout.my_item_spinner_registration, regionList));
 
-        mPaymentFrecuencySpinner = (Spinner) findViewById(R.id.sp_payment_frecuency);
-        mPaymentFrecuencySpinner.setAdapter(new ArrayAdapter<>(this, R.layout.my_item_spinner_registration, paymentFrequencyList));
+        mPaymentFrequencySpinner = (Spinner) findViewById(R.id.sp_payment_frecuency);
+        mPaymentFrequencySpinner.setAdapter(new ArrayAdapter<>(this, R.layout.my_item_spinner_registration, paymentFrequencyList));
     }
 
     @Override
@@ -110,8 +104,8 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                 " - Birth date: " + birthDate +
                 " - Selected region: " + mRegionSpinner.getSelectedItem() +
                 " -  ID: " + ((RegionData) mRegionSpinner.getSelectedItem()).getRegionID() +
-                " - Selected payperiod: " + mPaymentFrecuencySpinner.getSelectedItem() +
-                " -  ID: " + ((FrecuencyData) mPaymentFrecuencySpinner.getSelectedItem()).getFrecuencyID()
+                " - Selected payperiod: " + mPaymentFrequencySpinner.getSelectedItem() +
+                " -  ID: " + ((FrecuencyData) mPaymentFrequencySpinner.getSelectedItem()).getFrecuencyID()
         );
 
         new AsyncTask<Void, Void, Void>() {
@@ -126,7 +120,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                 password = mPasswordView.getText().toString();
                 passwordConfirm = mPasswordConfirmView.getText().toString();
                 name = mNameView.getText().toString();
-                payperiodID = ((FrecuencyData) mPaymentFrecuencySpinner.getSelectedItem()).getFrecuencyID();
+                payperiodID = ((FrecuencyData) mPaymentFrequencySpinner.getSelectedItem()).getFrecuencyID();
                 countryID = ((RegionData) mRegionSpinner.getSelectedItem()).getRegionID();
                 birthDate = mBirthDate.getText().toString();
             }
