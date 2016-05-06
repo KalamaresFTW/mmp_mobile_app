@@ -101,5 +101,7 @@
     <string name="income_screen_basic_salary_title">Basic Salary</string>
     <string name="title_activity_income">Income</string>
     <string name="income_screen_additional_income_title">Additional Income</string>
+    <string name="income_screen_family_status_title">Family Status</string>
+    <string name="income_screen_bottom_title">Income Health</string>
 
 </resources>
