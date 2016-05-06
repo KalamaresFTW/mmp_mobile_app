@@ -70,37 +70,35 @@ public class IncomeActivity extends AppCompatActivity
 
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        MenuItem selection = item;
-        System.out.println(selection.getTitle());
         switch (item.getItemId()) {
             case R.id.nav_profile:
                 startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
                 break;
             case R.id.nav_dashboard:
-                Toast.makeText(this, "Dashboard", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Dashboard", Toast.LENGTH_SHORT).show();
             case R.id.nav_income:
-                Toast.makeText(this, "Income", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Income", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.nav_pension:
-                Toast.makeText(this, "Pension", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Pension", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.nav_assetsdebts:
-                Toast.makeText(this, "Assets/Debts", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Assets/Debts", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.nav_goals:
-                Toast.makeText(this, "Goals", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Goals", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.nav_life:
-                Toast.makeText(this, "Life", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Life", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.nav_spendings:
-                Toast.makeText(this, "Spendings", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Spendings", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.nav_settings:
-                Toast.makeText(this, "Settings", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Settings", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.nav_help:
-                Toast.makeText(this, "Help", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Help", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.nav_logout:
                 //In this case we start a new Login Activity
@@ -111,7 +109,7 @@ public class IncomeActivity extends AppCompatActivity
                 return false;
         }
         //Close the drawer
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_module_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }

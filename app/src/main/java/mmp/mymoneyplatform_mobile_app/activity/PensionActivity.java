@@ -72,7 +72,7 @@ public class PensionActivity extends AppCompatActivity
                 startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
                 break;
             case R.id.nav_dashboard:
-                Toast.makeText(this, "Dashboard", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Dashboard", Toast.LENGTH_SHORT).show();
             case R.id.nav_income:
                 startActivity(new Intent(getApplicationContext(), IncomeActivity.class));
                 break;
@@ -80,22 +80,22 @@ public class PensionActivity extends AppCompatActivity
                 Toast.makeText(this, "Pension", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.nav_assetsdebts:
-                Toast.makeText(PensionActivity.this, "Assets/Debts", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Assets/Debts", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.nav_goals:
-                Toast.makeText(PensionActivity.this, "Goals", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Goals", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.nav_life:
-                Toast.makeText(PensionActivity.this, "Life", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Life", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.nav_spendings:
-                Toast.makeText(PensionActivity.this, "Spendings", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Spendings", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.nav_settings:
-                Toast.makeText(PensionActivity.this, "Settings", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Settings", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.nav_help:
-                Toast.makeText(PensionActivity.this, "Help", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Help", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.nav_logout:
                 //In this case we start a new Login Activity
@@ -106,7 +106,7 @@ public class PensionActivity extends AppCompatActivity
                 return false;
         }
         //Close the drawer
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_module_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
