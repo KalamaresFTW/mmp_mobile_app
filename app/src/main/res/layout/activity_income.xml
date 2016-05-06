@@ -12,8 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center_horizontal"
-        android:orientation="vertical"
-        android:paddingTop="?attr/actionBarSize">
+        android:orientation="vertical">
 
         <!-- Tab System -->
         <android.support.design.widget.CoordinatorLayout
@@ -37,7 +36,10 @@
                     android:id="@+id/tabs"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:theme="@style/AppTheme.IncomeScreen"
+                    app:tabTextColor="@color/colorStateGood"
+                    app:tabIndicatorColor="@color/colorWhite"
+                    app:tabBackground="@color/colorIncomeScreenBackground"
+                    app:tabIndicatorHeight="4dp"
                     app:tabGravity="fill"
                     app:tabMode="fixed" />
 
@@ -55,6 +57,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/dash_bottom_margin"
+            android:background="@color/colorFontRegistration"
             android:layout_alignParentBottom="true"
             android:orientation="vertical">
 

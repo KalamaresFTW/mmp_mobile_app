@@ -17,6 +17,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:textSize="50dp"
+        android:textColor="@color/colorWhite"
         android:layout_marginBottom="30dp"
         android:text="@string/nav_module_title"/>
 

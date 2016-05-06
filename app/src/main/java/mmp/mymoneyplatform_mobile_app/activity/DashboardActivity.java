@@ -308,6 +308,7 @@ public class DashboardActivity extends AppCompatActivity
                 break;
             case R.id.nav_dashboard:
                 Toast.makeText(this, "Dashboard", Toast.LENGTH_SHORT).show();
+                break;
             case R.id.nav_income:
                 startActivity(new Intent(getApplicationContext(), IncomeActivity.class));
                 break;

@@ -100,5 +100,6 @@
     <string name="nav_dashboard">Dashboard</string>
     <string name="income_screen_basic_salary_title">Basic Salary</string>
     <string name="title_activity_income">Income</string>
+    <string name="income_screen_additional_income_title">Additional Income</string>
 
 </resources>

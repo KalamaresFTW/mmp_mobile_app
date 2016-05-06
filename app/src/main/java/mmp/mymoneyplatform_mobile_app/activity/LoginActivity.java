@@ -154,7 +154,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         if (!json.isEmpty()) {
             UserData user = gson.fromJson(json, UserData.class);
             mEmailView.setText(user.getEmail());
-            mPasswordView.setFocusable(true);
         }
     }
 
