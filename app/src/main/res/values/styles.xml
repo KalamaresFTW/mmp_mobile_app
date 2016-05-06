@@ -18,4 +18,8 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <style name="AppTheme.IncomeScreen" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@color/colorIncomeScreenBackground</item>
+        <item name="colorAccent">@color/colorWhite</item>
+    </style>
 </resources>

@@ -1,0 +1,50 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorIncomeScreenBackground"
+    tools:context=".fragment.income.IncomeInputsFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/dash_bottom_margin">
+
+        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/lay_income_screen_basic_salary"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="13dp"
+            android:background="@color/colorWhite"
+            tools:context="info.androidhive.materialtabs.fragments.OneFragment">
+
+            <TextView
+                android:id="@+id/tv_income_screen_basic_salary_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="9dp"
+                android:text="@string/income_screen_basic_salary_title"
+                android:textSize="@dimen/cv_title_size"
+                android:textColor="@color/colorIncomeScreenTitle"
+                android:textStyle="bold" />
+
+            <View
+                android:id="@+id/cv_separator"
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_below="@+id/tv_income_screen_basic_salary_title"
+                android:layout_marginTop="9dp"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:layout_marginBottom="@dimen/activity_vertical_margin"
+                android:background="@color/colorIncomeScreenBackground" />
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+</FrameLayout>
