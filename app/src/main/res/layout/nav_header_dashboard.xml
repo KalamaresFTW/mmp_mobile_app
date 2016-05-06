@@ -8,13 +8,13 @@
     android:paddingLeft="18dp"
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
-    <ImageView
-        android:id="@+id/iv_menu_img"
-        android:layout_width="wrap_content"
+    <TextView
+        android:id="@+id/tv_menu_mail"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="@dimen/nav_header_vertical_spacing"
-        android:src="@android:drawable/sym_def_app_icon" />
+        android:layout_alignParentBottom="true"
+        android:paddingBottom="@dimen/nav_header_vertical_spacing"
+        android:text="MAIL" />
 
     <TextView
         android:id="@+id/tv_menu_name"
@@ -25,12 +25,12 @@
         android:text="NAME"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
-    <TextView
-        android:id="@+id/tv_menu_mail"
-        android:layout_width="match_parent"
+    <ImageView
+        android:id="@+id/iv_menu_img"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:paddingBottom="@dimen/nav_header_vertical_spacing"
-        android:text="MAIL"/>
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="@dimen/nav_header_vertical_spacing"
+        android:src="@android:drawable/sym_def_app_icon" />
 
 </RelativeLayout>

@@ -19,13 +19,16 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Type;
 import java.net.URL;
 import java.util.ArrayList;
+
 import mmp.mymoneyplatform_mobile_app.R;
 import mmp.mymoneyplatform_mobile_app.adapter.CardViewDataAdapter;
 import mmp.mymoneyplatform_mobile_app.net.ServiceURL;
@@ -124,10 +127,10 @@ public class DashboardActivity extends AppCompatActivity
     public void onCardViewClicked(View v) {
         switch (v.getId()) {
             case R.id.cv_income:
-                Toast.makeText(this, "Start Income Screen", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(getApplicationContext(), IncomeActivity.class));
                 break;
             case R.id.cv_pension:
-                startActivity(new Intent(this, PensionActivity.class));
+                startActivity(new Intent(getApplicationContext(), PensionActivity.class));
                 break;
             case R.id.cv_goals:
                 Toast.makeText(this, "Start Goals Screen", Toast.LENGTH_SHORT).show();
@@ -306,7 +309,7 @@ public class DashboardActivity extends AppCompatActivity
             case R.id.nav_dashboard:
                 Toast.makeText(this, "Dashboard", Toast.LENGTH_SHORT).show();
             case R.id.nav_income:
-                Toast.makeText(this, "Income", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(getApplicationContext(), IncomeActivity.class));
                 break;
             case R.id.nav_pension:
                 startActivity(new Intent(getApplicationContext(), PensionActivity.class));
