@@ -1,8 +1,6 @@
 package mmp.mymoneyplatform_mobile_app.pojo;
 
-/**
- * Created by Nacho on 20/04/2016.
- */
+@SuppressWarnings("unused")
 public class FrecuencyData {
 
     private int frecuencyID;

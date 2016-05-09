@@ -1,11 +1,9 @@
 package mmp.mymoneyplatform_mobile_app.net;
 
 /**
- * Created by K on 19/04/2016.
  * Tags to retrieve the information from the JSON objects
  */
 public class ServiceTags {
-
     //User tags
     public static final String SUBSCRIPTIONID_TAG = "userSubscriptionID";
     public static final String REGION_TAG = "region";
@@ -13,15 +11,12 @@ public class ServiceTags {
     public static final String COUNTRY_TAG = "country";
     public static final String NEWUSER_TAG = "newUser";
     public static final String NAME_TAG = "Name";
-
     //Country tags
     public static final String JURISDICTIONID_TAG = "JurisdictionID";
     public static final String JURISDICTION_TAG = "Jurisdiction";
-
     //PayPeriod tags
     public static final String PAYPERIODID_TAG = "PayPeriodID";
     public static final String PAYPERIOD_TAG = "PayPeriod";
-
     //Dashboard tags
     public static final String SALARYINFO_TAG = "salaryInfo";
     public static final String INCOMECOVER_TAG = "IncomeCover";
@@ -46,8 +41,4 @@ public class ServiceTags {
     public static final String ASSETSDEBTSCORE_TAG = "AssetDebtScore";
     public static final String LIFEASSURANCESCORE_TAG = "LifeAssuranceScore";
     public static final String OUTGOINGSSCORE_TAG = "OutgoingsScore";
-
-
-
-
 }

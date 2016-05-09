@@ -4,13 +4,9 @@ import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.Locale;
 
-/**
- * Created by K on 09/05/2016.
- */
 public class MoneyFormat {
 
     //Util class to format the money value into ###,###.00
-
     private static MoneyFormat INSTANCE = null;
     private static final Locale locale = new Locale("en", "UK");
     DecimalFormat df;

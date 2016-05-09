@@ -23,12 +23,12 @@ import mmp.mymoneyplatform_mobile_app.R;
 import mmp.mymoneyplatform_mobile_app.fragment.income.IncomeInputsFragment;
 import mmp.mymoneyplatform_mobile_app.fragment.income.IncomeSummaryFragment;
 
+@SuppressWarnings("ConstantConditions")
 public class IncomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    private Toolbar toolbar;
-    private TabLayout tabLayout;
-    private ViewPager viewPager;
+    protected TabLayout tabLayout;
+    protected ViewPager viewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

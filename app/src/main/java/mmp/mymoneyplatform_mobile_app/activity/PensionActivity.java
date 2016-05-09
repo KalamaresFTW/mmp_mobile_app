@@ -23,6 +23,7 @@ import mmp.mymoneyplatform_mobile_app.R;
 
 import mmp.mymoneyplatform_mobile_app.fragment.pension.*;
 
+@SuppressWarnings({"FieldCanBeLocal", "ConstantConditions", "UnnecessaryLocalVariable"})
 public class PensionActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 

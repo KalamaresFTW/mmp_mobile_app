@@ -8,12 +8,10 @@ import android.view.ViewGroup;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
-import java.util.zip.Inflater;
-
 import mmp.mymoneyplatform_mobile_app.R;
 import mmp.mymoneyplatform_mobile_app.util.MoneyFormat;
 
-
+@SuppressWarnings("FieldCanBeLocal")
 public class IncomeInputsFragment extends Fragment {
 
     //References for the IU widgets
