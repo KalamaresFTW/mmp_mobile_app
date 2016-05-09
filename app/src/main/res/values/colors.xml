@@ -38,7 +38,6 @@
     <color name="colorBackgroundHealthPanelSpending">#704f32</color>
 
     <!-- State Colors on the Progress Bar -->
-    <!-- Unused at this moment -->
     <color name="colorStatePoor">#de4b3c</color>
     <color name="colorStateMedium">#f1c40f</color>
     <color name="colorStateGood">#3498db</color>
@@ -58,10 +57,14 @@
     <color name="colorBackgroundInputRegistration">#d7d3d1</color>
     
     <!-- Income Screen Colors -->
-    <color name="colorIncomeScreenBackground">#006767</color>
-    <color name="colorIncomeScreenTitle">#005252</color>
+    <color name="colorIncomeScreenBackground">#006666</color>
+    <color name="colorIncomeScreenTitle">#015253</color>
     <color name="colorIncomeScreenCircularSliderProgress">#e06d25</color>
     <color name="colorIncomeScreenCircularSliderBackgroud">#8c858f</color>
     <color name="colorIncomeScreenText">#2e2d2d</color>
     <color name="colorIncomeScreenSliderTitle">#e06d25</color>
+    <color name="colorIncomeScreenMoneyBackground">#012929</color>
+    <color name="colorIncomeScreenSeekBarSelector">#00b6b7</color>
+    <color name="colorIncomeScreenBackgroundDependents">#013334</color>
+    <color name="colorIncomeScreenTextDependents">#00b6b7</color>
 </resources>
