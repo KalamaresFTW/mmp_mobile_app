@@ -30,6 +30,7 @@ import mmp.mymoneyplatform_mobile_app.pojo.RegionData;
 import mmp.mymoneyplatform_mobile_app.pojo.UserData;
 import mmp.mymoneyplatform_mobile_app.util.FontsOverride;
 
+@SuppressWarnings({"FieldCanBeLocal", "deprecation", "unused"})
 public class ProfileActivity extends AppCompatActivity {
 
     //References to the components of the layout

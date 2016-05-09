@@ -14,6 +14,7 @@ public final class FontsOverride {
         replaceFont(staticTypefaceFieldName, regular);
     }
 
+    @SuppressWarnings("TryWithIdenticalCatches")
     protected static void replaceFont(String staticTypefaceFieldName,
                                       final Typeface newTypeface) {
         try {

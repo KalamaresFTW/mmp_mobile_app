@@ -78,10 +78,10 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     /**
      * References of the tasks we are using on the login.
      */
-    private RetrieveUserTask mRetrieveUserData;             //Gets the user data via API
-    private RetrieveDashboardData mDashboardDataLoaderTask; //Gets the user dashboard's data via API
-    private PaidFrequencyLoader mPaidFrequencyLoaderTask;   //Gets the payment frequencies via API
-    private RegionDataLoader mRegionDataLoaderTask;         //Gets the country list via API
+    protected RetrieveUserTask mRetrieveUserData;             //Gets the user data via API
+    protected RetrieveDashboardData mDashboardDataLoaderTask; //Gets the user dashboard's data via API
+    protected PaidFrequencyLoader mPaidFrequencyLoaderTask;   //Gets the payment frequencies via API
+    protected RegionDataLoader mRegionDataLoaderTask;         //Gets the country list via API
 
     /**
      * UI Widget references
@@ -342,10 +342,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         ArrayAdapter<String> adapter =
                 new ArrayAdapter<>(LoginActivity.this,
                         android.R.layout.simple_dropdown_item_1line, emailAddressCollection);
-
         mEmailView.setAdapter(adapter);
     }
-
 
     private interface ProfileQuery {
         String[] PROJECTION = {
@@ -467,6 +465,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         }
     }
 
+    @SuppressWarnings({"ConstantConditions", "unused", "finally", "ReturnInsideFinallyBlock"})
     public class RetrieveDashboardData extends AsyncTask<Void, Void, Void> {
 
         private String userSubscriptionID;
@@ -575,6 +574,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         }
     }
 
+    @SuppressWarnings({"ConstantConditions", "finally", "ReturnInsideFinallyBlock"})
     public class PaidFrequencyLoader extends AsyncTask<Void, Void, Void> {
 
         private ArrayList<FrecuencyData> frecuencyData = new ArrayList<>();
@@ -642,6 +642,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         }
     }
 
+    @SuppressWarnings({"ReturnInsideFinallyBlock", "ConstantConditions", "finally"})
     public class RegionDataLoader extends AsyncTask<Void, Void, Void> {
 
         private ArrayList<RegionData> countryList = new ArrayList<>();

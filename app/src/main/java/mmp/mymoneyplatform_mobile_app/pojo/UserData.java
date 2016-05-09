@@ -2,12 +2,8 @@ package mmp.mymoneyplatform_mobile_app.pojo;
 
 import java.io.Serializable;
 
-/**
- * Created by K on 18/04/2016.
- */
-public class UserData implements Serializable{
-
-    //TODO: add paymentFrecuency and date of birth
+@SuppressWarnings("unused")
+public class UserData implements Serializable {
 
     private String userSubscriptionID, region, profileImage, country, newUser, name, email;
 
@@ -81,7 +77,7 @@ public class UserData implements Serializable{
     /**
      * @return true if all the fields (except email, which is always provided) are not null
      */
-    public boolean isNull(){
+    public boolean isNull() {
         return (userSubscriptionID == null) && (region == null) && (profileImage == null)
                 && (country == null) && (newUser == null) && (name == null);
     }

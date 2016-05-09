@@ -1,5 +1,6 @@
 package mmp.mymoneyplatform_mobile_app.activity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
@@ -36,9 +37,11 @@ import mmp.mymoneyplatform_mobile_app.pojo.CardViewData;
 import mmp.mymoneyplatform_mobile_app.pojo.UserData;
 import mmp.mymoneyplatform_mobile_app.util.FontsOverride;
 
+@SuppressWarnings({"ConstantConditions", "finally", "ReturnInsideFinallyBlock", "deprecation"})
 public class DashboardActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    //Magic numbers out of nowhere ;)
     public static final int NUMBER_OF_CARDS = 6;
 
     //This ia reference to the header items on the drawer
@@ -179,6 +182,7 @@ public class DashboardActivity extends AppCompatActivity
         tv_menu_mail.setText(user.getEmail());
     }
 
+    @SuppressLint("SetTextI18n")
     private void loadCardsData() {
         cardData.add(
                 new CardViewData(

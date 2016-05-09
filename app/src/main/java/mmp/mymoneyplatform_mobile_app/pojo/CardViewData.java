@@ -38,6 +38,7 @@ public class CardViewData {
         return backgroundColor;
     }
 
+    @SuppressWarnings("unused")
     public void setBackgroundColor(int backgroundColor) {
         this.backgroundColor = backgroundColor;
     }
@@ -95,6 +96,7 @@ public class CardViewData {
      * always has a HealthPanel inside of it
      */
 
+    @SuppressWarnings({"JavaDoc", "deprecation"})
     public static class HealthPanelData {
 
         /**

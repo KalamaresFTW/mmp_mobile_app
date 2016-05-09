@@ -32,6 +32,7 @@ import mmp.mymoneyplatform_mobile_app.pojo.FrecuencyData;
 import mmp.mymoneyplatform_mobile_app.pojo.RegionData;
 import mmp.mymoneyplatform_mobile_app.util.FontsOverride;
 
+@SuppressWarnings({"FieldCanBeLocal", "ConstantConditions", "deprecation"})
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
 
     private Calendar calendar;
