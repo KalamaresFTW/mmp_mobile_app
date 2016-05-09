@@ -39,6 +39,7 @@ import mmp.mymoneyplatform_mobile_app.util.FontsOverride;
 public class DashboardActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    //Magic numbers out of nowhere ;)
     public static final int NUMBER_OF_CARDS = 6;
 
     //This ia reference to the header items on the drawer

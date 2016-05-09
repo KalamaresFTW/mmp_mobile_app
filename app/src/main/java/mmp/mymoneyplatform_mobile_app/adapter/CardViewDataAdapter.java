@@ -1,8 +1,5 @@
 package mmp.mymoneyplatform_mobile_app.adapter;
 
-import android.content.res.ColorStateList;
-import android.graphics.LightingColorFilter;
-import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.support.v7.widget.CardView;
 import android.widget.LinearLayout;
@@ -10,16 +7,12 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
-import java.text.NumberFormat;
 import java.util.ArrayList;
-import java.util.Currency;
-import java.util.Locale;
 
 import mmp.mymoneyplatform_mobile_app.R;
 import mmp.mymoneyplatform_mobile_app.activity.DashboardActivity;
 import mmp.mymoneyplatform_mobile_app.pojo.CardViewData;
+import mmp.mymoneyplatform_mobile_app.util.MoneyFormat;
 
 /**
  * Created by K on 13/04/2016.
@@ -51,12 +44,6 @@ public class CardViewDataAdapter {
         Drawable progressBar;
         ProgressBar hpProgressBar;
         int statusColor;
-        //Class that we use to format the money value into ###,###.00
-        Locale locale = new Locale("en","UK");
-        DecimalFormat df = (DecimalFormat)
-                NumberFormat.getNumberInstance(locale);
-        df.setMaximumFractionDigits(2);
-
         for (int i = 0; i < DashboardActivity.NUMBER_OF_CARDS; i++) {
             //Get the item we need to modify
             ll = cardList.get(i);
@@ -79,9 +66,7 @@ public class CardViewDataAdapter {
             //Get the card money TextView
             cvMoney = (TextView) cardView.findViewById(R.id.cv_tv_money);
             //Set the card money (formating the double value)
-            //TODO: replace hardcoded "€" with strings.xml resource
-            //TODO: add decimal values to the money TextView
-            cvMoney.setText("€" + df.format(cvd.getMoney()));
+            cvMoney.setText(MoneyFormat.getInstance().format(cvd.getMoney()));
             //Get the title of the card health panel
             cvHpTitle = (TextView) cardView.findViewById(R.id.cv_hp_tv_title);
             //Set the title od the card

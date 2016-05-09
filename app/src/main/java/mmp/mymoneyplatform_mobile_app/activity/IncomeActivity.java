@@ -2,9 +2,7 @@ package mmp.mymoneyplatform_mobile_app.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -16,7 +14,6 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -25,9 +22,6 @@ import java.util.List;
 import mmp.mymoneyplatform_mobile_app.R;
 import mmp.mymoneyplatform_mobile_app.fragment.income.IncomeInputsFragment;
 import mmp.mymoneyplatform_mobile_app.fragment.income.IncomeSummaryFragment;
-import mmp.mymoneyplatform_mobile_app.fragment.pension.OneFragment;
-import mmp.mymoneyplatform_mobile_app.fragment.pension.ThreeFragment;
-import mmp.mymoneyplatform_mobile_app.fragment.pension.TwoFragment;
 
 public class IncomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
