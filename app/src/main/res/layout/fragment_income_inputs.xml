@@ -78,8 +78,8 @@
                         android:layout_gravity="center"
                         android:layout_marginLeft="7dp"
                         android:layout_marginRight="7dp"
-                        android:padding="16dp"
-                        seekarc:arcColor="@color/colorIncomeScreenCircularSliderBackgroud"
+                        android:padding="40dp"
+                        seekarc:arcColor="@color/colorIncomeScreenCircularSliderBackground"
                         seekarc:arcWidth="5dp"
                         seekarc:max="300"
                         seekarc:progressColor="@color/colorIncomeScreenCircularSliderProgress"
@@ -91,15 +91,15 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/income_screen_basic_salary_seekarc_text"
-                        android:textColor="@color/colorBlack"
-                        android:layout_centerVertical="true"
+                        android:layout_alignParentEnd="true"
                         android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
                         android:layout_marginLeft="8dp"
                         android:layout_marginRight="@dimen/activity_horizontal_margin"
-                        android:layout_alignParentEnd="true"
+                        android:layout_toEndOf="@+id/sa_income_screen_salary"
                         android:layout_toRightOf="@+id/sa_income_screen_salary"
-                        android:layout_toEndOf="@+id/sa_income_screen_salary" />
+                        android:text="@string/income_screen_basic_salary_seekarc_text"
+                        android:textColor="@color/colorBlack" />
 
                 </RelativeLayout>
 
@@ -377,44 +377,49 @@
                     android:layout_marginTop="9dp"
                     android:background="@color/colorIncomeScreenBackground" />
 
-                <TextView
-                    android:id="@+id/tv_income_screen_illness_cover"
+                <RelativeLayout
+                    android:id="@+id/lay_income_screen_illness_cover"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/separator_family_status"
-                    android:layout_marginBottom="@dimen/activity_vertical_margin"
-                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                    android:layout_marginTop="9dp"
-                    android:layout_toLeftOf="@+id/btn_income_screen_family_status_illness_cover_info"
-                    android:layout_toStartOf="@+id/btn_income_screen_family_status_illness_cover_info"
-                    android:text="@string/txt_income_screen_family_status_illness_cover"
-                    android:textColor="@color/colorBlack"
-                    android:textSize="@dimen/cv_text_size" />
+                    android:layout_below="@+id/separator_family_status">
 
-                <Button
-                    android:id="@+id/btn_income_screen_family_status_illness_cover_info"
-                    android:layout_width="@dimen/cv_title_size"
-                    android:layout_height="@dimen/cv_title_size"
-                    android:layout_alignParentRight="true"
-                    android:layout_below="@id/separator_family_status"
-                    android:layout_marginRight="@dimen/activity_horizontal_margin"
-                    android:layout_marginTop="9dp"
-                    android:background="@drawable/ic_info_filled" />
+                    <TextView
+                        android:id="@+id/tv_income_screen_illness_cover"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/activity_vertical_margin"
+                        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                        android:layout_marginTop="9dp"
+                        android:layout_toLeftOf="@+id/btn_income_screen_family_status_illness_cover_info"
+                        android:layout_toStartOf="@+id/btn_income_screen_family_status_illness_cover_info"
+                        android:text="@string/txt_income_screen_family_status_illness_cover"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="@dimen/cv_text_size" />
 
-                <Spinner
-                    android:id="@+id/sp_income_screen_illness_cover"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignEnd="@+id/tv_income_screen_family_status_title"
-                    android:layout_alignRight="@+id/tv_income_screen_family_status_title"
-                    android:layout_below="@+id/tv_income_screen_illness_cover" />
+                    <Button
+                        android:id="@+id/btn_income_screen_family_status_illness_cover_info"
+                        android:layout_width="@dimen/cv_title_size"
+                        android:layout_height="@dimen/cv_title_size"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="@dimen/activity_horizontal_margin"
+                        android:layout_marginTop="9dp"
+                        android:background="@drawable/ic_info_filled" />
+
+                    <Spinner
+                        android:id="@+id/sp_income_screen_illness_cover"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_below="@+id/tv_income_screen_illness_cover" />
+
+                </RelativeLayout>
 
                 <!-- Policy -->
                 <RelativeLayout
                     android:id="@+id/lay_income_screen_policy"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/sp_income_screen_illness_cover">
+                    android:layout_below="@+id/lay_income_screen_illness_cover">
 
                     <TextView
                         android:id="@+id/tv_income_screen_policy"

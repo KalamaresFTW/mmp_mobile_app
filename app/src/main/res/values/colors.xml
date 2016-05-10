@@ -55,12 +55,12 @@
     <color name="colorFontRegistration">#877d75</color>
     <color name="colorSeparator">#d7d3d1</color>
     <color name="colorBackgroundInputRegistration">#d7d3d1</color>
-    
+
     <!-- Income Screen Colors -->
     <color name="colorIncomeScreenBackground">#006666</color>
     <color name="colorIncomeScreenTitle">#015253</color>
     <color name="colorIncomeScreenCircularSliderProgress">#e06d25</color>
-    <color name="colorIncomeScreenCircularSliderBackgroud">#8c858f</color>
+    <color name="colorIncomeScreenCircularSliderBackground">#8c858f</color>
     <color name="colorIncomeScreenText">#2e2d2d</color>
     <color name="colorIncomeScreenSliderTitle">#e06d25</color>
     <color name="colorIncomeScreenMoneyBackground">#012929</color>

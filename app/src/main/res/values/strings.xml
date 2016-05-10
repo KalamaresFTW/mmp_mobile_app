@@ -93,19 +93,15 @@
     <string name="profile_button_modify">Modify</string>
     <string name="profile_button_save">Save</string>
 
-    <!-- Pension Activity Strings -->
-    <string name="title_activity_pension">Pension</string>
-
-
-    <!-- TODO: Remove or change this placeholder text -->
-
-    <string name="income_screen_basic_salary_title">Basic Salary</string>
+    <!-- Income Activity Strings -->
     <string name="title_activity_income">Income</string>
+    <string name="income_screen_basic_salary_title">Basic Salary</string>
     <string name="income_screen_additional_income_title">Additional Income</string>
     <string name="income_screen_family_status_title">Family Status</string>
     <string name="income_screen_bottom_title">Income Health</string>
     <string name="txt_income_screen_family_status_illness_cover">Do you have illness cover from your employer?</string>
     <string name="txt_income_screen_family_status_policy">Do you have private income protection policy?</string>
+
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="txt_income_screen_family_status_percentage">What percent of your salary does your policy cover?</string>
@@ -113,13 +109,15 @@
     <string name="income_screen_summary_title">Did you know?</string>
     <string name="income_screen_basic_salary_seekarc_text">Please drag the white knob to set your salary</string>
 
-
-    <!--Information dialogs-->
+    <!-- Income Screen Information Dialogs-->
     <string name="info_dialog_title">Info</string>
     <string name="confirm">OK</string>
     <string name="income_screen_basic_salary_info">What money is coming in to the household from you (and your partner, if applicable)</string>
     <string name="income_screen_additional_income_info">What other income other than basic salary have you as an income?</string>
     <string name="income_screen_family_status_info">Have you protection measures in place in case you can\'t work?</string>
     <string name="income_screen_dependents_info">Are there dependents who rely on your income?</string>
+
+    <!-- Pension Activity Strings -->
+    <string name="title_activity_pension">Pension</string>
 
 </resources>

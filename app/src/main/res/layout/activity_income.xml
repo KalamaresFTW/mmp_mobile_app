@@ -58,7 +58,6 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/dash_bottom_margin"
             android:layout_alignParentBottom="true"
-            android:background="@drawable/rect_shadow"
             android:orientation="vertical">
 
             <TextView
