@@ -89,6 +89,16 @@
                         seekarc:touchInside="true" />
 
                     <TextView
+                        android:id="@+id/tv_income_basic_salary"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_below="@id/sa_income_screen_salary"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginTop="5dp"
+                        android:text="150,000.00€"
+                        android:textStyle="bold" />
+
+                    <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"

@@ -21,7 +21,7 @@ public class IncomeInputsFragment extends Fragment {
     //References for the IU widgets
     private SeekArc mSalarySeekArc;
     private Button mSalaryCalculator, mBasicSalaryInfo, mAditionalIncomeInfo, mFamilyStatusInfo, mDependentsInfo;
-    private TextView mBonusTextView, mOvertimeTextView, mTaxableTextView, mNonTaxableTextView;
+    private TextView mBasicSalaryTextView, mBonusTextView, mOvertimeTextView, mTaxableTextView, mNonTaxableTextView;
     private SeekBar mBonusSeekBar, mOvertimeSeekBar, mTaxableSeekBar, mNonTaxableSeekBar;
 
     public IncomeInputsFragment() {
@@ -38,11 +38,13 @@ public class IncomeInputsFragment extends Fragment {
         //Inflate the fragment view
         View fragmentView = inflater.inflate(R.layout.fragment_income_inputs, container, false);
 
+        mBasicSalaryTextView = (TextView) fragmentView.findViewById(R.id.tv_income_basic_salary);
+
         mSalarySeekArc = (SeekArc) fragmentView.findViewById(R.id.sa_income_screen_salary);
         mSalarySeekArc.setOnSeekArcChangeListener(new SeekArc.OnSeekArcChangeListener() {
             @Override
             public void onProgressChanged(SeekArc seekArc, int i, boolean b) {
-                System.out.println(i * 500);
+                mBasicSalaryTextView.setText(MoneyFormat.getInstance().format(i * 500));
             }
 
             @Override
