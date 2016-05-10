@@ -5,9 +5,11 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.triggertrap.seekarc.SeekArc;
 
 import mmp.mymoneyplatform_mobile_app.R;
@@ -18,6 +20,7 @@ public class IncomeInputsFragment extends Fragment {
 
     //References for the IU widgets
     private SeekArc mSalarySeekArc;
+    private Button mSalaryCalculator, mBasicSalaryInfo, mAditionalIncomeInfo, mFamilyStatusInfo, mDependentsInfo;
     private TextView mBonusTextView, mOvertimeTextView, mTaxableTextView, mNonTaxableTextView;
     private SeekBar mBonusSeekBar, mOvertimeSeekBar, mTaxableSeekBar, mNonTaxableSeekBar;
 
@@ -44,12 +47,57 @@ public class IncomeInputsFragment extends Fragment {
 
             @Override
             public void onStartTrackingTouch(SeekArc seekArc) {
-
             }
 
             @Override
             public void onStopTrackingTouch(SeekArc seekArc) {
+            }
+        });
 
+
+        mSalaryCalculator = (Button) fragmentView.findViewById(R.id.btn_income_screen_basic_salary_calculator);
+        mBasicSalaryInfo = (Button) fragmentView.findViewById(R.id.btn_income_screen_basic_salary_info);
+        mBasicSalaryInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new MaterialDialog.Builder(getContext())
+                        .title(getString(R.string.info_dialog_title))
+                        .content(getString(R.string.income_screen_basic_salary_info))
+                        .positiveText(getString(R.string.confirm))
+                        .show();
+            }
+        });
+        mAditionalIncomeInfo = (Button) fragmentView.findViewById(R.id.btn_income_screen_additional_income_info);
+        mAditionalIncomeInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new MaterialDialog.Builder(getContext())
+                        .title(getString(R.string.info_dialog_title))
+                        .content(getString(R.string.income_screen_additional_income_info))
+                        .positiveText(getString(R.string.confirm))
+                        .show();
+            }
+        });
+        mFamilyStatusInfo = (Button) fragmentView.findViewById(R.id.btn_income_screen_family_status_info);
+        mFamilyStatusInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new MaterialDialog.Builder(getContext())
+                        .title(getString(R.string.info_dialog_title))
+                        .content(getString(R.string.income_screen_family_status_info))
+                        .positiveText(getString(R.string.confirm))
+                        .show();
+            }
+        });
+        mDependentsInfo = (Button) fragmentView.findViewById(R.id.btn_income_screen_dependents_info);
+        mDependentsInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new MaterialDialog.Builder(getContext())
+                        .title(getString(R.string.info_dialog_title))
+                        .content(getString(R.string.income_screen_dependents_info))
+                        .positiveText(getString(R.string.confirm))
+                        .show();
             }
         });
 

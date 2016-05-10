@@ -113,4 +113,13 @@
     <string name="income_screen_summary_title">Did you know?</string>
     <string name="income_screen_basic_salary_seekarc_text">Please drag the white knob to set your salary</string>
 
+
+    <!--Information dialogs-->
+    <string name="info_dialog_title">Info</string>
+    <string name="confirm">OK</string>
+    <string name="income_screen_basic_salary_info">What money is coming in to the household from you (and your partner, if applicable)</string>
+    <string name="income_screen_additional_income_info">What other income other than basic salary have you as an income?</string>
+    <string name="income_screen_family_status_info">Have you protection measures in place in case you can\'t work?</string>
+    <string name="income_screen_dependents_info">Are there dependents who rely on your income?</string>
+
 </resources>
