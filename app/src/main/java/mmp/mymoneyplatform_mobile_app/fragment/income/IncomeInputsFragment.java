@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+import com.triggertrap.seekarc.SeekArc;
+
 import mmp.mymoneyplatform_mobile_app.R;
 import mmp.mymoneyplatform_mobile_app.util.MoneyFormat;
 
@@ -15,6 +17,7 @@ import mmp.mymoneyplatform_mobile_app.util.MoneyFormat;
 public class IncomeInputsFragment extends Fragment {
 
     //References for the IU widgets
+    private SeekArc mSalarySeekArc;
     private TextView mBonusTextView, mOvertimeTextView, mTaxableTextView, mNonTaxableTextView;
     private SeekBar mBonusSeekBar, mOvertimeSeekBar, mTaxableSeekBar, mNonTaxableSeekBar;
 
@@ -31,6 +34,25 @@ public class IncomeInputsFragment extends Fragment {
                              Bundle savedInstanceState) {
         //Inflate the fragment view
         View fragmentView = inflater.inflate(R.layout.fragment_income_inputs, container, false);
+
+        mSalarySeekArc = (SeekArc) fragmentView.findViewById(R.id.sa_income_screen_salary);
+        mSalarySeekArc.setOnSeekArcChangeListener(new SeekArc.OnSeekArcChangeListener() {
+            @Override
+            public void onProgressChanged(SeekArc seekArc, int i, boolean b) {
+                System.out.println(i * 500);
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekArc seekArc) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekArc seekArc) {
+
+            }
+        });
+
         mBonusTextView = (TextView) fragmentView.findViewById(R.id.tv_income_screen_money_bonus);
         mOvertimeTextView = (TextView) fragmentView.findViewById(R.id.tv_income_screen_money_overtime);
         mTaxableTextView = (TextView) fragmentView.findViewById(R.id.tv_income_screen_money_taxable);

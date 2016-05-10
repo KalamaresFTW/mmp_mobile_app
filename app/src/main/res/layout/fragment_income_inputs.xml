@@ -73,7 +73,7 @@
                     android:layout_below="@+id/cv_separator_basic_salary">
 
                     <com.triggertrap.seekarc.SeekArc
-                        android:id="@+id/seekArc"
+                        android:id="@+id/sa_income_screen_salary"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_gravity="center"
@@ -81,7 +81,11 @@
                         seekarc:rotation="180"
                         seekarc:startAngle="30"
                         seekarc:sweepAngle="300"
-                        seekarc:touchInside="true" />
+                        seekarc:touchInside="true"
+                        seekarc:max="300"
+                        seekarc:arcWidth="3dp"
+                        seekarc:arcColor="@color/colorIncomeScreenCircularSliderBackgroud"
+                        seekarc:progressColor="@color/colorIncomeScreenCircularSliderProgress" />
 
                 </RelativeLayout>
 
