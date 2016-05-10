@@ -15,7 +15,8 @@
             android:layout_height="match_parent"
             android:layout_marginLeft="@dimen/activity_horizontal_margin"
             android:layout_marginRight="@dimen/activity_horizontal_margin"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            tools:ignore="ScrollViewSize">
 
             <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 xmlns:tools="http://schemas.android.com/tools"
@@ -23,8 +24,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="13dp"
-                android:background="@color/colorWhite"
-                tools:context="info.androidhive.materialtabs.fragments.OneFragment">
+                android:background="@color/colorWhite">
 
                 <TextView
                     android:id="@+id/tv_income_screen_basic_salary_title"
@@ -61,7 +61,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="1px"
                     android:layout_below="@+id/tv_income_screen_basic_salary_title"
-                    android:layout_marginBottom="@dimen/activity_vertical_margin"
                     android:layout_marginLeft="@dimen/activity_horizontal_margin"
                     android:layout_marginRight="@dimen/activity_horizontal_margin"
                     android:layout_marginTop="9dp"
@@ -74,18 +73,33 @@
 
                     <com.triggertrap.seekarc.SeekArc
                         android:id="@+id/sa_income_screen_salary"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_width="160dp"
+                        android:layout_height="160dp"
                         android:layout_gravity="center"
-                        android:padding="30dp"
+                        android:layout_marginLeft="7dp"
+                        android:layout_marginRight="7dp"
+                        android:padding="16dp"
+                        seekarc:arcColor="@color/colorIncomeScreenCircularSliderBackgroud"
+                        seekarc:arcWidth="5dp"
+                        seekarc:max="300"
+                        seekarc:progressColor="@color/colorIncomeScreenCircularSliderProgress"
                         seekarc:rotation="180"
                         seekarc:startAngle="30"
                         seekarc:sweepAngle="300"
-                        seekarc:touchInside="true"
-                        seekarc:max="300"
-                        seekarc:arcWidth="3dp"
-                        seekarc:arcColor="@color/colorIncomeScreenCircularSliderBackgroud"
-                        seekarc:progressColor="@color/colorIncomeScreenCircularSliderProgress" />
+                        seekarc:touchInside="true" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/income_screen_basic_salary_seekarc_text"
+                        android:textColor="@color/colorBlack"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="@dimen/activity_horizontal_margin"
+                        android:layout_alignParentEnd="true"
+                        android:layout_toRightOf="@+id/sa_income_screen_salary"
+                        android:layout_toEndOf="@+id/sa_income_screen_salary" />
 
                 </RelativeLayout>
 
@@ -97,8 +111,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="13dp"
-                android:background="@color/colorWhite"
-                tools:context="info.androidhive.materialtabs.fragments.OneFragment">
+                android:background="@color/colorWhite">
 
                 <TextView
                     android:id="@+id/tv_income_screen_additional_income_title"
@@ -331,8 +344,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="13dp"
-                android:background="@color/colorWhite"
-                tools:context="info.androidhive.materialtabs.fragments.OneFragment">
+                android:background="@color/colorWhite">
 
                 <TextView
                     android:id="@+id/tv_income_screen_family_status_title"
@@ -533,8 +545,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginBottom="@dimen/activity_vertical_margin"
                 android:layout_marginTop="13dp"
-                android:background="@color/colorIncomeScreenBackgroundDependents"
-                tools:context="info.androidhive.materialtabs.fragments.OneFragment">
+                android:background="@color/colorIncomeScreenBackgroundDependents">
 
                 <TextView
                     android:id="@+id/tv_income_screen_dependents_title"
@@ -574,7 +585,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_below="@+id/cv_separator_dependents"
-                    android:layout_marginBottom="4dp"
+                    android:layout_marginBottom="@dimen/activity_vertical_margin"
                     android:layout_marginRight="@dimen/activity_horizontal_margin"
                     android:background="@color/colorIncomeScreenTextDependents"
                     android:gravity="left"
@@ -590,6 +601,7 @@
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
                     android:layout_below="@+id/cv_separator_dependents"
+                    android:layout_marginBottom="12dp"
                     android:layout_marginLeft="@dimen/activity_horizontal_margin"
                     android:layout_marginTop="4dp"
                     android:layout_toLeftOf="@+id/tv_income_dependents_description"

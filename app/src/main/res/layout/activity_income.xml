@@ -58,7 +58,7 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/dash_bottom_margin"
             android:layout_alignParentBottom="true"
-            android:background="@color/colorFontRegistration"
+            android:background="@drawable/rect_shadow"
             android:orientation="vertical">
 
             <TextView
@@ -66,6 +66,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
                 android:gravity="left"
                 android:text="@string/income_screen_bottom_title"
                 android:textColor="@color/colorTitleActionPlan"
@@ -76,13 +77,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_below="@+id/tv_income_screen_title"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
                 android:layout_marginTop="5dp">
 
                 <TextView
                     android:id="@+id/tv_income_screen_score"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="7dp"
                     android:text="GOOD"
                     android:textColor="@color/colorStateExcelent"
                     android:textSize="@dimen/cv_text_size"
@@ -95,7 +97,7 @@
                     android:layout_height="9dp"
                     android:layout_marginLeft="8dp"
                     android:layout_marginRight="@dimen/cv_horizontal_margin"
-                    android:layout_marginTop="4dp"
+                    android:layout_marginTop="11dp"
                     android:layout_toRightOf="@+id/tv_income_screen_score"
                     android:max="100"
                     android:maxWidth="200dp"
@@ -109,6 +111,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:background="@drawable/ic_arrow_right" />
+
             </RelativeLayout>
 
         </RelativeLayout>

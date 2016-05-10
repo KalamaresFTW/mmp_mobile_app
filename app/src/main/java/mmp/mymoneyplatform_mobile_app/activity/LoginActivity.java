@@ -104,7 +104,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mRegionDataLoaderTask = new RegionDataLoader();
         mRegionDataLoaderTask.execute((Void) null);
 
-
         //Set the layout
         setContentView(R.layout.activity_login);
 
