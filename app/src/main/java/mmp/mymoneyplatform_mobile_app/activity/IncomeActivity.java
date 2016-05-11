@@ -62,6 +62,7 @@ public class IncomeActivity extends AppCompatActivity
         viewPager.setAdapter(adapter);
     }
 
+    //TODO: hacer esta mierda guay
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -69,11 +70,14 @@ public class IncomeActivity extends AppCompatActivity
                 startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
                 break;
             case R.id.nav_dashboard:
+                finish();
                 Toast.makeText(getApplicationContext(), "Dashboard", Toast.LENGTH_SHORT).show();
             case R.id.nav_income:
                 Toast.makeText(getApplicationContext(), "Income", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.nav_pension:
+                finish();
+                startActivity(new Intent(getApplicationContext(), PensionActivity.class));
                 Toast.makeText(getApplicationContext(), "Pension", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.nav_assetsdebts:

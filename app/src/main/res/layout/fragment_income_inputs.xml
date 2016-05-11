@@ -19,7 +19,7 @@
             tools:ignore="ScrollViewSize">
 
             <RelativeLayout
-                android:id="@+id/lay_income_screen_basic_salary"
+                android:id="@+id/lay_pension_screen_existing_pensions"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="13dp"
@@ -534,6 +534,7 @@
                         android:layout_alignParentTop="true"
                         android:layout_marginBottom="@dimen/activity_vertical_margin"
                         android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                        android:layout_marginRight="@dimen/activity_horizontal_margin"
                         android:layout_marginTop="9dp"
                         android:text="@string/txt_income_screen_family_status_percentage"
                         android:textColor="@color/colorBlack" />

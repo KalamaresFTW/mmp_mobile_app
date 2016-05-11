@@ -19,7 +19,7 @@
             tools:ignore="ScrollViewSize">
 
             <RelativeLayout
-                android:id="@+id/lay_income_screen_basic_salary"
+                android:id="@+id/lay_pension_screen_existing_pensions"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="13dp"

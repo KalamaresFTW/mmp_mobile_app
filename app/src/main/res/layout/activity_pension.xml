@@ -36,8 +36,12 @@
                     android:id="@+id/tabs"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    app:tabBackground="@color/colorPensionScreenBackground"
                     app:tabGravity="fill"
-                    app:tabMode="fixed" />
+                    app:tabIndicatorColor="@color/colorWhite"
+                    app:tabIndicatorHeight="4dp"
+                    app:tabMode="fixed"
+                    app:tabTextColor="@color/colorStateGood" />
 
             </android.support.design.widget.AppBarLayout>
 
@@ -75,8 +79,8 @@
                 android:layout_marginBottom="5dp"
                 android:layout_marginLeft="@dimen/activity_horizontal_margin"
                 android:layout_marginTop="5dp"
-                android:layout_toStartOf="@+id/btn_pension_screen_next"
-                android:layout_toLeftOf="@+id/btn_pension_screen_next">
+                android:layout_toLeftOf="@+id/btn_pension_screen_next"
+                android:layout_toStartOf="@+id/btn_pension_screen_next">
 
                 <TextView
                     android:id="@+id/tv_pension_screen_score"
