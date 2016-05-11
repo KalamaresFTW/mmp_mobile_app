@@ -88,6 +88,16 @@
                         seekarc:touchInside="true" />
 
                     <TextView
+                        android:id="@+id/tv_income_basic_salary"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_below="@id/sa_income_screen_salary"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginTop="5dp"
+                        android:text="€0.00"
+                        android:textStyle="bold" />
+
+                    <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"
@@ -170,7 +180,7 @@
                         android:background="@color/colorIncomeScreenMoneyBackground"
                         android:gravity="left"
                         android:padding="4dp"
-                        android:text="€1,700,00"
+                        android:text="€0.00"
                         android:textColor="@color/colorOrange"
                         android:textSize="15sp" />
 
@@ -182,7 +192,7 @@
                         android:layout_marginLeft="@dimen/activity_horizontal_margin"
                         android:layout_marginRight="4dp"
                         android:layout_toLeftOf="@+id/tv_income_screen_money_bonus"
-                        android:max="10000"
+                        android:max="200"
                         android:progressBackgroundTint="@color/colorIncomeScreenMoneyBackground"
                         android:progressTint="@color/colorIncomeScreenMoneyBackground"
                         android:thumbTint="@color/colorIncomeScreenSeekBarSelector" />
@@ -218,7 +228,7 @@
                         android:background="@color/colorIncomeScreenMoneyBackground"
                         android:gravity="left"
                         android:padding="4dp"
-                        android:text="€10,200,00"
+                        android:text="€0.00"
                         android:textColor="@color/colorOrange"
                         android:textSize="15sp" />
 
@@ -230,7 +240,7 @@
                         android:layout_marginLeft="@dimen/activity_horizontal_margin"
                         android:layout_marginRight="4dp"
                         android:layout_toLeftOf="@+id/tv_income_screen_money_overtime"
-                        android:max="10000"
+                        android:max="200"
                         android:progressBackgroundTint="@color/colorIncomeScreenMoneyBackground"
                         android:progressTint="@color/colorIncomeScreenMoneyBackground"
                         android:thumbTint="@color/colorIncomeScreenSeekBarSelector" />
@@ -266,7 +276,7 @@
                         android:background="@color/colorIncomeScreenMoneyBackground"
                         android:gravity="left"
                         android:padding="4dp"
-                        android:text="€13,300,00"
+                        android:text="€0.00"
                         android:textColor="@color/colorOrange"
                         android:textSize="15sp" />
 
@@ -278,7 +288,7 @@
                         android:layout_marginLeft="@dimen/activity_horizontal_margin"
                         android:layout_marginRight="4dp"
                         android:layout_toLeftOf="@+id/tv_income_screen_money_taxable"
-                        android:max="10000"
+                        android:max="200"
                         android:progressBackgroundTint="@color/colorIncomeScreenMoneyBackground"
                         android:progressTint="@color/colorIncomeScreenMoneyBackground"
                         android:thumbTint="@color/colorIncomeScreenSeekBarSelector" />
@@ -327,7 +337,7 @@
                         android:layout_marginLeft="@dimen/activity_horizontal_margin"
                         android:layout_marginRight="4dp"
                         android:layout_toLeftOf="@+id/tv_income_screen_money_not_taxable"
-                        android:max="10000"
+                        android:max="200"
                         android:progressBackgroundTint="@color/colorIncomeScreenMoneyBackground"
                         android:progressTint="@color/colorIncomeScreenMoneyBackground"
                         android:thumbTint="@color/colorIncomeScreenSeekBarSelector" />
@@ -442,7 +452,7 @@
                         android:layout_marginTop="9dp"
                         android:background="@drawable/ic_info_filled" />
 
-                    <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                    <RadioGroup
                         android:id="@+id/radio_group_policy"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -486,7 +496,7 @@
                         android:textColor="@color/colorBlack"
                         android:textSize="@dimen/cv_text_size" />
 
-                    <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                    <RadioGroup
                         android:id="@+id/radio_group_protect"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -593,7 +603,7 @@
                     android:background="@color/colorIncomeScreenTextDependents"
                     android:gravity="left"
                     android:padding="4dp"
-                    android:text="2"
+                    android:text="0"
                     android:textColor="@color/colorOrange"
                     android:textSize="15sp" />
 
