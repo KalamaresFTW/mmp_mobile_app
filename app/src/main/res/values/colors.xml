@@ -67,4 +67,13 @@
     <color name="colorIncomeScreenSeekBarSelector">#00b6b7</color>
     <color name="colorIncomeScreenBackgroundDependents">#013334</color>
     <color name="colorIncomeScreenTextDependents">#00b6b7</color>
+
+    <!-- Pension Screen Colors -->
+    <color name="colorPensionScreenBackground">#006666</color>
+    <color name="colorPensionScreenTitle">#015253</color>
+    <color name="colorPensionScreenText">#2e2d2d</color>
+    <color name="colorPensionScreenBackgroundAgeRetirement">#013334</color>
+    <color name="colorPensionScreenTextAgeRetirement">#00b6b7</color>
+    <color name="colorPensionScreeSeekArcAgeProgress">#2dc66d</color>
+    <color name="colorPensionScreeSeekArcAgeBackground">#FFFFFF</color>
 </resources>

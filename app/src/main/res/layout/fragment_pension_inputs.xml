@@ -1,0 +1,246 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:seekarc="http://schemas.android.com/apk/res-auto"
+    android:background="@color/colorPensionScreenBackground"
+    tools:context=".fragment.pension.PensionInputsFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:orientation="vertical"
+            tools:ignore="ScrollViewSize">
+
+            <RelativeLayout
+                android:id="@+id/lay_income_screen_basic_salary"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="13dp"
+                android:background="@color/colorWhite">
+
+                <!-- Header Layout -->
+                <RelativeLayout
+                    android:id="@+id/lay_pension_screen_existing_header"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/tv_pension_screen_existing_pension_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                        android:layout_marginTop="9dp"
+                        android:text="Existing Pensions"
+                        android:textColor="@color/colorPensionScreenTitle"
+                        android:textSize="@dimen/cv_title_size"
+                        android:textStyle="bold" />
+
+                    <Button
+                        android:id="@+id/btn_pension_screen_existing_pension_info"
+                        android:layout_width="@dimen/cv_title_size"
+                        android:layout_height="@dimen/cv_title_size"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="@dimen/activity_horizontal_margin"
+                        android:layout_marginTop="9dp"
+                        android:background="@drawable/ic_info" />
+
+                    <View
+                        android:id="@+id/cv_separator_existing_pension"
+                        android:layout_width="match_parent"
+                        android:layout_height="1px"
+                        android:layout_below="@+id/tv_pension_screen_existing_pension_title"
+                        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                        android:layout_marginRight="@dimen/activity_horizontal_margin"
+                        android:layout_marginTop="9dp"
+                        android:background="@color/colorPensionScreenBackground" />
+
+                </RelativeLayout>
+
+                <!-- Body List Layout -->
+                <RelativeLayout
+                    android:id="@+id/lay_pension_screen_data_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/lay_pension_screen_existing_header">
+
+                    <RelativeLayout
+                        android:id="@+id/lay_pension_screen_data"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                        android:layout_marginTop="@dimen/activity_vertical_margin">
+
+                        <TextView
+                            android:id="@+id/tv_pension_screen_item_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="My last job"
+                            android:textColor="@color/colorPensionScreenText"
+                            android:textSize="@dimen/cv_text_size" />
+
+                        <!-- Balance Layout -->
+                        <RelativeLayout
+                            android:id="@+id/lay_pension_screen_balance"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/tv_pension_screen_item_title"
+                            android:layout_marginTop="3dp">
+
+                            <TextView
+                                android:id="@+id/tv_pension_screen_item_balance"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Balance"
+                                android:textColor="@color/colorPensionScreenText"
+                                android:textSize="@dimen/cv_text_size"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/tv_pension_screen_item_balance_money"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="3dp"
+                                android:layout_toRightOf="@+id/tv_pension_screen_item_balance"
+                                android:text="€16.700,00"
+                                android:textColor="@color/colorOrange"
+                                android:textSize="@dimen/cv_text_size"
+                                android:textStyle="bold" />
+
+                        </RelativeLayout>
+
+                        <!-- Monthly Layout -->
+                        <RelativeLayout
+                            android:id="@+id/lay_pension_screen_monthly"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/lay_pension_screen_balance"
+                            android:layout_marginBottom="@dimen/activity_vertical_margin"
+                            android:layout_marginTop="3dp">
+
+                            <TextView
+                                android:id="@+id/tv_pension_screen_item_monthly"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Monthly"
+                                android:textColor="@color/colorPensionScreenText"
+                                android:textSize="@dimen/cv_text_size"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/tv_pension_screen_item_monthly_money"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="3dp"
+                                android:layout_toRightOf="@+id/tv_pension_screen_item_monthly"
+                                android:text="€0,00"
+                                android:textColor="@color/colorOrange"
+                                android:textSize="@dimen/cv_text_size"
+                                android:textStyle="bold" />
+
+                        </RelativeLayout>
+
+                    </RelativeLayout>
+
+                </RelativeLayout>
+
+                <Button
+                    android:id="@+id/btn_pension_screen_add"
+                    android:layout_width="60dp"
+                    android:layout_height="45dp"
+                    android:layout_below="@+id/lay_pension_screen_data_list"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="@dimen/activity_vertical_margin"
+                    android:background="@drawable/add_icon" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/lay_pension_screen_age_retirement"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="13dp"
+                android:background="@color/colorPensionScreenBackgroundAgeRetirement">
+
+                <TextView
+                    android:id="@+id/tv_pension_screen_age_retirement_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                    android:layout_marginTop="9dp"
+                    android:text="Preferred age of retirement?"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="@dimen/cv_title_size"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/btn_pension_screen_age_retirement_info"
+                    android:layout_width="@dimen/cv_title_size"
+                    android:layout_height="@dimen/cv_title_size"
+                    android:layout_marginRight="@dimen/activity_horizontal_margin"
+                    android:layout_marginTop="9dp"
+                    android:layout_alignParentRight="true"
+                    android:background="@drawable/ic_info"
+                    android:drawableTint="@color/colorPensionScreenTextAgeRetirement"/>
+
+                <View
+                    android:id="@+id/cv_separator_basic_salary"
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:layout_below="@+id/tv_pension_screen_age_retirement_title"
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                    android:layout_marginRight="@dimen/activity_horizontal_margin"
+                    android:layout_marginTop="9dp"
+                    android:background="@color/colorWhite" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="160dp"
+                    android:layout_below="@+id/cv_separator_basic_salary">
+
+                    <com.triggertrap.seekarc.SeekArc
+                        android:id="@+id/sa_pension_screen_age"
+                        android:layout_width="160dp"
+                        android:layout_height="160dp"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="7dp"
+                        android:layout_marginRight="7dp"
+                        android:padding="40dp"
+                        seekarc:arcColor="@color/colorPensionScreeSeekArcAgeBackground"
+                        seekarc:arcWidth="5dp"
+                        seekarc:max="300"
+                        seekarc:progress="50"
+                        seekarc:progressColor="@color/colorPensionScreeSeekArcAgeProgress"
+                        seekarc:rotation="180"
+                        seekarc:startAngle="30"
+                        seekarc:sweepAngle="300"
+                        seekarc:touchInside="true" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="@dimen/activity_horizontal_margin"
+                        android:layout_toEndOf="@+id/sa_pension_screen_age"
+                        android:layout_toRightOf="@+id/sa_pension_screen_age"
+                        android:text="Please, drag the white knob to set your age"
+                        android:textColor="@color/colorPensionScreenTextAgeRetirement" />
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</FrameLayout>

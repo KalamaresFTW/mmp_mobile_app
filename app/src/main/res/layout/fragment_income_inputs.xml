@@ -18,8 +18,7 @@
             android:orientation="vertical"
             tools:ignore="ScrollViewSize">
 
-            <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:tools="http://schemas.android.com/tools"
+            <RelativeLayout
                 android:id="@+id/lay_income_screen_basic_salary"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -105,8 +104,7 @@
 
             </RelativeLayout>
 
-            <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:tools="http://schemas.android.com/tools"
+            <RelativeLayout
                 android:id="@+id/lay_income_screen_additional_income"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -338,8 +336,7 @@
 
             </RelativeLayout>
 
-            <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:tools="http://schemas.android.com/tools"
+            <RelativeLayout
                 android:id="@+id/lay_income_screen_family_status"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -469,6 +466,7 @@
 
                 </RelativeLayout>
 
+                <!-- Protect -->
                 <RelativeLayout
                     android:id="@+id/lay_income_screen_protect"
                     android:layout_width="wrap_content"
@@ -484,7 +482,7 @@
                         android:layout_marginLeft="@dimen/activity_horizontal_margin"
                         android:layout_marginRight="@dimen/activity_horizontal_margin"
                         android:layout_marginTop="9dp"
-                        android:text="@string/txt_income_screen_family_status_policy"
+                        android:text="@string/txt_income_screen_family_status_protect"
                         android:textColor="@color/colorBlack"
                         android:textSize="@dimen/cv_text_size" />
 
@@ -512,6 +510,7 @@
 
                 </RelativeLayout>
 
+                <!-- Percentage -->
                 <RelativeLayout
                     android:id="@+id/lay_income_screen_percent"
                     android:layout_width="wrap_content"
@@ -543,8 +542,7 @@
 
             </RelativeLayout>
 
-            <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:tools="http://schemas.android.com/tools"
+            <RelativeLayout
                 android:id="@+id/lay_income_screen_dependents"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

@@ -68,7 +68,7 @@
                 android:layout_marginTop="@dimen/activity_vertical_margin"
                 android:gravity="left"
                 android:text="@string/income_screen_bottom_title"
-                android:textColor="@color/colorTitleActionPlan"
+                android:textColor="@color/colorBackgroundCardViewIncome"
                 android:textSize="@dimen/cv_title_size"
                 android:textStyle="bold" />
 
@@ -76,8 +76,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_below="@+id/tv_income_screen_title"
+                android:layout_marginBottom="5dp"
                 android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                android:layout_marginTop="5dp">
+                android:layout_marginTop="5dp"
+                android:layout_toLeftOf="@+id/btn_income_screen_next"
+                android:layout_toStartOf="@+id/btn_income_screen_next">
 
                 <TextView
                     android:id="@+id/tv_income_screen_score"
@@ -104,19 +107,21 @@
                     android:minWidth="200dp"
                     android:progressDrawable="@drawable/progress_bar_good" />
 
-                <Button
-                    android:id="@+id/btn_income_screen_next"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:background="@drawable/ic_arrow_right" />
-
             </RelativeLayout>
+
+            <Button
+                android:id="@+id/btn_income_screen_next"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/ic_arrow_right" />
 
         </RelativeLayout>
 
     </RelativeLayout>
 
+    <!-- Slider Menu -->
     <android.support.design.widget.NavigationView
         android:id="@+id/nav_view_module"
         android:layout_width="wrap_content"

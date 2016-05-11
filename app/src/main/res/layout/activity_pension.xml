@@ -61,25 +61,29 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
-                android:layout_marginTop="13dp"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
                 android:gravity="left"
                 android:text="Pension shit"
-                android:textColor="@color/colorTitleActionPlan"
+                android:textColor="@color/colorBackgroundCardViewPension"
                 android:textSize="@dimen/cv_title_size"
                 android:textStyle="bold" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_below="@+id/tv_pension_screen_title"
-                android:layout_marginTop="5dp">
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="5dp"
+                android:layout_toStartOf="@+id/btn_pension_screen_next"
+                android:layout_toLeftOf="@+id/btn_pension_screen_next">
 
                 <TextView
                     android:id="@+id/tv_pension_screen_score"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:text="38%"
+                    android:layout_marginTop="7dp"
+                    android:text="GOOD"
                     android:textColor="@color/colorStateExcelent"
                     android:textSize="@dimen/cv_text_size"
                     android:textStyle="bold" />
@@ -91,19 +95,29 @@
                     android:layout_height="9dp"
                     android:layout_marginLeft="8dp"
                     android:layout_marginRight="@dimen/cv_horizontal_margin"
-                    android:layout_marginTop="4dp"
-                    android:layout_toRightOf="@+id/tv_action_plan_score"
+                    android:layout_marginTop="11dp"
+                    android:layout_toRightOf="@+id/tv_pension_screen_score"
                     android:max="100"
                     android:maxWidth="200dp"
                     android:minHeight="50dp"
                     android:minWidth="200dp"
-                    android:progressDrawable="@drawable/progress_bar_excelent" />
+                    android:progressDrawable="@drawable/progress_bar_good" />
+
             </RelativeLayout>
+
+            <Button
+                android:id="@+id/btn_pension_screen_next"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/ic_arrow_right" />
 
         </RelativeLayout>
 
     </RelativeLayout>
 
+    <!-- Slider Menu -->
     <android.support.design.widget.NavigationView
         android:id="@+id/nav_view_module"
         android:layout_width="wrap_content"

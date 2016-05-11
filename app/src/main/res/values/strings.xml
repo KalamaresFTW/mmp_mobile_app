@@ -101,9 +101,9 @@
     <string name="income_screen_bottom_title">Income Health</string>
     <string name="txt_income_screen_family_status_illness_cover">Do you have illness cover from your employer?</string>
     <string name="txt_income_screen_family_status_policy">Do you have private income protection policy?</string>
-
     <string name="yes">Yes</string>
     <string name="no">No</string>
+    <string name="txt_income_screen_family_status_protect">Does this policy protect 75% of your income?</string>
     <string name="txt_income_screen_family_status_percentage">What percent of your salary does your policy cover?</string>
     <string name="income_screen_dependents_title">Dependents</string>
     <string name="income_screen_summary_title">Did you know?</string>

@@ -9,8 +9,8 @@ import android.view.ViewGroup;
 import mmp.mymoneyplatform_mobile_app.R;
 
 
-public class OneFragment extends Fragment {
-    public OneFragment() {
+public class PensionSummaryFragment extends Fragment {
+    public PensionSummaryFragment() {
         // Required empty public constructor
     }
 
@@ -23,6 +23,6 @@ public class OneFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_one, container, false);
+        return inflater.inflate(R.layout.fragment_pension_summary, container, false);
     }
 }
