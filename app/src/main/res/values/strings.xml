@@ -56,7 +56,7 @@
     <string name="cv_subtitle_spending">Disposable income</string>
 
     <!-- CardView HealthPanel Title Strings -->
-    <string name="cv_hp_title_income">Income \n Health</string>
+    <string name="cv_hp_title_income">Income Health</string>
     <string name="cv_hp_title_pension">Pension Health</string>
     <string name="cv_hp_title_goals">Goal Health</string>
     <string name="cv_hp_title_assets_debts">Assets/Debts Health</string>

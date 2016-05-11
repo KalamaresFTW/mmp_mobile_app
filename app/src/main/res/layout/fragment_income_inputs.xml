@@ -417,7 +417,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentLeft="true"
-                        android:layout_below="@+id/tv_income_screen_illness_cover" />
+                        android:layout_below="@+id/tv_income_screen_illness_cover"
+                        android:gravity="center_horizontal"
+                        android:layout_marginLeft="@dimen/activity_vertical_margin" />
 
                 </RelativeLayout>
 
@@ -470,6 +472,7 @@
                             android:id="@+id/radio_policy_no"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:checked="true"
                             android:text="@string/no" />
 
                     </RadioGroup>
@@ -508,6 +511,7 @@
                             android:id="@+id/radio_protect_yes"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:checked="true"
                             android:text="@string/yes" />
 
                         <RadioButton
