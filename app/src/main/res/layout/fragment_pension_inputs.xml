@@ -1,8 +1,8 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:seekarc="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:seekarc="http://schemas.android.com/apk/res-auto"
     android:background="@color/colorPensionScreenBackground"
     tools:context=".fragment.pension.PensionInputsFragment">
 
@@ -18,6 +18,7 @@
             android:orientation="vertical"
             tools:ignore="ScrollViewSize">
 
+            <!-- Existing Pensions -->
             <RelativeLayout
                 android:id="@+id/lay_pension_screen_existing_pensions"
                 android:layout_width="match_parent"
@@ -161,6 +162,7 @@
 
             </RelativeLayout>
 
+            <!-- Age Of Retirement -->
             <RelativeLayout
                 android:id="@+id/lay_pension_screen_age_retirement"
                 android:layout_width="match_parent"
@@ -174,7 +176,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/activity_horizontal_margin"
                     android:layout_marginTop="9dp"
-                    android:text="Preferred age of retirement?"
+                    android:text="@string/txt_pension_screen_age_retirement"
                     android:textColor="@color/colorWhite"
                     android:textSize="@dimen/cv_title_size"
                     android:textStyle="bold" />
@@ -183,11 +185,11 @@
                     android:id="@+id/btn_pension_screen_age_retirement_info"
                     android:layout_width="@dimen/cv_title_size"
                     android:layout_height="@dimen/cv_title_size"
+                    android:layout_alignParentRight="true"
                     android:layout_marginRight="@dimen/activity_horizontal_margin"
                     android:layout_marginTop="9dp"
-                    android:layout_alignParentRight="true"
                     android:background="@drawable/ic_info"
-                    android:drawableTint="@color/colorPensionScreenTextAgeRetirement"/>
+                    android:drawableTint="@color/colorPensionScreenTextAgeRetirement" />
 
                 <View
                     android:id="@+id/cv_separator_basic_salary"
@@ -212,11 +214,11 @@
                         android:layout_marginLeft="7dp"
                         android:layout_marginRight="7dp"
                         android:padding="40dp"
-                        seekarc:arcColor="@color/colorPensionScreeSeekArcAgeBackground"
+                        seekarc:arcColor="@color/colorPensionScreenSeekArcAgeBackground"
                         seekarc:arcWidth="5dp"
                         seekarc:max="300"
                         seekarc:progress="50"
-                        seekarc:progressColor="@color/colorPensionScreeSeekArcAgeProgress"
+                        seekarc:progressColor="@color/colorPensionScreenSeekArcAgeProgress"
                         seekarc:rotation="180"
                         seekarc:startAngle="30"
                         seekarc:sweepAngle="300"
@@ -232,7 +234,89 @@
                         android:layout_marginRight="@dimen/activity_horizontal_margin"
                         android:layout_toEndOf="@+id/sa_pension_screen_age"
                         android:layout_toRightOf="@+id/sa_pension_screen_age"
-                        android:text="Please, drag the white knob to set your age"
+                        android:text="@string/txt_pension_screen_seekarc_age_tip"
+                        android:textColor="@color/colorPensionScreenTextAgeRetirement" />
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+            <!-- Monthly Amount -->
+            <RelativeLayout
+                android:id="@+id/lay_pension_screen_monthly_amount"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="13dp"
+                android:layout_marginBottom="@dimen/activity_vertical_margin"
+                android:background="@color/colorPensionScreenBackgroundAgeRetirement">
+
+                <TextView
+                    android:id="@+id/tv_pension_screen_monthly_amount_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                    android:layout_marginTop="9dp"
+                    android:layout_toLeftOf="@+id/btn_pension_screen_monthly_amount_info"
+                    android:layout_toStartOf="@+id/btn_pension_screen_monthly_amount_info"
+                    android:text="@string/txt_pension_screen_monthly_amount"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="@dimen/cv_title_size"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/btn_pension_screen_monthly_amount_info"
+                    android:layout_width="@dimen/cv_title_size"
+                    android:layout_height="@dimen/cv_title_size"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="@dimen/activity_horizontal_margin"
+                    android:layout_marginTop="9dp"
+                    android:background="@drawable/ic_info"
+                    android:drawableTint="@color/colorPensionScreenTextAgeRetirement" />
+
+                <View
+                    android:id="@+id/cv_separator_monthly_amount"
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:layout_below="@+id/tv_pension_screen_monthly_amount_title"
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                    android:layout_marginRight="@dimen/activity_horizontal_margin"
+                    android:layout_marginTop="9dp"
+                    android:background="@color/colorWhite" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="160dp"
+                    android:layout_below="@+id/cv_separator_monthly_amount">
+
+                    <com.triggertrap.seekarc.SeekArc
+                        android:id="@+id/sa_pension_screen_amount"
+                        android:layout_width="160dp"
+                        android:layout_height="160dp"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="7dp"
+                        android:layout_marginRight="7dp"
+                        android:padding="40dp"
+                        seekarc:arcColor="@color/colorPensionScreenSeekArcAmountBackground"
+                        seekarc:arcWidth="5dp"
+                        seekarc:max="300"
+                        seekarc:progress="50"
+                        seekarc:progressColor="@color/colorPensionScreenSeekArcAmountProgress"
+                        seekarc:rotation="180"
+                        seekarc:startAngle="30"
+                        seekarc:sweepAngle="300"
+                        seekarc:touchInside="true" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="@dimen/activity_horizontal_margin"
+                        android:layout_toEndOf="@+id/sa_pension_screen_amount"
+                        android:layout_toRightOf="@+id/sa_pension_screen_amount"
+                        android:text="@string/txt_pension_screen_seekarc_amount_tip"
                         android:textColor="@color/colorPensionScreenTextAgeRetirement" />
 
                 </RelativeLayout>

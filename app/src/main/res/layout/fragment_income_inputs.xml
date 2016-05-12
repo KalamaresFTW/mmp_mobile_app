@@ -629,6 +629,93 @@
                     android:progressTint="@color/colorWhite"
                     android:thumbTint="@color/colorIncomeScreenSeekBarSelector" />
 
+                <!-- Buttons´ Layout -->
+                <LinearLayout
+                    android:id="@+id/lay_income_screen_buttons"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/income_seekbar_dependents"
+                    android:layout_marginBottom="@dimen/activity_vertical_margin"
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                    android:layout_marginRight="@dimen/activity_horizontal_margin"
+                    android:orientation="vertical"
+                    android:gravity="center_horizontal">
+
+                    <!-- Upper line of buttons -->
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <Button
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:background="@drawable/emptyProfilePlus" />
+
+                        <Button
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                            android:background="@drawable/emptyProfilePlus" />
+
+                        <Button
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                            android:layout_marginRight="@dimen/activity_horizontal_margin"
+                            android:background="@drawable/emptyProfilePlus" />
+
+                        <Button
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_marginRight="@dimen/activity_horizontal_margin"
+                            android:background="@drawable/emptyProfilePlus" />
+
+                        <Button
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:background="@drawable/emptyProfilePlus" />
+
+                    </LinearLayout>
+
+                    <!--  Lower line of buttons-->
+                    <LinearLayout
+                        android:layout_marginTop="@dimen/activity_vertical_margin"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <Button
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:background="@drawable/emptyProfilePlus" />
+
+                        <Button
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                            android:background="@drawable/emptyProfilePlus" />
+
+                        <Button
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                            android:layout_marginRight="@dimen/activity_horizontal_margin"
+                            android:background="@drawable/emptyProfilePlus" />
+
+                        <Button
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_marginRight="@dimen/activity_horizontal_margin"
+                            android:background="@drawable/emptyProfilePlus" />
+
+                        <Button
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:background="@drawable/emptyProfilePlus" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
             </RelativeLayout>
 
         </LinearLayout>

@@ -67,6 +67,7 @@ public class IncomeActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.nav_profile:
+                finish();
                 startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
                 break;
             case R.id.nav_dashboard:
@@ -81,21 +82,27 @@ public class IncomeActivity extends AppCompatActivity
                 Toast.makeText(getApplicationContext(), "Pension", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.nav_assetsdebts:
+                finish();
                 Toast.makeText(getApplicationContext(), "Assets/Debts", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.nav_goals:
+                finish();
                 Toast.makeText(getApplicationContext(), "Goals", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.nav_life:
+                finish();
                 Toast.makeText(getApplicationContext(), "Life", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.nav_spendings:
+                finish();
                 Toast.makeText(getApplicationContext(), "Spendings", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.nav_settings:
+                finish();
                 Toast.makeText(getApplicationContext(), "Settings", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.nav_help:
+                finish();
                 Toast.makeText(getApplicationContext(), "Help", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.nav_logout:

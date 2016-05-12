@@ -119,5 +119,10 @@
 
     <!-- Pension Activity Strings -->
     <string name="title_activity_pension">Pension</string>
+    <string name="txt_pension_screen_monthly_amount">Affordable monthly amount for pension?</string>
+    <string name="txt_pension_screen_age_retirement">Preferred age of retirement?</string>
+    <string name="txt_pension_screen_seekarc_amount_tip">Please, drag the white knob to set your monthly amount for pension</string>
+    <string name="txt_pension_screen_seekarc_age_tip">Please, drag the white knob to set your age</string>
+    <string name="txt_income_screen_dependents">How many dependents you have?</string>
 
 </resources>

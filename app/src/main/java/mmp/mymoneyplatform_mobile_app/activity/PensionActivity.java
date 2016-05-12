@@ -58,9 +58,9 @@ public class PensionActivity extends AppCompatActivity
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new PensionInputsFragment(), "Inputs");
-        adapter.addFragment(new PensionSummaryFragment(), "Summary");
-        adapter.addFragment(new PensionGraphsFragment(), "Graphs");
+        adapter.addFragment(new PensionInputsFragment(), "ONE");
+        adapter.addFragment(new PensionGraphsFragment(), "TWO");
+        adapter.addFragment(new PensionSummaryFragment(), "THREE");
         viewPager.setAdapter(adapter);
     }
 

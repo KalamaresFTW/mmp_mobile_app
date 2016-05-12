@@ -74,6 +74,8 @@
     <color name="colorPensionScreenText">#2e2d2d</color>
     <color name="colorPensionScreenBackgroundAgeRetirement">#1e3243</color>
     <color name="colorPensionScreenTextAgeRetirement">#00b6b7</color>
-    <color name="colorPensionScreeSeekArcAgeProgress">#2dc66d</color>
-    <color name="colorPensionScreeSeekArcAgeBackground">#FFFFFF</color>
+    <color name="colorPensionScreenSeekArcAgeProgress">#2dc66d</color>
+    <color name="colorPensionScreenSeekArcAgeBackground">#FFFFFF</color>
+    <color name="colorPensionScreenSeekArcAmountProgress">#A65BA6</color>
+    <color name="colorPensionScreenSeekArcAmountBackground">#FFFFFF</color>
 </resources>
