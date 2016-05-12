@@ -8,6 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RelativeLayout;
 import android.widget.SeekBar;
@@ -28,6 +30,7 @@ public class IncomeInputsFragment extends Fragment {
 
     //UI references
     private SeekArc mSalarySeekArc;
+    //TODO: Create that stupid salary calculator for the usert that doesnt know how to multiply
     private Button mSalaryCalculator, mBasicSalaryInfo, mAditionalIncomeInfo,
             mFamilyStatusInfo, mDependentsInfo;
     private TextView mBasicSalaryTextView, mBonusTextView, mOvertimeTextView,
@@ -36,6 +39,8 @@ public class IncomeInputsFragment extends Fragment {
             mNonTaxableSeekBar, mDependentsSeekbar;
     private RadioButton mPolicyYes, mPolicyNo, mProtectionYes, mProtectionNo;
     private RelativeLayout mIncomeProtectionLayout, mIncomePercentLayout;
+    private ArrayList<ImageButton> dependantsList = new ArrayList<>(10); //10 dependants max
+    private int lastDependantsValue = 0; //This is 0 for now
     private Spinner mIllnessCoverSpinner;
 
     public IncomeInputsFragment() {
@@ -73,7 +78,6 @@ public class IncomeInputsFragment extends Fragment {
             public void onStopTrackingTouch(SeekArc seekArc) {
             }
         });
-
 
         mSalaryCalculator = (Button)
                 view.findViewById(R.id.btn_income_screen_basic_salary_calculator);
@@ -271,7 +275,19 @@ public class IncomeInputsFragment extends Fragment {
         mDependentsSeekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                if (lastDependantsValue < progress) {
+                    // If the last value is less than the new one
+                    // we are increasing the number of dependants
+                    refreshDependants(progress, true);
+                } else {
+                    // If the las value is greater than the new one
+                    // we are decreasing the number of dependants
+                    refreshDependants(progress, false);
+                }
+                // Set the text on the TextView
                 mDependentsTextView.setText(String.valueOf(progress));
+                //And the current value is now the last one
+                lastDependantsValue = progress;
             }
 
             @Override
@@ -284,8 +300,37 @@ public class IncomeInputsFragment extends Fragment {
 
             }
         });
-        //TODO: Add an item for each dependant
+
+        dependantsList.add((ImageButton) view.findViewById(R.id.btn_income_dependant_1));
+        dependantsList.add((ImageButton) view.findViewById(R.id.btn_income_dependant_2));
+        dependantsList.add((ImageButton) view.findViewById(R.id.btn_income_dependant_3));
+        dependantsList.add((ImageButton) view.findViewById(R.id.btn_income_dependant_4));
+        dependantsList.add((ImageButton) view.findViewById(R.id.btn_income_dependant_5));
+        dependantsList.add((ImageButton) view.findViewById(R.id.btn_income_dependant_6));
+        dependantsList.add((ImageButton) view.findViewById(R.id.btn_income_dependant_7));
+        dependantsList.add((ImageButton) view.findViewById(R.id.btn_income_dependant_8));
+        dependantsList.add((ImageButton) view.findViewById(R.id.btn_income_dependant_9));
+        dependantsList.add((ImageButton) view.findViewById(R.id.btn_income_dependant_10));
+        //we hide all the dependants buttons, this is the default presentation
+        for (int i = 0; i < 10; i++) {
+            ImageButton dependant = dependantsList.get(i);
+            dependant.setVisibility(View.GONE);
+        }
     }
 
-
+    /**
+     * We call this function every time we need to update the number of dependants we want to show
+     * You might notice that this is a fucking badass function, isn't it?
+     *
+     * @param numberOfDependants
+     */
+    private void refreshDependants(int numberOfDependants, boolean increasing) {
+        if (increasing) {
+            for (int i = 0; i < numberOfDependants; i++)
+                dependantsList.get(i).setVisibility(View.VISIBLE);
+        } else {
+            for (int i = dependantsList.size() - 1; i >= numberOfDependants; i--)
+                dependantsList.get(i).setVisibility(View.GONE);
+        }
+    }
 }

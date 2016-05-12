@@ -418,8 +418,8 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentLeft="true"
                         android:layout_below="@+id/tv_income_screen_illness_cover"
-                        android:gravity="center_horizontal"
-                        android:layout_marginLeft="@dimen/activity_vertical_margin" />
+                        android:layout_marginLeft="@dimen/activity_vertical_margin"
+                        android:gravity="center_horizontal" />
 
                 </RelativeLayout>
 
@@ -638,79 +638,104 @@
                     android:layout_marginBottom="@dimen/activity_vertical_margin"
                     android:layout_marginLeft="@dimen/activity_horizontal_margin"
                     android:layout_marginRight="@dimen/activity_horizontal_margin"
-                    android:orientation="vertical"
-                    android:gravity="center_horizontal">
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
 
-                    <!-- Upper line of buttons -->
+                    <!-- Top line of buttons -->
                     <LinearLayout
+                        android:id="@+id/btn_income_dependant_top_layout"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
 
-                        <Button
+                        <ImageButton
+                            android:id="@+id/btn_income_dependant_1"
                             android:layout_width="40dp"
                             android:layout_height="40dp"
-                            android:background="@drawable/emptyProfilePlus" />
+                            android:background="@drawable/dependants_button_shape"
+                            android:gravity="left" />
 
-                        <Button
+                        <ImageButton
+                            android:id="@+id/btn_income_dependant_2"
                             android:layout_width="40dp"
                             android:layout_height="40dp"
                             android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                            android:background="@drawable/emptyProfilePlus" />
+                            android:background="@drawable/dependants_button_shape"
+                            android:gravity="left" />
 
-                        <Button
+                        <ImageButton
+                            android:id="@+id/btn_income_dependant_3"
                             android:layout_width="40dp"
                             android:layout_height="40dp"
                             android:layout_marginLeft="@dimen/activity_horizontal_margin"
                             android:layout_marginRight="@dimen/activity_horizontal_margin"
-                            android:background="@drawable/emptyProfilePlus" />
+                            android:background="@drawable/dependants_button_shape"
+                            android:gravity="left" />
 
-                        <Button
+                        <ImageButton
+                            android:id="@+id/btn_income_dependant_4"
                             android:layout_width="40dp"
                             android:layout_height="40dp"
                             android:layout_marginRight="@dimen/activity_horizontal_margin"
-                            android:background="@drawable/emptyProfilePlus" />
+                            android:background="@drawable/dependants_button_shape"
+                            android:gravity="left" />
 
-                        <Button
+                        <ImageButton
+                            android:id="@+id/btn_income_dependant_5"
                             android:layout_width="40dp"
                             android:layout_height="40dp"
-                            android:background="@drawable/emptyProfilePlus" />
+                            android:background="@drawable/dependants_button_shape"
+                            android:gravity="left" />
 
                     </LinearLayout>
 
-                    <!--  Lower line of buttons-->
+                    <!--  Bottom line of buttons-->
                     <LinearLayout
-                        android:layout_marginTop="@dimen/activity_vertical_margin"
+                        android:id="@+id/btn_income_dependant_bottom_layout"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/activity_vertical_margin"
+                        android:layout_marginTop="@dimen/activity_vertical_margin"
+                        android:orientation="horizontal">
 
-                        <Button
+                        <ImageButton
+                            android:id="@+id/btn_income_dependant_6"
                             android:layout_width="40dp"
                             android:layout_height="40dp"
-                            android:background="@drawable/emptyProfilePlus" />
+                            android:background="@drawable/dependants_button_shape"
+                            android:gravity="left" />
 
-                        <Button
+                        <ImageButton
+                            android:id="@+id/btn_income_dependant_7"
                             android:layout_width="40dp"
                             android:layout_height="40dp"
                             android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                            android:background="@drawable/emptyProfilePlus" />
+                            android:background="@drawable/dependants_button_shape"
+                            android:gravity="left" />
 
-                        <Button
+                        <ImageButton
+                            android:id="@+id/btn_income_dependant_8"
                             android:layout_width="40dp"
                             android:layout_height="40dp"
                             android:layout_marginLeft="@dimen/activity_horizontal_margin"
                             android:layout_marginRight="@dimen/activity_horizontal_margin"
-                            android:background="@drawable/emptyProfilePlus" />
+                            android:background="@drawable/dependants_button_shape"
+                            android:gravity="left" />
 
-                        <Button
+                        <ImageButton
+                            android:id="@+id/btn_income_dependant_9"
                             android:layout_width="40dp"
                             android:layout_height="40dp"
                             android:layout_marginRight="@dimen/activity_horizontal_margin"
-                            android:background="@drawable/emptyProfilePlus" />
+                            android:background="@drawable/dependants_button_shape"
+                            android:gravity="left" />
 
-                        <Button
+                        <ImageButton
+                            android:id="@+id/btn_income_dependant_10"
                             android:layout_width="40dp"
                             android:layout_height="40dp"
-                            android:background="@drawable/emptyProfilePlus" />
+                            android:background="@drawable/dependants_button_shape"
+                            android:gravity="left" />
 
                     </LinearLayout>
 

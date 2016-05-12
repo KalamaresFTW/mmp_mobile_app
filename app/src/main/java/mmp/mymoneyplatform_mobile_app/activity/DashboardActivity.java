@@ -152,34 +152,34 @@ public class DashboardActivity extends AppCompatActivity
 
     public void loadProfileData() {
         //TODO: Find a way to load the user's profile image
-        new AsyncTask<Void, Void, Void>() {
-            private Bitmap bitmap;
+//        new AsyncTask<Void, Void, Void>() {
+//            private Bitmap bitmap;
+//
+//            @Override
+//            protected Void doInBackground(Void... params) {
+//                String url = ServiceURL.REVIEW_SERVICE_URL + user.getProfileImage().substring(5);
+//                System.out.println(url);
+//                try {
+//                    bitmap = BitmapFactory.decodeStream((InputStream) new URL(url).getContent());
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                } finally {
+//                    return null;
+//                }
+//            }
+//
+//            @Override
+//            protected void onPostExecute(Void aVoid) {
+//                iv_menu_img.setImageBitmap(bitmap);
+////                iv_menu_img.setMaxWidth(10);
+////                iv_menu_img.setMaxHeight(10);
+//                iv_menu_img.setScaleX(0.5f);
+//                iv_menu_img.setScaleY(0.5f);
+//            }
+//        }.execute();
 
-            @Override
-            protected Void doInBackground(Void... params) {
-                String url = ServiceURL.REVIEW_SERVICE_URL + user.getProfileImage().substring(5);
-                System.out.println(url);
-                try {
-                    bitmap = BitmapFactory.decodeStream((InputStream) new URL(url).getContent());
-                } catch (IOException e) {
-                    e.printStackTrace();
-                } finally {
-                    return null;
-                }
-            }
-
-            @Override
-            protected void onPostExecute(Void aVoid) {
-                iv_menu_img.setImageBitmap(bitmap);
-//                iv_menu_img.setMaxWidth(10);
-//                iv_menu_img.setMaxHeight(10);
-                iv_menu_img.setScaleX(0.5f);
-                iv_menu_img.setScaleY(0.5f);
-            }
-        }.execute();
-
-        tv_menu_name.setText(user.getName());
-        tv_menu_mail.setText(user.getEmail());
+        if (user.getName() != null) tv_menu_name.setText(user.getName());
+        if (user.getEmail() != null) tv_menu_mail.setText(user.getEmail());
     }
 
     @SuppressLint("SetTextI18n")
