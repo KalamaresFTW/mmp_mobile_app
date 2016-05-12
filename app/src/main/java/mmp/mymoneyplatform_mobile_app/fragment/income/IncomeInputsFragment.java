@@ -6,6 +6,7 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AlphaAnimation;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -15,6 +16,7 @@ import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.triggertrap.seekarc.SeekArc;
@@ -30,7 +32,7 @@ public class IncomeInputsFragment extends Fragment {
 
     //UI references
     private SeekArc mSalarySeekArc;
-    //TODO: Create that stupid salary calculator for the usert that doesnt know how to multiply
+    //TODO: Create that stupid salary calculator for the usert that doesnt know how to multiply by 12
     private Button mSalaryCalculator, mBasicSalaryInfo, mAditionalIncomeInfo,
             mFamilyStatusInfo, mDependentsInfo;
     private TextView mBasicSalaryTextView, mBonusTextView, mOvertimeTextView,
@@ -39,6 +41,7 @@ public class IncomeInputsFragment extends Fragment {
             mNonTaxableSeekBar, mDependentsSeekbar;
     private RadioButton mPolicyYes, mPolicyNo, mProtectionYes, mProtectionNo;
     private RelativeLayout mIncomeProtectionLayout, mIncomePercentLayout;
+    private LinearLayout mDependantsTopLayout, mDependantsBottomLayout;
     private ArrayList<ImageButton> dependantsList = new ArrayList<>(10); //10 dependants max
     private int lastDependantsValue = 0; //This is 0 for now
     private Spinner mIllnessCoverSpinner;
@@ -301,6 +304,12 @@ public class IncomeInputsFragment extends Fragment {
             }
         });
 
+        mDependantsTopLayout = (LinearLayout) view.findViewById(R.id.btn_income_dependant_top_layout);
+        mDependantsTopLayout.setVisibility(View.GONE);
+        mDependantsBottomLayout = (LinearLayout) view.findViewById(R.id.btn_income_dependant_bottom_layout);
+        mDependantsBottomLayout.setVisibility(View.GONE);
+
+
         dependantsList.add((ImageButton) view.findViewById(R.id.btn_income_dependant_1));
         dependantsList.add((ImageButton) view.findViewById(R.id.btn_income_dependant_2));
         dependantsList.add((ImageButton) view.findViewById(R.id.btn_income_dependant_3));
@@ -314,6 +323,13 @@ public class IncomeInputsFragment extends Fragment {
         //we hide all the dependants buttons, this is the default presentation
         for (int i = 0; i < 10; i++) {
             ImageButton dependant = dependantsList.get(i);
+            final int value = i;
+            dependant.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(getContext(), "Dependant " + String.valueOf(value + 1), Toast.LENGTH_SHORT).show();
+                }
+            });
             dependant.setVisibility(View.GONE);
         }
     }
@@ -323,14 +339,28 @@ public class IncomeInputsFragment extends Fragment {
      * You might notice that this is a fucking badass function, isn't it?
      *
      * @param numberOfDependants
+     * @param increasing
      */
     private void refreshDependants(int numberOfDependants, boolean increasing) {
-        if (increasing) {
-            for (int i = 0; i < numberOfDependants; i++)
-                dependantsList.get(i).setVisibility(View.VISIBLE);
+        if (numberOfDependants > 0 && numberOfDependants <= 10) {
+            mDependantsTopLayout.setVisibility(View.VISIBLE);
         } else {
-            for (int i = dependantsList.size() - 1; i >= numberOfDependants; i--)
+            mDependantsTopLayout.setVisibility(View.GONE);
+        }
+        if (numberOfDependants > 5 && numberOfDependants <= 10) {
+            mDependantsBottomLayout.setVisibility(View.VISIBLE);
+        } else {
+            mDependantsBottomLayout.setVisibility(View.GONE);
+        }
+        if (increasing) {
+            for (int i = 0; i < numberOfDependants; i++) {
+                dependantsList.get(i).setVisibility(View.VISIBLE);
+            }
+        } else {
+            for (int i = dependantsList.size() - 1; i >= numberOfDependants; i--) {
                 dependantsList.get(i).setVisibility(View.GONE);
+            }
+
         }
     }
 }
