@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/lay_pension_screen_data"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_pension_screen_item_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="My last job"
+        android:textColor="@color/colorPensionScreenText"
+        android:textSize="@dimen/cv_text_size" />
+
+    <!-- Balance Layout -->
+    <RelativeLayout
+        android:id="@+id/lay_pension_screen_balance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_pension_screen_item_title"
+        android:layout_marginTop="3dp">
+
+        <TextView
+            android:id="@+id/tv_pension_screen_item_balance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Balance"
+            android:textColor="@color/colorPensionScreenText"
+            android:textSize="@dimen/cv_text_size"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_pension_screen_item_balance_money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="3dp"
+            android:layout_toRightOf="@+id/tv_pension_screen_item_balance"
+            android:text="€16.700,00"
+            android:textColor="@color/colorOrange"
+            android:textSize="@dimen/cv_text_size"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+    <!-- Monthly Layout -->
+    <RelativeLayout
+        android:id="@+id/lay_pension_screen_monthly"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lay_pension_screen_balance"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:layout_marginTop="3dp">
+
+        <TextView
+            android:id="@+id/tv_pension_screen_item_monthly"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Monthly"
+            android:textColor="@color/colorPensionScreenText"
+            android:textSize="@dimen/cv_text_size"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_pension_screen_item_monthly_money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="3dp"
+            android:layout_toRightOf="@+id/tv_pension_screen_item_monthly"
+            android:text="€0,00"
+            android:textColor="@color/colorOrange"
+            android:textSize="@dimen/cv_text_size"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+</LinearLayout>

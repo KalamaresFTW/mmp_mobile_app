@@ -65,97 +65,23 @@
                 </RelativeLayout>
 
                 <!-- Body List Layout -->
-                <RelativeLayout
+                <LinearLayout
                     android:id="@+id/lay_pension_screen_data_list"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                    android:layout_marginTop="@dimen/activity_vertical_margin"
                     android:layout_below="@+id/lay_pension_screen_existing_header">
 
-                    <RelativeLayout
-                        android:id="@+id/lay_pension_screen_data"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                        android:layout_marginTop="@dimen/activity_vertical_margin">
-
-                        <TextView
-                            android:id="@+id/tv_pension_screen_item_title"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="My last job"
-                            android:textColor="@color/colorPensionScreenText"
-                            android:textSize="@dimen/cv_text_size" />
-
-                        <!-- Balance Layout -->
-                        <RelativeLayout
-                            android:id="@+id/lay_pension_screen_balance"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@+id/tv_pension_screen_item_title"
-                            android:layout_marginTop="3dp">
-
-                            <TextView
-                                android:id="@+id/tv_pension_screen_item_balance"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Balance"
-                                android:textColor="@color/colorPensionScreenText"
-                                android:textSize="@dimen/cv_text_size"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:id="@+id/tv_pension_screen_item_balance_money"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="3dp"
-                                android:layout_toRightOf="@+id/tv_pension_screen_item_balance"
-                                android:text="€16.700,00"
-                                android:textColor="@color/colorOrange"
-                                android:textSize="@dimen/cv_text_size"
-                                android:textStyle="bold" />
-
-                        </RelativeLayout>
-
-                        <!-- Monthly Layout -->
-                        <RelativeLayout
-                            android:id="@+id/lay_pension_screen_monthly"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@+id/lay_pension_screen_balance"
-                            android:layout_marginBottom="@dimen/activity_vertical_margin"
-                            android:layout_marginTop="3dp">
-
-                            <TextView
-                                android:id="@+id/tv_pension_screen_item_monthly"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Monthly"
-                                android:textColor="@color/colorPensionScreenText"
-                                android:textSize="@dimen/cv_text_size"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:id="@+id/tv_pension_screen_item_monthly_money"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="3dp"
-                                android:layout_toRightOf="@+id/tv_pension_screen_item_monthly"
-                                android:text="€0,00"
-                                android:textColor="@color/colorOrange"
-                                android:textSize="@dimen/cv_text_size"
-                                android:textStyle="bold" />
-
-                        </RelativeLayout>
-
-                    </RelativeLayout>
-
-                </RelativeLayout>
+                </LinearLayout>
 
                 <Button
                     android:id="@+id/btn_pension_screen_add"
                     android:layout_width="60dp"
                     android:layout_height="45dp"
                     android:layout_below="@+id/lay_pension_screen_data_list"
+                    android:layout_marginTop="@dimen/activity_vertical_margin"
                     android:layout_centerHorizontal="true"
                     android:layout_marginBottom="@dimen/activity_vertical_margin"
                     android:background="@drawable/add_icon" />
@@ -206,6 +132,18 @@
                     android:layout_height="160dp"
                     android:layout_below="@+id/cv_separator_basic_salary">
 
+                    <TextView
+                        android:id="@+id/tv_pension_screen_age_progress"
+                        android:layout_width="60dp"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="57dp"
+                        android:layout_marginTop="60dp"
+                        android:text="0"
+                        android:gravity="center_horizontal"
+                        android:textColor="@color/colorPensionScreenSeekArcAgeProgress"
+                        android:textSize="30dp"
+                        android:textStyle="bold" />
+
                     <com.triggertrap.seekarc.SeekArc
                         android:id="@+id/sa_pension_screen_age"
                         android:layout_width="160dp"
@@ -217,7 +155,7 @@
                         seekarc:arcColor="@color/colorPensionScreenSeekArcAgeBackground"
                         seekarc:arcWidth="5dp"
                         seekarc:max="300"
-                        seekarc:progress="50"
+                        seekarc:progress="0"
                         seekarc:progressColor="@color/colorPensionScreenSeekArcAgeProgress"
                         seekarc:rotation="180"
                         seekarc:startAngle="30"
@@ -246,8 +184,8 @@
                 android:id="@+id/lay_pension_screen_monthly_amount"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="13dp"
                 android:layout_marginBottom="@dimen/activity_vertical_margin"
+                android:layout_marginTop="13dp"
                 android:background="@color/colorPensionScreenBackgroundAgeRetirement">
 
                 <TextView
@@ -287,6 +225,18 @@
                     android:layout_width="match_parent"
                     android:layout_height="160dp"
                     android:layout_below="@+id/cv_separator_monthly_amount">
+
+                    <TextView
+                        android:id="@+id/tv_pension_screen_monthly_amount_progress"
+                        android:layout_width="60dp"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="57dp"
+                        android:layout_marginTop="60dp"
+                        android:text="0"
+                        android:gravity="center_horizontal"
+                        android:textColor="@color/colorPensionScreenSeekArcAmountProgress"
+                        android:textSize="30dp"
+                        android:textStyle="bold" />
 
                     <com.triggertrap.seekarc.SeekArc
                         android:id="@+id/sa_pension_screen_amount"
