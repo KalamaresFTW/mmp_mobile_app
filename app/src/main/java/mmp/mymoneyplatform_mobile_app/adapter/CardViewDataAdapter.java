@@ -13,6 +13,7 @@ import mmp.mymoneyplatform_mobile_app.R;
 import mmp.mymoneyplatform_mobile_app.activity.DashboardActivity;
 import mmp.mymoneyplatform_mobile_app.pojo.CardViewData;
 import mmp.mymoneyplatform_mobile_app.util.MoneyFormat;
+import mmp.mymoneyplatform_mobile_app.util.ProgressBarAnimation;
 
 /**
  * Created by K on 13/04/2016.
@@ -89,7 +90,12 @@ public class CardViewDataAdapter {
             progressBar = cvd.getHealthPanel().getProgressBar();
             hpProgressBar.setProgressDrawable(progressBar);
             //Set the progress of the bar
-            hpProgressBar.setProgress(cvd.getHealthPanel().getHealthProgress());
+            //hpProgressBar.setProgress(cvd.getHealthPanel().getHealthProgress());
+            //We use animations now, because why the fuck no?
+            ProgressBarAnimation anim = new ProgressBarAnimation(hpProgressBar, 0, cvd.getHealthPanel().getHealthProgress());
+            anim.setDuration(2000);
+            hpProgressBar.startAnimation(anim);
+
         }
     }
 

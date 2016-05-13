@@ -36,6 +36,7 @@ import mmp.mymoneyplatform_mobile_app.net.ServiceURL;
 import mmp.mymoneyplatform_mobile_app.pojo.CardViewData;
 import mmp.mymoneyplatform_mobile_app.pojo.UserData;
 import mmp.mymoneyplatform_mobile_app.util.FontsOverride;
+import mmp.mymoneyplatform_mobile_app.util.ProgressBarAnimation;
 
 @SuppressWarnings({"ConstantConditions", "finally", "ReturnInsideFinallyBlock", "deprecation"})
 public class DashboardActivity extends AppCompatActivity
@@ -280,8 +281,12 @@ public class DashboardActivity extends AppCompatActivity
             cardData.get(i).setMoney(Float.parseFloat(moneyData.get(i)));
             cardData.get(i).getHealthPanel().setHealthProgress((int) Math.abs(percentageData.get(i)));
         }
-        progress_bar_action_plan.setProgress(percentageData.get(6).intValue());
-        tv_action_plan_score.setText(percentageData.get(6).intValue() + "%");
+        int actionPlanValue = percentageData.get(6).intValue();
+        progress_bar_action_plan.setProgress(actionPlanValue);
+        tv_action_plan_score.setText(actionPlanValue + "%");
+        ProgressBarAnimation anim = new ProgressBarAnimation(progress_bar_action_plan, 0, actionPlanValue);
+        anim.setDuration(2000);
+        tv_action_plan_score.startAnimation(anim);
         //Finally we set all the properties of the card (mostly a e s t h e t i c properties)
         CardViewDataAdapter.getInstance().loadData(cardData, cardList);
     }
