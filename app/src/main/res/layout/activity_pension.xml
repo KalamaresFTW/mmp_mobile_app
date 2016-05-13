@@ -67,7 +67,7 @@
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="@dimen/activity_vertical_margin"
                 android:gravity="left"
-                android:text="Pension shit"
+                android:text="Pension Health"
                 android:textColor="@color/colorBackgroundCardViewPension"
                 android:textSize="@dimen/cv_title_size"
                 android:textStyle="bold" />

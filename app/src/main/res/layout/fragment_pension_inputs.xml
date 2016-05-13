@@ -154,7 +154,7 @@
                         android:padding="40dp"
                         seekarc:arcColor="@color/colorPensionScreenSeekArcAgeBackground"
                         seekarc:arcWidth="5dp"
-                        seekarc:max="300"
+                        seekarc:max="67"
                         seekarc:progress="0"
                         seekarc:progressColor="@color/colorPensionScreenSeekArcAgeProgress"
                         seekarc:rotation="180"
