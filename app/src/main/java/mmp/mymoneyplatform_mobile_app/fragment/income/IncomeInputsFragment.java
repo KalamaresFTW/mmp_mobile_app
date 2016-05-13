@@ -2,11 +2,12 @@ package mmp.mymoneyplatform_mobile_app.fragment.income;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.view.KeyEvent;
+import android.text.Editable;
+import android.text.Selection;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.AlphaAnimation;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -21,6 +22,7 @@ import android.widget.Toast;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.triggertrap.seekarc.SeekArc;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import mmp.mymoneyplatform_mobile_app.R;
@@ -32,11 +34,11 @@ public class IncomeInputsFragment extends Fragment {
 
     //UI references
     private SeekArc mSalarySeekArc;
-    //TODO: Create that stupid salary calculator for the usert that doesnt know how to multiply by 12
-    private Button mSalaryCalculator, mBasicSalaryInfo, mAditionalIncomeInfo,
+    //TODO: Create that stupid salary calculator for the users that doesn't know how to multiply by 12
+    private Button mSalaryCalculator, mBasicSalaryInfo, mAdditionalIncomeInfo,
             mFamilyStatusInfo, mDependentsInfo;
     private TextView mBasicSalaryTextView, mBonusTextView, mOvertimeTextView,
-            mTaxableTextView, mNonTaxableTextView, mDependentsTextView;
+            mTaxableTextView, mNonTaxableTextView, mPercentageCoverTextView, mDependentsTextView;
     private SeekBar mBonusSeekBar, mOvertimeSeekBar, mTaxableSeekBar,
             mNonTaxableSeekBar, mDependentsSeekbar;
     private RadioButton mPolicyYes, mPolicyNo, mProtectionYes, mProtectionNo;
@@ -95,9 +97,9 @@ public class IncomeInputsFragment extends Fragment {
                         .show();
             }
         });
-        mAditionalIncomeInfo = (Button)
+        mAdditionalIncomeInfo = (Button)
                 view.findViewById(R.id.btn_income_screen_additional_income_info);
-        mAditionalIncomeInfo.setOnClickListener(new View.OnClickListener() {
+        mAdditionalIncomeInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 new MaterialDialog.Builder(getContext())
@@ -137,7 +139,40 @@ public class IncomeInputsFragment extends Fragment {
         mOvertimeTextView = (TextView) view.findViewById(R.id.tv_income_screen_money_overtime);
         mTaxableTextView = (TextView) view.findViewById(R.id.tv_income_screen_money_taxable);
         mNonTaxableTextView = (TextView) view.findViewById(R.id.tv_income_screen_money_not_taxable);
+        mPercentageCoverTextView = (TextView) view.findViewById(R.id.et_income_screen_salary_percent);
+        mPercentageCoverTextView.setText("0.0%");
 
+        mPercentageCoverTextView.addTextChangedListener(new TextWatcher() {
+
+
+            private String current = "";
+            DecimalFormat df = new DecimalFormat("##.##");
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                // TODO: improve this shit, really messy atm
+                if (!s.toString().equals(current)) {
+                    mPercentageCoverTextView.removeTextChangedListener(this);
+                    String cleanString = s.toString().replaceAll("[%,.]", "");
+                    double parsed = 0;
+                    if (!cleanString.isEmpty()) parsed = Double.parseDouble(cleanString);
+                    String formated = df.format(parsed);
+                    current = formated;
+                    mPercentageCoverTextView.setText(current + "%");
+                    Editable etext = mPercentageCoverTextView.getEditableText();
+                    Selection.setSelection(etext, formated.length());
+                    mPercentageCoverTextView.addTextChangedListener(this);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
+        });
 
         //We get a reference for each seekbar
         mBonusSeekBar = (SeekBar) view.findViewById(R.id.income_seekbar_bonus);
@@ -236,6 +271,7 @@ public class IncomeInputsFragment extends Fragment {
         mProtectionYes = (RadioButton) view.findViewById(R.id.radio_protect_yes);
         mProtectionNo = (RadioButton) view.findViewById(R.id.radio_protect_no);
 
+        //TODO: this logic is a bit weird, needs improvement
         mPolicyYes.setSelected(true);
         mPolicyYes.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -278,6 +314,8 @@ public class IncomeInputsFragment extends Fragment {
         mDependentsSeekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                // This may seem a bit weird, but its necessary, since you can go from 0 to 10
+                // dependants in the worst case scenario, so deal with it bitch
                 if (lastDependantsValue < progress) {
                     // If the last value is less than the new one
                     // we are increasing the number of dependants
@@ -304,12 +342,16 @@ public class IncomeInputsFragment extends Fragment {
             }
         });
 
+        // We get a reference to the layouts that contains the dependant buttons
+        // because we need to hide them if they are not being used,
+        // otherwise weird things happen lol
         mDependantsTopLayout = (LinearLayout) view.findViewById(R.id.btn_income_dependant_top_layout);
-        mDependantsTopLayout.setVisibility(View.GONE);
+        mDependantsTopLayout.setVisibility(View.GONE); // We hide them by default btw
         mDependantsBottomLayout = (LinearLayout) view.findViewById(R.id.btn_income_dependant_bottom_layout);
         mDependantsBottomLayout.setVisibility(View.GONE);
 
-
+        // Add all the buttons to the array, its the only reference we have to them
+        // Also notice that im using an ArrayList, so the order is preserved (IMPORTANT!)
         dependantsList.add((ImageButton) view.findViewById(R.id.btn_income_dependant_1));
         dependantsList.add((ImageButton) view.findViewById(R.id.btn_income_dependant_2));
         dependantsList.add((ImageButton) view.findViewById(R.id.btn_income_dependant_3));
@@ -320,14 +362,18 @@ public class IncomeInputsFragment extends Fragment {
         dependantsList.add((ImageButton) view.findViewById(R.id.btn_income_dependant_8));
         dependantsList.add((ImageButton) view.findViewById(R.id.btn_income_dependant_9));
         dependantsList.add((ImageButton) view.findViewById(R.id.btn_income_dependant_10));
-        //we hide all the dependants buttons, this is the default presentation
+
+        // We hide all the dependants buttons, this is the default presentation
         for (int i = 0; i < 10; i++) {
             ImageButton dependant = dependantsList.get(i);
             final int value = i;
+            // This is just for now, later we have to add a
+            // pop up window to fulfill the dependant info
             dependant.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(getContext(), "Dependant " + String.valueOf(value + 1), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "Dependant "
+                            + String.valueOf(value + 1), Toast.LENGTH_SHORT).show();
                 }
             });
             dependant.setVisibility(View.GONE);
