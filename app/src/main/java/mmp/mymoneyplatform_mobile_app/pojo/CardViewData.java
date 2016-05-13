@@ -108,10 +108,9 @@ public class CardViewData {
         private Drawable progressBar;
         private int healthProgress, statusColor, backgroundColor;
 
-        public HealthPanelData(Context c, String title, Drawable progressBar, int healthProgress, int backgroundColor) {
+        public HealthPanelData(Context c, String title, int healthProgress, int backgroundColor) {
             this.c = c;
             this.title = title;
-            this.progressBar = progressBar;
             this.healthProgress = healthProgress;
             assignStatus(this.healthProgress);
             this.backgroundColor = backgroundColor;
@@ -128,21 +127,26 @@ public class CardViewData {
          */
         private void assignStatus(double healthProgress) {
             //Depending on the healthProgress value we assign tha value for the Status and Color
-            if (healthProgress >= 0 && healthProgress <= 25) { //Less or equal to 25%
+            if (healthProgress >= 0 && healthProgress <= 25) {
+                // Less or equal to 25%
                 status = c.getString(R.string.cv_hp_state_poor);
                 statusColor = c.getResources().getColor(R.color.colorStatePoor);
+                progressBar = c.getResources().getDrawable(R.drawable.progress_bar_poor);
             } else if (healthProgress > 25 && healthProgress <= 50) {
-                //more than 25% and less or equal to 50%
+                // more than 25% and less or equal to 50%
                 status = c.getString(R.string.cv_hp_state_medium);
                 statusColor = c.getResources().getColor(R.color.colorStateMedium);
+                progressBar = c.getResources().getDrawable(R.drawable.progress_bar_medium);
             } else if (healthProgress > 50 && healthProgress <= 75) {
-                //more than 50% and less or equal to 75%
+                // more than 50% and less or equal to 75%
                 status = c.getString(R.string.cv_hp_state_good);
                 statusColor = c.getResources().getColor(R.color.colorStateGood);
+                progressBar = c.getResources().getDrawable(R.drawable.progress_bar_good);
             } else if (healthProgress > 75 && healthProgress <= 100) {
-                //more than 75% and less or equal to 100%
+                // more than 75% and less or equal to 100%
                 status = c.getString(R.string.cv_hp_state_excellent);
                 statusColor = c.getResources().getColor(R.color.colorStateExcelent);
+                progressBar = c.getResources().getDrawable(R.drawable.progress_bar_excelent);
             } else {
                 throw new IllegalArgumentException("The value of the healthProgress must " +
                         "be between 0 and 100");
@@ -150,7 +154,6 @@ public class CardViewData {
         }
 
         //region Getters and Setters
-
 
 
         /**
