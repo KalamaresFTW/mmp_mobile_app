@@ -249,7 +249,7 @@
                         seekarc:arcColor="@color/colorPensionScreenSeekArcAmountBackground"
                         seekarc:arcWidth="5dp"
                         seekarc:max="300"
-                        seekarc:progress="50"
+                        seekarc:progress="0"
                         seekarc:progressColor="@color/colorPensionScreenSeekArcAmountProgress"
                         seekarc:rotation="180"
                         seekarc:startAngle="30"

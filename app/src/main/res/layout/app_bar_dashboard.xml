@@ -17,6 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@color/colorWhite"
+            android:navigationIcon="@drawable/ic_menu_hamburguer"
             app:popupTheme="@style/AppTheme.PopupOverlay"
             app:subtitleTextColor="@color/colorOrange"
             app:titleTextColor="@color/colorOrange" />

@@ -7,8 +7,9 @@
 
     <!-- MMP Colors -->
     <color name="colorBlack">#000000</color>
-    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorWhite">#ffffff</color>
     <color name="colorOrange">#e16d25</color>
+    <color name="colorGrey">#cccccc</color>
     <color name="colorDarkOrange">#b9571a</color>
 
     <!-- Dashboard Colors -->
