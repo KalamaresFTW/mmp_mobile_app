@@ -372,6 +372,7 @@ public class IncomeInputsFragment extends Fragment {
             dependant.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    //TODO: this is just for now, we need to add a popup window to add a dependant
                     Toast.makeText(getContext(), "Dependant "
                             + String.valueOf(value + 1), Toast.LENGTH_SHORT).show();
                 }
@@ -384,8 +385,8 @@ public class IncomeInputsFragment extends Fragment {
      * We call this function every time we need to update the number of dependants we want to show
      * You might notice that this is a fucking badass function, isn't it?
      *
-     * @param numberOfDependants
-     * @param increasing
+     * @param numberOfDependants the number of dependants to refresh
+     * @param increasing this tells if you are increasing or decreasing the number of dependants
      */
     private void refreshDependants(int numberOfDependants, boolean increasing) {
         if (numberOfDependants > 0 && numberOfDependants <= 10) {

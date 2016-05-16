@@ -3,9 +3,6 @@ package mmp.mymoneyplatform_mobile_app.activity;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -24,15 +21,11 @@ import android.widget.Toast;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
-import java.io.IOException;
-import java.io.InputStream;
 import java.lang.reflect.Type;
-import java.net.URL;
 import java.util.ArrayList;
 
 import mmp.mymoneyplatform_mobile_app.R;
 import mmp.mymoneyplatform_mobile_app.adapter.CardViewDataAdapter;
-import mmp.mymoneyplatform_mobile_app.net.ServiceURL;
 import mmp.mymoneyplatform_mobile_app.pojo.CardViewData;
 import mmp.mymoneyplatform_mobile_app.pojo.UserData;
 import mmp.mymoneyplatform_mobile_app.util.FontsOverride;
@@ -46,7 +39,7 @@ public class DashboardActivity extends AppCompatActivity
     public static final int NUMBER_OF_CARDS = 6;
 
     //This ia reference to the header items on the drawer
-    private ImageView iv_menu_img;
+    private ImageView iv_menu_img; //Not being used atm
     private TextView tv_menu_name, tv_menu_mail;
 
     //Sample data to fill the cards with data and colors
@@ -284,10 +277,13 @@ public class DashboardActivity extends AppCompatActivity
         int actionPlanValue = percentageData.get(6).intValue();
         progress_bar_action_plan.setProgress(actionPlanValue);
         tv_action_plan_score.setText(actionPlanValue + "%");
+        //Animations added here
         ProgressBarAnimation anim = new ProgressBarAnimation(progress_bar_action_plan, 0, actionPlanValue);
         anim.setDuration(2000);
+        // Instead of setting the final progress of the bar
+        // we start the animation, and the framework does everything
         tv_action_plan_score.startAnimation(anim);
-        //Finally we set all the properties of the card (mostly a e s t h e t i c properties)
+        //Finally we set all the properties of each card (mostly a e s t h e t i c properties)
         CardViewDataAdapter.getInstance().loadData(cardData, cardList);
     }
 
