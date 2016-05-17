@@ -126,4 +126,8 @@
     <string name="txt_income_screen_dependents">How many dependents you have?</string>
     <string name="txt_pension_screen_summary_salary_title">Final salary from work vs pension</string>
 
+    <!-- Goals Activity Strings -->
+    <string name="title_activity_goals">Goals</string>
+
+
 </resources>
