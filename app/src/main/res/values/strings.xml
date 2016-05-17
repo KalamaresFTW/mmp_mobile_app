@@ -128,9 +128,6 @@
 
     <!-- Goals Activity Strings -->
     <string name="title_activity_goals">Goals</string>
-
-    <!-- Assets/Debts Activity Strings -->
-    <string name="title_activity_assetsdebts">Assets/Debts</string>
-
+    <string name="goals_screen_bottom_title">Goal Health</string>
 
 </resources>

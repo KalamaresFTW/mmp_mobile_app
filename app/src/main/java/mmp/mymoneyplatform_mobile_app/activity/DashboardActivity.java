@@ -29,6 +29,7 @@ import mmp.mymoneyplatform_mobile_app.adapter.CardViewDataAdapter;
 import mmp.mymoneyplatform_mobile_app.pojo.CardViewData;
 import mmp.mymoneyplatform_mobile_app.pojo.UserData;
 import mmp.mymoneyplatform_mobile_app.util.FontsOverride;
+import mmp.mymoneyplatform_mobile_app.util.NavigationItemSelector;
 import mmp.mymoneyplatform_mobile_app.util.ProgressBarAnimation;
 
 @SuppressWarnings({"ConstantConditions", "finally", "ReturnInsideFinallyBlock", "deprecation"})
@@ -300,46 +301,8 @@ public class DashboardActivity extends AppCompatActivity
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        //TODO: Create a bunch of Indents for every item on the Navigator Menu
-        switch (item.getItemId()) {
-            case R.id.nav_profile:
-                startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
-                break;
-            case R.id.nav_dashboard:
-                Toast.makeText(this, "Dashboard", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.nav_income:
-                startActivity(new Intent(getApplicationContext(), IncomeActivity.class));
-                break;
-            case R.id.nav_pension:
-                startActivity(new Intent(getApplicationContext(), PensionActivity.class));
-                break;
-            case R.id.nav_assetsdebts:
-                startActivity(new Intent(getApplicationContext(), AssetsDebtsActivity.class));
-                break;
-            case R.id.nav_goals:
-                startActivity(new Intent(getApplicationContext(), GoalsActivity.class));
-                break;
-            case R.id.nav_life:
-                Toast.makeText(this, "Life", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.nav_spendings:
-                Toast.makeText(this, "Spendings", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.nav_settings:
-                Toast.makeText(this, "Settings", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.nav_help:
-                Toast.makeText(this, "Help", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.nav_logout:
-                //In this case we start a new Login Activity
-                finish();
-                startActivity(new Intent(getApplicationContext(), LoginActivity.class));
-                break;
-            default:
-                return false;
-        }
+        NavigationItemSelector.getInstance().onNavigationItemSelected(item, DashboardActivity.this);
+
         //Close the drawer
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

@@ -38,7 +38,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/activity_horizontal_margin"
                         android:layout_marginTop="9dp"
-                        android:text="Existing Pensions"
+                        android:text="@string/txt_pension_screen_existing_pension_title"
                         android:textColor="@color/colorPensionScreenTitle"
                         android:textSize="@dimen/cv_title_size"
                         android:textStyle="bold" />

@@ -58,7 +58,7 @@
     <color name="colorBackgroundInputRegistration">#d7d3d1</color>
 
     <!-- Income Screen Colors -->
-    <color name="colorIncomeScreenBackground">#006666</color>
+    <color name="colorIncomeScreenBackground">#006766</color>
     <color name="colorIncomeScreenTitle">#015253</color>
     <color name="colorIncomeScreenCircularSliderProgress">#e06d25</color>
     <color name="colorIncomeScreenCircularSliderBackground">#8c858f</color>
@@ -82,7 +82,5 @@
 
     <!-- Goals Screen Colors -->
     <color name="colorGoalsScreenBackground">#92dce0</color>
-    <color name="colorGoalsScreenTitle">#446768</color>
-
-
+    <color name="colorGoalsScreenTitle">#496e70</color>
 </resources>

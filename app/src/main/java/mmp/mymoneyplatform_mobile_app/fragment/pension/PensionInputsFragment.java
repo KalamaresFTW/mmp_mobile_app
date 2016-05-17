@@ -12,7 +12,11 @@ import android.widget.TextView;
 
 import com.triggertrap.seekarc.SeekArc;
 
+import java.util.ArrayList;
+
 import mmp.mymoneyplatform_mobile_app.R;
+import mmp.mymoneyplatform_mobile_app.adapter.PensionDataAdapter;
+import mmp.mymoneyplatform_mobile_app.pojo.PensionData;
 
 
 public class PensionInputsFragment extends Fragment {
@@ -22,7 +26,9 @@ public class PensionInputsFragment extends Fragment {
     private TextView mAgeTextView, mMonthlyAmountTextView;
     private View view;
     private LayoutInflater inflater;
-    private int lay_pension_data_id;
+    private LinearLayout rel_lay;
+    private int newPensionID;
+    private ArrayList<PensionData> pensionDataArray;
 
     public PensionInputsFragment() {
         // Required empty public constructor
@@ -44,7 +50,10 @@ public class PensionInputsFragment extends Fragment {
     }
 
     public void initComponents() {
-        lay_pension_data_id = 0;
+        pensionDataArray = new ArrayList<>();
+
+        newPensionID = pensionDataArray.size();
+
         mAddPensionButton = (Button) view.findViewById(R.id.btn_pension_screen_add);
         mAddPensionButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,13 +95,24 @@ public class PensionInputsFragment extends Fragment {
             public void onStopTrackingTouch(SeekArc seekArc) {
             }
         });
+
+        rel_lay = (LinearLayout) view.findViewById(R.id.lay_pension_screen_data_list);
+        loadPensionList();
+    }
+
+    public void loadPensionList() {
+        //TODO: get the pension data from the API
+        pensionDataArray.add(new PensionData(1, "My Last Job", "16,700.00", "0,00"));
+        pensionDataArray.add(new PensionData(2, "Inheritance", "1,800.00", "150,00"));
+        PensionDataAdapter.getInstance().loadData(pensionDataArray, rel_lay, inflater);
     }
 
     private void addNewPension() {
-        //TODO: add new pension data layout
-        LinearLayout rel_lay = (LinearLayout) view.findViewById(R.id.lay_pension_screen_data_list);
-        View lay_pension_data = inflater.inflate(R.layout.lay_pension_screen_data, null);
-        rel_lay.addView(lay_pension_data, lay_pension_data_id);
-        lay_pension_data_id++;
+        //TODO: get the pension data from the popup window
+
+        pensionDataArray.add(new PensionData(newPensionID, newPensionID + "", "", ""));
+
+        PensionDataAdapter.getInstance().loadData(pensionDataArray, rel_lay, inflater);
+        newPensionID++;
     }
 }

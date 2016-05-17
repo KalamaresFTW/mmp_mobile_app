@@ -24,13 +24,13 @@
             android:icon="@drawable/ic_menu_pension"
             android:title="@string/nav_pension" />
         <item
-            android:id="@+id/nav_assetsdebts"
-            android:icon="@drawable/ic_menu_assetsdebts"
-            android:title="@string/nav_assetsdebts" />
-        <item
             android:id="@+id/nav_goals"
             android:icon="@drawable/ic_menu_goals"
             android:title="@string/nav_goals" />
+        <item
+            android:id="@+id/nav_assetsdebts"
+            android:icon="@drawable/ic_menu_assetsdebts"
+            android:title="@string/nav_assetsdebts" />
         <item
             android:id="@+id/nav_life"
             android:icon="@drawable/ic_menu_life"

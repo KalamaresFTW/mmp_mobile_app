@@ -1,6 +1,5 @@
 package mmp.mymoneyplatform_mobile_app.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
@@ -14,7 +13,6 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,6 +21,7 @@ import mmp.mymoneyplatform_mobile_app.R;
 import mmp.mymoneyplatform_mobile_app.fragment.goals.GoalsGraphsFragment;
 import mmp.mymoneyplatform_mobile_app.fragment.goals.GoalsInputsFragment;
 import mmp.mymoneyplatform_mobile_app.fragment.goals.GoalsSummaryFragment;
+import mmp.mymoneyplatform_mobile_app.util.NavigationItemSelector;
 
 @SuppressWarnings({"FieldCanBeLocal", "ConstantConditions", "UnnecessaryLocalVariable"})
 public class GoalsActivity extends AppCompatActivity
@@ -39,6 +38,10 @@ public class GoalsActivity extends AppCompatActivity
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        initComponents();
+    }
+
+    public void initComponents() {
         //Reference to the drawer
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_module_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -67,47 +70,8 @@ public class GoalsActivity extends AppCompatActivity
 
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        MenuItem selection = item;
-        System.out.println(selection.getTitle());
-        switch (item.getItemId()) {
-            case R.id.nav_profile:
-                startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
-                break;
-            case R.id.nav_dashboard:
-                startActivity(new Intent(getApplicationContext(), DashboardActivity.class));
-                break;
-            case R.id.nav_income:
-                startActivity(new Intent(getApplicationContext(), IncomeActivity.class));
-                break;
-            case R.id.nav_pension:
-                startActivity(new Intent(getApplicationContext(), PensionActivity.class));
-                break;
-            case R.id.nav_assetsdebts:
-                Toast.makeText(getApplicationContext(), "Assets/Debts", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.nav_goals:
-                Toast.makeText(getApplicationContext(), "Goals", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.nav_life:
-                Toast.makeText(getApplicationContext(), "Life", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.nav_spendings:
-                Toast.makeText(getApplicationContext(), "Spendings", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.nav_settings:
-                Toast.makeText(getApplicationContext(), "Settings", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.nav_help:
-                Toast.makeText(getApplicationContext(), "Help", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.nav_logout:
-                //In this case we start a new Login Activity
-                finish();
-                startActivity(new Intent(getApplicationContext(), LoginActivity.class));
-                break;
-            default:
-                return false;
-        }
+        NavigationItemSelector.getInstance().onNavigationItemSelected(item, GoalsActivity.this);
+
         //Close the drawer
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_module_layout);
         drawer.closeDrawer(GravityCompat.START);

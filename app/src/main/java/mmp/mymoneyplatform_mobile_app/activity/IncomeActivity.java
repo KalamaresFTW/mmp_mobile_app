@@ -1,6 +1,5 @@
 package mmp.mymoneyplatform_mobile_app.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
@@ -14,7 +13,6 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,6 +20,7 @@ import java.util.List;
 import mmp.mymoneyplatform_mobile_app.R;
 import mmp.mymoneyplatform_mobile_app.fragment.income.IncomeInputsFragment;
 import mmp.mymoneyplatform_mobile_app.fragment.income.IncomeSummaryFragment;
+import mmp.mymoneyplatform_mobile_app.util.NavigationItemSelector;
 
 @SuppressWarnings("ConstantConditions")
 public class IncomeActivity extends AppCompatActivity
@@ -29,14 +28,19 @@ public class IncomeActivity extends AppCompatActivity
 
     protected TabLayout tabLayout;
     protected ViewPager viewPager;
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_income);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        initComponents();
+    }
+
+    public void initComponents() {
         //Reference to the drawer
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_module_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -62,57 +66,10 @@ public class IncomeActivity extends AppCompatActivity
         viewPager.setAdapter(adapter);
     }
 
-    //TODO: hacer esta mierda guay
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.nav_profile:
-                finish();
-                startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
-                break;
-            case R.id.nav_dashboard:
-                finish();
-                Toast.makeText(getApplicationContext(), "Dashboard", Toast.LENGTH_SHORT).show();
-            case R.id.nav_income:
-                Toast.makeText(getApplicationContext(), "Income", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.nav_pension:
-                finish();
-                startActivity(new Intent(getApplicationContext(), PensionActivity.class));
-                Toast.makeText(getApplicationContext(), "Pension", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.nav_assetsdebts:
-                finish();
-                Toast.makeText(getApplicationContext(), "Assets/Debts", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.nav_goals:
-                finish();
-                Toast.makeText(getApplicationContext(), "Goals", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.nav_life:
-                finish();
-                Toast.makeText(getApplicationContext(), "Life", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.nav_spendings:
-                finish();
-                Toast.makeText(getApplicationContext(), "Spendings", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.nav_settings:
-                finish();
-                Toast.makeText(getApplicationContext(), "Settings", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.nav_help:
-                finish();
-                Toast.makeText(getApplicationContext(), "Help", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.nav_logout:
-                //In this case we start a new Login Activity
-                finish();
-                startActivity(new Intent(getApplicationContext(), LoginActivity.class));
-                break;
-            default:
-                return false;
-        }
+        NavigationItemSelector.getInstance().onNavigationItemSelected(item, IncomeActivity.this);
+
         //Close the drawer
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_module_layout);
         drawer.closeDrawer(GravityCompat.START);
