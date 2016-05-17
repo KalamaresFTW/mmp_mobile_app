@@ -125,9 +125,14 @@
     <string name="txt_pension_screen_seekarc_age_tip">Please, drag the white knob to set your age</string>
     <string name="txt_income_screen_dependents">How many dependents you have?</string>
     <string name="txt_pension_screen_summary_salary_title">Final salary from work vs pension</string>
+    <string name="txt_pension_screen_graphs_title">Income in retirement</string>
+    <string name="txt_pension_screen_existing_pension_title">Existing Pensions</string>
 
     <!-- Goals Activity Strings -->
     <string name="title_activity_goals">Goals</string>
     <string name="goals_screen_bottom_title">Goal Health</string>
+
+    <!-- Assets/Debts Activity Strings -->
+    <string name="title_activity_assetsdebts">Assets/Debts</string>
 
 </resources>
