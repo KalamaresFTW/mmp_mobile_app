@@ -47,6 +47,10 @@
             android:name=".activity.GoalsActivity"
             android:label="@string/title_activity_goals"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activity.AssetsDebtsActivity"
+            android:label="@string/title_activity_assetsdebts"
+            android:theme="@style/AppTheme.NoActionBar" />
         <!--
  ATTENTION: This was auto-generated to add Google Play services to your project for
      App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information.

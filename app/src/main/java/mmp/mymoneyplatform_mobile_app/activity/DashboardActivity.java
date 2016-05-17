@@ -133,7 +133,7 @@ public class DashboardActivity extends AppCompatActivity
                 startActivity(new Intent(getApplicationContext(), GoalsActivity.class));
                 break;
             case R.id.cv_assetsdebts:
-                Toast.makeText(this, "Start Assets/Debts Screen", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(getApplicationContext(), AssetsDebtsActivity.class));
                 break;
             case R.id.cv_life:
                 Toast.makeText(this, "Start Life Screen", Toast.LENGTH_SHORT).show();
@@ -315,7 +315,7 @@ public class DashboardActivity extends AppCompatActivity
                 startActivity(new Intent(getApplicationContext(), PensionActivity.class));
                 break;
             case R.id.nav_assetsdebts:
-                Toast.makeText(this, "Assets/Debts", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(getApplicationContext(), AssetsDebtsActivity.class));
                 break;
             case R.id.nav_goals:
                 startActivity(new Intent(getApplicationContext(), GoalsActivity.class));

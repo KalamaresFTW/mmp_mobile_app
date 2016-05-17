@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_module_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:openDrawer="start">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <!-- Tab System -->
+        <android.support.design.widget.CoordinatorLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/dash_bottom_margin">
+
+            <android.support.design.widget.AppBarLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+                <android.support.v7.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:background="@color/colorWhite"
+                    app:navigationIcon="@drawable/ic_menu_hamburguer"
+                    app:popupTheme="@style/AppTheme.PopupOverlay"
+                    app:subtitleTextColor="@color/colorOrange"
+                    app:titleTextColor="@color/colorOrange" />
+
+                <android.support.design.widget.TabLayout
+                    android:id="@+id/tabs"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:tabBackground="@color/colorGoalsScreenBackground"
+                    app:tabGravity="fill"
+                    app:tabIndicatorColor="@color/colorWhite"
+                    app:tabIndicatorHeight="4dp"
+                    app:tabMode="fixed"
+                    app:tabTextColor="@color/colorStateGood" />
+
+            </android.support.design.widget.AppBarLayout>
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/viewpager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+        </android.support.design.widget.CoordinatorLayout>
+
+        <!-- Bottom Panel -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dash_bottom_margin"
+            android:layout_alignParentBottom="true"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_pension_screen_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:gravity="left"
+                android:text="Goal Health"
+                android:textColor="@color/colorBackgroundCardViewGoals"
+                android:textSize="@dimen/cv_title_size"
+                android:textStyle="bold" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/tv_pension_screen_title"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="5dp"
+                android:layout_toLeftOf="@+id/btn_pension_screen_next"
+                android:layout_toStartOf="@+id/btn_pension_screen_next">
+
+                <TextView
+                    android:id="@+id/tv_pension_screen_score"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="7dp"
+                    android:text="GOOD"
+                    android:textColor="@color/colorStateExcelent"
+                    android:textSize="@dimen/cv_text_size"
+                    android:textStyle="bold" />
+
+                <ProgressBar
+                    android:id="@+id/progress_bar_pensionscreen"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="9dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="@dimen/cv_horizontal_margin"
+                    android:layout_marginTop="11dp"
+                    android:layout_toRightOf="@+id/tv_pension_screen_score"
+                    android:max="100"
+                    android:maxWidth="200dp"
+                    android:minHeight="50dp"
+                    android:minWidth="200dp"
+                    android:progressDrawable="@drawable/progress_bar_good" />
+
+            </RelativeLayout>
+
+            <Button
+                android:id="@+id/btn_pension_screen_next"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/ic_arrow_right"
+                android:drawableTint="@color/colorPensionScreenBackground" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <!-- Slider Menu -->
+    <android.support.design.widget.NavigationView
+        android:id="@+id/nav_view_module"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        app:headerLayout="@layout/nav_header_module"
+        app:menu="@menu/activity_module_drawer" />
+
+</android.support.v4.widget.DrawerLayout>
