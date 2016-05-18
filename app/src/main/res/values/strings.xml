@@ -125,15 +125,10 @@
     <string name="txt_pension_screen_seekarc_age_tip">Please, drag the white knob to set your age</string>
     <string name="txt_income_screen_dependents">How many dependents you have?</string>
     <string name="txt_pension_screen_summary_salary_title">Final salary from work vs pension</string>
-    <string name="txt_pension_screen_graphs_title">Income in retirement</string>
-    <string name="txt_pension_screen_existing_pension_title">Existing Pensions</string>
 
     <!-- Goals Activity Strings -->
     <string name="title_activity_goals">Goals</string>
     <string name="goals_screen_bottom_title">Goal Health</string>
-
-    <!-- Assets/Debts Activity Strings -->
-    <string name="title_activity_assetsdebts">Assets/Debts</string>
     <string name="txt_goals_screen_header_title">Goals</string>
     <string name="txt_goals_screen_secundary_goals_title">Secundary Goals</string>
     <string name="txt_goals_screen_rainy_day_title">Rainy Day Fund</string>
@@ -146,5 +141,16 @@
     <string name="txt_goals_screen_rainy_day_goal_title">Goal</string>
     <string name="txt_goals_screen_college_content_hint">Below is an estimated total of the cost of a 4 year college degree for your dependents.</string>
     <string name="txt_new_goal_progress_title">Goal:</string>
+
+    <!-- Assets/Debts Activity Strings -->
+    <string name="title_activity_assetsdebts">Assets/Debts</string>
+    <string name="title_calculators">Calculators</string>
+    <string name="health_panel_title_assets_debts">Assets vs Debts Health</string>
+    <string name="title_assets_debts_list">Asset/Debt List</string>
+    <string name="loan_calculator">Loan Calculator</string>
+    <string name="mortage_calculator">Morgage Calculator</string>
+    <string name="calculators_info">Calculators Info</string>
+    <string name="assets_debts_screen_calculators_info">See how much the repayments would be on a loan/mortgage</string>
+    <string name="assets_debts_screen_list_info">Enter all your Assets and Debts here to see if you are in the red or black at the end.</string>
 
 </resources>
