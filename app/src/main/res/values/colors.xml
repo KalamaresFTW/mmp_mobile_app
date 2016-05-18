@@ -83,4 +83,5 @@
     <!-- Goals Screen Colors -->
     <color name="colorGoalsScreenBackground">#92dce0</color>
     <color name="colorGoalsScreenTitle">#496e70</color>
+    <color name="colorBackgroundSeekBarGoalsRainyDay">#877d75</color>
 </resources>

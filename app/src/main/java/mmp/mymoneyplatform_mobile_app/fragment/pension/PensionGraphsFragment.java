@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import mmp.mymoneyplatform_mobile_app.R;
 
 public class PensionGraphsFragment extends Fragment {
+
     public PensionGraphsFragment() {
         // Required empty public constructor
     }

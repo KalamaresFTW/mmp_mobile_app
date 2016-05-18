@@ -144,7 +144,6 @@ public class IncomeInputsFragment extends Fragment {
 
         mPercentageCoverTextView.addTextChangedListener(new TextWatcher() {
 
-
             private String current = "";
             DecimalFormat df = new DecimalFormat("##.##");
 

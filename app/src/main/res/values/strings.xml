@@ -134,5 +134,17 @@
 
     <!-- Assets/Debts Activity Strings -->
     <string name="title_activity_assetsdebts">Assets/Debts</string>
+    <string name="txt_goals_screen_header_title">Goals</string>
+    <string name="txt_goals_screen_secundary_goals_title">Secundary Goals</string>
+    <string name="txt_goals_screen_rainy_day_title">Rainy Day Fund</string>
+    <string name="txt_goals_screen_college_title">College Fund</string>
+    <string name="txt_goals_screen_secundary_goals_content_hint">Create savings goals for yourself here.</string>
+    <string name="txt_goals_screen_secundary_goals_content_add_goal_button">Add Goal</string>
+    <string name="txt_goals_screen_rainy_day_content_hint">The total of your Rainy Day fund is 3 times your monthly Spending. You can edit the figures in the Spending tab later and come back to this.</string>
+    <string name="txt_goals_screen_rainy_day_edit_button">Edit</string>
+    <string name="txt_goals_screen_rainy_day_percent_title">Rainy Day Fund</string>
+    <string name="txt_goals_screen_rainy_day_goal_title">Goal</string>
+    <string name="txt_goals_screen_college_content_hint">Below is an estimated total of the cost of a 4 year college degree for your dependents.</string>
+    <string name="txt_new_goal_progress_title">Goal:</string>
 
 </resources>
