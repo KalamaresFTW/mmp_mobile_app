@@ -126,7 +126,7 @@
 
     </RelativeLayout>
 
-    <!-- Slider Menu
+    <!-- Slider Menu -->
     <android.support.design.widget.NavigationView
         android:id="@+id/nav_view_module"
         android:layout_width="wrap_content"
@@ -134,6 +134,6 @@
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/nav_header_module"
-        app:menu="@menu/activity_module_drawer" /> -->
+        app:menu="@menu/activity_module_drawer" />
 
 </android.support.v4.widget.DrawerLayout>
