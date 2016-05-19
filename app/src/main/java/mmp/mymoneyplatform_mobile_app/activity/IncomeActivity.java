@@ -26,6 +26,7 @@ import mmp.mymoneyplatform_mobile_app.util.NavigationItemSelector;
 public class IncomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    public static final int INCOME_ID = 0;
     protected TabLayout tabLayout;
     protected ViewPager viewPager;
     private Toolbar toolbar;
