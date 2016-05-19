@@ -155,5 +155,6 @@
     <string name="assets_debts_screen_calculators_info">See how much the repayments would be on a loan/mortgage</string>
     <string name="assets_debts_screen_list_info">Enter all your Assets and Debts here to see if you are in the red or black at the end.</string>
     <string name="title_assets_vs_debts">Assets vs. Debts</string>
+    <string name="txt_assetsdebts_screen_bottom_panel_title">Assets vs Debt Health</string>
 
 </resources>

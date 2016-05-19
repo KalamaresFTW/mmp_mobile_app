@@ -464,6 +464,22 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         }
     }
 
+    /**
+     * This function calls the api, retrieves the data, and then parses it, finally it gets stored
+     * into two ArrayList, one for the moneyData, and one for the percentageData
+     * <p/>
+     * <p/>
+     * Example of the data we are getting for a given ID (56 in this case):
+     * {"salaryInfo":{"IncomeCover":9980},"pensionInfo":{"PensionAtRetirement":0},"savingsInfo":
+     * {"TotalSavingRequired":53917,"TotalSavingBalance":53917},"assetDebtInfo":{"TotalAsset":0,
+     * "TotalDebt":0,"AssetDebtDiff":106365},"lifeCoverInfo":{"LifeCoverNeeded":6934125},
+     * "outgoingsInfo":{"DisposableIncome":1303},"HealthScore":0.250000,"SalaryProtectionScore":1,
+     * "PensionScore":4,"Savings1Score":3,"Savings2Score":1,"AssetDebtScore":3,
+     * "LifeAssuranceScore":1,"OutgoingsScore":-2}
+     * <p/>
+     * tl;dr: parse the shit out of that json :D
+     */
+
     @SuppressWarnings({"ConstantConditions", "unused", "finally", "ReturnInsideFinallyBlock"})
     public class RetrieveDashboardData extends AsyncTask<Void, Void, Void> {
 
