@@ -73,7 +73,7 @@
                 android:layout_marginTop="@dimen/activity_vertical_margin"
                 android:gravity="left"
                 android:text="@string/income_screen_bottom_title"
-                android:textColor="@color/colorBackgroundCardViewIncome"
+                android:textColor="@color/colorIncomeScreenBackground"
                 android:textSize="@dimen/cv_title_size"
                 android:textStyle="bold" />
 
@@ -93,7 +93,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="7dp"
                     android:text="GOOD"
-                    android:textColor="@color/colorStateExcelent"
+                    android:textColor="@color/colorStateGood"
                     android:textSize="@dimen/cv_text_size"
                     android:textStyle="bold" />
 
@@ -121,7 +121,7 @@
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:background="@drawable/ic_arrow_right"
-                android:drawableTint="@color/colorIncomeScreenBackgroundDependents" />
+                android:backgroundTint="@color/colorIncomeScreenBackground" />
 
         </RelativeLayout>
 
