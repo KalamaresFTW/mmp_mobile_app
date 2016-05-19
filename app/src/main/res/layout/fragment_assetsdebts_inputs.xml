@@ -5,18 +5,184 @@
     android:layout_height="match_parent"
     tools:context=".fragment.assetsdebts.AssetsDebtsInputsFragment">
 
-    <RelativeLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/colorAssetsDebtsScreenBackground">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="INPUTS"
-            android:textSize="40dp"
-            android:textStyle="bold" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-    </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/lay_assets_debts_calculator"
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_margin="@dimen/activity_horizontal_margin"
+                android:background="@color/colorWhite">
+
+                <TextView
+                    android:id="@+id/calculators_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                    android:layout_marginTop="9dp"
+                    android:text="@string/title_calculators"
+                    android:textColor="@color/colorAssetsDebtsHealthPanelTitle"
+                    android:textSize="@dimen/cv_title_size"
+                    android:textStyle="bold" />
+
+                <ImageButton
+                    android:id="@+id/btn_assets_debts_calculators_info"
+                    android:layout_width="@dimen/cv_title_size"
+                    android:layout_height="@dimen/cv_title_size"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="@dimen/activity_horizontal_margin"
+                    android:layout_marginTop="9dp"
+                    android:background="@drawable/info_icon_assets_1"
+                    android:contentDescription="@string/calculators_info" />
+
+                <View
+                    android:id="@+id/cv_separator_1_assetsdebts"
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:layout_below="@+id/calculators_title"
+                    android:layout_marginBottom="@dimen/activity_vertical_margin"
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                    android:layout_marginRight="@dimen/activity_horizontal_margin"
+                    android:layout_marginTop="9dp"
+                    android:background="@color/colorAssetsDebtsSeparator" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_below="@+id/cv_separator_1_assetsdebts"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="@dimen/activity_horizontal_margin"
+                    android:gravity="center_horizontal"
+                    android:orientation="horizontal">
+
+                    <ImageButton
+                        android:id="@+id/btn_loan_calculator"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                        android:layout_marginRight="@dimen/activity_horizontal_margin"
+                        android:layout_weight="0.5"
+                        android:adjustViewBounds="true"
+                        android:background="@null"
+                        android:contentDescription="@string/loan_calculator"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/loan_calculator_btn" />
+
+                    <ImageButton
+                        android:id="@+id/btn_mortage_calculator"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                        android:layout_marginRight="@dimen/activity_horizontal_margin"
+                        android:layout_weight="0.5"
+                        android:adjustViewBounds="true"
+                        android:background="@null"
+                        android:contentDescription="@string/mortage_calculator"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/mortgage_calculator_btn" />
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/lay_assets_debts_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/activity_horizontal_margin"
+                android:background="@color/colorAssetsDebtsScreenTitle">
+
+                <TextView
+                    android:id="@+id/assets_debts_list_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                    android:layout_marginTop="9dp"
+                    android:text="@string/title_assets_debts_list"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="@dimen/cv_title_size"
+                    android:textStyle="bold" />
+
+                <ImageButton
+                    android:id="@+id/btn_assets_debts_list_info"
+                    android:layout_width="@dimen/cv_title_size"
+                    android:layout_height="@dimen/cv_title_size"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="@dimen/activity_horizontal_margin"
+                    android:layout_marginTop="9dp"
+                    android:background="@drawable/info_icon_assets_1" />
+
+                <View
+                    android:id="@+id/cv_separator_assetsdebts"
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:layout_below="@id/assets_debts_list_title"
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                    android:layout_marginRight="@dimen/activity_horizontal_margin"
+                    android:layout_marginTop="9dp"
+                    android:background="@color/colorAssetsDebtsSeparator" />
+
+                <LinearLayout
+                    android:id="@+id/assets_debts_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_below="@+id/cv_separator_assetsdebts"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="@dimen/activity_horizontal_margin"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/btn_asset_debt_add"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_weight="0.5"
+                        android:adjustViewBounds="true"
+                        android:background="@null"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/asset_debt_btn_add" />
+
+
+                    <!--This is the actual list of items-->
+                    <LinearLayout
+                        android:id="@+id/assets_debts_list"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_below="@+id/btn_asset_debt_add"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginBottom="@dimen/activity_horizontal_margin"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical">
+
+                        <include
+                            android:id="@+id/balance_from_goals"
+                            layout="@layout/asset_debt_item" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
 
 </FrameLayout>
