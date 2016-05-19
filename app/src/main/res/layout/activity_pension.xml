@@ -69,7 +69,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_alignParentLeft="true"
-                android:background="@drawable/ic_arrow_left" />
+                android:background="@drawable/ic_arrow_left"
+                android:backgroundTint="@color/colorPensionScreenBackground" />
 
             <RelativeLayout
                 android:layout_width="wrap_content"
@@ -82,8 +83,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="@string/txt_pension_screen_bottom_panel_title"
-                    android:textColor="@color/colorBackgroundCardViewPension"
+                    android:text="@string/goals_screen_bottom_title"
+                    android:textColor="@color/colorPensionScreenBackground"
                     android:textSize="@dimen/cv_title_size"
                     android:textStyle="bold" />
 
@@ -98,7 +99,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="7dp"
                         android:text="GOOD"
-                        android:textColor="@color/colorStateExcelent"
+                        android:textColor="@color/colorStateGood"
                         android:textSize="@dimen/cv_text_size"
                         android:textStyle="bold" />
 
@@ -126,7 +127,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_alignParentRight="true"
-                android:background="@drawable/ic_arrow_right" />
+                android:background="@drawable/ic_arrow_right"
+                android:backgroundTint="@color/colorPensionScreenBackground" />
 
         </RelativeLayout>
 
