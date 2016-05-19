@@ -77,8 +77,8 @@
                         android:layout_height="20dp"
                         android:layout_marginLeft="32dp"
                         android:layout_marginTop="70dp"
-                        android:text="0.00€"
                         android:gravity="center_horizontal"
+                        android:text="0.00€"
                         android:textColor="@color/colorIncomeScreenCircularSliderProgress"
                         android:textSize="@dimen/cv_text_size"
                         android:textStyle="bold" />
@@ -431,8 +431,8 @@
                     android:id="@+id/lay_income_screen_policy"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/activity_vertical_margin"
-                    android:layout_below="@+id/lay_income_screen_illness_cover">
+                    android:layout_below="@+id/lay_income_screen_illness_cover"
+                    android:layout_marginBottom="@dimen/activity_vertical_margin">
 
                     <TextView
                         android:id="@+id/tv_income_screen_policy"
@@ -488,8 +488,8 @@
                     android:id="@+id/lay_income_screen_protect"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/activity_vertical_margin"
-                    android:layout_below="@+id/lay_income_screen_policy">
+                    android:layout_below="@+id/lay_income_screen_policy"
+                    android:layout_marginBottom="@dimen/activity_vertical_margin">
 
                     <TextView
                         android:id="@+id/tv_income_screen_protect"

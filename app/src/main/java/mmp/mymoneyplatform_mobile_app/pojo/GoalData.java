@@ -19,6 +19,12 @@ public class GoalData {
         this.amount = amount;
     }
 
+    public GoalData(String title, int percentage, double amount) {
+        this.title = title;
+        this.percentage = percentage;
+        this.amount = amount;
+    }
+
     public Drawable getImg() {
         return img;
     }

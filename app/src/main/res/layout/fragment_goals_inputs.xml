@@ -1,8 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorGoalsScreenBackground"
     tools:context=".fragment.pension.PensionGraphsFragment">
 
     <ScrollView
@@ -10,367 +10,361 @@
         android:layout_height="match_parent">
 
         <RelativeLayout
+            android:id="@+id/lay_goals_screen_goals"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/colorGoalsScreenBackground">
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:background="@color/colorWhite">
 
+            <!-- Header -->
             <RelativeLayout
-                android:id="@+id/lay_goals_screen_goals"
+                android:id="@+id/lay_goals_screen_header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tv_goals_screen_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                    android:layout_marginTop="9dp"
+                    android:text="@string/txt_goals_screen_header_title"
+                    android:textColor="@color/colorGoalsScreenTitle"
+                    android:textSize="@dimen/cv_title_size"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/btn_goals_screen_header_info"
+                    android:layout_width="@dimen/cv_title_size"
+                    android:layout_height="@dimen/cv_title_size"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="@dimen/activity_horizontal_margin"
+                    android:layout_marginTop="9dp"
+                    android:background="@drawable/ic_info"
+                    android:backgroundTint="@color/colorGoalsScreenTitle" />
+
+                <View
+                    android:id="@+id/separator_goals"
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:layout_below="@id/btn_goals_screen_header_info"
+                    android:layout_marginBottom="@dimen/activity_vertical_margin"
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                    android:layout_marginRight="@dimen/activity_horizontal_margin"
+                    android:layout_marginTop="9dp"
+                    android:background="@color/colorGoalsScreenTitle" />
+
+            </RelativeLayout>
+
+            <!-- Body -->
+            <RelativeLayout
+                android:id="@+id/lay_goals_screen_body"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_below="@id/lay_goals_screen_header"
                 android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                android:layout_marginRight="@dimen/activity_horizontal_margin"
-                android:layout_marginTop="@dimen/activity_vertical_margin"
-                android:background="@color/colorWhite">
+                android:layout_marginRight="@dimen/activity_horizontal_margin">
 
-                <!-- Header -->
+                <!-- Secundary Goals -->
                 <RelativeLayout
-                    android:id="@+id/lay_goals_screen_header"
+                    android:id="@+id/lay_goals_screen_secundary_goals"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
-                    <TextView
-                        android:id="@+id/tv_goals_screen_title"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                        android:layout_marginTop="9dp"
-                        android:text="@string/txt_goals_screen_header_title"
-                        android:textColor="@color/colorGoalsScreenTitle"
-                        android:textSize="@dimen/cv_title_size"
-                        android:textStyle="bold" />
-
-                    <Button
-                        android:id="@+id/btn_goals_screen_header_info"
-                        android:layout_width="@dimen/cv_title_size"
-                        android:layout_height="@dimen/cv_title_size"
-                        android:layout_alignParentRight="true"
-                        android:layout_marginRight="@dimen/activity_horizontal_margin"
-                        android:layout_marginTop="9dp"
-                        android:background="@drawable/ic_info"
-                        android:backgroundTint="@color/colorGoalsScreenTitle" />
-
-                    <View
-                        android:id="@+id/separator_goals"
+                    <!-- Secundary Goals Header -->
+                    <RelativeLayout
+                        android:id="@+id/lay_goals_screen_secundary_goals_header"
                         android:layout_width="match_parent"
-                        android:layout_height="1px"
-                        android:layout_below="@+id/btn_goals_screen_header_info"
+                        android:layout_height="wrap_content"
                         android:layout_marginBottom="@dimen/activity_vertical_margin"
-                        android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                        android:layout_marginRight="@dimen/activity_horizontal_margin"
-                        android:layout_marginTop="9dp"
-                        android:background="@color/colorGoalsScreenTitle" />
+                        android:background="@color/colorGoalsScreenTitle"
+                        android:paddingBottom="12dp"
+                        android:paddingLeft="10dp"
+                        android:paddingTop="12dp">
+
+                        <View
+                            android:id="@+id/v_icon_goals_screen_secundary_goals"
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:background="@drawable/ic_plus"
+                            android:backgroundTint="@color/colorOrange" />
+
+                        <TextView
+                            android:id="@+id/tv_goals_screen_secundary_goals_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:layout_toRightOf="@+id/v_icon_goals_screen_secundary_goals"
+                            android:text="@string/txt_goals_screen_secundary_goals_title"
+                            android:textColor="@color/colorWhite"
+                            android:textSize="@dimen/cv_text_size" />
+
+                        <Button
+                            android:id="@+id/btn_goals_screen_secundary_goals_info"
+                            android:layout_width="@dimen/cv_title_size"
+                            android:layout_height="@dimen/cv_title_size"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginRight="@dimen/activity_horizontal_margin"
+                            android:background="@drawable/ic_info_filled"
+                            android:backgroundTint="@color/colorWhite" />
+
+                    </RelativeLayout>
+
+                    <!-- Secundary Goals Content -->
+                    <RelativeLayout
+                        android:id="@+id/lay_goals_screen_content_secundary_goals"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/lay_goals_screen_secundary_goals_header"
+                        android:layout_marginBottom="@dimen/activity_vertical_margin">
+
+                        <TextView
+                            android:id="@+id/tv_goals_screen_secundary_goals_content_hint"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:text="@string/txt_goals_screen_secundary_goals_content_hint"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="13sp" />
+
+                        <Button
+                            android:id="@+id/btn_goals_screen_secundary_goals_content_add"
+                            android:layout_width="90dp"
+                            android:layout_height="35dp"
+                            android:layout_below="@id/tv_goals_screen_secundary_goals_content_hint"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="9dp"
+                            android:background="@color/colorGoalsScreenTitle"
+                            android:text="@string/txt_goals_screen_secundary_goals_content_add_goal_button"
+                            android:textColor="@color/colorWhite" />
+
+                        <LinearLayout
+                            android:id="@+id/lay_goals_screen_secundary_goals_list"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/btn_goals_screen_secundary_goals_content_add"
+                            android:layout_marginTop="@dimen/activity_vertical_margin"
+                            android:orientation="vertical">
+
+                        </LinearLayout>
+
+                    </RelativeLayout>
 
                 </RelativeLayout>
 
-                <!-- Body -->
+                <!-- Rainy Day -->
                 <RelativeLayout
-                    android:id="@+id/lay_goals_screen_body"
+                    android:id="@+id/lay_goals_screen_rainy_day"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/lay_goals_screen_header"
-                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                    android:layout_marginRight="@dimen/activity_horizontal_margin">
+                    android:layout_below="@id/lay_goals_screen_secundary_goals">
 
-                    <!-- Secundary Goals -->
+                    <!-- Rainy Day Fund Header -->
                     <RelativeLayout
-                        android:id="@+id/lay_goals_screen_secundary_goals"
+                        android:id="@+id/lay_goals_screen_rainy_day_header"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/activity_vertical_margin"
+                        android:background="@color/colorGoalsScreenTitle"
+                        android:paddingBottom="12dp"
+                        android:paddingLeft="10dp"
+                        android:paddingTop="12dp">
 
-                        <!-- Secundary Goals Header -->
-                        <RelativeLayout
-                            android:id="@+id/lay_goals_screen_secundary_goals_header"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="@dimen/activity_vertical_margin"
-                            android:background="@color/colorGoalsScreenTitle"
-                            android:paddingBottom="12dp"
-                            android:paddingLeft="10dp"
-                            android:paddingTop="12dp">
+                        <View
+                            android:id="@+id/v_icon_goals_screen_rainy_day"
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:background="@drawable/ic_plus"
+                            android:backgroundTint="@color/colorOrange" />
 
-                            <View
-                                android:id="@+id/v_icon_goals_screen_secundary_goals"
-                                android:layout_width="18dp"
-                                android:layout_height="18dp"
-                                android:background="@drawable/ic_plus"
-                                android:backgroundTint="@color/colorOrange" />
-
-                            <TextView
-                                android:id="@+id/tv_goals_screen_secundary_goals_title"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="5dp"
-                                android:layout_toRightOf="@+id/v_icon_goals_screen_secundary_goals"
-                                android:text="@string/txt_goals_screen_secundary_goals_title"
-                                android:textColor="@color/colorWhite"
-                                android:textSize="@dimen/cv_text_size" />
-
-                            <Button
-                                android:id="@+id/btn_goals_screen_secundary_goals_info"
-                                android:layout_width="@dimen/cv_title_size"
-                                android:layout_height="@dimen/cv_title_size"
-                                android:layout_alignParentRight="true"
-                                android:layout_marginRight="@dimen/activity_horizontal_margin"
-                                android:background="@drawable/ic_info_filled"
-                                android:backgroundTint="@color/colorWhite" />
-
-                        </RelativeLayout>
-
-                        <!-- Secundary Goals Content -->
-                        <RelativeLayout
-                            android:id="@+id/lay_goals_screen_content_secundary_goals"
+                        <TextView
+                            android:id="@+id/tv_goals_screen_rainy_day_title"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@+id/lay_goals_screen_secundary_goals_header"
-                            android:layout_marginBottom="@dimen/activity_vertical_margin">
+                            android:layout_marginLeft="5dp"
+                            android:layout_toRightOf="@+id/v_icon_goals_screen_rainy_day"
+                            android:text="@string/txt_goals_screen_rainy_day_title"
+                            android:textColor="@color/colorWhite"
+                            android:textSize="@dimen/cv_text_size" />
 
-                            <TextView
-                                android:id="@+id/tv_goals_screen_secundary_goals_content_hint"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_centerHorizontal="true"
-                                android:text="@string/txt_goals_screen_secundary_goals_content_hint"
-                                android:textColor="@color/colorBlack"
-                                android:textSize="13sp" />
-
-                            <Button
-                                android:id="@+id/btn_goals_screen_secundary_goals_content_add"
-                                android:layout_width="90dp"
-                                android:layout_height="35dp"
-                                android:layout_below="@+id/tv_goals_screen_secundary_goals_content_hint"
-                                android:layout_centerHorizontal="true"
-                                android:layout_marginTop="9dp"
-                                android:background="@color/colorGoalsScreenTitle"
-                                android:text="@string/txt_goals_screen_secundary_goals_content_add_goal_button"
-                                android:textColor="@color/colorWhite" />
-
-                            <LinearLayout
-                                android:id="@+id/lay_goals_screen_secundary_goals_list"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_below="@+id/btn_goals_screen_secundary_goals_content_add"
-                                android:layout_marginTop="@dimen/activity_vertical_margin"
-                                android:orientation="vertical">
-
-                            </LinearLayout>
-
-                        </RelativeLayout>
+                        <Button
+                            android:id="@+id/btn_goals_screen_rainy_day_info"
+                            android:layout_width="@dimen/cv_title_size"
+                            android:layout_height="@dimen/cv_title_size"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginRight="@dimen/activity_horizontal_margin"
+                            android:background="@drawable/ic_info_filled"
+                            android:backgroundTint="@color/colorWhite" />
 
                     </RelativeLayout>
 
-                    <!-- Rainy Day -->
+                    <!-- Rainy Day Content -->
                     <RelativeLayout
-                        android:id="@+id/lay_goals_screen_rainy_day"
+                        android:id="@+id/lay_goals_screen_content_rainy_day"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/lay_goals_screen_secundary_goals">
+                        android:layout_below="@id/lay_goals_screen_rainy_day_header"
+                        android:layout_marginBottom="@dimen/activity_vertical_margin">
 
-                        <!-- Rainy Day Fund Header -->
-                        <RelativeLayout
-                            android:id="@+id/lay_goals_screen_rainy_day_header"
+                        <TextView
+                            android:id="@+id/tv_goals_screen_rainy_day_content_hint"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginBottom="@dimen/activity_vertical_margin"
-                            android:background="@color/colorGoalsScreenTitle"
-                            android:paddingBottom="12dp"
-                            android:paddingLeft="10dp"
-                            android:paddingTop="12dp">
+                            android:text="@string/txt_goals_screen_rainy_day_content_hint"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="13sp" />
 
-                            <View
-                                android:id="@+id/v_icon_goals_screen_rainy_day"
-                                android:layout_width="18dp"
-                                android:layout_height="18dp"
-                                android:background="@drawable/ic_plus"
-                                android:backgroundTint="@color/colorOrange" />
-
-                            <TextView
-                                android:id="@+id/tv_goals_screen_rainy_day_title"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="5dp"
-                                android:layout_toRightOf="@+id/v_icon_goals_screen_rainy_day"
-                                android:text="@string/txt_goals_screen_rainy_day_title"
-                                android:textColor="@color/colorWhite"
-                                android:textSize="@dimen/cv_text_size" />
-
-                            <Button
-                                android:id="@+id/btn_goals_screen_rainy_day_info"
-                                android:layout_width="@dimen/cv_title_size"
-                                android:layout_height="@dimen/cv_title_size"
-                                android:layout_alignParentRight="true"
-                                android:layout_marginRight="@dimen/activity_horizontal_margin"
-                                android:background="@drawable/ic_info_filled"
-                                android:backgroundTint="@color/colorWhite" />
-
-                        </RelativeLayout>
-
-                        <!-- Rainy Day Content -->
-                        <RelativeLayout
-                            android:id="@+id/lay_goals_screen_content_rainy_day"
+                        <TextView
+                            android:id="@+id/tv_goals_screen_rainy_day_percent_title"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@+id/lay_goals_screen_rainy_day_header"
-                            android:layout_marginBottom="@dimen/activity_vertical_margin">
+                            android:layout_below="@id/tv_goals_screen_rainy_day_content_hint"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginTop="@dimen/activity_vertical_margin"
+                            android:text="@string/txt_goals_screen_rainy_day_percent_title"
+                            android:textColor="@color/colorOrange"
+                            android:textSize="13sp"
+                            android:textStyle="bold" />
 
-                            <TextView
-                                android:id="@+id/tv_goals_screen_rainy_day_content_hint"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="@string/txt_goals_screen_rainy_day_content_hint"
-                                android:textColor="@color/colorBlack"
-                                android:textSize="13sp" />
+                        <TextView
+                            android:id="@+id/tv_goals_screen_rainy_day_percent_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/tv_goals_screen_rainy_day_content_hint"
+                            android:layout_marginTop="@dimen/activity_vertical_margin"
+                            android:layout_toRightOf="@+id/tv_goals_screen_rainy_day_percent_title"
+                            android:text="33%"
+                            android:textColor="@color/colorOrange"
+                            android:textSize="13sp"
+                            android:textStyle="bold" />
 
-                            <TextView
-                                android:id="@+id/tv_goals_screen_rainy_day_percent_title"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_below="@+id/tv_goals_screen_rainy_day_content_hint"
-                                android:layout_marginRight="5dp"
-                                android:layout_marginTop="@dimen/activity_vertical_margin"
-                                android:text="@string/txt_goals_screen_rainy_day_percent_title"
-                                android:textColor="@color/colorOrange"
-                                android:textSize="13sp"
-                                android:textStyle="bold" />
+                        <ProgressBar
+                            android:id="@+id/progressbar_goals_screen_rainy_day"
+                            style="?android:attr/progressBarStyleHorizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="15dp"
+                            android:layout_below="@id/tv_goals_screen_rainy_day_percent_title"
+                            android:layout_marginBottom="10dp"
+                            android:layout_marginTop="10dp"
+                            android:max="100"
+                            android:maxWidth="200dp"
+                            android:minHeight="50dp"
+                            android:minWidth="200dp"
+                            android:progress="33"
+                            android:progressBackgroundTint="@color/colorBlack"
+                            android:progressDrawable="@color/colorOrange" />
 
-                            <TextView
-                                android:id="@+id/tv_goals_screen_rainy_day_percent_value"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_below="@+id/tv_goals_screen_rainy_day_content_hint"
-                                android:layout_marginTop="@dimen/activity_vertical_margin"
-                                android:layout_toRightOf="@+id/tv_goals_screen_rainy_day_percent_title"
-                                android:text="33%"
-                                android:textColor="@color/colorOrange"
-                                android:textSize="13sp"
-                                android:textStyle="bold" />
+                        <TextView
+                            android:id="@+id/tv_goals_screen_rainy_day_goal_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/progressbar_goals_screen_rainy_day"
+                            android:layout_marginRight="5dp"
+                            android:layout_toLeftOf="@+id/tv_goals_screen_rainy_day_goal_amount"
+                            android:text="@string/txt_goals_screen_rainy_day_goal_title"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="13sp"
+                            android:textStyle="bold" />
 
-                            <ProgressBar
-                                android:id="@+id/progressbar_goals_screen_rainy_day"
-                                style="?android:attr/progressBarStyleHorizontal"
-                                android:layout_width="match_parent"
-                                android:layout_height="15dp"
-                                android:layout_below="@id/tv_goals_screen_rainy_day_percent_title"
-                                android:max="100"
-                                android:layout_marginTop="10dp"
-                                android:layout_marginBottom="10dp"
-                                android:maxWidth="200dp"
-                                android:minHeight="50dp"
-                                android:minWidth="200dp"
-                                android:progress="33"
-                                android:progressBackgroundTint="@color/colorBlack"
-                                android:progressDrawable="@color/colorOrange" />
+                        <TextView
+                            android:id="@+id/tv_goals_screen_rainy_day_goal_amount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_below="@id/progressbar_goals_screen_rainy_day"
+                            android:text="€16,654.00"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="13sp" />
 
-                            <TextView
-                                android:id="@+id/tv_goals_screen_rainy_day_goal_title"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_below="@+id/progressbar_goals_screen_rainy_day"
-                                android:layout_marginRight="5dp"
-                                android:layout_toLeftOf="@+id/tv_goals_screen_rainy_day_goal_amount"
-                                android:text="@string/txt_goals_screen_rainy_day_goal_title"
-                                android:textColor="@color/colorBlack"
-                                android:textSize="13sp"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:id="@+id/tv_goals_screen_rainy_day_goal_amount"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_alignParentRight="true"
-                                android:layout_below="@+id/progressbar_goals_screen_rainy_day"
-                                android:text="€16,654.00"
-                                android:textColor="@color/colorBlack"
-                                android:textSize="13sp" />
-
-                            <Button
-                                android:id="@+id/btn_goals_screen_rainy_day_content_add"
-                                android:layout_width="90dp"
-                                android:layout_height="35dp"
-                                android:layout_below="@+id/tv_goals_screen_rainy_day_goal_title"
-                                android:layout_centerHorizontal="true"
-                                android:layout_marginTop="9dp"
-                                android:background="@drawable/btn_bg_orange_radius"
-                                android:text="@string/txt_goals_screen_rainy_day_edit_button"
-                                android:textColor="@color/colorWhite" />
-
-                        </RelativeLayout>
+                        <Button
+                            android:id="@+id/btn_goals_screen_rainy_day_content_add"
+                            android:layout_width="90dp"
+                            android:layout_height="35dp"
+                            android:layout_below="@+id/tv_goals_screen_rainy_day_goal_title"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="9dp"
+                            android:background="@drawable/btn_bg_orange_radius"
+                            android:text="@string/txt_goals_screen_rainy_day_edit_button"
+                            android:textColor="@color/colorWhite" />
 
                     </RelativeLayout>
 
-                    <!-- College Fund -->
+                </RelativeLayout>
+
+                <!-- College Fund -->
+                <RelativeLayout
+                    android:id="@+id/lay_goals_screen_college"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/lay_goals_screen_rainy_day">
+
+                    <!-- College Fund Header -->
                     <RelativeLayout
-                        android:id="@+id/lay_goals_screen_college"
+                        android:id="@+id/lay_goals_screen_college_header"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/lay_goals_screen_rainy_day">
+                        android:layout_marginBottom="@dimen/activity_vertical_margin"
+                        android:background="@color/colorGoalsScreenTitle"
+                        android:paddingBottom="12dp"
+                        android:paddingLeft="10dp"
+                        android:paddingTop="12dp">
 
-                        <!-- College Fund Header -->
-                        <RelativeLayout
-                            android:id="@+id/lay_goals_screen_college_header"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="@dimen/activity_vertical_margin"
-                            android:background="@color/colorGoalsScreenTitle"
-                            android:paddingBottom="12dp"
-                            android:paddingLeft="10dp"
-                            android:paddingTop="12dp">
+                        <View
+                            android:id="@+id/v_icon_goals_screen_college"
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:background="@drawable/ic_plus"
+                            android:backgroundTint="@color/colorOrange" />
 
-                            <View
-                                android:id="@+id/v_icon_goals_screen_college"
-                                android:layout_width="18dp"
-                                android:layout_height="18dp"
-                                android:background="@drawable/ic_plus"
-                                android:backgroundTint="@color/colorOrange" />
-
-                            <TextView
-                                android:id="@+id/tv_goals_screen_college_title"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="5dp"
-                                android:layout_toRightOf="@+id/v_icon_goals_screen_college"
-                                android:text="@string/txt_goals_screen_college_title"
-                                android:textColor="@color/colorWhite"
-                                android:textSize="@dimen/cv_text_size" />
-
-                            <Button
-                                android:id="@+id/btn_goals_screen_college_info"
-                                android:layout_width="@dimen/cv_title_size"
-                                android:layout_height="@dimen/cv_title_size"
-                                android:layout_alignParentRight="true"
-                                android:layout_marginRight="@dimen/activity_horizontal_margin"
-                                android:background="@drawable/ic_info_filled"
-                                android:backgroundTint="@color/colorWhite" />
-
-                        </RelativeLayout>
-
-                        <!-- Rainy Day Content -->
-                        <RelativeLayout
-                            android:id="@+id/lay_goals_screen_content_college"
+                        <TextView
+                            android:id="@+id/tv_goals_screen_college_title"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@+id/lay_goals_screen_college_header"
-                            android:layout_marginBottom="@dimen/activity_vertical_margin">
+                            android:layout_marginLeft="5dp"
+                            android:layout_toRightOf="@+id/v_icon_goals_screen_college"
+                            android:text="@string/txt_goals_screen_college_title"
+                            android:textColor="@color/colorWhite"
+                            android:textSize="@dimen/cv_text_size" />
 
-                            <TextView
-                                android:id="@+id/tv_goals_screen_college_content_hint"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="@string/txt_goals_screen_college_content_hint"
-                                android:textColor="@color/colorBlack"
-                                android:textSize="13sp" />
+                        <Button
+                            android:id="@+id/btn_goals_screen_college_info"
+                            android:layout_width="@dimen/cv_title_size"
+                            android:layout_height="@dimen/cv_title_size"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginRight="@dimen/activity_horizontal_margin"
+                            android:background="@drawable/ic_info_filled"
+                            android:backgroundTint="@color/colorWhite" />
 
-                            <LinearLayout
-                                android:id="@+id/lay_goals_screen_college_list"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_below="@+id/tv_goals_screen_college_content_hint"
-                                android:layout_marginTop="@dimen/activity_vertical_margin"
-                                android:orientation="vertical">
+                    </RelativeLayout>
 
-                            </LinearLayout>
+                    <!-- Rainy Day Content -->
+                    <RelativeLayout
+                        android:id="@+id/lay_goals_screen_content_college"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/lay_goals_screen_college_header"
+                        android:layout_marginBottom="@dimen/activity_vertical_margin">
 
-                        </RelativeLayout>
+                        <TextView
+                            android:id="@+id/tv_goals_screen_college_content_hint"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/txt_goals_screen_college_content_hint"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="13sp" />
+
+                        <LinearLayout
+                            android:id="@+id/lay_goals_screen_college_list"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/tv_goals_screen_college_content_hint"
+                            android:layout_marginTop="@dimen/activity_vertical_margin"
+                            android:orientation="vertical">
+
+                        </LinearLayout>
 
                     </RelativeLayout>
 
