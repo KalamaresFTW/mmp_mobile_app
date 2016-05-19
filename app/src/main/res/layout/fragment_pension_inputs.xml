@@ -23,7 +23,7 @@
                 android:id="@+id/lay_pension_screen_existing_pensions"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="13dp"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
                 android:background="@color/colorWhite">
 
                 <!-- Header Layout -->
@@ -69,10 +69,10 @@
                     android:id="@+id/lay_pension_screen_data_list"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
+                    android:layout_below="@+id/lay_pension_screen_existing_header"
                     android:layout_marginLeft="@dimen/activity_horizontal_margin"
                     android:layout_marginTop="@dimen/activity_vertical_margin"
-                    android:layout_below="@+id/lay_pension_screen_existing_header">
+                    android:orientation="vertical">
 
                 </LinearLayout>
 
@@ -81,9 +81,9 @@
                     android:layout_width="60dp"
                     android:layout_height="45dp"
                     android:layout_below="@+id/lay_pension_screen_data_list"
-                    android:layout_marginTop="@dimen/activity_vertical_margin"
                     android:layout_centerHorizontal="true"
                     android:layout_marginBottom="@dimen/activity_vertical_margin"
+                    android:layout_marginTop="@dimen/activity_vertical_margin"
                     android:background="@drawable/add_icon" />
 
             </RelativeLayout>
@@ -115,7 +115,7 @@
                     android:layout_marginRight="@dimen/activity_horizontal_margin"
                     android:layout_marginTop="9dp"
                     android:background="@drawable/ic_info"
-                    android:drawableTint="@color/colorPensionScreenTextAgeRetirement" />
+                    android:backgroundTint="@color/colorStateGood" />
 
                 <View
                     android:id="@+id/cv_separator_basic_salary"
@@ -138,8 +138,8 @@
                         android:layout_height="40dp"
                         android:layout_marginLeft="57dp"
                         android:layout_marginTop="60dp"
-                        android:text="0"
                         android:gravity="center_horizontal"
+                        android:text="0"
                         android:textColor="@color/colorPensionScreenSeekArcAgeProgress"
                         android:textSize="30dp"
                         android:textStyle="bold" />
@@ -209,7 +209,7 @@
                     android:layout_marginRight="@dimen/activity_horizontal_margin"
                     android:layout_marginTop="9dp"
                     android:background="@drawable/ic_info"
-                    android:drawableTint="@color/colorPensionScreenTextAgeRetirement" />
+                    android:backgroundTint="@color/colorStateGood" />
 
                 <View
                     android:id="@+id/cv_separator_monthly_amount"
@@ -232,8 +232,8 @@
                         android:layout_height="40dp"
                         android:layout_marginLeft="57dp"
                         android:layout_marginTop="60dp"
-                        android:text="0"
                         android:gravity="center_horizontal"
+                        android:text="0"
                         android:textColor="@color/colorPensionScreenSeekArcAmountProgress"
                         android:textSize="30dp"
                         android:textStyle="bold" />

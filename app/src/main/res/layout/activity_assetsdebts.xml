@@ -39,12 +39,12 @@
                     android:id="@+id/tabs"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:tabBackground="@color/colorGoalsScreenBackground"
+                    app:tabBackground="@color/colorAssetsDebtsScreenBackground"
                     app:tabGravity="fill"
                     app:tabIndicatorColor="@color/colorWhite"
                     app:tabIndicatorHeight="4dp"
                     app:tabMode="fixed"
-                    app:tabTextColor="@color/colorStateGood" />
+                    app:tabTextColor="@color/colorAssetsDebtsScreenTitle" />
 
             </android.support.design.widget.AppBarLayout>
 

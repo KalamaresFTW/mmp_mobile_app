@@ -385,7 +385,7 @@ public class IncomeInputsFragment extends Fragment {
      * You might notice that this is a fucking badass function, isn't it?
      *
      * @param numberOfDependants the number of dependants to refresh
-     * @param increasing this tells if you are increasing or decreasing the number of dependants
+     * @param increasing         this tells if you are increasing or decreasing the number of dependants
      */
     private void refreshDependants(int numberOfDependants, boolean increasing) {
         if (numberOfDependants > 0 && numberOfDependants <= 10) {

@@ -4,6 +4,8 @@ import android.graphics.drawable.Drawable;
 
 /**
  * Created by Nacho on 18/05/2016.
+ * Dual constructor. One with Img and one without
+ * Due to the fact that Secundary Goals and College fund data has the same parameters, this class can be used for both layouts
  */
 public class GoalData {
 

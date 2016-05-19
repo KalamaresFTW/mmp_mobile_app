@@ -109,7 +109,7 @@
     <string name="income_screen_summary_title">Did you know?</string>
     <string name="income_screen_basic_salary_seekarc_text">Please drag the white knob to set your salary</string>
 
-    <!-- Income Screen Information Dialogs-->
+    <!-- Income Screen Information Dialogs -->
     <string name="info_dialog_title">Info</string>
     <string name="confirm">OK</string>
     <string name="income_screen_basic_salary_info">What money is coming in to the household from you (and your partner, if applicable)</string>
@@ -127,6 +127,13 @@
     <string name="txt_pension_screen_summary_salary_title">Final salary from work vs pension</string>
     <string name="txt_pension_screen_graphs_title">Income in retirement</string>
     <string name="txt_pension_screen_existing_pension_title">Existing Pensions</string>
+
+    <!-- Pension Screen Information Dialogs -->
+    <string name="txt_pension_screen_existing_pension_info">Have you any pension funds already in place?</string>
+    <string name="txt_pension_screen_age_retirement_info">Use this dial to run scenarios of retiring at different ages.</string>
+    <string name="txt_pension_screen_monthly_amount_info">Use this dial to see how monthly payments could help you retire earlier and with more money.</string>
+    <string name="txt_pension_screen_summary_salary_info">Having a good income in retirement is vital to maintaining your livelihood.</string>
+    <string name="txt_pension_screen_graphs_info">You should have at least 50% of your work salary at the time of retirement as an income for the rest of your life</string>
 
     <!-- Goals Activity Strings -->
     <string name="title_activity_goals">Goals</string>

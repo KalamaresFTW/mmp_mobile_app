@@ -23,10 +23,11 @@ public class GoalsInputsFragment extends Fragment {
     private LayoutInflater inflater;
     private View view, mSecundaryGoalsStateIcon, mRainyDayStateIcon, mCollegeStateIcon;
     private RelativeLayout mSecundaryGoalsHeader, mSecundaryGoalsContent, mRainyDayContent, mRainyDayHeader, mCollegeHeader, mCollegeContent;
-    private LinearLayout mSecundaryGoalsList;
+    private LinearLayout mSecundaryGoalsList, mCollegeFundList;
     private Button mGoalsTitleInfoButton, mSecundaryGoalsInfoButton, mRainyDayInfoButton, mCollegeInfoButton, mAddGoalButton;
 
     private ArrayList<GoalData> goalsDataArray;
+    private ArrayList<GoalData> childDataArray;
 
     public GoalsInputsFragment() {
         // Required empty public constructor
@@ -49,6 +50,7 @@ public class GoalsInputsFragment extends Fragment {
 
     public void initComponents() {
         goalsDataArray = new ArrayList<>();
+        childDataArray = new ArrayList<>();
         //Header Layouts
         mSecundaryGoalsHeader = (RelativeLayout) view.findViewById(R.id.lay_goals_screen_secundary_goals_header);
         mSecundaryGoalsHeader.setOnClickListener(new View.OnClickListener() {
@@ -93,17 +95,19 @@ public class GoalsInputsFragment extends Fragment {
 
         //Lists
         mSecundaryGoalsList = (LinearLayout) view.findViewById(R.id.lay_goals_screen_secundary_goals_list);
+        mCollegeFundList = (LinearLayout) view.findViewById(R.id.lay_goals_screen_college_list);
 
         //Other Components
         mAddGoalButton = (Button) view.findViewById(R.id.btn_goals_screen_secundary_goals_content_add);
         mAddGoalButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addNewGoal();
+                addNewSecundaryGoal();
             }
         });
 
-        loadNewGoalsList();
+        loadSecundaryGoalsList();
+        loadCollegeFundList();
     }
 
     //Method which switch between the tiles of the acordion (open one and close the others)
@@ -171,16 +175,24 @@ public class GoalsInputsFragment extends Fragment {
     }
 
     //TODO: create a popup for the user to let him fill with his new goal data
-    public void addNewGoal() {
+    public void addNewSecundaryGoal() {
         goalsDataArray.add(new GoalData("New stuff", 30, 9000));
         GoalDataAdapter.getInstance().loadData(goalsDataArray, mSecundaryGoalsList, inflater);
-        Toast.makeText(getContext(), "Creating new Goal", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getContext(), "New Goal Created", Toast.LENGTH_SHORT).show();
     }
 
-    public void loadNewGoalsList() {
+    public void loadSecundaryGoalsList() {
         //TODO: get the goals data from the API
         goalsDataArray.add(new GoalData("New Car", 30, 9000));
         goalsDataArray.add(new GoalData("New Car2", 50, 10000));
         GoalDataAdapter.getInstance().loadData(goalsDataArray, mSecundaryGoalsList, inflater);
+    }
+
+    public void loadCollegeFundList() {
+        //TODO: get the child info from the API
+        //ChildData class is going to have the same parameters as GoalData
+        childDataArray.add(new GoalData("Sean Jr.", 45, 24000));
+        childDataArray.add(new GoalData("Gerald Jr.", 30, 24000));
+        GoalDataAdapter.getInstance().loadData(childDataArray, mCollegeFundList, inflater);
     }
 }

@@ -10,6 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.triggertrap.seekarc.SeekArc;
 
 import java.util.ArrayList;
@@ -29,6 +30,7 @@ public class PensionInputsFragment extends Fragment {
     private LinearLayout rel_lay;
     private int newPensionID;
     private ArrayList<PensionData> pensionDataArray;
+    private Button mExistingPensionInfo, mAgeRetirementInfo, mMonthlyAmountInfo;
 
     public PensionInputsFragment() {
         // Required empty public constructor
@@ -96,6 +98,42 @@ public class PensionInputsFragment extends Fragment {
             }
         });
 
+        //region Info Buttons
+        mExistingPensionInfo = (Button) view.findViewById(R.id.btn_pension_screen_existing_pension_info);
+        mExistingPensionInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new MaterialDialog.Builder(getContext())
+                        .title(getString(R.string.txt_pension_screen_existing_pension_title))
+                        .content(getString(R.string.txt_pension_screen_existing_pension_info))
+                        .positiveText(getString(R.string.confirm))
+                        .show();
+            }
+        });
+        mAgeRetirementInfo = (Button) view.findViewById(R.id.btn_pension_screen_age_retirement_info);
+        mAgeRetirementInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new MaterialDialog.Builder(getContext())
+                        .title(getString(R.string.txt_pension_screen_age_retirement))
+                        .content(getString(R.string.txt_pension_screen_age_retirement_info))
+                        .positiveText(getString(R.string.confirm))
+                        .show();
+            }
+        });
+
+        mMonthlyAmountInfo = (Button) view.findViewById(R.id.btn_pension_screen_monthly_amount_info);
+        mMonthlyAmountInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new MaterialDialog.Builder(getContext())
+                        .title(getString(R.string.txt_pension_screen_monthly_amount))
+                        .content(getString(R.string.txt_pension_screen_monthly_amount_info))
+                        .positiveText(getString(R.string.confirm))
+                        .show();
+            }
+        });
+        //endregion
         rel_lay = (LinearLayout) view.findViewById(R.id.lay_pension_screen_data_list);
         loadPensionList();
     }
