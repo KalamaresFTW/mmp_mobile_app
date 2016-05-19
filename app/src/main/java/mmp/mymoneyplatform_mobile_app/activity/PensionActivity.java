@@ -1,5 +1,6 @@
 package mmp.mymoneyplatform_mobile_app.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
@@ -13,6 +14,8 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,6 +32,7 @@ public class PensionActivity extends AppCompatActivity
     private Toolbar toolbar;
     private TabLayout tabLayout;
     private ViewPager viewPager;
+    private Button nextModule, previousModule;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +61,24 @@ public class PensionActivity extends AppCompatActivity
 
         tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
+
+        //Button Panel buttons and listeners
+        previousModule = (Button) findViewById(R.id.bottom_health_panel_previous);
+        previousModule.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+                startActivity(new Intent(getApplicationContext(), IncomeActivity.class));
+            }
+        });
+        nextModule = (Button) findViewById(R.id.bottom_health_panel_next);
+        nextModule.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+                startActivity(new Intent(getApplicationContext(), GoalsActivity.class));
+            }
+        });
     }
 
     private void setupViewPager(ViewPager viewPager) {

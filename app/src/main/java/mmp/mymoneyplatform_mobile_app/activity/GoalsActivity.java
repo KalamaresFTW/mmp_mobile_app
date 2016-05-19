@@ -30,7 +30,6 @@ public class GoalsActivity extends AppCompatActivity
     private Toolbar toolbar;
     private TabLayout tabLayout;
     private ViewPager viewPager;
-    private DrawerLayout drawer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +43,7 @@ public class GoalsActivity extends AppCompatActivity
 
     public void initComponents() {
         //Reference to the drawer
-        drawer = (DrawerLayout) findViewById(R.id.drawer_module_layout);
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_module_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);

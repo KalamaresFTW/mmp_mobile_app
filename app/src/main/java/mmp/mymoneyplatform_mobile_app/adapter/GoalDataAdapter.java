@@ -43,13 +43,13 @@ public class GoalDataAdapter {
         for (int i = 0; i < goaldData.size(); i++) {
             lay_goal_data = inflater.inflate(R.layout.goal_layout, null);
 
-            img = (ImageView) lay_goal_data.findViewById(R.id.iv_menu_img);
+            //img = (ImageView) lay_goal_data.findViewById(R.id.iv_menu_img);
             title = (TextView) lay_goal_data.findViewById(R.id.tv_goal_title);
             percentage = (TextView) lay_goal_data.findViewById(R.id.tv_goal_progress);
             progressBar = (ProgressBar) lay_goal_data.findViewById(R.id.progress_bar_goal);
             amount = (TextView) lay_goal_data.findViewById(R.id.tv_goal_progress_amount);
 
-            img.setBackground(goaldData.get(i).getImg());
+            //img.setBackground(goaldData.get(i).getImg());
             title.setText(goaldData.get(i).getTitle());
             percentage.setText(goaldData.get(i).getPercentage() + "%");
             amount.setText("€" + goaldData.get(i).getAmount());

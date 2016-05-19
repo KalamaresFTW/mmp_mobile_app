@@ -30,7 +30,7 @@
                 android:layout_marginLeft="5dp"
                 android:text="New Car"
                 android:textColor="@color/colorBlack"
-                android:textSize="@dimen/cv_title_size"
+                android:textSize="17sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -75,8 +75,9 @@
                 android:max="100"
                 android:maxWidth="200dp"
                 android:minHeight="50dp"
+                android:progress="30"
                 android:minWidth="200dp"
-                android:progressDrawable="@color/colorGoalsScreenTitle" />
+                android:progressDrawable="@drawable/progress_bar_goal_screen"/>
 
         </RelativeLayout>
 
@@ -85,7 +86,7 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_alignParentRight="true"
-            android:layout_marginTop="10dp"
+            android:layout_centerVertical="true"
             android:background="@drawable/ic_edit" />
 
     </RelativeLayout>

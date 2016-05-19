@@ -1,5 +1,7 @@
 package mmp.mymoneyplatform_mobile_app.fragment.goals;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -101,7 +103,7 @@ public class GoalsInputsFragment extends Fragment {
             }
         });
 
-        //loadNewGoalsList();
+        loadNewGoalsList();
     }
 
     //Method which switch between the tiles of the acordion (open one and close the others)
@@ -112,11 +114,11 @@ public class GoalsInputsFragment extends Fragment {
                 //Check if the other 2 parts of the acordion are opened. If it´s true, it gets closed
                 if (mRainyDayContent.getVisibility() == View.VISIBLE) {
                     mRainyDayContent.setVisibility(View.GONE);
-                    mRainyDayContent.setBackground(getResources().getDrawable(R.drawable.ic_plus));
+                    mRainyDayStateIcon.setBackground(getResources().getDrawable(R.drawable.ic_plus));
                 }
                 if (mCollegeContent.getVisibility() == View.VISIBLE) {
                     mCollegeContent.setVisibility(View.GONE);
-                    mCollegeContent.setBackground(getResources().getDrawable(R.drawable.ic_plus));
+                    mCollegeStateIcon.setBackground(getResources().getDrawable(R.drawable.ic_plus));
                 }
                 //Open the selected part of the acordion
                 if (mSecundaryGoalsContent.getVisibility() == View.GONE) {
@@ -131,11 +133,11 @@ public class GoalsInputsFragment extends Fragment {
                 //Check if the other 2 parts of the acordion are opened. If it´s true, it gets closed
                 if (mSecundaryGoalsContent.getVisibility() == View.VISIBLE) {
                     mSecundaryGoalsContent.setVisibility(View.GONE);
-                    mSecundaryGoalsContent.setBackground(getResources().getDrawable(R.drawable.ic_plus));
+                    mSecundaryGoalsStateIcon.setBackground(getResources().getDrawable(R.drawable.ic_plus));
                 }
                 if (mCollegeContent.getVisibility() == View.VISIBLE) {
                     mCollegeContent.setVisibility(View.GONE);
-                    mCollegeContent.setBackground(getResources().getDrawable(R.drawable.ic_plus));
+                    mCollegeStateIcon.setBackground(getResources().getDrawable(R.drawable.ic_plus));
                 }
                 //Open the selected part of the acordion
                 if (mRainyDayContent.getVisibility() == View.GONE) {
@@ -150,11 +152,11 @@ public class GoalsInputsFragment extends Fragment {
                 //Check if the other 2 parts of the acordion are opened. If it´s true, it gets closed
                 if (mSecundaryGoalsContent.getVisibility() == View.VISIBLE) {
                     mSecundaryGoalsContent.setVisibility(View.GONE);
-                    mSecundaryGoalsContent.setBackground(getResources().getDrawable(R.drawable.ic_plus));
+                    mSecundaryGoalsStateIcon.setBackground(getResources().getDrawable(R.drawable.ic_plus));
                 }
                 if (mRainyDayContent.getVisibility() == View.VISIBLE) {
                     mRainyDayContent.setVisibility(View.GONE);
-                    mRainyDayContent.setBackground(getResources().getDrawable(R.drawable.ic_plus));
+                    mRainyDayStateIcon.setBackground(getResources().getDrawable(R.drawable.ic_plus));
                 }
                 //Open the selected part of the acordion
                 if (mCollegeContent.getVisibility() == View.GONE) {
@@ -170,15 +172,15 @@ public class GoalsInputsFragment extends Fragment {
 
     //TODO: create a popup for the user to let him fill with his new goal data
     public void addNewGoal() {
-        goalsDataArray.add(new GoalData(null, "New Car", 30, 9000));
+        goalsDataArray.add(new GoalData("New stuff", 30, 9000));
         GoalDataAdapter.getInstance().loadData(goalsDataArray, mSecundaryGoalsList, inflater);
         Toast.makeText(getContext(), "Creating new Goal", Toast.LENGTH_SHORT).show();
     }
 
     public void loadNewGoalsList() {
         //TODO: get the goals data from the API
-        goalsDataArray.add(new GoalData(null, "New Car", 30, 9000));
-        goalsDataArray.add(new GoalData(null, "New Car2", 50, 10000));
+        goalsDataArray.add(new GoalData("New Car", 30, 9000));
+        goalsDataArray.add(new GoalData("New Car2", 50, 10000));
         GoalDataAdapter.getInstance().loadData(goalsDataArray, mSecundaryGoalsList, inflater);
     }
 }

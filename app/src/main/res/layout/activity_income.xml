@@ -58,6 +58,7 @@
 
         <!-- Bottom Panel -->
         <RelativeLayout
+            android:id="@+id/bottom_health_panel"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dash_bottom_margin"
             android:layout_alignParentBottom="true"
@@ -65,7 +66,7 @@
             android:theme="@style/AppTheme.PopupOverlay">
 
             <TextView
-                android:id="@+id/tv_income_screen_title"
+                android:id="@+id/bottom_health_panel_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
@@ -79,15 +80,15 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_below="@+id/tv_income_screen_title"
+                android:layout_below="@+id/bottom_health_panel_title"
                 android:layout_marginBottom="5dp"
                 android:layout_marginLeft="@dimen/activity_horizontal_margin"
                 android:layout_marginTop="5dp"
-                android:layout_toLeftOf="@+id/btn_income_screen_next"
-                android:layout_toStartOf="@+id/btn_income_screen_next">
+                android:layout_toLeftOf="@+id/bottom_health_panel_next"
+                android:layout_toStartOf="@+id/bottom_health_panel_next">
 
                 <TextView
-                    android:id="@+id/tv_income_screen_score"
+                    android:id="@+id/bottom_health_panel_score"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="7dp"
@@ -97,14 +98,14 @@
                     android:textStyle="bold" />
 
                 <ProgressBar
-                    android:id="@+id/progress_bar_income_screen"
+                    android:id="@+id/progress_bar_bottom_health_panel"
                     style="?android:attr/progressBarStyleHorizontal"
                     android:layout_width="wrap_content"
                     android:layout_height="9dp"
                     android:layout_marginLeft="8dp"
                     android:layout_marginRight="@dimen/cv_horizontal_margin"
                     android:layout_marginTop="11dp"
-                    android:layout_toRightOf="@+id/tv_income_screen_score"
+                    android:layout_toRightOf="@+id/bottom_health_panel_score"
                     android:max="100"
                     android:maxWidth="200dp"
                     android:minHeight="50dp"
@@ -114,7 +115,7 @@
             </RelativeLayout>
 
             <Button
-                android:id="@+id/btn_income_screen_next"
+                android:id="@+id/bottom_health_panel_next"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_alignParentRight="true"

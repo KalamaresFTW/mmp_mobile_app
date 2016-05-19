@@ -84,13 +84,4 @@
     <color name="colorGoalsScreenBackground">#92dce0</color>
     <color name="colorGoalsScreenTitle">#496e70</color>
     <color name="colorBackgroundSeekBarGoalsRainyDay">#877d75</color>
-
-
-    <!-- Assets/Debts Screen Colors -->
-    <color name="colorAssetsDebtsScreenBackground">#d79c8c</color>
-    <color name="colorAssetsDebtsScreenTitle">#684c44</color>
-    <color name="colorAssetsDebtsSeparator">#c9c9c9</color>
-    <color name="colorAssetsDebtsHealthPanelTitle">#6b4e46</color>
-
-
 </resources>
